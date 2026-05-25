@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Hyderabad Traffic Police – Speed Limits in Hyderabad City: Prescribed speed limits for all vehicle categories, speed cameras, penalty details and safe driving guidance.">
+  <meta property="og:title" content="Speed Limits – Hyderabad Traffic Police">
+  <meta property="og:type" content="website">
+  <title>Speed Limits – Hyderabad Traffic Police</title>
+  <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy:       #0B3C5D;
+      --navy-dark:  #072a43;
+      --navy-light: #145DA0;
+      --gold:       #FFC107;
+      --gold-dark:  #e0a800;
+      --red:        #D72638;
+      --green:      #198754;
+      --white:      #ffffff;
+      --off-white:  #f5f7fa;
+      --gray-100:   #e9ecef;
+      --gray-300:   #dee2e6;
+      --gray-600:   #6c757d;
+      --gray-800:   #343a40;
+      --radius-sm:  6px;
+      --radius-md:  10px;
+      --radius-lg:  16px;
+      --shadow-sm:  0 2px 8px rgba(0,0,0,.08);
+      --shadow-md:  0 4px 20px rgba(0,0,0,.12);
+      --transition: 0.22s ease;
+      --font-body:  'DM Sans', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { margin: 0; padding: 0; overflow-x: hidden; }
+    body { font-family: var(--font-body); font-size: 15px; color: var(--gray-800); background: var(--off-white); margin: 0; padding: 0; overflow-x: hidden; transform-origin: top left; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+    .skip-link { position: absolute; top: -40px; left: 0; background: var(--gold); color: #000; padding: 8px 16px; font-weight: 700; z-index: 99999; transition: top .2s; }
+    .skip-link:focus { top: 0; }
+
+    .container-htp { width: 100%; max-width: 1280px; margin-left: auto; margin-right: auto; padding-left: 32px; padding-right: 32px; }
+    @media (max-width: 768px) { .container-htp { padding-left: 16px; padding-right: 16px; } }
+
+    /* ── TOP HEADER ── */
+    .top-header { width: 100%; background: linear-gradient(100deg, var(--navy-dark) 0%, var(--navy-light) 100%); border-bottom: 3px solid var(--gold); color: var(--white); padding: 10px 0; }
+    .top-header__logo { height: 80px; width: auto; }
+    .top-header__title { font-size: 1.5rem; font-weight: 700; color: var(--gold); line-height: 1.2; white-space: nowrap; }
+    .top-header__subtitle { font-size: 0.78rem; color: rgba(255,255,255,.75); letter-spacing: .5px; }
+    .top-header__actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+    .btn-htp { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 600; border: none; cursor: pointer; transition: filter var(--transition), transform var(--transition); }
+    .btn-htp:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .btn-challan  { background: var(--red);   color: var(--white); }
+    .btn-whatsapp { background: #25D366;       color: var(--white); }
+    .btn-feedback { background: var(--gold);   color: #000; }
+    .top-header__info { font-size: .8rem; color: rgba(255,255,255,.85); }
+    .top-header__info a { color: var(--gold); font-weight: 600; }
+    .top-header__info a:hover { text-decoration: underline; }
+
+    .zoom-ctrl { display: flex; align-items: center; gap: 2px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); border-radius: 24px; padding: 3px; }
+    .zoom-ctrl button { background: transparent; border: none; color: rgba(255,255,255,.75); padding: 4px 9px; border-radius: 20px; font-size: .78rem; font-weight: 700; cursor: pointer; font-family: var(--font-body); transition: background var(--transition), color var(--transition); }
+    .zoom-ctrl button:hover { background: rgba(255,255,255,.15); color: #fff; }
+    .zoom-ctrl button.reset { color: var(--gold); font-size: .85rem; }
+
+    .lang-dropdown-wrap { position: relative; display: inline-flex; align-items: center; }
+    .lang-dropdown-wrap .lang-globe { position: absolute; left: 9px; color: rgba(255,255,255,.6); font-size: .78rem; pointer-events: none; z-index: 1; }
+    .lang-select { appearance: none; -webkit-appearance: none; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.25); border-radius: 20px; color: #fff; font-family: var(--font-body); font-size: .78rem; font-weight: 600; padding: 5px 28px 5px 26px; cursor: pointer; outline: none; min-width: 90px; transition: background var(--transition), border-color var(--transition); }
+    .lang-select:hover  { background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.45); }
+    .lang-select:focus  { border-color: var(--gold); }
+    .lang-select option { background: var(--navy-dark); color: #fff; font-weight: 600; }
+    .lang-caret { position: absolute; right: 9px; color: rgba(255,255,255,.55); font-size: .65rem; pointer-events: none; }
+
+    /* ── NAVBAR ── */
+    .main-nav { width: 100%; background: var(--navy); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,.2); }
+    .main-nav .nav-link { color: rgba(255,255,255,.85) !important; font-weight: 500; font-size: .88rem; padding: 10px 14px !important; border-radius: var(--radius-sm); transition: background var(--transition), color var(--transition); }
+    .main-nav .nav-link:hover, .main-nav .nav-link:focus { color: var(--gold) !important; background: rgba(255,255,255,.08); }
+    .main-nav .nav-link.active { color: var(--gold) !important; }
+    .main-nav .dropdown-menu { border: none; border-radius: var(--radius-md); padding: 8px; box-shadow: var(--shadow-md); margin-top: 6px; }
+    .main-nav .dropdown-item { border-radius: var(--radius-sm); padding: 8px 12px; font-size: .86rem; transition: background var(--transition); }
+    .main-nav .dropdown-item:hover { background: var(--navy); color: #fff; }
+    .nav-extras { flex-shrink: 0; }
+    .nav-search { position: relative; display: flex; align-items: center; }
+    .nav-search input { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); border-radius: 20px; color: var(--white); padding: 6px 14px 6px 34px; font-size: .8rem; width: 180px; outline: none; font-family: var(--font-body); transition: background var(--transition), border-color var(--transition), width var(--transition); }
+    .nav-search input::placeholder { color: rgba(255,255,255,.45); }
+    .nav-search input:focus { background: rgba(255,255,255,.18); border-color: var(--gold); width: 220px; }
+    .nav-search-icon { position: absolute; left: 11px; color: rgba(255,255,255,.45); font-size: .78rem; pointer-events: none; }
+    .nav-search:focus-within .nav-search-icon { color: var(--gold); }
+    @media (max-width: 991px) { .nav-extras { margin: 10px 0 6px; flex-wrap: wrap; justify-content: center; width: 100%; } .nav-search input { width: 100%; border-radius: 8px; } .nav-search input:focus { width: 100%; } .nav-search { width: 100%; } }
+
+    /* ── SECTION HEADING ── */
+    .section-heading { display: flex; align-items: center; gap: 10px; font-size: 1.1rem; font-weight: 700; color: var(--white); background: linear-gradient(90deg, var(--navy) 0%, var(--navy-light) 100%); padding: 12px 24px; border-radius: var(--radius-md); letter-spacing: .5px; margin-bottom: 1.5rem; }
+
+    /* ── CONTENT CARD ── */
+    .content-card { background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); padding: 36px; margin-bottom: 24px; }
+
+    /* ── COMING SOON HERO ── */
+    .coming-soon-wrap {
+      text-align: center; padding: 60px 20px 50px;
+      display: flex; flex-direction: column; align-items: center; gap: 20px;
+    }
+    .cs-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(90deg, var(--navy) 0%, var(--navy-light) 100%);
+      color: var(--white); font-size: .8rem; font-weight: 700;
+      padding: 6px 18px; border-radius: 20px; letter-spacing: .5px;
+    }
+    .cs-icon-ring {
+      width: 100px; height: 100px; border-radius: 50%;
+      background: linear-gradient(135deg, #EDF5FF 0%, #dbeafe 100%);
+      border: 3px dashed var(--navy-light);
+      display: flex; align-items: center; justify-content: center;
+      animation: pulse-ring 2.5s ease-in-out infinite;
+    }
+    .cs-icon-ring i { font-size: 2.4rem; color: var(--navy-light); }
+    @keyframes pulse-ring {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(20,93,160,.25); }
+      50%       { box-shadow: 0 0 0 14px rgba(20,93,160,0); }
+    }
+    .cs-title { font-size: 1.7rem; font-weight: 800; color: var(--navy); margin: 0; line-height: 1.2; }
+    .cs-sub { font-size: .95rem; color: var(--gray-600); max-width: 560px; line-height: 1.7; margin: 0; }
+    .cs-divider { width: 60px; height: 4px; background: linear-gradient(90deg, var(--navy), var(--navy-light)); border-radius: 4px; }
+
+    /* ── WHAT TO EXPECT CARDS ── */
+    .expect-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin-top: 8px; }
+    .expect-card {
+      border-radius: var(--radius-md); padding: 20px 18px;
+      border: 1px solid var(--gray-300); background: var(--off-white);
+      display: flex; flex-direction: column; gap: 10px;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      position: relative; overflow: hidden;
+    }
+    .expect-card::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 4px; height: 100%;
+    }
+    .expect-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--navy-light); }
+    .ec-1::before { background: var(--navy-light); }
+    .ec-2::before { background: var(--red); }
+    .ec-3::before { background: var(--green); }
+    .ec-4::before { background: var(--gold-dark); }
+    .ec-5::before { background: #0891b2; }
+    .ec-6::before { background: #7c3aed; }
+    .expect-icon { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .expect-card h4 { font-size: .9rem; font-weight: 700; color: var(--navy); margin: 0; }
+    .expect-card p  { font-size: .82rem; color: var(--gray-600); margin: 0; line-height: 1.6; }
+    .coming-soon-tag {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: #FFF8E1; color: #92580a;
+      font-size: .7rem; font-weight: 700;
+      padding: 2px 9px; border-radius: 12px; border: 1px solid #ffe082;
+      margin-top: 4px; width: fit-content;
+    }
+
+    /* ── OVERVIEW FACTS ── */
+    .fact-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; margin-bottom: 28px; }
+    .fact-card { background: var(--white); border-radius: var(--radius-md); padding: 20px 18px; box-shadow: var(--shadow-sm); border-top: 4px solid var(--navy); text-align: center; transition: transform var(--transition), box-shadow var(--transition); }
+    .fact-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .fact-card .num { font-size: 1.9rem; font-weight: 800; color: var(--navy); line-height: 1; }
+    .fact-card .lbl { font-size: .77rem; color: var(--gray-600); margin-top: 6px; font-weight: 500; }
+    .fact-card.red-top   { border-top-color: var(--red); }   .fact-card.red-top   .num { color: var(--red); }
+    .fact-card.green-top { border-top-color: var(--green); } .fact-card.green-top .num { color: var(--green); }
+    .fact-card.gold-top  { border-top-color: var(--gold-dark); } .fact-card.gold-top .num { color: var(--gold-dark); }
+
+    /* ── NOTIFY BANNER ── */
+    .notify-banner {
+      background: linear-gradient(120deg, var(--navy) 0%, var(--navy-light) 100%);
+      border-radius: var(--radius-lg); padding: 28px 32px;
+      display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .notify-banner .nb-icon { width: 54px; height: 54px; background: rgba(255,255,255,.12); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .notify-banner .nb-icon i { color: var(--gold); font-size: 22px; }
+    .notify-banner .nb-info h4 { color: var(--white); font-size: 1rem; font-weight: 700; margin: 0 0 4px; }
+    .notify-banner .nb-info p  { color: rgba(255,255,255,.8); font-size: .84rem; margin: 0; line-height: 1.6; }
+    .notify-banner .nb-actions { margin-left: auto; display: flex; gap: 10px; flex-wrap: wrap; }
+    .nb-btn-wa    { background: #25D366; color: #fff; }
+    .nb-btn-call  { background: var(--red);   color: #fff; }
+    @media (max-width: 640px) { .notify-banner { flex-direction: column; align-items: flex-start; } .notify-banner .nb-actions { margin-left: 0; } }
+
+    /* ── QUICK NAV ── */
+    .icon-box-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
+    .icon-box { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 20px 12px; border-radius: var(--radius-md); border: 1px solid var(--gray-300); background: var(--white); text-align: center; cursor: pointer; transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition); text-decoration: none; color: var(--gray-800); }
+    .icon-box:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--navy-light); }
+    .icon-box span { font-size: .82rem; font-weight: 600; line-height: 1.3; }
+    .icon-box.blue   { background: #EDF5FF; border-color: #b6d4fe; }
+    .icon-box.green  { background: #E8F8F0; border-color: #a3cfbb; }
+    .icon-box.red    { background: #FDE8EA; border-color: #f5c2c7; }
+    .icon-box.orange { background: #FFF4E6; border-color: #fecba1; }
+    .icon-box.purple { background: #F3E8FF; border-color: #d8b4fe; }
+
+    /* ── ARRIVE ALIVE ── */
+    .aa-banner { width: 100%; background: linear-gradient(120deg, #16A085 0%, #1ABC9C 100%); padding: 10px 40px; position: relative; overflow: hidden; }
+    .aa-banner::before { content: ''; position: absolute; top: -80px; right: -80px; width: 340px; height: 300px; background: rgba(255,255,255,.06); border-radius: 50%; pointer-events: none; }
+    .aa-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; position: relative; z-index: 1; }
+    .aa-badge { display: inline-block; background: rgba(255,255,255,.2); color: #fff; font-size: .72rem; font-weight: 600; padding: 4px 14px; border-radius: 20px; letter-spacing: .4px; margin-bottom: 8px; }
+    .aa-title { font-size: 1.5rem; font-weight: 800; color: #fff; margin: 0 0 6px; line-height: 1.2; }
+    .aa-desc  { font-size: .88rem; color: rgba(255,255,255,.88); line-height: 1.6; margin: 0 0 10px; }
+    .aa-btn   { display: inline-block; background: #fff; color: #16A085; font-size: .88rem; font-weight: 700; padding: 10px 28px; border-radius: var(--radius-sm); transition: background var(--transition), transform var(--transition); }
+    .aa-btn:hover { background: #e8faf6; transform: translateY(-2px); color: #16A085; }
+    .aa-visual { display: flex; align-items: center; justify-content: center; }
+    @media (max-width: 768px) { .aa-inner { grid-template-columns: 1fr; } .aa-visual { display: none; } .aa-title { font-size: 1.3rem; } .aa-banner { padding: 10px 16px; } }
+
+    /* ── FOOTER ── */
+    .modern-footer { width: 100%; background: #f4f7fb; border-top: 4px solid #0B3D91; }
+    .footer-logo { width: 130px; }
+    .footer-heading { color: #0B3D91; font-weight: 700; margin-bottom: 15px; }
+    .footer-text { color: #555; line-height: 1.8; font-size: .88rem; }
+    .footer-btn { display: inline-block; margin-top: 10px; background: #0B3D91; color: #fff; padding: 12px 22px; border-radius: 30px; font-weight: 600; transition: .3s; }
+    .footer-btn:hover { background: #1565C0; color: #fff; transform: translateY(-2px); }
+    .footer-title { color: #111; font-weight: 700; margin-bottom: 20px; font-size: .95rem; }
+    .footer-title::after { content: ''; width: 45px; height: 3px; background: #8BC34A; display: block; margin-top: 8px; }
+    .footer-links { list-style: none; padding: 0; }
+    .footer-links li { margin-bottom: 12px; }
+    .footer-links a { color: #444; font-size: .85rem; transition: .3s; }
+    .footer-links a:hover { color: #0B3D91; padding-left: 5px; }
+    .social-icons { display: flex; gap: 15px; flex-wrap: wrap; }
+    .social-icons a { width: 48px; height: 48px; border-radius: 50%; background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,.1); display: flex; align-items: center; justify-content: center; color: #0B3D91; font-size: 20px; transition: .3s; cursor: pointer; }
+    .social-icons a:hover { background: #0B3D91; color: #fff; transform: translateY(-4px); }
+    .footer-subtitle { font-weight: 700; margin-bottom: 10px; }
+    .official-link { color: #0B3D91; font-weight: 600; }
+    .footer-bottom { width: 100%; background: #111c2e; color: #fff; padding: 18px 0; font-size: .82rem; }
+    .footer-bottom a { color: #fff; }
+    .footer-bottom a:hover { color: var(--gold); }
+    @media (max-width: 768px) { .footer-title, .footer-heading, .footer-text { text-align: center; } .footer-title::after { margin: auto; margin-top: 8px; } .social-icons { justify-content: center; } .top-header__actions { justify-content: center; } .top-header__info { text-align: center; } }
+
+    /* ── POPUP ── */
+    .center-popup { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; justify-content: center; align-items: center; z-index: 99999; }
+    .popup-box { position: relative; width: 70%; max-width: 900px; background: #fff; padding: 10px; border-radius: 15px; box-shadow: 0 5px 25px rgba(0,0,0,0.5); animation: popupZoom 0.4s ease; }
+    .popup-box img { width: 100%; height: auto; border-radius: 10px; display: block; }
+    .close-btn { position: absolute; top: -15px; right: -15px; background: red; color: #fff; width: 35px; height: 35px; line-height: 35px; text-align: center; border-radius: 50%; font-size: 22px; font-weight: bold; cursor: pointer; box-shadow: 0 3px 10px rgba(0,0,0,0.5); }
+    .close-btn:hover { background: #cc0000; }
+    @keyframes popupZoom { from { transform: scale(0.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+    /* ── CHATBOT ── */
+    #chatbotToggle { position: fixed; bottom: 24px; right: 80px; z-index: 1001; width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); border: 2.5px solid var(--gold); color: var(--white); cursor: pointer; font-size: 22px; box-shadow: 0 4px 20px rgba(11,60,93,.4); display: flex; align-items: center; justify-content: center; transition: transform var(--transition), box-shadow var(--transition); animation: chatPulse 2.5s infinite; }
+    #chatbotToggle:hover { transform: translateY(-3px) scale(1.07); animation: none; }
+    @keyframes chatPulse { 0%,100% { box-shadow: 0 4px 20px rgba(11,60,93,.4), 0 0 0 0 rgba(255,193,7,.55); } 50% { box-shadow: 0 4px 20px rgba(11,60,93,.4), 0 0 0 10px rgba(255,193,7,0); } }
+    #chatbotToggle .chat-badge { position: absolute; top: -4px; right: -4px; background: var(--gold); color: #000; font-size: .6rem; font-weight: 800; border-radius: 10px; padding: 1px 5px; border: 1.5px solid #fff; }
+    #chatbotWindow { position: fixed; bottom: 94px; right: 80px; z-index: 1000; width: 340px; max-height: 480px; background: var(--white); border-radius: var(--radius-lg); box-shadow: 0 8px 40px rgba(0,0,0,.18); display: flex; flex-direction: column; overflow: hidden; opacity: 0; pointer-events: none; transform: translateY(16px) scale(.97); transition: opacity .25s ease, transform .25s ease; }
+    #chatbotWindow.open { opacity: 1; pointer-events: auto; transform: none; }
+    .chatbot-header { background: linear-gradient(100deg, var(--navy-dark) 0%, var(--navy-light) 100%); border-bottom: 3px solid var(--gold); padding: 14px 16px; display: flex; align-items: center; gap: 12px; }
+    .chatbot-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .chatbot-header-info { flex: 1; }
+    .chatbot-header-info h6 { margin: 0; color: var(--white); font-size: .9rem; font-weight: 700; }
+    .chatbot-header-info small { color: rgba(255,255,255,.7); font-size: .72rem; }
+    .chatbot-close { background: rgba(255,255,255,.12); border: none; color: rgba(255,255,255,.7); width: 28px; height: 28px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: .8rem; }
+    .chatbot-close:hover { background: rgba(255,255,255,.22); color: #fff; }
+    .chatbot-body { flex: 1; padding: 20px 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: var(--off-white); }
+    .chat-msg { display: flex; gap: 8px; align-items: flex-end; }
+    .chat-msg.bot { justify-content: flex-start; }
+    .chat-bubble { max-width: 78%; padding: 10px 14px; border-radius: 16px; font-size: .83rem; line-height: 1.5; }
+    .chat-msg.bot .chat-bubble { background: var(--white); color: var(--gray-800); border-bottom-left-radius: 4px; box-shadow: var(--shadow-sm); }
+    .chat-mini-avatar { width: 26px; height: 26px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; }
+    .chatbot-coming-soon { margin: 4px 0 8px; padding: 14px; background: linear-gradient(135deg, #fffbea 0%, #fff8e1 100%); border: 1.5px dashed var(--gold); border-radius: var(--radius-md); text-align: center; }
+    .chatbot-coming-soon i { font-size: 1.6rem; color: var(--gold); margin-bottom: 6px; display: block; }
+    .chatbot-coming-soon p { margin: 0; font-size: .8rem; color: var(--gray-600); line-height: 1.5; }
+    .chatbot-suggestions { display: flex; flex-direction: column; gap: 6px; margin-top: 4px; }
+    .chat-suggest-btn { background: var(--white); border: 1.5px solid var(--gray-300); border-radius: 20px; padding: 7px 12px; font-size: .78rem; color: var(--navy); font-weight: 600; cursor: not-allowed; text-align: left; font-family: var(--font-body); opacity: .7; display: flex; align-items: center; gap: 7px; }
+    .chat-suggest-btn i { color: var(--gold); }
+    .chatbot-footer { padding: 12px; border-top: 1px solid var(--gray-100); background: var(--white); }
+    .chatbot-input-row { display: flex; gap: 8px; align-items: center; background: var(--off-white); border: 1.5px solid var(--gray-300); border-radius: 24px; padding: 6px 6px 6px 14px; }
+    .chatbot-input-row input { flex: 1; border: none; background: transparent; font-size: .82rem; font-family: var(--font-body); color: var(--gray-800); outline: none; }
+    .chatbot-send { width: 32px; height: 32px; border-radius: 50%; background: var(--navy); border: none; color: #fff; display: flex; align-items: center; justify-content: center; font-size: .8rem; cursor: not-allowed; opacity: .5; }
+
+    #scrollTopBtn { position: fixed; bottom: 24px; right: 24px; z-index: 999; width: 46px; height: 46px; border-radius: 50%; background: var(--red); color: var(--white); border: none; cursor: pointer; font-size: 18px; box-shadow: var(--shadow-md); opacity: 0; pointer-events: none; transition: opacity var(--transition), transform var(--transition); display: flex; align-items: center; justify-content: center; }
+    #scrollTopBtn.visible { opacity: 1; pointer-events: auto; }
+    #scrollTopBtn:hover { transform: translateY(-3px); }
+    mark.htp-highlight { background: var(--gold); color: #000; border-radius: 2px; padding: 0 2px; }
+    @media (max-width: 480px) { #chatbotWindow { right: 12px; left: 12px; width: auto; bottom: 86px; } #chatbotToggle { right: 76px; bottom: 20px; } }
+  </style>
+</head>
+
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- POPUP -->
+  <div id="centerPopup" class="center-popup">
+    <div class="popup-box">
+      <span class="close-btn">&times;</span>
+      <img src="img/popupimg.png" alt="Traffic Banner">
+    </div>
+  </div>
+
+  <!-- TOP HEADER -->
+  <header class="top-header">
+    <div class="container-htp">
+      <div class="row align-items-center gy-2">
+        <div class="col-lg-4 col-md-12 text-center text-lg-start">
+          <a href="index.html" class="d-inline-flex align-items-center gap-2" aria-label="Hyderabad Traffic Police Home">
+            <img src="img/MainLogo1.png" class="top-header__logo" alt="Hyderabad Traffic Police logo">
+            <div>
+              <div class="top-header__title">Hyderabad Traffic Police</div>
+              <div class="top-header__subtitle">For You, With You, Always</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-4 col-md-12 text-center">
+          <div class="top-header__actions">
+            <a href="https://echallan.tspolice.gov.in/publicview/" target="_blank" rel="noopener" class="btn-htp btn-challan">
+              <img src="img/Paynow.png" width="18" height="18" alt="" aria-hidden="true"> Pay Challan
+            </a>
+            <a href="https://wa.me/9010203626" target="_blank" rel="noopener" class="btn-htp btn-whatsapp">
+              <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
+            </a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdIr2t94wVePyi562lUbeOyavRPi6vNgLadZl-lPrj53PDTYw/viewform" target="_blank" rel="noopener" class="btn-htp btn-feedback">
+              <i class="fa fa-comment-dots" aria-hidden="true"></i> Feedback
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-12 text-center text-lg-end">
+          <div class="top-header__info mb-1">
+            <i class="fa fa-phone"></i> Helpline: <a href="tel:9010203626">9010203626</a>&nbsp;&nbsp;
+            <i class="fa fa-phone-alt"></i> E-Challan: <a href="tel:04027852721">040-27852721</a>
+          </div>
+          <div class="d-flex gap-2 justify-content-center justify-content-lg-end flex-wrap align-items-center">
+            <div class="zoom-ctrl" aria-label="Zoom controls">
+              <button onclick="pageZoom(1)" title="Zoom In">A+</button>
+              <button onclick="pageZoomReset()" title="Reset" class="reset">&#8635;</button>
+              <button onclick="pageZoom(-1)" title="Zoom Out">A&#8722;</button>
+            </div>
+            <div class="lang-dropdown-wrap">
+              <i class="fa fa-globe lang-globe"></i>
+              <select class="lang-select" id="langSelect" onchange="doTranslate(this.value)">
+                <option value="en">English</option>
+                <option value="te">తెలుగు</option>
+                <option value="hi">हिन्दी</option>
+                <option value="ta">தமிழ்</option>
+                <option value="ur">اردو</option>
+                <option value="kn">ಕನ್ನಡ</option>
+                <option value="ml">മലയാളം</option>
+              </select>
+              <i class="fa fa-chevron-down lang-caret"></i>
+            </div>
+            <div id="gt_hidden" style="display:none;position:absolute;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAVBAR -->
+  <nav class="main-nav navbar navbar-expand-lg" aria-label="Main navigation">
+    <div class="container-htp">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain" aria-controls="navMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">About Us</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="introduction.html">Introduction</a></li>
+              <li><a class="dropdown-item" href="org_chart.html">Organization Chart</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Services</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="wrong_challan.html">Wrong Challan</a></li>
+              <li><a class="dropdown-item" href="wheel.html">Wheel Clamp</a></li>
+              <li><a class="dropdown-item" href="trafficmarshal.html">Traffic Marshal</a></li>
+              <li><a class="dropdown-item" href="noc_tov.html">Vehicle NOC</a></li>
+              <li><a class="dropdown-item" href="noc_schools.html">School NOC</a></li>
+              <li><a class="dropdown-item" href="noc_plying.html">Vehicle Plying</a></li>
+              <li><a class="dropdown-item" href="noc_petrol.html">Petrol Pump NOC</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" data-bs-toggle="dropdown">Information</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="road_rules.html">Road Rules</a></li>
+              <li><a class="dropdown-item" href="road_sense.html">Road Sense</a></li>
+              <li><a class="dropdown-item" href="road_smart.html">Road Smart</a></li>
+              <li><a class="dropdown-item active" href="speed.html">Speed Limits</a></li>
+              <li><a class="dropdown-item" href="mvact.html">MV Act & Penalties</a></li>
+              <li><a class="dropdown-item" href="statistics.html">Statistics</a></li>
+              <li><a class="dropdown-item" href="driving_license.html">Driving License</a></li>
+              <li><a class="dropdown-item" href="vehicle_registration.html">Vehicle Registration</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="know_your_ps.html">Know Your PS</a></li>
+          <li class="nav-item"><a class="nav-link" href="rti.html">RTI</a></li>
+          <li class="nav-item"><a class="nav-link" href="campaigns.html">Road Safety</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">T20 Test</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="https://echallan.tspolice.gov.in/TGTrafficTest/jsp/LoginView.jsp" target="_blank" rel="noopener">Online Test</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="contact_us.html">Contact</a></li>
+        </ul>
+        <div class="nav-extras d-flex align-items-center gap-2 ms-3">
+          <div class="nav-search" role="search">
+            <label for="navSearchInput" class="visually-hidden">Search site</label>
+            <input type="search" id="navSearchInput" placeholder="Search…">
+            <i class="fa fa-search nav-search-icon"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main id="main-content">
+
+    <!-- HERO -->
+    <section style="background:linear-gradient(120deg,var(--navy-dark) 0%,var(--navy-light) 100%);color:#fff;padding:50px 0 40px;">
+      <div class="container-htp">
+        <nav aria-label="breadcrumb" style="margin-bottom:14px;">
+          <a href="index.html" style="color:var(--gold);font-size:.85rem;font-weight:600;"><i class="fa fa-home"></i> Home</a>
+          <span style="opacity:.6;margin:0 8px;">/</span>
+          <a href="#" style="color:rgba(255,255,255,.75);font-size:.85rem;">Information</a>
+          <span style="opacity:.6;margin:0 8px;">/</span>
+          <span style="color:rgba(255,255,255,.85);font-size:.85rem;">Speed Limits</span>
+        </nav>
+        <h1 style="font-size:2.2rem;font-weight:800;margin:0 0 10px;color:#fff;">
+          <i class="fa fa-tachometer-alt" style="color:var(--gold);margin-right:12px;"></i>Speed Limits in Hyderabad
+        </h1>
+        <p style="font-size:1rem;color:rgba(255,255,255,.85);max-width:760px;margin:0;">
+          Prescribed speed limits for all vehicle categories, speed enforcement camera locations, penalty details, and safe driving guidance across Hyderabad city.
+        </p>
+      </div>
+    </section>
+
+    <!-- CONTENT -->
+    <section style="padding:36px 0 60px;background:var(--off-white);">
+      <div class="container-htp">
+
+        <!-- QUICK FACTS -->
+        <div class="fact-row">
+          <div class="fact-card red-top">
+            <div class="num">₹1,400</div>
+            <div class="lbl"><i class="fa fa-exclamation-triangle" style="margin-right:4px;"></i>Over-Speeding Fine</div>
+          </div>
+          <div class="fact-card">
+            <div class="num">50</div>
+            <div class="lbl"><i class="fa fa-city" style="margin-right:4px;color:var(--navy);"></i>km/h City Limit (General)</div>
+          </div>
+          <div class="fact-card green-top">
+            <div class="num">25</div>
+            <div class="lbl"><i class="fa fa-school" style="margin-right:4px;"></i>km/h Near Schools & Hospitals</div>
+          </div>
+          <div class="fact-card gold-top">
+            <div class="num">100+</div>
+            <div class="lbl"><i class="fa fa-camera" style="margin-right:4px;"></i>Speed Camera Locations</div>
+          </div>
+        </div>
+
+        <!-- COMING SOON MAIN CARD -->
+        <div class="content-card">
+          <div class="coming-soon-wrap">
+            <span class="cs-badge"><i class="fa fa-clock"></i> Coming Soon</span>
+            <div class="cs-icon-ring">
+              <i class="fa fa-tachometer-alt"></i>
+            </div>
+            <h2 class="cs-title">Speed Limits — Full Details Coming Soon</h2>
+            <div class="cs-divider"></div>
+            <p class="cs-sub">
+              We are compiling a comprehensive, zone-wise speed limit guide for Hyderabad city — covering all road categories, vehicle types, restricted zones, and speed camera locations. This page will be updated shortly with complete official information per <strong>G.O. No. 27</strong> and MV Act §183/184.
+            </p>
+            <p style="font-size:.85rem;color:var(--gray-600);">
+              For urgent queries, contact the Traffic Helpline at <a href="tel:9010203626" style="color:var(--red);font-weight:700;">9010203626</a>
+            </p>
+          </div>
+        </div>
+
+        <!-- WHAT THIS PAGE WILL COVER -->
+        <div class="content-card">
+          <div class="section-heading"><i class="fa fa-list-check"></i> What This Page Will Cover</div>
+          <div class="expect-grid">
+
+            <div class="expect-card ec-1">
+              <div class="expect-icon" style="background:#EDF5FF;"><i class="fa fa-road" style="color:var(--navy-light);"></i></div>
+              <h4>Zone-Wise Speed Limits</h4>
+              <p>City roads, expressways, flyovers, school zones, hospital zones, and residential areas — complete speed limit table by road type.</p>
+              <span class="coming-soon-tag"><i class="fa fa-clock"></i> Coming Soon</span>
+            </div>
+
+            <div class="expect-card ec-2">
+              <div class="expect-icon" style="background:#FDE8EA;"><i class="fa fa-car" style="color:var(--red);"></i></div>
+              <h4>Vehicle Category Limits</h4>
+              <p>Separate limits for two-wheelers, cars, autos, buses, light motor vehicles, heavy goods vehicles, and school transport.</p>
+              <span class="coming-soon-tag"><i class="fa fa-clock"></i> Coming Soon</span>
+            </div>
+
+            <div class="expect-card ec-3">
+              <div class="expect-icon" style="background:#E8F8F0;"><i class="fa fa-camera" style="color:var(--green);"></i></div>
+              <h4>Speed Camera Locations</h4>
+              <p>Interactive list of all active speed enforcement camera junctions and stretches across Hyderabad — searchable by area or police station.</p>
+              <span class="coming-soon-tag"><i class="fa fa-clock"></i> Coming Soon</span>
+            </div>
+
+            <div class="expect-card ec-4">
+              <div class="expect-icon" style="background:#FFF8E1;"><i class="fa fa-rupee-sign" style="color:var(--gold-dark);"></i></div>
+              <h4>Penalty & Fine Details</h4>
+              <p>Fine amounts for over-speeding by category, MV Act sections invoked, and process for paying or contesting a speed challan.</p>
+              <span class="coming-soon-tag"><i class="fa fa-clock"></i> Coming Soon</span>
+            </div>
+
+            <div class="expect-card ec-5">
+              <div class="expect-icon" style="background:#E0F7F5;"><i class="fa fa-map-marker-alt" style="color:#0891b2;"></i></div>
+              <h4>High-Speed Prone Corridors</h4>
+              <p>Stretches identified by Hyderabad Traffic Police as high-speed accident-prone areas with special enforcement in place.</p>
+              <span class="coming-soon-tag"><i class="fa fa-clock"></i> Coming Soon</span>
+            </div>
+
+            <div class="expect-card ec-6">
+              <div class="expect-icon" style="background:#F3E8FF;"><i class="fa fa-file-pdf" style="color:#7c3aed;"></i></div>
+              <h4>Official G.O. Download</h4>
+              <p>Downloadable PDF of the official Government Order (G.O. No. 27) prescribing speed limits and vehicle entry restrictions in Hyderabad.</p>
+              <span class="coming-soon-tag"><i class="fa fa-clock"></i> Coming Soon</span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- WHAT YOU NEED TO KNOW NOW -->
+        <div class="content-card">
+          <div class="section-heading"><i class="fa fa-info-circle"></i> What You Need to Know Right Now</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;" id="two-col">
+
+            <div>
+              <h5 style="font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:12px;"><i class="fa fa-city" style="color:var(--navy-light);margin-right:8px;"></i>General Speed Limits (Hyderabad City)</h5>
+              <div style="background:var(--off-white);border-radius:var(--radius-md);overflow:hidden;border:1px solid var(--gray-300);">
+                <table style="width:100%;border-collapse:collapse;">
+                  <thead style="background:var(--navy);">
+                    <tr>
+                      <th style="color:#fff;font-size:.78rem;font-weight:700;padding:10px 14px;text-align:left;">Road / Zone</th>
+                      <th style="color:#fff;font-size:.78rem;font-weight:700;padding:10px 14px;text-align:left;">Speed Limit</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style="background:#fff;">
+                      <td style="padding:9px 14px;font-size:.83rem;border-bottom:1px solid #f0f3f6;">City Roads (General)</td>
+                      <td style="padding:9px 14px;font-size:.83rem;border-bottom:1px solid #f0f3f6;font-weight:700;color:var(--navy);">50 km/h</td>
+                    </tr>
+                    <tr style="background:#f8fafc;">
+                      <td style="padding:9px 14px;font-size:.83rem;border-bottom:1px solid #f0f3f6;">School / Hospital Zones</td>
+                      <td style="padding:9px 14px;font-size:.83rem;border-bottom:1px solid #f0f3f6;font-weight:700;color:var(--red);">25 km/h</td>
+                    </tr>
+                    <tr style="background:#fff;">
+                      <td style="padding:9px 14px;font-size:.83rem;border-bottom:1px solid #f0f3f6;">Expressways / ORR</td>
+                      <td style="padding:9px 14px;font-size:.83rem;border-bottom:1px solid #f0f3f6;font-weight:700;color:var(--green);">100 km/h</td>
+                    </tr>
+                    <tr style="background:#f8fafc;">
+                      <td style="padding:9px 14px;font-size:.83rem;border-bottom:1px solid #f0f3f6;">Heavy Vehicles (City)</td>
+                      <td style="padding:9px 14px;font-size:.83rem;border-bottom:1px solid #f0f3f6;font-weight:700;color:var(--navy);">40 km/h</td>
+                    </tr>
+                    <tr style="background:#fff;">
+                      <td style="padding:9px 14px;font-size:.83rem;">Two-Wheelers (City)</td>
+                      <td style="padding:9px 14px;font-size:.83rem;font-weight:700;color:var(--navy);">50 km/h</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p style="font-size:.75rem;color:var(--gray-600);margin-top:8px;"><i class="fa fa-info-circle" style="color:var(--navy-light);margin-right:4px;"></i>Indicative limits. Full zone-wise details will be published on this page shortly.</p>
+            </div>
+
+            <div>
+              <h5 style="font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:12px;"><i class="fa fa-gavel" style="color:var(--red);margin-right:8px;"></i>Over-Speeding Penalties (MV Act)</h5>
+              <div style="background:var(--off-white);border-radius:var(--radius-md);overflow:hidden;border:1px solid var(--gray-300);">
+                <table style="width:100%;border-collapse:collapse;">
+                  <thead style="background:var(--navy);">
+                    <tr>
+                      <th style="color:#fff;font-size:.78rem;font-weight:700;padding:10px 14px;text-align:left;">Vehicle Type</th>
+                      <th style="color:#fff;font-size:.78rem;font-weight:700;padding:10px 14px;text-align:left;">Fine</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style="background:#fff;">
+                      <td style="padding:9px 14px;font-size:.83rem;border-bottom:1px solid #f0f3f6;">Light Motor Vehicle</td>
+                      <td style="padding:9px 14px;font-size:.83rem;border-bottom:1px solid #f0f3f6;font-weight:700;color:var(--red);">₹1,000 – ₹2,000</td>
+                    </tr>
+                    <tr style="background:#f8fafc;">
+                      <td style="padding:9px 14px;font-size:.83rem;border-bottom:1px solid #f0f3f6;">Medium / Heavy Vehicle</td>
+                      <td style="padding:9px 14px;font-size:.83rem;border-bottom:1px solid #f0f3f6;font-weight:700;color:var(--red);">₹2,000 – ₹4,000</td>
+                    </tr>
+                    <tr style="background:#fff;">
+                      <td style="padding:9px 14px;font-size:.83rem;border-bottom:1px solid #f0f3f6;">Two-Wheeler</td>
+                      <td style="padding:9px 14px;font-size:.83rem;border-bottom:1px solid #f0f3f6;font-weight:700;color:var(--red);">₹1,000 – ₹2,000</td>
+                    </tr>
+                    <tr style="background:#f8fafc;">
+                      <td style="padding:9px 14px;font-size:.83rem;">Dangerous Driving (any)</td>
+                      <td style="padding:9px 14px;font-size:.83rem;font-weight:700;color:var(--red);">₹5,000 + Court</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p style="font-size:.75rem;color:var(--gray-600);margin-top:8px;"><i class="fa fa-book" style="color:var(--navy-light);margin-right:4px;"></i>Section: MV Act §183/184. <a href="mvact.html" style="color:var(--navy-light);font-weight:600;">View full MV Act penalties →</a></p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- NOTIFY BANNER -->
+        <div class="notify-banner">
+          <div class="nb-icon"><i class="fa fa-bell"></i></div>
+          <div class="nb-info">
+            <h4>Full Speed Limits Guide — Coming Soon</h4>
+            <p>The complete zone-wise speed limit document, camera locations, and G.O. PDF will be published here shortly. For immediate assistance, reach the Traffic Helpline or WhatsApp us.</p>
+          </div>
+          <div class="nb-actions">
+            <a href="tel:9010203626" class="btn-htp nb-btn-call"><i class="fa fa-phone"></i> 9010203626</a>
+            <a href="https://wa.me/919010203626" target="_blank" rel="noopener" class="btn-htp nb-btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+          </div>
+        </div>
+
+        <!-- QUICK NAV -->
+        <div style="margin-top:8px;">
+          <div class="section-heading"><i class="fa fa-compass"></i> Explore Related Pages</div>
+          <div class="icon-box-grid">
+            <a href="mvact.html" class="icon-box blue">
+              <i class="fa fa-gavel" style="font-size:30px;color:var(--navy-light);"></i>
+              <span>MV Act & Penalties</span>
+            </a>
+            <a href="road_smart.html" class="icon-box green">
+              <i class="fa fa-brain" style="font-size:30px;color:var(--green);"></i>
+              <span>Road Smart</span>
+            </a>
+            <a href="road_rules.html" class="icon-box orange">
+              <i class="fa fa-book" style="font-size:30px;color:#d97706;"></i>
+              <span>Road Rules</span>
+            </a>
+            <a href="https://echallan.tspolice.gov.in/publicview/" target="_blank" rel="noopener" class="icon-box red">
+              <i class="fa fa-file-invoice" style="font-size:30px;color:var(--red);"></i>
+              <span>Pay Challan</span>
+            </a>
+            <a href="index.html" class="icon-box purple">
+              <i class="fa fa-home" style="font-size:30px;color:#7c3aed;"></i>
+              <span>Back to Home</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Patrol car marquee -->
+  <marquee behavior="scroll" direction="right" scrollamount="15" onmouseover="this.stop();" onmouseout="this.start();">
+    <img src="img/Parol car 2.gif" width="7%">
+  </marquee>
+
+  <!-- ARRIVE ALIVE -->
+  <div class="aa-banner">
+    <div class="aa-inner">
+      <div class="aa-content">
+        <span class="aa-badge">Road Safety Initiative</span>
+        <h2 class="aa-title">Arrive Alive Campaign</h2>
+        <p class="aa-desc">Join us in our mission to make Hyderabad's roads safer. Follow traffic rules, wear helmets, use seat belts, and say no to drunk driving.</p>
+        <a href="arriveAlive.html" class="aa-btn">Learn More</a>
+      </div>
+      <div class="aa-visual">
+        <img src="img/ArriveAlive.png" alt="Arrive Alive road safety campaign logo" style="width:auto;height:230px;object-fit:contain;filter:drop-shadow(0 4px 16px rgba(0,0,0,0.25));">
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="modern-footer">
+    <div class="container-htp py-5">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 text-center text-lg-start">
+          <img src="img/MainLogo1.png" class="footer-logo mb-3" alt="HTP Logo">
+          <h4 class="footer-heading">Hyderabad Traffic Police</h4>
+          <p class="footer-text">Dedicated to safer roads, better traffic management and citizen-friendly digital services.</p>
+          <a href="campaigns.html" class="footer-btn">🚦 Road Safety Campaigns</a>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h5 class="footer-title">Useful Links</h5>
+          <ul class="footer-links">
+            <li><a href="https://echallan.tspolice.gov.in/publicview/">E-Challan</a></li>
+            <li><a href="wrong_challan.html">Wrong Challan</a></li>
+            <li><a href="wheel.html">Wheel Clamp</a></li>
+            <li><a href="mvact.html">MV Act</a></li>
+            <li><a href="speed.html">Speed Limits</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h5 class="footer-title">Information</h5>
+          <ul class="footer-links">
+            <li><a href="road_rules.html">Road Rules</a></li>
+            <li><a href="road_sense.html">Road Sense</a></li>
+            <li><a href="road_smart.html">Road Smart</a></li>
+            <li><a href="statistics.html">Statistics</a></li>
+            <li><a href="rti.html">RTI</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <h5 class="footer-title">Connect With Us</h5>
+          <div class="social-icons mb-4">
+            <a onclick="window.open('https://www.facebook.com/HYDTP','_blank');" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a onclick="window.open('https://twitter.com/HYDTP','_blank');" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+            <a onclick="window.open('https://www.instagram.com/hyderabadtrafficpolice','_blank');" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a onclick="window.open('https://youtube.com/@hyderabadtrafficpoliceshik6556','_blank');" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+          <h6 class="footer-subtitle">Official Website</h6>
+          <a href="https://hyderabadpolice.gov.in/" target="_blank" rel="noopener" class="official-link">Hyderabad Police</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container-htp">
+        <div class="row align-items-center">
+          <div class="col-md-6 text-center text-md-start">COPYRIGHT &copy; 2026, Hyderabad Traffic Police</div>
+          <div class="col-md-6 text-center text-md-end">Designed and developed by <a href="https://ts.nic.in/" target="_blank" rel="noopener">NIC Telangana</a></div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CHATBOT -->
+  <button id="chatbotToggle" onclick="toggleChatbot()" aria-label="Open AI Chatbot" title="Chat with HTP Assistant">
+    <i class="fa fa-robot" aria-hidden="true"></i>
+    <span class="chat-badge">AI</span>
+  </button>
+  <div id="chatbotWindow" role="dialog" aria-label="HTP AI Assistant" aria-modal="true">
+    <div class="chatbot-header">
+      <div class="chatbot-avatar">🤖</div>
+      <div class="chatbot-header-info">
+        <h6>HTP Assistant</h6>
+        <small>Hyderabad Traffic Police · AI Powered</small>
+      </div>
+      <button class="chatbot-close" onclick="toggleChatbot()"><i class="fa fa-times"></i></button>
+    </div>
+    <div class="chatbot-body">
+      <div class="chat-msg bot">
+        <div class="chat-mini-avatar">🤖</div>
+        <div class="chat-bubble">👋 Hello! I'm the <strong>HTP AI Assistant</strong>. I can help you with traffic queries, challans, NOC, and more.</div>
+      </div>
+      <div class="chatbot-coming-soon">
+        <i class="fa fa-clock"></i>
+        <p><strong>Full AI Chat — Coming Soon!</strong><br>We're building an intelligent assistant to answer all your traffic-related queries in real time.</p>
+      </div>
+      <div class="chatbot-suggestions">
+        <button class="chat-suggest-btn" disabled><i class="fa fa-tachometer-alt"></i> What is the speed limit in Hyderabad?</button>
+        <button class="chat-suggest-btn" disabled><i class="fa fa-rupee-sign"></i> Fine for over-speeding?</button>
+        <button class="chat-suggest-btn" disabled><i class="fa fa-file-invoice"></i> How do I pay my challan?</button>
+        <button class="chat-suggest-btn" disabled><i class="fa fa-phone"></i> Emergency contacts</button>
+      </div>
+    </div>
+    <div class="chatbot-footer">
+      <div class="chatbot-input-row">
+        <input type="text" placeholder="Chat coming soon…" disabled>
+        <button class="chatbot-send" disabled><i class="fa fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCROLL TOP -->
+  <button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">
+    <i class="fa fa-arrow-up" aria-hidden="true"></i>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+  <!-- Google Translate -->
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({ pageLanguage:'en', includedLanguages:'en,te,hi,ta,ur,kn,ml', layout:google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay:false }, 'gt_hidden');
+    }
+    function doTranslate(lang) {
+      var exp=new Date(Date.now()-1000).toUTCString();
+      if(lang==='en'){['',location.hostname,'.'+location.hostname].forEach(function(d){var b='googtrans=; expires='+exp+'; path=/';document.cookie=d?b+'; domain='+d:b;});}
+      else{var val='/en/'+lang;['',location.hostname,'.'+location.hostname].forEach(function(d){var b='googtrans='+val+'; path=/';document.cookie=d?b+'; domain='+d:b;});}
+      var gt=document.querySelector('.goog-te-combo');
+      if(gt){gt.value=lang==='en'?'':lang;gt.dispatchEvent(new Event('change'));}else{location.reload();}
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <script>
+    // ── ZOOM ──
+    var _zoom=1.0, _zoomWrap=null;
+    document.addEventListener('DOMContentLoaded',function(){
+      _zoomWrap=document.createElement('div'); _zoomWrap.id='zoom-wrap'; _zoomWrap.style.transformOrigin='top left';
+      while(document.body.firstChild) _zoomWrap.appendChild(document.body.firstChild);
+      document.body.appendChild(_zoomWrap);
+      var m=document.cookie.match(/googtrans=\/en\/([a-z]+)/);
+      var sel=document.getElementById('langSelect');
+      if(sel&&m) sel.value=m[1];
+    });
+    function pageZoom(d){_zoom=Math.min(1.5,Math.max(0.6,parseFloat((_zoom+d*.1).toFixed(2))));applyZoom();}
+    function pageZoomReset(){_zoom=1.0;applyZoom();}
+    function applyZoom(){if(!_zoomWrap)return;_zoomWrap.style.transform='scale('+_zoom+')';_zoomWrap.style.width=(100/_zoom)+'%';}
+
+    // ── POPUP ──
+    document.addEventListener('DOMContentLoaded',function(){
+      var popup=document.getElementById('centerPopup'),cb=document.querySelector('.close-btn');
+      if(!popup)return;
+      if(sessionStorage.getItem('htpPopupSeen')){popup.style.display='none';return;}
+      popup.style.display='flex';
+      function cp(){popup.style.display='none';sessionStorage.setItem('htpPopupSeen','1');}
+      if(cb) cb.addEventListener('click',cp);
+      popup.addEventListener('click',function(e){if(e.target===popup)cp();});
+      document.addEventListener('keydown',function(e){if(e.key==='Escape')cp();});
+    });
+
+    // ── RESPONSIVE TWO COL ──
+    function handleResize(){
+      var el=document.getElementById('two-col');
+      if(el) el.style.gridTemplateColumns=window.innerWidth<768?'1fr':'1fr 1fr';
+    }
+    window.addEventListener('resize',handleResize);
+    document.addEventListener('DOMContentLoaded',handleResize);
+
+    // ── CHATBOT ──
+    function toggleChatbot(){document.getElementById('chatbotWindow').classList.toggle('open');}
+
+    // ── SCROLL TOP ──
+    var scrollBtn=document.getElementById('scrollTopBtn');
+    window.addEventListener('scroll',function(){scrollBtn.classList.toggle('visible',window.scrollY>300);},{passive:true});
+
+    // ── NAVBAR SEARCH ──
+    document.addEventListener('DOMContentLoaded',function(){
+      document.getElementById('navSearchInput').addEventListener('keydown',function(e){if(e.key==='Enter')runSearch();});
+    });
+    function escapeRegex(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
+    var _origBody=null;
+    function runSearch(){
+      var q=document.getElementById('navSearchInput').value.trim();
+      if(_origBody){document.body.innerHTML=_origBody;_origBody=null;rebindAll();}
+      if(!q)return;
+      _origBody=document.body.innerHTML;
+      var regex=new RegExp('('+escapeRegex(q)+')','gi');
+      highlightTextNodes(document.getElementById('main-content'),regex);
+      var first=document.querySelector('mark.htp-highlight');
+      if(first) first.scrollIntoView({behavior:'smooth',block:'center'});
+    }
+    function highlightTextNodes(root,regex){
+      if(!root)return;
+      var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:function(n){var p=n.parentElement;if(!p)return NodeFilter.FILTER_REJECT;if(['SCRIPT','STYLE','NOSCRIPT','MARK'].includes(p.tagName))return NodeFilter.FILTER_REJECT;return regex.test(n.nodeValue)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT;}});
+      var nodes=[];while(w.nextNode())nodes.push(w.currentNode);
+      nodes.forEach(function(n){var s=document.createElement('span');s.innerHTML=n.nodeValue.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(regex,'<mark class="htp-highlight">$1</mark>');n.parentNode.replaceChild(s,n);});
+    }
+    function rebindAll(){document.querySelectorAll('[data-bs-toggle="dropdown"]').forEach(function(el){new bootstrap.Dropdown(el);});}
+  </script>
+</body>
+</html>
