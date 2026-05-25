@@ -1,0 +1,382 @@
+[
+  {
+    "title": "Home",
+    "url": "index.html",
+    "description": "Official Hyderabad Traffic Police portal. Pay challans, check traffic rules, apply for NOC, and access emergency contacts.",
+    "keywords": "home hyderabad traffic police portal official"
+  },
+  {
+    "title": "Pay Challan",
+    "url": "https://echallan.tspolice.gov.in/publicview/",
+    "description": "Pay your traffic violation challans online quickly and securely through the official e-challan portal.",
+    "keywords": "pay challan echallan fine violation penalty traffic ticket online payment"
+  },
+  {
+    "title": "Wrong Challan",
+    "url": "wrong_challan.html",
+    "description": "Report and contest incorrectly issued traffic challans. Appeal process for wrong or incorrect challans.",
+    "keywords": "wrong challan incorrect dispute appeal contest report error mistaken"
+  },
+  {
+    "title": "Vehicle NOC",
+    "url": "noc_tov.html",
+    "description": "Apply for No Objection Certificate (NOC) for transfer of vehicle ownership. Documents required and process.",
+    "keywords": "noc vehicle transfer ownership no objection certificate tov documents apply"
+  },
+  {
+    "title": "School NOC",
+    "url": "noc_schools.html",
+    "description": "Apply for NOC for school vehicles. Documents and eligibility for school bus and van NOC.",
+    "keywords": "noc school bus van vehicle certificate apply documents eligibility"
+  },
+  {
+    "title": "Vehicle Plying NOC",
+    "url": "noc_plying.html",
+    "description": "Apply for vehicle plying NOC. Required documents and process for vehicles plying in Hyderabad.",
+    "keywords": "noc vehicle plying permit documents apply certificate"
+  },
+  {
+    "title": "Petrol Pump NOC",
+    "url": "noc_petrol.html",
+    "description": "Apply for No Objection Certificate for petrol pump or fuel station near roads in Hyderabad.",
+    "keywords": "noc petrol pump fuel station certificate apply documents"
+  },
+  {
+    "title": "Road Rules",
+    "url": "road_rules.html",
+    "description": "Traffic signs, Motor Vehicles Act information, and vehicle number plate regulations for Hyderabad roads.",
+    "keywords": "road rules traffic signs mv act motor vehicles regulations number plate speed limit"
+  },
+  {
+    "title": "Road Sense",
+    "url": "road_sense.html",
+    "description": "Essential road safety rules and must-know information for safe driving in Hyderabad.",
+    "keywords": "road sense safety rules driving essential information awareness"
+  },
+  {
+    "title": "Road Smart",
+    "url": "road_smart.html",
+    "description": "Smart tips and guidelines for safe, informed driving on Hyderabad roads.",
+    "keywords": "road smart tips guidelines safe driving awareness"
+  },
+  {
+    "title": "Statistics",
+    "url": "statistics.html",
+    "description": "Traffic accident statistics, challan data, and road safety figures for Hyderabad.",
+    "keywords": "statistics data accident challan figures road safety numbers report"
+  },
+  {
+    "title": "Driving License",
+    "url": "driving_license.html",
+    "description": "Documents required for driving license (DL) application, renewal, and related procedures in Hyderabad.",
+    "keywords": "driving license dl documents apply renewal learner permanent procedure"
+  },
+  {
+    "title": "Vehicle Registration",
+    "url": "vehicle_registration.html",
+    "description": "Documents required for vehicle registration (RC), transfer, and related procedures.",
+    "keywords": "vehicle registration rc documents apply transfer certificate renewal"
+  },
+  {
+    "title": "Know Your Traffic PS",
+    "url": "know_your_ps.html",
+    "description": "Find your nearest Traffic Police Station jurisdiction, address, and contact information.",
+    "keywords": "traffic police station ps jurisdiction area contact address phone"
+  },
+  {
+    "title": "RTI",
+    "url": "rti.html",
+    "description": "Right to Information (RTI) – procedure to file RTI applications with Hyderabad Traffic Police.",
+    "keywords": "rti right to information application procedure file"
+  },
+  {
+    "title": "Road Safety Campaigns",
+    "url": "campaigns.html",
+    "description": "Hyderabad Traffic Police road safety campaigns, awareness drives, and public initiatives.",
+    "keywords": "road safety campaign awareness drive initiative programme event"
+  },
+  {
+    "title": "Gallery",
+    "url": "gallery.html",
+    "description": "Photo and video gallery of Hyderabad Traffic Police road safety events and campaigns.",
+    "keywords": "gallery photos images videos events campaigns awareness"
+  },
+  {
+    "title": "Arrive Alive Campaign",
+    "url": "arriveAlive.html",
+    "description": "Join the Arrive Alive mission to make Hyderabad roads safer – follow rules, wear helmets, use seat belts, say no to drunk driving.",
+    "keywords": "arrive alive campaign road safety helmet seatbelt drunk driving awareness"
+  },
+  {
+    "title": "Introduction – About Us",
+    "url": "introduction.html",
+    "description": "Introduction to Hyderabad Traffic Police – mission, vision, and history.",
+    "keywords": "introduction about us mission vision history hyderabad traffic police"
+  },
+  {
+    "title": "Organization Chart",
+    "url": "org_chart.html",
+    "description": "Organization chart and hierarchy of Hyderabad Traffic Police department.",
+    "keywords": "organization chart org hierarchy structure department officers"
+  },
+  {
+    "title": "Parking Zones",
+    "url": "parking_zones.html",
+    "description": "Know the parking zones available across Hyderabad city – paid, free, and restricted zones.",
+    "keywords": "parking zone area location city paid free restricted no parking"
+  },
+  {
+    "title": "Parking Information",
+    "url": "parking.html",
+    "description": "Parking rules, zones, and guidelines across Hyderabad city roads.",
+    "keywords": "parking rules zone guidelines city roads"
+  },
+  {
+    "title": "Wheel Clamping",
+    "url": "wheel.html",
+    "description": "Information on wheel clamping policy – where, when, and how to get a clamp removed.",
+    "keywords": "wheel clamp clamping remove release fine policy procedure"
+  },
+  {
+    "title": "Major Corridors",
+    "url": "Corridors.html",
+    "description": "Major road corridors in Hyderabad – traffic flow, key routes, and road details.",
+    "keywords": "corridor road route major highway traffic flow key route hyderabad"
+  },
+  {
+    "title": "Traffic Congestion",
+    "url": "Tcongestion.html",
+    "description": "Traffic congestion points across Hyderabad – live updates and congestion-prone areas.",
+    "keywords": "traffic congestion jam peak hours areas roads locations"
+  },
+  {
+    "title": "Helmet Rules",
+    "url": "helmet.html",
+    "description": "Helmet rules and regulations for two-wheeler riders in Hyderabad – mandatory guidelines.",
+    "keywords": "helmet rules mandatory two wheeler rider safety law fine"
+  },
+  {
+    "title": "Speed Limit Rules",
+    "url": "speed.html",
+    "description": "Speed limits for various vehicle types on Hyderabad city roads.",
+    "keywords": "speed limit rules vehicle city road fine penalty overspeed"
+  },
+  {
+    "title": "Seat Belt Rules",
+    "url": "seatbelt.html",
+    "description": "Seat belt rules and regulations for four-wheeler drivers and passengers in Hyderabad.",
+    "keywords": "seatbelt seat belt rules mandatory passengers fine four wheeler safety"
+  },
+  {
+    "title": "MV Act & Rules",
+    "url": "mvact.html",
+    "description": "Motor Vehicles Act and traffic rules applicable in Hyderabad – violations and penalties.",
+    "keywords": "mv act motor vehicle rules violations penalties sections law"
+  },
+  {
+    "title": "Water Logging Points",
+    "url": "water_logging.html",
+    "description": "Water logging prone points across Hyderabad during rains – areas to avoid.",
+    "keywords": "water logging rain flood prone points areas hyderabad avoid"
+  },
+  {
+    "title": "Contact Us",
+    "url": "contact_us.html",
+    "description": "Contact Hyderabad Traffic Police – helpline numbers, addresses, and feedback details.",
+    "keywords": "contact us helpline phone address email feedback office"
+  },
+  {
+    "title": "Traffic Training Centre (TTI)",
+    "url": "tti.html",
+    "description": "Hyderabad Traffic Training Institute – training programmes for drivers and public.",
+    "keywords": "traffic training institute tti centre programme driver training"
+  },
+  {
+    "title": "Traffic Marshal",
+    "url": "trafficmarshall.html",
+    "description": "Traffic Marshal programme – volunteer road safety marshals in Hyderabad.",
+    "keywords": "traffic marshal volunteer road safety programme register"
+  },
+  {
+    "title": "Online Test (T20)",
+    "url": "https://echallan.tspolice.gov.in/TGTrafficTest/jsp/LoginView.jsp",
+    "description": "Take the T20 online traffic knowledge test – road rules quiz for drivers.",
+    "keywords": "t20 test online quiz road rules traffic knowledge driving"
+  },
+  {
+    "title": "Emergency Contacts",
+    "url": "contact_us.html",
+    "description": "Emergency numbers: Police 100, Ambulance 108, Fire 101, Women Helpline 1091, Child Helpline 1098, Traffic 9010203626, Emergency 112.",
+    "keywords": "emergency contacts numbers police 100 ambulance 108 fire 101 women 1091 child 1098 helpline 112"
+  }
+,
+  {
+    "title": "Know Your Traffic PS – Overview",
+    "url": "../know_your_ps.html",
+    "description": "Find your nearest Traffic Police Station jurisdiction, address, and contact information across Hyderabad.",
+    "keywords": "traffic police station ps jurisdiction area contact address phone hyderabad"
+  },
+  {
+    "title": "Abids Traffic Police Station",
+    "url": "Abids.html",
+    "description": "Abids Traffic Police Station – jurisdiction, address, officer details and contact information for the Abids area, Hyderabad.",
+    "keywords": "abids traffic police station ps jurisdiction contact address officer hyderabad"
+  },
+  {
+    "title": "Asif Nagar Traffic Police Station",
+    "url": "Asif_Nagar.html",
+    "description": "Asif Nagar Traffic Police Station – jurisdiction, address, officer details and contact information for the Asif Nagar area, Hyderabad.",
+    "keywords": "asif nagar traffic police station ps jurisdiction contact address officer hyderabad"
+  },
+  {
+    "title": "Banjara Hills Traffic Police Station",
+    "url": "Banjara_Hills.html",
+    "description": "Banjara Hills Traffic Police Station – jurisdiction, address, officer details and contact information for the Banjara Hills area, Hyderabad.",
+    "keywords": "banjara hills traffic police station ps jurisdiction contact address officer hyderabad"
+  },
+  {
+    "title": "Chandrayangutta Traffic Police Station",
+    "url": "Chandrayangutta.html",
+    "description": "Chandrayangutta Traffic Police Station – jurisdiction, address, officer details and contact information for the Chandrayangutta area, Hyderabad.",
+    "keywords": "chandrayangutta traffic police station ps jurisdiction contact address officer hyderabad"
+  },
+  {
+    "title": "Charminar Traffic Police Station",
+    "url": "Charminar.html",
+    "description": "Charminar Traffic Police Station – jurisdiction, address, officer details and contact information for the Charminar area, Hyderabad.",
+    "keywords": "charminar traffic police station ps jurisdiction contact address officer hyderabad"
+  },
+  {
+    "title": "Chatrinka Traffic Police Station",
+    "url": "Chatrinka.html",
+    "description": "Chatrinka Traffic Police Station – jurisdiction, address, officer details and contact information for the Chatrinka area, Hyderabad.",
+    "keywords": "chatrinka traffic police station ps jurisdiction contact address officer hyderabad"
+  },
+  {
+    "title": "Chikkadpally Traffic Police Station",
+    "url": "Chikkadpally.html",
+    "description": "Chikkadpally Traffic Police Station – jurisdiction, address, officer details and contact information for the Chikkadpally area, Hyderabad.",
+    "keywords": "chikkadpally traffic police station ps jurisdiction contact address officer hyderabad"
+  },
+  {
+    "title": "Chilakalaguda Traffic Police Station",
+    "url": "Chilakalaguda.html",
+    "description": "Chilakalaguda Traffic Police Station – jurisdiction, address, officer details and contact information for the Chilakalaguda area, Hyderabad.",
+    "keywords": "chilakalaguda traffic police station ps jurisdiction contact address officer hyderabad"
+  },
+  {
+    "title": "Falaknuma Traffic Police Station",
+    "url": "Falaknuma.html",
+    "description": "Falaknuma Traffic Police Station – jurisdiction, address, officer details and contact information for the Falaknuma area, Hyderabad.",
+    "keywords": "falaknuma traffic police station ps jurisdiction contact address officer hyderabad"
+  },
+  {
+    "title": "Gandhi Nagar Traffic Police Station",
+    "url": "GanthiNagar.html",
+    "description": "Gandhi Nagar Traffic Police Station – jurisdiction, address, officer details and contact information for the Gandhi Nagar area, Hyderabad.",
+    "keywords": "gandhi nagar ganthinagar traffic police station ps jurisdiction contact address officer hyderabad"
+  },
+  {
+    "title": "Goshamahal Traffic Police Station",
+    "url": "Goshamahal.html",
+    "description": "Goshamahal Traffic Police Station – jurisdiction, address, officer details and contact information for the Goshamahal area, Hyderabad.",
+    "keywords": "goshamahal traffic police station ps jurisdiction contact address officer hyderabad"
+  },
+  {
+    "title": "Jubilee Hills Traffic Police Station",
+    "url": "Jubilee_Hills.html",
+    "description": "Jubilee Hills Traffic Police Station – jurisdiction, address, officer details and contact information for the Jubilee Hills area, Hyderabad.",
+    "keywords": "jubilee hills traffic police station ps jurisdiction contact address officer hyderabad"
+  },
+  {
+    "title": "Kachiguda Traffic Police Station",
+    "url": "Kachiguda.html",
+    "description": "Kachiguda Traffic Police Station – jurisdiction, address, officer details and contact information for the Kachiguda area, Hyderabad.",
+    "keywords": "kachiguda traffic police station ps jurisdiction contact address officer hyderabad"
+  },
+  {
+    "title": "Kulsumpura Traffic Police Station",
+    "url": "Kulsumpura.html",
+    "description": "Kulsumpura Traffic Police Station – jurisdiction, address, officer details and contact information for the Kulsumpura area, Hyderabad.",
+    "keywords": "kulsumpura traffic police station ps jurisdiction contact address officer hyderabad"
+  },
+  {
+    "title": "Mahankali Traffic Police Station",
+    "url": "Mahankali.html",
+    "description": "Mahankali Traffic Police Station – jurisdiction, address, officer details and contact information for the Mahankali area, Hyderabad.",
+    "keywords": "mahankali traffic police station ps jurisdiction contact address officer hyderabad"
+  },
+  {
+    "title": "Malakpet Traffic Police Station",
+    "url": "Malakpet.html",
+    "description": "Malakpet Traffic Police Station – jurisdiction, address, officer details and contact information for the Malakpet area, Hyderabad.",
+    "keywords": "malakpet traffic police station ps jurisdiction contact address officer hyderabad"
+  },
+  {
+    "title": "Mirchowk Traffic Police Station",
+    "url": "Mirchowk.html",
+    "description": "Mirchowk Traffic Police Station – jurisdiction, address, officer details and contact information for the Mirchowk area, Hyderabad.",
+    "keywords": "mirchowk mir chowk traffic police station ps jurisdiction contact address officer hyderabad"
+  },
+  {
+    "title": "OU (Osmania University) Traffic Police Station",
+    "url": "OU.html",
+    "description": "OU Traffic Police Station – jurisdiction, address, officer details and contact information for the Osmania University area, Hyderabad.",
+    "keywords": "ou osmania university traffic police station ps jurisdiction contact address officer hyderabad"
+  },
+  {
+    "title": "Panjagutta Traffic Police Station",
+    "url": "Panjagutta.html",
+    "description": "Panjagutta Traffic Police Station – jurisdiction, address, officer details and contact information for the Panjagutta area, Hyderabad.",
+    "keywords": "panjagutta traffic police station ps jurisdiction contact address officer hyderabad"
+  },
+  {
+    "title": "RGI (Rajiv Gandhi International Airport) Traffic Police Station",
+    "url": "RGI.html",
+    "description": "RGI Airport Traffic Police Station – jurisdiction, address, officer details and contact information for the Rajiv Gandhi International Airport area, Hyderabad.",
+    "keywords": "rgi rajiv gandhi international airport traffic police station ps jurisdiction contact address officer hyderabad shamshabad"
+  },
+  {
+    "title": "Rajendra Nagar Traffic Police Station",
+    "url": "Rj_Nagar.html",
+    "description": "Rajendra Nagar Traffic Police Station – jurisdiction, address, officer details and contact information for the Rajendra Nagar area, Hyderabad.",
+    "keywords": "rajendra nagar rj nagar traffic police station ps jurisdiction contact address officer hyderabad"
+  },
+  {
+    "title": "S.R. Nagar Traffic Police Station",
+    "url": "S.R.Nagar.html",
+    "description": "S.R. Nagar Traffic Police Station – jurisdiction, address, officer details and contact information for the Sarojini Devi Road Nagar area, Hyderabad.",
+    "keywords": "sr nagar sarojini devi road traffic police station ps jurisdiction contact address officer hyderabad"
+  },
+  {
+    "title": "Saidabad Traffic Police Station",
+    "url": "Saidabad.html",
+    "description": "Saidabad Traffic Police Station – jurisdiction, address, officer details and contact information for the Saidabad area, Hyderabad.",
+    "keywords": "saidabad traffic police station ps jurisdiction contact address officer hyderabad"
+  },
+  {
+    "title": "Saifabad Traffic Police Station",
+    "url": "Saifabad.html",
+    "description": "Saifabad Traffic Police Station – jurisdiction, address, officer details and contact information for the Saifabad area, Hyderabad.",
+    "keywords": "saifabad traffic police station ps jurisdiction contact address officer hyderabad secretariat assembly"
+  },
+  {
+    "title": "Santhosh Nagar Traffic Police Station",
+    "url": "Santhosh_Nagar.html",
+    "description": "Santhosh Nagar Traffic Police Station – jurisdiction, address, officer details and contact information for the Santhosh Nagar area, Hyderabad.",
+    "keywords": "santhosh nagar santosh traffic police station ps jurisdiction contact address officer hyderabad"
+  },
+  {
+    "title": "Sultan Bazar Traffic Police Station",
+    "url": "Sultan_Bazar.html",
+    "description": "Sultan Bazar Traffic Police Station – jurisdiction, address, officer details and contact information for the Sultan Bazar area, Hyderabad.",
+    "keywords": "sultan bazar bazaar traffic police station ps jurisdiction contact address officer hyderabad"
+  },
+  {
+    "title": "Tolichowki Traffic Police Station",
+    "url": "Tolichowki.html",
+    "description": "Tolichowki Traffic Police Station – jurisdiction, address, officer details and contact information for the Tolichowki area, Hyderabad.",
+    "keywords": "tolichowki toli chowki traffic police station ps jurisdiction contact address officer hyderabad"
+  }
+
+]

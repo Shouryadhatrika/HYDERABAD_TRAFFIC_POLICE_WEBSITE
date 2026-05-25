@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gallery – Hyderabad Traffic Police</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&family=Sora:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0B3C5D;--navy-dark:#072a43;--navy-light:#145DA0;
+  --gold:#FFC107;--gold-dark:#e0a800;
+  --red:#D72638;--green:#198754;
+  --white:#fff;--off:#f5f7fa;
+  --gray-100:#e9ecef;--gray-300:#dee2e6;--gray-600:#6c757d;--gray-800:#343a40;
+  --radius-sm:6px;--radius-md:10px;--radius-lg:16px;
+  --shadow-sm:0 2px 8px rgba(0,0,0,.08);--shadow-md:0 4px 20px rgba(0,0,0,.12);
+  --transition:.22s ease;
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;overflow-x:hidden}
+body{font-family:'DM Sans',sans-serif;font-size:15px;color:var(--gray-800);background:var(--off)}
+a{text-decoration:none;color:inherit}
+img{max-width:100%}
+
+.container-htp{width:100%;max-width:1280px;margin:auto;padding-left:32px;padding-right:32px}
+@media(max-width:768px){.container-htp{padding-left:16px;padding-right:16px}}
+
+.top-header{width:100%;background:linear-gradient(100deg,var(--navy-dark),var(--navy-light));border-bottom:3px solid var(--gold);color:#fff;padding:10px 0}
+.top-header__title{font-size:1.5rem;font-weight:700;color:var(--gold);line-height:1.2;white-space:nowrap}
+.top-header__subtitle{font-size:.78rem;color:rgba(255,255,255,.75);letter-spacing:.5px}
+.top-header__actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.btn-htp{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:var(--radius-sm);font-size:.8rem;font-weight:600;border:none;cursor:pointer;transition:filter var(--transition),transform var(--transition)}
+.btn-htp:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.btn-challan{background:var(--red);color:#fff}
+.btn-whatsapp{background:#25D366;color:#fff}
+.btn-feedback{background:var(--gold);color:#000}
+.top-header__info{font-size:.8rem;color:rgba(255,255,255,.85)}
+.top-header__info a{color:var(--gold);font-weight:600}
+
+.zoom-ctrl{display:flex;align-items:center;gap:2px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:24px;padding:3px}
+.zoom-ctrl button{background:transparent;border:none;color:rgba(255,255,255,.75);padding:4px 9px;border-radius:20px;font-size:.78rem;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif}
+.zoom-ctrl button:hover{background:rgba(255,255,255,.15);color:#fff}
+.zoom-ctrl button.reset{color:var(--gold)}
+
+.lang-dropdown-wrap{position:relative;display:inline-flex;align-items:center}
+.lang-globe{position:absolute;left:9px;color:rgba(255,255,255,.6);font-size:.78rem;pointer-events:none;z-index:1}
+.lang-select{appearance:none;-webkit-appearance:none;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:20px;color:#fff;font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:600;padding:5px 28px 5px 26px;cursor:pointer;outline:none;min-width:90px}
+.lang-select option{background:var(--navy-dark);color:#fff}
+.lang-caret{position:absolute;right:9px;color:rgba(255,255,255,.55);font-size:.65rem;pointer-events:none}
+
+.main-nav{width:100%;background:var(--navy);position:sticky;top:0;z-index:1000;box-shadow:0 2px 10px rgba(0,0,0,.2)}
+.main-nav .nav-link{color:rgba(255,255,255,.85)!important;font-weight:500;font-size:.88rem;padding:10px 14px!important;border-radius:var(--radius-sm);transition:background var(--transition),color var(--transition)}
+.main-nav .nav-link:hover,.main-nav .nav-link.active{color:var(--gold)!important;background:rgba(255,255,255,.08)}
+.main-nav .dropdown-menu{border:none;border-radius:var(--radius-md);padding:8px;box-shadow:var(--shadow-md);margin-top:6px}
+.main-nav .dropdown-item{border-radius:var(--radius-sm);padding:8px 12px;font-size:.86rem;transition:background var(--transition)}
+.main-nav .dropdown-item:hover{background:var(--navy);color:#fff}
+
+/* ── FIXED: nav search with proper id and clickable icon ── */
+.nav-search{position:relative;display:flex;align-items:center}
+.nav-search input{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:20px;color:#fff;padding:6px 14px 6px 34px;font-size:.8rem;width:180px;outline:none;font-family:'DM Sans',sans-serif;transition:width var(--transition),background var(--transition)}
+.nav-search input::placeholder{color:rgba(255,255,255,.45)}
+.nav-search input:focus{background:rgba(255,255,255,.18);border-color:var(--gold);width:220px}
+.nav-search-icon{position:absolute;left:11px;color:rgba(255,255,255,.45);font-size:.78rem;cursor:pointer}
+.nav-search:focus-within .nav-search-icon{color:var(--gold)}
+
+.breadcrumb-bar{background:#fff;border-bottom:1px solid var(--gray-300);padding:10px 0}
+.crumb-inner{max-width:1280px;margin:auto;padding:0 32px;display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--gray-600)}
+.crumb-inner a{color:var(--navy-light)}
+.crumb-inner i{font-size:.6rem}
+
+.page-hero{background:linear-gradient(120deg,var(--navy-dark),var(--navy-light));border-radius:var(--radius-lg);padding:30px 36px;margin-bottom:28px;display:flex;align-items:center;gap:20px;position:relative;overflow:hidden}
+.page-hero::after{content:'';position:absolute;right:-40px;top:-40px;width:220px;height:220px;background:rgba(255,255,255,.05);border-radius:50%}
+.hero-icon{width:60px;height:60px;background:var(--gold);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;color:#000;flex-shrink:0;box-shadow:0 4px 16px rgba(255,193,7,.35)}
+.page-hero h2{font-family:'Sora',sans-serif;font-size:1.5rem;color:#fff;font-weight:800;margin-bottom:4px}
+.page-hero p{color:rgba(255,255,255,.75);font-size:.87rem;line-height:1.6;max-width:580px;margin:0}
+
+.folder-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:40px;margin-bottom:28px}
+.folder-card{background:#fff;border-radius:var(--radius-md);overflow:hidden;border:2px solid var(--gray-300);cursor:pointer;transition:all .25s;box-shadow:var(--shadow-sm)}
+.folder-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);border-color:var(--navy-light)}
+.folder-card.active{border-color:var(--navy);box-shadow:0 0 0 3px rgba(11,60,93,.18)}
+.folder-card.active .folder-card__footer{background:var(--navy);color:#fff}
+.folder-card__footer{padding:10px 12px;display:flex;align-items:center;justify-content:space-between;background:var(--off);transition:background .2s,color .2s}
+.folder-card__name{font-size:.82rem;font-weight:700;color:var(--gray-800)}
+.folder-card.active .folder-card__name{color:#fff}
+.folder-card__count{background:var(--gold);color:#000;font-size:.65rem;font-weight:800;padding:2px 7px;border-radius:12px;white-space:nowrap}
+
+.gallery-section{background:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);overflow:hidden}
+.gallery-toolbar{padding:16px 20px;border-bottom:1px solid var(--gray-100);display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:#fff}
+.gallery-toolbar .folder-label{font-family:'Sora',sans-serif;font-weight:700;font-size:.95rem;color:var(--navy);display:flex;align-items:center;gap:8px;flex:1;min-width:120px}
+.gallery-toolbar .folder-label span{background:var(--navy);color:#fff;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:12px}
+.gal-search{display:flex;align-items:center;gap:8px;background:var(--off);border:1.5px solid var(--gray-300);border-radius:24px;padding:7px 14px;min-width:180px}
+.gal-search i{color:var(--gray-600);font-size:.8rem}
+.gal-search input{border:none;outline:none;font-family:'DM Sans',sans-serif;font-size:.83rem;background:transparent;width:140px}
+.view-btns{display:flex;gap:4px}
+.view-btn{width:34px;height:34px;border-radius:var(--radius-sm);border:1.5px solid var(--gray-300);background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--gray-600);font-size:.8rem;transition:.2s}
+.view-btn.active,.view-btn:hover{background:var(--navy);border-color:var(--navy);color:#fff}
+.slideshow-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:24px;background:linear-gradient(90deg,var(--navy-dark),var(--navy-light));color:#fff;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:700;white-space:nowrap;transition:.2s}
+.slideshow-btn:hover{filter:brightness(1.12);transform:translateY(-1px)}
+.slideshow-btn i{color:var(--gold)}
+
+.img-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:2px;padding:2px;transition:all .2s}
+.img-grid.list-view{grid-template-columns:1fr;gap:6px;padding:12px}
+.img-card{position:relative;overflow:hidden;cursor:pointer;background:var(--gray-100)}
+.img-card img{width:100%;height:180px;object-fit:cover;display:block;transition:transform .3s}
+.img-card:hover img{transform:scale(1.07)}
+.img-card__overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.65) 0%,transparent 60%);opacity:0;transition:opacity .25s;display:flex;align-items:flex-end;padding:10px}
+.img-card:hover .img-card__overlay{opacity:1}
+.img-card__label{color:#fff;font-size:.75rem;font-weight:600;display:flex;align-items:center;gap:5px}
+.img-card__label i{color:var(--gold);font-size:.8rem}
+.img-card__zoom{position:absolute;top:8px;right:8px;width:30px;height:30px;background:rgba(255,255,255,.2);backdrop-filter:blur(4px);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.75rem;opacity:0;transition:opacity .25s}
+.img-card:hover .img-card__zoom{opacity:1}
+.img-grid.list-view .img-card{display:flex;align-items:center;gap:12px;background:#fff;border-radius:var(--radius-sm);border:1px solid var(--gray-100);padding:8px}
+.img-grid.list-view .img-card img{width:80px;height:60px;border-radius:6px;flex-shrink:0}
+.img-grid.list-view .img-card__overlay{display:none}
+.img-grid.list-view .img-card__zoom{display:none}
+.img-grid.list-view .img-card__info{flex:1}
+.img-grid.list-view .img-card__info .img-num{font-size:.75rem;font-weight:700;color:var(--gray-600)}
+.img-grid.list-view .img-card__info .img-name{font-size:.82rem;font-weight:600;color:var(--gray-800)}
+.img-card__info{display:none}
+.img-grid.list-view .img-card__info{display:block}
+.empty-state{padding:48px;text-align:center;color:var(--gray-600);font-size:.9rem}
+.empty-state i{font-size:36px;color:var(--gray-300);margin-bottom:12px;display:block}
+
+#lightbox{position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:9999;display:none;flex-direction:column;align-items:center;justify-content:center}
+#lightbox.active{display:flex}
+.lb-topbar{position:absolute;top:0;left:0;right:0;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(180deg,rgba(0,0,0,.75),transparent);z-index:2}
+.lb-folder-badge{background:var(--gold);color:#000;font-size:.72rem;font-weight:800;padding:3px 12px;border-radius:20px}
+.lb-title{color:#fff;font-weight:600;font-size:.88rem;margin-left:10px}
+.lb-counter{color:rgba(255,255,255,.6);font-size:.8rem}
+.lb-close{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.12);border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;transition:.2s;margin-left:12px}
+.lb-close:hover{background:var(--red)}
+.lb-main{position:relative;width:100%;max-width:1000px;display:flex;align-items:center;justify-content:center;padding:64px 72px;flex:1}
+.lb-img-wrap{max-width:100%;max-height:72vh;display:flex;align-items:center;justify-content:center}
+.lb-img-wrap img{max-width:100%;max-height:72vh;object-fit:contain;border-radius:var(--radius-md);box-shadow:0 8px 48px rgba(0,0,0,.7);display:block}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);color:#fff;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;transition:.2s;backdrop-filter:blur(4px)}
+.lb-nav:hover{background:var(--navy-light);border-color:var(--navy-light)}
+.lb-prev{left:10px}.lb-next{right:10px}
+.lb-progress{width:100%;max-width:1000px;height:3px;background:rgba(255,255,255,.12);border-radius:2px;overflow:hidden}
+.lb-progress-bar{height:100%;background:var(--gold);width:0%;transition:width .1s linear}
+.lb-controls{display:flex;align-items:center;gap:10px;padding:10px 20px;flex-wrap:wrap;justify-content:center}
+.lb-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 16px;border-radius:20px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.85);font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:600;cursor:pointer;transition:.2s}
+.lb-btn:hover{background:rgba(255,255,255,.2);color:#fff}
+.lb-btn.playing{background:var(--navy-light);border-color:var(--navy-light);color:#fff}
+.lb-speed-wrap{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.6);font-size:.75rem}
+.lb-speed-wrap select{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:12px;padding:4px 10px;font-size:.75rem;outline:none;cursor:pointer}
+.lb-speed-wrap select option{background:var(--navy-dark)}
+.lb-strip{display:flex;gap:6px;padding:8px 20px;overflow-x:auto;max-width:1000px;width:100%;scrollbar-width:thin;scrollbar-color:var(--navy-light) transparent}
+.lb-strip::-webkit-scrollbar{height:4px}
+.lb-strip::-webkit-scrollbar-thumb{background:var(--navy-light);border-radius:4px}
+.lb-thumb{width:60px;height:44px;object-fit:cover;border-radius:4px;cursor:pointer;opacity:.4;transition:.2s;flex-shrink:0;border:2px solid transparent;display:block}
+.lb-thumb.active,.lb-thumb:hover{opacity:1;border-color:var(--gold)}
+
+.assist-banner{background:#fff;border:1.5px solid var(--gray-300);border-radius:var(--radius-lg);padding:20px 28px;display:flex;align-items:center;gap:18px;margin-top:32px;box-shadow:var(--shadow-sm)}
+.assist-icon-wrap{width:54px;height:54px;flex-shrink:0;background:#fde8ea;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.assist-icon-wrap i{color:var(--red);font-size:22px}
+.assist-text h4{font-size:.95rem;font-weight:700;margin-bottom:3px}
+.assist-text p{font-size:.82rem;color:var(--gray-600);margin:0}
+.assist-spacer{flex:1}
+.assist-btns{display:flex;gap:10px;flex-wrap:wrap}
+
+.quick-nav{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:24px}
+@media(max-width:640px){.quick-nav{grid-template-columns:1fr 1fr}}
+.qn-card{background:#fff;border:1px solid var(--gray-300);border-radius:var(--radius-md);padding:20px 16px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;transition:.2s;color:var(--gray-800)}
+.qn-card:hover{box-shadow:var(--shadow-md);transform:translateY(-3px);color:var(--gray-800)}
+.qn-icon{width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px}
+.qn-blue{background:#EDF5FF}.qn-blue i{color:var(--navy-light)}
+.qn-green{background:#E8F8F0}.qn-green i{color:var(--green)}
+.qn-red{background:#FDE8EA}.qn-red i{color:var(--red)}
+.qn-orange{background:#FFF4E6}.qn-orange i{color:#e67e22}
+.qn-card span{font-size:.82rem;font-weight:600}
+
+.modern-footer{width:100%;background:#f4f7fb;border-top:4px solid var(--navy)}
+.footer-title{color:#111;font-weight:700;margin-bottom:18px;font-size:.95rem;position:relative}
+.footer-title::after{content:'';width:45px;height:3px;background:#8BC34A;display:block;margin-top:8px}
+.footer-links{list-style:none;padding:0}
+.footer-links li{margin-bottom:10px}
+.footer-links a{color:#444;font-size:.85rem;transition:.3s}
+.footer-links a:hover{color:var(--navy);padding-left:5px}
+.social-icons{display:flex;gap:14px;flex-wrap:wrap}
+.social-icons a{width:44px;height:44px;border-radius:50%;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.1);display:flex;align-items:center;justify-content:center;color:var(--navy);font-size:18px;transition:.3s}
+.social-icons a:hover{background:var(--navy);color:#fff;transform:translateY(-3px)}
+.footer-bottom{width:100%;background:#111c2e;color:#fff;padding:16px 0;font-size:.82rem}
+.footer-bottom a{color:#fff}
+.footer-bottom a:hover{color:var(--gold)}
+
+#chatbotToggle{position:fixed;bottom:24px;right:80px;z-index:1001;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--navy-light));border:2.5px solid var(--gold);color:#fff;cursor:pointer;font-size:22px;box-shadow:0 4px 20px rgba(11,60,93,.4);display:flex;align-items:center;justify-content:center;transition:transform var(--transition);animation:chatPulse 2.5s infinite}
+#chatbotToggle:hover{transform:translateY(-3px) scale(1.07);animation:none}
+@keyframes chatPulse{0%,100%{box-shadow:0 4px 20px rgba(11,60,93,.4),0 0 0 0 rgba(255,193,7,.55)}50%{box-shadow:0 4px 20px rgba(11,60,93,.4),0 0 0 10px rgba(255,193,7,0)}}
+#chatbotToggle .chat-badge{position:absolute;top:-4px;right:-4px;background:var(--gold);color:#000;font-size:.6rem;font-weight:800;border-radius:10px;padding:1px 5px;border:1.5px solid #fff}
+#chatbotWindow{position:fixed;bottom:94px;right:80px;z-index:1000;width:320px;background:#fff;border-radius:var(--radius-lg);box-shadow:0 8px 40px rgba(0,0,0,.18);display:flex;flex-direction:column;overflow:hidden;opacity:0;pointer-events:none;transform:translateY(16px) scale(.97);transition:opacity .25s,transform .25s}
+#chatbotWindow.open{opacity:1;pointer-events:auto;transform:none}
+.cb-head{background:linear-gradient(100deg,var(--navy-dark),var(--navy-light));border-bottom:3px solid var(--gold);padding:13px 16px;display:flex;align-items:center;gap:12px}
+.cb-av{width:36px;height:36px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.cb-info{flex:1}
+.cb-info h6{margin:0;color:#fff;font-size:.88rem;font-weight:700}
+.cb-info small{color:rgba(255,255,255,.7);font-size:.7rem}
+.cb-close{background:rgba(255,255,255,.12);border:none;color:rgba(255,255,255,.7);width:28px;height:28px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.8rem}
+.cb-close:hover{background:rgba(255,255,255,.22);color:#fff}
+.cb-body{padding:14px;background:var(--off);max-height:220px;overflow-y:auto}
+.cb-msg{display:flex;gap:8px;align-items:flex-end;margin-bottom:10px}
+.cb-bubble{max-width:82%;padding:9px 13px;border-radius:14px;font-size:.82rem;line-height:1.5;background:#fff;color:var(--gray-800);border-bottom-left-radius:3px;box-shadow:var(--shadow-sm)}
+.cb-mini-av{width:24px;height:24px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0}
+.cb-foot{padding:10px;border-top:1px solid var(--gray-100);background:#fff}
+.cb-row{display:flex;gap:8px;align-items:center;background:var(--off);border:1.5px solid var(--gray-300);border-radius:22px;padding:5px 5px 5px 14px}
+.cb-row input{flex:1;border:none;background:transparent;font-size:.82rem;font-family:'DM Sans',sans-serif;outline:none}
+.cb-send{width:30px;height:30px;border-radius:50%;background:var(--navy);border:none;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.78rem;cursor:pointer}
+.cb-send:hover{background:var(--navy-light)}
+
+#scrollTopBtn{position:fixed;bottom:24px;right:24px;z-index:999;width:44px;height:44px;border-radius:50%;background:var(--red);color:#fff;border:none;cursor:pointer;font-size:16px;box-shadow:var(--shadow-md);opacity:0;pointer-events:none;transition:opacity var(--transition);display:flex;align-items:center;justify-content:center}
+#scrollTopBtn.visible{opacity:1;pointer-events:auto}
+
+#zoom-wrap{transform-origin:top left}
+
+@media(max-width:768px){
+  .assist-banner{flex-direction:column;align-items:flex-start}
+  .assist-spacer{display:none}
+  .page-hero{flex-direction:column;align-items:flex-start;padding:22px 20px}
+  .lb-main{padding:52px 44px}
+  .folder-row{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
+  #chatbotWindow{right:12px;left:12px;width:auto;bottom:86px}
+  #chatbotToggle{right:76px;bottom:20px}
+}
+</style>
+</head>
+<body>
+
+<header class="top-header">
+  <div class="container-htp">
+    <div class="row align-items-center gy-2">
+      <div class="col-lg-4 col-md-12 text-center text-lg-start">
+        <a href="index.html" class="d-inline-flex align-items-center gap-2">
+          <img src="img/MainLogo1.png" alt="Hyderabad Traffic Police Logo"
+               style="height:80px;width:auto;flex-shrink:0;object-fit:contain">
+        </a>
+      </div>
+      <div class="col-lg-4 col-md-12 text-center">
+        <div class="top-header__actions">
+          <a href="https://echallan.tspolice.gov.in/publicview/" target="_blank" class="btn-htp btn-challan"><i class="fa fa-receipt"></i> Pay Challan</a>
+          <a href="https://wa.me/9010203626" target="_blank" class="btn-htp btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+          <a href="https://echallan.tspolice.gov.in/Feedback/feedback.jsp" target="_blank" class="btn-htp btn-feedback"><i class="fa fa-comment-dots"></i> Feedback</a>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-12 text-center text-lg-end">
+        <div class="top-header__info mb-1">
+          <i class="fa fa-phone"></i> Helpline: <a href="tel:9010203626">9010203626</a>&nbsp;&nbsp;
+          <i class="fa fa-phone-alt"></i> E-Challan: <a href="tel:04027852721">040-27852721</a>
+        </div>
+        <div class="d-flex gap-2 justify-content-center justify-content-lg-end flex-wrap align-items-center">
+          <div class="zoom-ctrl">
+            <button onclick="pageZoom(1)" title="Zoom In">A+</button>
+            <button onclick="pageZoomReset()" class="reset" title="Reset">&#8635;</button>
+            <button onclick="pageZoom(-1)" title="Zoom Out">A&#8722;</button>
+          </div>
+          <div class="lang-dropdown-wrap">
+            <i class="fa fa-globe lang-globe"></i>
+            <select class="lang-select">
+              <option value="en">English</option>
+              <option value="te">తెలుగు</option>
+              <option value="hi">हिन्दी</option>
+              <option value="ur">اردو</option>
+            </select>
+            <i class="fa fa-chevron-down lang-caret"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="main-nav navbar navbar-expand-lg">
+  <div class="container-htp">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMain">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">About Us</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="introduction.html">📘 Introduction</a></li>
+            <li><a class="dropdown-item" href="org_chart.html">🏢 Organization Chart</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Services</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="https://echallan.tspolice.gov.in/publicview/" target="_blank">E-Challan Status</a></li>
+            <li><a class="dropdown-item" href="wrong_challan.html">Got a Wrong Challan?</a></li>
+            <li><a class="dropdown-item" href="noc_tov.html">No Objection Certificate (NOC)</a></li>
+            <li><a class="dropdown-item" href="driving_license.html">Driving License</a></li>
+            <li><a class="dropdown-item" href="vehicle_registration.html">Vehicle Registration</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Information</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="road_rules.html">Road Rules</a></li>
+            <li><a class="dropdown-item" href="road_sense.html">Road Sense</a></li>
+            <li><a class="dropdown-item" href="road_smart.html">Road Smart</a></li>
+            <li><a class="dropdown-item" href="statistics.html">Statistics</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="know_your_ps.html">Know Your Traffic PS</a></li>
+        <li class="nav-item"><a class="nav-link" href="rti.html">Right to Information</a></li>
+        <li class="nav-item"><a class="nav-link" href="campaigns.html">Campaigns</a></li>
+        <li class="nav-item"><a class="nav-link active" href="gallery.html">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact_us.html">Contact Us</a></li>
+      </ul>
+
+      <!-- ✅ FIXED: id added, icon is clickable -->
+      <div class="d-flex align-items-center gap-2 ms-3">
+        <div class="nav-search">
+          <label for="navSearchInput" class="visually-hidden">Search site</label>
+          <input type="search" id="navSearchInput" placeholder="Search…" aria-label="Search site content">
+          <i class="fa fa-search nav-search-icon" id="navSearchIcon" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="breadcrumb-bar">
+  <div class="crumb-inner">
+    <a href="index.html">Home</a>
+    <i class="fas fa-chevron-right"></i>
+    <span>Gallery</span>
+  </div>
+</div>
+
+<main>
+  <section style="padding:36px 0 60px">
+    <div class="container-htp">
+
+      <div class="page-hero">
+        <div class="hero-icon">📸</div>
+        <div>
+          <h2>Photo Gallery</h2>
+          <p>Browse photos from Various Daily and Special Events.</p>
+        </div>
+      </div>
+
+      <div class="folder-row" id="folderRow"></div>
+
+      <div class="gallery-section">
+        <div class="gallery-toolbar">
+          <div class="folder-label" id="toolbarLabel">
+            <span id="toolbarIcon">📢</span>
+            <span id="toolbarName">Select a folder</span>
+            <span id="toolbarCount">0</span>
+          </div>
+          <div class="gal-search">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Search photos…" oninput="filterGallery(this.value)">
+          </div>
+          <div class="view-btns">
+            <button class="view-btn active" id="gridBtn" onclick="setView('grid')" title="Grid View"><i class="fas fa-th"></i></button>
+            <button class="view-btn" id="listBtn" onclick="setView('list')" title="List View"><i class="fas fa-list"></i></button>
+          </div>
+          <button class="slideshow-btn" onclick="startSlideshow()">
+            <i class="fas fa-play-circle"></i> Slideshow
+          </button>
+        </div>
+        <div class="img-grid" id="imgGrid">
+          <div class="empty-state" style="grid-column:1/-1">
+            <i class="fas fa-folder-open"></i>
+            <p>Select a folder above to view photos</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="assist-banner">
+        <div class="assist-icon-wrap"><i class="fas fa-headset"></i></div>
+        <div class="assist-text">
+          <h4>Need Assistance?</h4>
+          <p>Contact the Traffic Helpline or visit your nearest traffic police station for guidance.</p>
+        </div>
+        <div class="assist-spacer"></div>
+        <div class="assist-btns">
+          <a href="tel:9010203626" class="btn-htp btn-challan"><i class="fas fa-phone"></i> 9010203626</a>
+          <a href="https://wa.me/919010203626" target="_blank" class="btn-htp btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="quick-nav">
+        <a href="index.html" class="qn-card"><div class="qn-icon qn-blue"><i class="fas fa-home"></i></div><span>Back to Home</span></a>
+        <a href="contact_us.html" class="qn-card"><div class="qn-icon qn-green"><i class="fas fa-envelope"></i></div><span>Contact Us</span></a>
+        <a href="https://echallan.tspolice.gov.in/publicview/" target="_blank" class="qn-card"><div class="qn-icon qn-red"><i class="fas fa-file-invoice"></i></div><span>Pay Challan</span></a>
+        <a href="road_rules.html" class="qn-card"><div class="qn-icon qn-orange"><i class="fas fa-book-open"></i></div><span>Road Rules</span></a>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<div id="lightbox">
+  <div class="lb-topbar">
+    <div style="display:flex;align-items:center;gap:0">
+      <span class="lb-folder-badge" id="lbFolderBadge">Gallery</span>
+      <span class="lb-title" id="lbTitle"></span>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <span class="lb-counter" id="lbCounter">1 / 10</span>
+      <button class="lb-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
+    </div>
+  </div>
+  <div class="lb-progress"><div class="lb-progress-bar" id="lbProgressBar"></div></div>
+  <div class="lb-main">
+    <button class="lb-nav lb-prev" onclick="lbNav(-1)"><i class="fas fa-chevron-left"></i></button>
+    <div class="lb-img-wrap" id="lbImgWrap"></div>
+    <button class="lb-nav lb-next" onclick="lbNav(1)"><i class="fas fa-chevron-right"></i></button>
+  </div>
+  <div class="lb-controls">
+    <button class="lb-btn" id="lbPlayBtn" onclick="lbTogglePlay()">
+      <i class="fas fa-play" id="lbPlayIcon"></i> <span id="lbPlayText">Auto Play</span>
+    </button>
+    <div class="lb-speed-wrap">
+      Speed:
+      <select id="lbSpeed" onchange="lbUpdateSpeed()">
+        <option value="1500">Fast (1.5s)</option>
+        <option value="3000" selected>Normal (3s)</option>
+        <option value="5000">Slow (5s)</option>
+      </select>
+    </div>
+    <button class="lb-btn" onclick="lbFullscreen()"><i class="fas fa-expand" id="lbFsIcon"></i> Fullscreen</button>
+  </div>
+  <div class="lb-strip" id="lbStrip"></div>
+</div>
+
+<footer class="modern-footer">
+  <div class="container-htp py-5">
+    <div class="row gy-4">
+      <div class="col-lg-4 col-md-6 text-center text-lg-start">
+        <img src="img/MainLogo1.png" alt="Hyderabad Traffic Police Logo"
+             style="height:90px;width:auto;object-fit:contain;margin-bottom:12px">
+        <h4 style="color:#0B3D91;font-weight:700;margin-bottom:10px">Hyderabad Traffic Police</h4>
+        <p style="color:#555;line-height:1.8;font-size:.88rem">Dedicated to safer roads, better traffic management and citizen-friendly digital services.</p>
+      </div>
+      <div class="col-lg-2 col-md-6">
+        <h5 class="footer-title">Useful Links</h5>
+        <ul class="footer-links">
+          <li><a href="https://echallan.tspolice.gov.in/publicview/">E-Challan</a></li>
+          <li><a href="wrong_challan.html">Wrong Challan</a></li>
+          <li><a href="noc_tov.html">NOC</a></li>
+          <li><a href="driving_license.html">Driving License</a></li>
+          <li><a href="vehicle_registration.html">Vehicle Registration</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-md-6">
+        <h5 class="footer-title">Information</h5>
+        <ul class="footer-links">
+          <li><a href="road_rules.html">Road Rules</a></li>
+          <li><a href="road_sense.html">Road Sense</a></li>
+          <li><a href="road_smart.html">Road Smart</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <h5 class="footer-title">Connect With Us</h5>
+        <div class="social-icons mb-4">
+          <a href="https://www.facebook.com/HYDTP" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://twitter.com/HYDTP" target="_blank"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://www.instagram.com/hyderabadtrafficpolice" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://youtube.com/@hyderabadtrafficpoliceshik6556" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+        <h6 style="font-weight:700;margin-bottom:8px">Official Website</h6>
+        <a href="https://hyderabadpolice.gov.in/" target="_blank" style="color:var(--navy);font-weight:600">Hyderabad Police</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container-htp">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start">COPYRIGHT © 2026, Hyderabad Traffic Police</div>
+        <div class="col-md-6 text-center text-md-end">Designed and developed by <a href="https://ts.nic.in/" target="_blank">NIC Telangana</a></div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button id="chatbotToggle" onclick="document.getElementById('chatbotWindow').classList.toggle('open')" title="HTP Assistant">
+  <i class="fa fa-robot"></i><span class="chat-badge">AI</span>
+</button>
+<div id="chatbotWindow">
+  <div class="cb-head">
+    <div class="cb-av">🤖</div>
+    <div class="cb-info"><h6>HTP Assistant</h6><small>Hyderabad Traffic Police · AI</small></div>
+    <button class="cb-close" onclick="document.getElementById('chatbotWindow').classList.remove('open')"><i class="fa fa-times"></i></button>
+  </div>
+  <div class="cb-body">
+    <div class="cb-msg"><div class="cb-mini-av">🤖</div><div class="cb-bubble">👋 Welcome to the Gallery! Click any folder to view photos, then hit <strong>Slideshow</strong> for auto-play. Use ← → keys to navigate.</div></div>
+  </div>
+  <div class="cb-foot"><div class="cb-row"><input type="text" placeholder="Ask me anything…"><button class="cb-send"><i class="fas fa-paper-plane"></i></button></div></div>
+</div>
+
+<button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fa fa-arrow-up"></i></button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+/* ══ FOLDER DATA ══ */
+const FOLDERS = [
+  {
+    id: 'Enforcement', label: 'Traffic Enforcement', icon: '🚔',
+    images: [
+      { src: 'Gallery/enf1.jpeg',  alt: 'Enforcement Image 1'  },
+      { src: 'Gallery/enf2.jpeg',  alt: 'Enforcement Image 2'  },
+      { src: 'Gallery/enf3.jpeg',  alt: 'Enforcement Image 3'  },
+      { src: 'Gallery/enf4.jpeg',  alt: 'Enforcement Image 4'  },
+      { src: 'Gallery/enf5.jpeg',  alt: 'Enforcement Image 5'  },
+      { src: 'Gallery/enf6.jpeg',  alt: 'Enforcement Image 6'  },
+      { src: 'Gallery/enf7.jpeg',  alt: 'Enforcement Image 7'  },
+      { src: 'Gallery/enf8.jpeg',  alt: 'Enforcement Image 8'  },
+      { src: 'Gallery/enf9.jpeg',  alt: 'Enforcement Image 9'  },
+      { src: 'Gallery/enf10.jpeg', alt: 'Enforcement Image 10' }
+    ]
+  },
+  {
+    id: 'ArriveAlive', label: 'Arrive Alive', icon: '🚦',
+    images: [
+      { src: 'Gallery/traffic1.jpg', alt: 'Arrive Alive 1' },
+      { src: 'Gallery/traffic2.jpg', alt: 'Arrive Alive 2' },
+      { src: 'Gallery/traffic3.jpg', alt: 'Arrive Alive 3' },
+      { src: 'Gallery/traffic4.jpg', alt: 'Arrive Alive 4' },
+      { src: 'Gallery/traffic5.jpg', alt: 'Arrive Alive 5' },
+      { src: 'Gallery/traffic6.jpg', alt: 'Arrive Alive 6' },
+      { src: 'Gallery/traffic7.jpg', alt: 'Arrive Alive 7' },
+      { src: 'Gallery/traffic8.jpg', alt: 'Arrive Alive 8' }
+    ]
+  },
+  {
+    id: 'exhibition', label: 'Nampally Exhibition', icon: '🏛️',
+    images: [
+      { src: 'Gallery/Nu01.jpeg', alt: 'Exhibition 1' },
+      { src: 'Gallery/Nu02.jpeg', alt: 'Exhibition 2' },
+      { src: 'Gallery/Nu03.jpeg', alt: 'Exhibition 3' },
+      { src: 'Gallery/Nu04.jpeg', alt: 'Exhibition 4' },
+      { src: 'Gallery/Nu05.jpeg', alt: 'Exhibition 5' },
+      { src: 'Gallery/Nu06.jpeg', alt: 'Exhibition 6' },
+      { src: 'Gallery/Nu07.jpeg', alt: 'Exhibition 7' }
+    ]
+  },
+  {
+    id: 'vasavi', label: 'Vasavi College', icon: '🎓',
+    images: [
+      { src: 'Gallery/VSC01.jpeg', alt: 'Vasavi 1' },
+      { src: 'Gallery/VSC02.jpeg', alt: 'Vasavi 2' },
+      { src: 'Gallery/VSC03.jpeg', alt: 'Vasavi 3' },
+      { src: 'Gallery/VSC04.jpeg', alt: 'Vasavi 4' },
+      { src: 'Gallery/VSC05.jpeg', alt: 'Vasavi 5' },
+      { src: 'Gallery/VSC06.jpeg', alt: 'Vasavi 6' },
+      { src: 'Gallery/VSC07.jpeg', alt: 'Vasavi 7' }
+    ]
+  },
+  {
+    id: 'Bike', label: 'Bike Launch', icon: '🏍️',
+    images: [
+      { src: 'Gallery/Bk1.jpg', alt: 'Bike Launch 1' },
+      { src: 'Gallery/Bk2.jpg', alt: 'Bike Launch 2' },
+      { src: 'Gallery/Bk3.jpg', alt: 'Bike Launch 3' },
+      { src: 'Gallery/Bk4.jpg', alt: 'Bike Launch 4' },
+      { src: 'Gallery/Bk5.jpg', alt: 'Bike Launch 5' },
+      { src: 'Gallery/Bk6.jpg', alt: 'Bike Launch 6' }
+    ]
+  }
+];
+
+let activeFolderIdx = -1;
+let currentView     = 'grid';
+
+/* ── Build folder cards ── */
+function buildFolderRow() {
+  const row = document.getElementById('folderRow');
+  FOLDERS.forEach((f, fi) => {
+    const card = document.createElement('div');
+    card.className = 'folder-card';
+    card.id = 'fc-' + f.id;
+    card.innerHTML = `
+      <div style="position:relative;overflow:hidden;height:150px;background:linear-gradient(135deg,var(--navy-dark),var(--navy-light))">
+        <img src="${f.images[0].src}" alt="${f.label}"
+             style="width:100%;height:150px;object-fit:cover;display:block;transition:transform .3s"
+             onerror="this.style.display='none'"
+             onmouseover="this.style.transform='scale(1.06)'"
+             onmouseout="this.style.transform='scale(1)'">
+        <div style="position:absolute;bottom:0;left:0;right:0;height:50px;background:linear-gradient(transparent,rgba(0,0,0,.5))"></div>
+      </div>
+      <div class="folder-card__footer">
+        <span class="folder-card__name">${f.icon} ${f.label}</span>
+        <span class="folder-card__count">${f.images.length} photos</span>
+      </div>`;
+    card.onclick = () => openFolder(fi);
+    row.appendChild(card);
+  });
+}
+
+function openFolder(fi) {
+  activeFolderIdx = fi;
+  const f = FOLDERS[fi];
+  document.querySelectorAll('.folder-card').forEach(c => c.classList.remove('active'));
+  document.getElementById('fc-' + f.id).classList.add('active');
+  document.getElementById('toolbarIcon').textContent = f.icon;
+  document.getElementById('toolbarName').textContent  = f.label;
+  document.getElementById('toolbarCount').textContent = f.images.length;
+  document.getElementById('searchInput').value = '';
+  renderGrid(f.images);
+}
+
+function renderGrid(images) {
+  const grid = document.getElementById('imgGrid');
+  grid.className = 'img-grid' + (currentView === 'list' ? ' list-view' : '');
+  if (!images.length) {
+    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><i class="fas fa-search"></i><p>No photos match your search.</p></div>`;
+    return;
+  }
+  grid.innerHTML = images.map((img, i) => `
+    <div class="img-card" data-idx="${i}" onclick="openLightbox(${activeFolderIdx}, ${i})">
+      <img src="${img.src}" alt="${img.alt}"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div style="display:none;width:100%;height:180px;background:linear-gradient(135deg,var(--navy-dark),var(--navy-light));align-items:center;justify-content:center;flex-direction:column;gap:6px">
+        <i class="fas fa-camera" style="font-size:28px;color:rgba(255,255,255,.5)"></i>
+        <span style="font-size:.7rem;color:rgba(255,255,255,.4)">${img.alt}</span>
+      </div>
+      <div class="img-card__overlay">
+        <div class="img-card__label"><i class="fas fa-expand-alt"></i>${img.alt}</div>
+      </div>
+      <div class="img-card__zoom"><i class="fas fa-search-plus"></i></div>
+      <div class="img-card__info">
+        <div class="img-num">#${String(i+1).padStart(2,'0')}</div>
+        <div class="img-name">${img.alt}</div>
+      </div>
+    </div>`).join('');
+}
+
+function setView(v) {
+  currentView = v;
+  document.getElementById('gridBtn').classList.toggle('active', v === 'grid');
+  document.getElementById('listBtn').classList.toggle('active', v === 'list');
+  if (activeFolderIdx >= 0) renderGrid(getFilteredImages());
+}
+
+function filterGallery(q) {
+  if (activeFolderIdx < 0) return;
+  renderGrid(getFilteredImages(q));
+}
+
+function getFilteredImages(q) {
+  q = q || document.getElementById('searchInput').value;
+  const imgs = FOLDERS[activeFolderIdx].images;
+  if (!q) return imgs;
+  return imgs.filter(img => img.alt.toLowerCase().includes(q.toLowerCase()));
+}
+
+/* ── Lightbox ── */
+let lbFolderIdx = 0, lbImgIdx = 0, lbImages = [], lbPlaying = false, lbTimer = null;
+
+function openLightbox(fi, ii) {
+  lbFolderIdx = fi; lbImgIdx = ii;
+  lbImages = FOLDERS[fi].images;
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+  lbRender(); lbBuildStrip();
+}
+function startSlideshow() {
+  if (activeFolderIdx < 0) return;
+  openLightbox(activeFolderIdx, 0);
+  lbPlaying = true; lbUpdatePlayBtn(); lbStartTimer();
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+  lbStopTimer(); lbPlaying = false; lbUpdatePlayBtn();
+}
+function lbRender() {
+  const img = lbImages[lbImgIdx], f = FOLDERS[lbFolderIdx];
+  document.getElementById('lbFolderBadge').textContent = f.label;
+  document.getElementById('lbTitle').textContent = ' — ' + img.alt;
+  document.getElementById('lbCounter').textContent = `${lbImgIdx + 1} / ${lbImages.length}`;
+  const wrap = document.getElementById('lbImgWrap');
+  wrap.innerHTML = `<img src="${img.src}" alt="${img.alt}"
+    onerror="this.outerHTML='<div style=\\'min-height:320px;width:600px;max-width:90vw;background:linear-gradient(135deg,var(--navy-dark),var(--navy-light));border-radius:var(--radius-md);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:40px\\'><i class=\\'fas fa-camera\\' style=\\'font-size:56px;color:rgba(255,255,255,.5)\\'></i><p style=\\'color:rgba(255,255,255,.7);font-size:.9rem\\'>${img.alt}</p></div>'">`;
+  document.querySelectorAll('.lb-thumb').forEach((t, i) => {
+    t.classList.toggle('active', i === lbImgIdx);
+    if (i === lbImgIdx) t.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  });
+  lbResetProgress();
+  if (lbPlaying) lbAnimateProgress(parseInt(document.getElementById('lbSpeed').value));
+}
+function lbBuildStrip() {
+  document.getElementById('lbStrip').innerHTML = lbImages.map((img, i) =>
+    `<img class="lb-thumb ${i === lbImgIdx ? 'active' : ''}" src="${img.src}" alt="${img.alt}"
+          onclick="lbJump(${i})" onerror="this.style.display='none'">`).join('');
+}
+function lbJump(i) { lbImgIdx = i; lbRender(); }
+function lbNav(dir) { lbImgIdx = (lbImgIdx + dir + lbImages.length) % lbImages.length; lbRender(); }
+function lbTogglePlay() { lbPlaying = !lbPlaying; lbUpdatePlayBtn(); if (lbPlaying) lbStartTimer(); else lbStopTimer(); }
+function lbStartTimer() {
+  const spd = parseInt(document.getElementById('lbSpeed').value);
+  lbStopTimer(); lbTimer = setInterval(() => lbNav(1), spd); lbAnimateProgress(spd);
+}
+function lbStopTimer() { clearInterval(lbTimer); lbTimer = null; lbResetProgress(); }
+function lbUpdateSpeed() { if (lbPlaying) { lbStopTimer(); lbStartTimer(); } }
+function lbUpdatePlayBtn() {
+  document.getElementById('lbPlayBtn').classList.toggle('playing', lbPlaying);
+  document.getElementById('lbPlayIcon').className = 'fas fa-' + (lbPlaying ? 'pause' : 'play');
+  document.getElementById('lbPlayText').textContent = lbPlaying ? 'Pause' : 'Auto Play';
+}
+function lbResetProgress() {
+  const b = document.getElementById('lbProgressBar');
+  b.style.transition = 'none'; b.style.width = '0%';
+}
+function lbAnimateProgress(dur) {
+  const b = document.getElementById('lbProgressBar');
+  requestAnimationFrame(() => { b.style.transition = `width ${dur}ms linear`; b.style.width = '100%'; });
+}
+function lbFullscreen() {
+  const el = document.getElementById('lightbox'), ico = document.getElementById('lbFsIcon');
+  if (!document.fullscreenElement) { el.requestFullscreen(); ico.className = 'fas fa-compress'; }
+  else { document.exitFullscreen(); ico.className = 'fas fa-expand'; }
+}
+
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('active')) return;
+  if (e.key === 'ArrowRight') lbNav(1);
+  else if (e.key === 'ArrowLeft') lbNav(-1);
+  else if (e.key === 'Escape') closeLightbox();
+  else if (e.key === ' ') { e.preventDefault(); lbTogglePlay(); }
+});
+
+/* ── Zoom ── */
+var _z = 1, _zw = null;
+document.addEventListener('DOMContentLoaded', () => {
+  _zw = document.createElement('div');
+  _zw.id = 'zoom-wrap';
+  _zw.style.transformOrigin = 'top left';
+  while (document.body.firstChild) _zw.appendChild(document.body.firstChild);
+  document.body.appendChild(_zw);
+  buildFolderRow();
+
+  /* ✅ FIXED: navbar search redirects to search.html */
+  var navInput = document.getElementById('navSearchInput');
+  var navIcon  = document.getElementById('navSearchIcon');
+
+  function doNavSearch() {
+    var q = navInput.value.trim();
+    if (q) window.location.href = 'search.html?q=' + encodeURIComponent(q);
+  }
+
+  navInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') doNavSearch();
+  });
+
+  navIcon.addEventListener('click', doNavSearch);
+});
+
+function pageZoom(d) {
+  _z = Math.min(1.5, Math.max(0.6, parseFloat((_z + d * .1).toFixed(2))));
+  if (_zw) { _zw.style.transform = 'scale(' + _z + ')'; _zw.style.width = (100/_z) + '%'; }
+}
+function pageZoomReset() {
+  _z = 1;
+  if (_zw) { _zw.style.transform = 'scale(1)'; _zw.style.width = '100%'; }
+}
+
+/* ── Scroll top ── */
+const stb = document.getElementById('scrollTopBtn');
+window.addEventListener('scroll', () => stb.classList.toggle('visible', window.scrollY > 300), { passive: true });
+</script>
+</body>
+</html>

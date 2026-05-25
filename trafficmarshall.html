@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Hyderabad Traffic Police – Traffic Marshal Scheme: Trained marshals and patrol bikes deployed under a PPP model to improve traffic flow and road safety.">
+  <meta property="og:title" content="Traffic Marshal Scheme – Hyderabad Traffic Police">
+  <meta property="og:type" content="website">
+  <title>Traffic Marshal Scheme – Hyderabad Traffic Police</title>
+  <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy:       #0B3C5D;
+      --navy-dark:  #072a43;
+      --navy-light: #145DA0;
+      --gold:       #FFC107;
+      --gold-dark:  #e0a800;
+      --red:        #D72638;
+      --green:      #198754;
+      --white:      #ffffff;
+      --off-white:  #f5f7fa;
+      --gray-100:   #e9ecef;
+      --gray-300:   #dee2e6;
+      --gray-600:   #6c757d;
+      --gray-800:   #343a40;
+      --radius-sm:  6px;
+      --radius-md:  10px;
+      --radius-lg:  16px;
+      --shadow-sm:  0 2px 8px rgba(0,0,0,.08);
+      --shadow-md:  0 4px 20px rgba(0,0,0,.12);
+      --transition: 0.22s ease;
+      --font-body:  'DM Sans', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { margin: 0; padding: 0; overflow-x: hidden; }
+    body {
+      font-family: var(--font-body); font-size: 15px;
+      color: var(--gray-800); background: var(--off-white);
+      margin: 0; padding: 0; overflow-x: hidden; transform-origin: top left;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+    .skip-link { position: absolute; top: -40px; left: 0; background: var(--gold); color: #000; padding: 8px 16px; font-weight: 700; z-index: 99999; transition: top .2s; }
+    .skip-link:focus { top: 0; }
+
+    .container-htp { width: 100%; max-width: 1280px; margin-left: auto; margin-right: auto; padding-left: 32px; padding-right: 32px; }
+    @media (max-width: 768px) { .container-htp { padding-left: 16px; padding-right: 16px; } }
+
+    /* ── TOP HEADER ── */
+    .top-header { width: 100%; background: linear-gradient(100deg, var(--navy-dark) 0%, var(--navy-light) 100%); border-bottom: 3px solid var(--gold); color: var(--white); padding: 10px 0; }
+    .top-header__logo { height: 80px; width: auto; }
+    .top-header__title { font-size: 1.5rem; font-weight: 700; color: var(--gold); line-height: 1.2; white-space: nowrap; }
+    .top-header__subtitle { font-size: 0.78rem; color: rgba(255,255,255,.75); letter-spacing: .5px; }
+    .top-header__actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+    .btn-htp { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 600; border: none; cursor: pointer; transition: filter var(--transition), transform var(--transition); }
+    .btn-htp:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .btn-challan  { background: var(--red);   color: var(--white); }
+    .btn-whatsapp { background: #25D366;       color: var(--white); }
+    .btn-feedback { background: var(--gold);   color: #000; }
+    .top-header__info { font-size: .8rem; color: rgba(255,255,255,.85); }
+    .top-header__info a { color: var(--gold); font-weight: 600; }
+    .top-header__info a:hover { text-decoration: underline; }
+
+    .zoom-ctrl { display: flex; align-items: center; gap: 2px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); border-radius: 24px; padding: 3px; }
+    .zoom-ctrl button { background: transparent; border: none; color: rgba(255,255,255,.75); padding: 4px 9px; border-radius: 20px; font-size: .78rem; font-weight: 700; cursor: pointer; font-family: var(--font-body); transition: background var(--transition), color var(--transition); }
+    .zoom-ctrl button:hover { background: rgba(255,255,255,.15); color: #fff; }
+    .zoom-ctrl button.reset { color: var(--gold); font-size: .85rem; }
+
+    .lang-dropdown-wrap { position: relative; display: inline-flex; align-items: center; }
+    .lang-dropdown-wrap .lang-globe { position: absolute; left: 9px; color: rgba(255,255,255,.6); font-size: .78rem; pointer-events: none; z-index: 1; }
+    .lang-select { appearance: none; -webkit-appearance: none; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.25); border-radius: 20px; color: #fff; font-family: var(--font-body); font-size: .78rem; font-weight: 600; padding: 5px 28px 5px 26px; cursor: pointer; outline: none; min-width: 90px; transition: background var(--transition), border-color var(--transition); }
+    .lang-select:hover  { background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.45); }
+    .lang-select:focus  { border-color: var(--gold); background: rgba(255,255,255,.18); }
+    .lang-select option { background: var(--navy-dark); color: #fff; font-weight: 600; }
+    .lang-caret { position: absolute; right: 9px; color: rgba(255,255,255,.55); font-size: .65rem; pointer-events: none; }
+
+    /* ── NAVBAR ── */
+    .main-nav { width: 100%; background: var(--navy); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,.2); }
+    .main-nav .nav-link { color: rgba(255,255,255,.85) !important; font-weight: 500; font-size: .88rem; padding: 10px 14px !important; border-radius: var(--radius-sm); transition: background var(--transition), color var(--transition); }
+    .main-nav .nav-link:hover, .main-nav .nav-link:focus { color: var(--gold) !important; background: rgba(255,255,255,.08); }
+    .main-nav .nav-link.active { color: var(--gold) !important; }
+    .main-nav .dropdown-menu { border: none; border-radius: var(--radius-md); padding: 8px; box-shadow: var(--shadow-md); margin-top: 6px; }
+    .main-nav .dropdown-item { border-radius: var(--radius-sm); padding: 8px 12px; font-size: .86rem; transition: background var(--transition); }
+    .main-nav .dropdown-item:hover { background: var(--navy); color: #fff; }
+    .nav-extras { flex-shrink: 0; }
+    .nav-search { position: relative; display: flex; align-items: center; }
+    .nav-search input { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); border-radius: 20px; color: var(--white); padding: 6px 14px 6px 34px; font-size: .8rem; width: 180px; outline: none; font-family: var(--font-body); transition: background var(--transition), border-color var(--transition), width var(--transition); }
+    .nav-search input::placeholder { color: rgba(255,255,255,.45); }
+    .nav-search input:focus { background: rgba(255,255,255,.18); border-color: var(--gold); width: 220px; }
+    .nav-search-icon { position: absolute; left: 11px; color: rgba(255,255,255,.45); font-size: .78rem; pointer-events: none; }
+    .nav-search:focus-within .nav-search-icon { color: var(--gold); }
+    @media (max-width: 991px) { .nav-extras { margin: 10px 0 6px; flex-wrap: wrap; justify-content: center; width: 100%; } .nav-search input { width: 100%; border-radius: 8px; } .nav-search input:focus { width: 100%; } .nav-search { width: 100%; } }
+
+    /* ── SECTION HEADING ── */
+    .section-heading { display: flex; align-items: center; gap: 10px; font-size: 1.1rem; font-weight: 700; color: var(--white); background: linear-gradient(90deg, var(--navy) 0%, var(--navy-light) 100%); padding: 12px 24px; border-radius: var(--radius-md); letter-spacing: .5px; margin-bottom: 1.5rem; }
+
+    /* ── HERO ACCENT BAR ── */
+    .hero-accent { display: flex; align-items: center; gap: 70px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); border-radius: var(--radius-md); padding: 14px 20px; margin-top: 24px; flex-wrap: wrap; }
+    .hero-accent-item { display: flex; align-items: center; gap: 8px; font-size: .82rem; color: rgba(255,255,255,.85); }
+    .hero-accent-item i { color: var(--gold); }
+    .hero-accent-divider { width: 1px; height: 20px; background: rgba(255,255,255,.2); }
+    @media (max-width: 640px) { .hero-accent-divider { display: none; } }
+
+    /* ── STAT CARDS ── */
+    .stat-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 60px; margin-bottom: 28px; }
+    .stat-card { background: var(--white); border-radius: var(--radius-md); padding: 22px 20px; box-shadow: var(--shadow-sm); border-top: 4px solid var(--navy); text-align: center; transition: transform var(--transition), box-shadow var(--transition); }
+    .stat-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .stat-card .num { font-size: 1.9rem; font-weight: 800; color: var(--navy); line-height: 1; }
+    .stat-card .lbl { font-size: .78rem; color: var(--gray-600); margin-top: 6px; font-weight: 500; }
+    .stat-card.red-top   { border-top-color: var(--red); }
+    .stat-card.red-top   .num { color: var(--red); }
+    .stat-card.green-top { border-top-color: var(--green); }
+    .stat-card.green-top .num { color: var(--green); }
+    .stat-card.gold-top  { border-top-color: var(--gold-dark); }
+    .stat-card.gold-top  .num { color: var(--gold-dark); }
+
+    /* ── CONTENT CARD ── */
+    .content-card { background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); padding: 32px; margin-bottom: 24px; }
+
+    /* ── INTRO BANNER ── */
+    .intro-banner { background: #EDF5FF; border-left: 5px solid var(--navy-light); border-radius: var(--radius-md); padding: 18px 22px; display: flex; gap: 14px; align-items: flex-start; margin-bottom: 28px; }
+    .intro-banner i { color: var(--navy-light); font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+    .intro-banner p { font-size: .9rem; color: var(--gray-800); line-height: 1.7; margin: 0; }
+
+    /* ── DETAIL CARDS ── */
+    .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 768px) { .detail-grid { grid-template-columns: 1fr; } }
+
+    .detail-card { border-radius: var(--radius-md); border: 1px solid var(--gray-300); overflow: hidden; }
+    .detail-card-header { padding: 13px 18px; font-weight: 700; font-size: .9rem; display: flex; align-items: center; gap: 10px; }
+    .detail-card-header.blue  { background: var(--navy);  color: #fff; }
+    .detail-card-header.green { background: var(--green); color: #fff; }
+    .detail-card-header.gold  { background: var(--gold-dark); color: #fff; }
+    .detail-card-header.red   { background: var(--red);   color: #fff; }
+    .detail-card-body { padding: 20px 18px; background: var(--white); }
+    .detail-card-body p { font-size: .85rem; color: var(--gray-800); line-height: 1.7; margin-bottom: 12px; }
+    .detail-card-body p:last-child { margin-bottom: 0; }
+    .detail-card-body strong { color: var(--navy); }
+
+    /* ── FEATURE LIST ── */
+    .feature-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+    .feature-list li { display: flex; align-items: flex-start; gap: 10px; font-size: .85rem; color: var(--gray-800); line-height: 1.5; }
+    .feature-list li i { color: var(--navy-light); margin-top: 2px; flex-shrink: 0; font-size: .85rem; }
+    .feature-list li.green-dot i { color: var(--green); }
+    .feature-list li.gold-dot  i { color: var(--gold-dark); }
+    .feature-list li.red-dot   i { color: var(--red); }
+
+    /* ── PROCESS STEPS ── */
+    .process-steps { display: flex; flex-direction: column; gap: 0; }
+    .step-row { display: flex; gap: 20px; align-items: flex-start; position: relative; }
+    .step-row:not(:last-child)::after { content: ''; position: absolute; left: 19px; top: 48px; width: 2px; height: calc(100% - 8px); background: linear-gradient(to bottom, var(--navy-light), var(--gray-300)); z-index: 0; }
+    .step-num { width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0; background: var(--navy); color: var(--white); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .9rem; z-index: 1; box-shadow: 0 0 0 4px var(--off-white); }
+    .step-body { background: var(--white); border: 1px solid var(--gray-300); border-radius: var(--radius-md); padding: 16px 18px; flex: 1; margin-bottom: 14px; transition: border-color var(--transition), box-shadow var(--transition); }
+    .step-body:hover { border-color: var(--navy-light); box-shadow: var(--shadow-sm); }
+    .step-body h4 { font-size: .9rem; font-weight: 700; color: var(--navy); margin: 0 0 5px; }
+    .step-body p  { font-size: .82rem; color: var(--gray-600); margin: 0; line-height: 1.6; }
+
+    /* ── EQUIPMENT GRID ── */
+    .equip-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; }
+    .equip-card { background: var(--off-white); border: 1px solid var(--gray-300); border-radius: var(--radius-md); padding: 18px 14px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition); }
+    .equip-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--navy-light); }
+    .equip-icon { width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+    .equip-card h4 { font-size: .85rem; font-weight: 700; color: var(--navy); margin: 0; }
+    .equip-card p  { font-size: .77rem; color: var(--gray-600); margin: 0; line-height: 1.5; }
+
+    /* ── HCSC BANNER ── */
+    .hcsc-banner { background: var(--white); border: 1.5px solid var(--gray-300); border-radius: var(--radius-lg); padding: 22px 28px; display: flex; align-items: center; gap: 18px; margin-top: 4px; }
+    .hcsc-icon-wrap { width: 56px; height: 56px; background: #EDF5FF; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .hcsc-icon-wrap i { color: var(--navy-light); font-size: 22px; }
+    .hcsc-info h4 { font-size: .95rem; font-weight: 700; color: var(--navy); margin: 0 0 4px; }
+    .hcsc-info p  { font-size: .83rem; color: var(--gray-600); margin: 0; line-height: 1.6; }
+    @media (max-width: 640px) { .hcsc-banner { flex-direction: column; align-items: flex-start; } }
+
+    /* ── PPP BADGES ── */
+    .ppp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+    .ppp-card { border-radius: var(--radius-md); padding: 18px; border: 1px solid var(--gray-300); background: var(--white); display: flex; align-items: flex-start; gap: 12px; transition: box-shadow var(--transition), transform var(--transition); }
+    .ppp-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .ppp-badge { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 16px; }
+    .ppp-card h4 { font-size: .85rem; font-weight: 700; color: var(--navy); margin: 0 0 4px; }
+    .ppp-card p  { font-size: .78rem; color: var(--gray-600); margin: 0; line-height: 1.5; }
+
+    /* ── ICON BOX GRID (quick nav) ── */
+    .icon-box-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
+    .icon-box { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 20px 12px; border-radius: var(--radius-md); border: 1px solid var(--gray-300); background: var(--white); text-align: center; cursor: pointer; transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition); text-decoration: none; color: var(--gray-800); }
+    .icon-box:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--navy-light); }
+    .icon-box span { font-size: .82rem; font-weight: 600; line-height: 1.3; }
+    .icon-box.blue   { background: #EDF5FF; border-color: #b6d4fe; }
+    .icon-box.green  { background: #E8F8F0; border-color: #a3cfbb; }
+    .icon-box.red    { background: #FDE8EA; border-color: #f5c2c7; }
+    .icon-box.orange { background: #FFF4E6; border-color: #fecba1; }
+
+    /* ── ARRIVE ALIVE ── */
+    .aa-banner { width: 100%; background: linear-gradient(120deg, #16A085 0%, #1ABC9C 100%); padding: 10px 40px; position: relative; overflow: hidden; }
+    .aa-banner::before { content: ''; position: absolute; top: -80px; right: -80px; width: 340px; height: 300px; background: rgba(255,255,255,.06); border-radius: 50%; pointer-events: none; }
+    .aa-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; position: relative; z-index: 1; }
+    .aa-badge { display: inline-block; background: rgba(255,255,255,.2); color: #fff; font-size: .72rem; font-weight: 600; padding: 4px 14px; border-radius: 20px; letter-spacing: .4px; margin-bottom: 8px; }
+    .aa-title { font-size: 1.5rem; font-weight: 800; color: #fff; margin: 0 0 6px; line-height: 1.2; }
+    .aa-desc  { font-size: .88rem; color: rgba(255,255,255,.88); line-height: 1.6; margin: 0 0 10px; }
+    .aa-btn   { display: inline-block; background: #fff; color: #16A085; font-size: .88rem; font-weight: 700; padding: 10px 28px; border-radius: var(--radius-sm); transition: background var(--transition), transform var(--transition); }
+    .aa-btn:hover { background: #e8faf6; transform: translateY(-2px); color: #16A085; }
+    .aa-visual { display: flex; align-items: center; justify-content: center; }
+    @media (max-width: 768px) { .aa-inner { grid-template-columns: 1fr; } .aa-visual { display: none; } .aa-title { font-size: 1.3rem; } .aa-banner { padding: 10px 16px; } }
+
+    /* ── FOOTER ── */
+    .modern-footer { width: 100%; background: #f4f7fb; border-top: 4px solid #0B3D91; }
+    .footer-logo { width: 130px; }
+    .footer-heading { color: #0B3D91; font-weight: 700; margin-bottom: 15px; }
+    .footer-text { color: #555; line-height: 1.8; font-size: .88rem; }
+    .footer-btn { display: inline-block; margin-top: 10px; background: #0B3D91; color: #fff; padding: 12px 22px; border-radius: 30px; font-weight: 600; transition: .3s; }
+    .footer-btn:hover { background: #1565C0; color: #fff; transform: translateY(-2px); }
+    .footer-title { color: #111; font-weight: 700; margin-bottom: 20px; position: relative; font-size: .95rem; }
+    .footer-title::after { content: ''; width: 45px; height: 3px; background: #8BC34A; display: block; margin-top: 8px; }
+    .footer-links { list-style: none; padding: 0; }
+    .footer-links li { margin-bottom: 12px; }
+    .footer-links a { color: #444; font-size: .85rem; transition: .3s; }
+    .footer-links a:hover { color: #0B3D91; padding-left: 5px; }
+    .social-icons { display: flex; gap: 15px; flex-wrap: wrap; }
+    .social-icons a { width: 48px; height: 48px; border-radius: 50%; background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,.1); display: flex; align-items: center; justify-content: center; color: #0B3D91; font-size: 20px; transition: .3s; cursor: pointer; }
+    .social-icons a:hover { background: #0B3D91; color: #fff; transform: translateY(-4px); }
+    .footer-subtitle { font-weight: 700; margin-bottom: 10px; }
+    .official-link { color: #0B3D91; font-weight: 600; }
+    .footer-bottom { width: 100%; background: #111c2e; color: #fff; padding: 18px 0; font-size: .82rem; }
+    .footer-bottom a { color: #fff; }
+    .footer-bottom a:hover { color: var(--gold); }
+    @media (max-width: 768px) { .footer-title, .footer-heading, .footer-text { text-align: center; } .footer-title::after { margin: auto; margin-top: 8px; } .social-icons { justify-content: center; } .top-header__actions { justify-content: center; } .top-header__info { text-align: center; } }
+
+    /* ── POPUP ── */
+    .center-popup { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; justify-content: center; align-items: center; z-index: 99999; }
+    .popup-box { position: relative; width: 70%; max-width: 900px; background: #fff; padding: 10px; border-radius: 15px; box-shadow: 0 5px 25px rgba(0,0,0,0.5); animation: popupZoom 0.4s ease; }
+    .popup-box img { width: 100%; height: auto; border-radius: 10px; display: block; }
+    .close-btn { position: absolute; top: -15px; right: -15px; background: red; color: #fff; width: 35px; height: 35px; line-height: 35px; text-align: center; border-radius: 50%; font-size: 22px; font-weight: bold; cursor: pointer; box-shadow: 0 3px 10px rgba(0,0,0,0.5); }
+    .close-btn:hover { background: #cc0000; }
+    @keyframes popupZoom { from { transform: scale(0.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+    /* ── CHATBOT ── */
+    #chatbotToggle { position: fixed; bottom: 24px; right: 80px; z-index: 1001; width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); border: 2.5px solid var(--gold); color: var(--white); cursor: pointer; font-size: 22px; box-shadow: 0 4px 20px rgba(11,60,93,.4); display: flex; align-items: center; justify-content: center; transition: transform var(--transition), box-shadow var(--transition); animation: chatPulse 2.5s infinite; }
+    #chatbotToggle:hover { transform: translateY(-3px) scale(1.07); animation: none; }
+    @keyframes chatPulse { 0%,100% { box-shadow: 0 4px 20px rgba(11,60,93,.4), 0 0 0 0 rgba(255,193,7,.55); } 50% { box-shadow: 0 4px 20px rgba(11,60,93,.4), 0 0 0 10px rgba(255,193,7,0); } }
+    #chatbotToggle .chat-badge { position: absolute; top: -4px; right: -4px; background: var(--gold); color: #000; font-size: .6rem; font-weight: 800; border-radius: 10px; padding: 1px 5px; border: 1.5px solid #fff; }
+
+    #chatbotWindow { position: fixed; bottom: 94px; right: 80px; z-index: 1000; width: 340px; max-height: 480px; background: var(--white); border-radius: var(--radius-lg); box-shadow: 0 8px 40px rgba(0,0,0,.18); display: flex; flex-direction: column; overflow: hidden; opacity: 0; pointer-events: none; transform: translateY(16px) scale(.97); transition: opacity .25s ease, transform .25s ease; }
+    #chatbotWindow.open { opacity: 1; pointer-events: auto; transform: none; }
+    .chatbot-header { background: linear-gradient(100deg, var(--navy-dark) 0%, var(--navy-light) 100%); border-bottom: 3px solid var(--gold); padding: 14px 16px; display: flex; align-items: center; gap: 12px; }
+    .chatbot-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .chatbot-header-info { flex: 1; }
+    .chatbot-header-info h6 { margin: 0; color: var(--white); font-size: .9rem; font-weight: 700; }
+    .chatbot-header-info small { color: rgba(255,255,255,.7); font-size: .72rem; }
+    .chatbot-close { background: rgba(255,255,255,.12); border: none; color: rgba(255,255,255,.7); width: 28px; height: 28px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: .8rem; }
+    .chatbot-close:hover { background: rgba(255,255,255,.22); color: #fff; }
+    .chatbot-body { flex: 1; padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: var(--off-white); }
+    .chat-msg { display: flex; gap: 8px; align-items: flex-end; }
+    .chat-msg.bot  { justify-content: flex-start; }
+    .chat-msg.user { justify-content: flex-end; }
+    .chat-bubble { max-width: 80%; padding: 10px 14px; border-radius: 16px; font-size: .83rem; line-height: 1.5; }
+    .chat-msg.bot  .chat-bubble { background: var(--white); color: var(--gray-800); border-bottom-left-radius: 4px; box-shadow: var(--shadow-sm); }
+    .chat-msg.user .chat-bubble { background: var(--navy); color: #fff; border-bottom-right-radius: 4px; }
+    .chat-mini-avatar { width: 26px; height: 26px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; }
+    .chatbot-suggestions { display: flex; flex-direction: column; gap: 6px; margin-top: 4px; }
+    .chat-suggest-btn { background: var(--white); border: 1.5px solid var(--gray-300); border-radius: 20px; padding: 7px 12px; font-size: .78rem; color: var(--navy); font-weight: 600; cursor: pointer; text-align: left; font-family: var(--font-body); display: flex; align-items: center; gap: 7px; transition: border-color var(--transition), background var(--transition); }
+    .chat-suggest-btn:hover { border-color: var(--navy); background: #EDF5FF; }
+    .chat-suggest-btn i { color: var(--gold); }
+    .chat-typing { display: flex; gap: 4px; align-items: center; padding: 10px 14px; background: var(--white); border-radius: 16px; border-bottom-left-radius: 4px; box-shadow: var(--shadow-sm); width: fit-content; }
+    .chat-typing span { width: 7px; height: 7px; border-radius: 50%; background: var(--gray-600); animation: typBounce 1.2s infinite; }
+    .chat-typing span:nth-child(2) { animation-delay: .2s; }
+    .chat-typing span:nth-child(3) { animation-delay: .4s; }
+    @keyframes typBounce { 0%,60%,100% { transform: translateY(0); } 30% { transform: translateY(-6px); } }
+    .chatbot-footer { padding: 10px; border-top: 1px solid var(--gray-100); background: var(--white); }
+    .chatbot-input-row { display: flex; gap: 8px; align-items: center; background: var(--off-white); border: 1.5px solid var(--gray-300); border-radius: 24px; padding: 6px 6px 6px 14px; }
+    .chatbot-input-row input { flex: 1; border: none; background: transparent; font-size: .82rem; font-family: var(--font-body); color: var(--gray-800); outline: none; }
+    .chatbot-input-row input::placeholder { color: var(--gray-600); }
+    .chatbot-send { width: 32px; height: 32px; border-radius: 50%; background: var(--navy); border: none; color: #fff; display: flex; align-items: center; justify-content: center; font-size: .8rem; cursor: pointer; transition: background var(--transition); }
+    .chatbot-send:hover { background: var(--navy-light); }
+
+    /* ── SCROLL TOP ── */
+    #scrollTopBtn { position: fixed; bottom: 24px; right: 24px; z-index: 999; width: 46px; height: 46px; border-radius: 50%; background: var(--red); color: var(--white); border: none; cursor: pointer; font-size: 18px; box-shadow: var(--shadow-md); opacity: 0; pointer-events: none; transition: opacity var(--transition), transform var(--transition); display: flex; align-items: center; justify-content: center; }
+    #scrollTopBtn.visible { opacity: 1; pointer-events: auto; }
+    #scrollTopBtn:hover { transform: translateY(-3px); }
+
+    mark.htp-highlight { background: var(--gold); color: #000; border-radius: 2px; padding: 0 2px; }
+
+    @media (max-width: 480px) { #chatbotWindow { right: 12px; left: 12px; width: auto; bottom: 86px; } #chatbotToggle { right: 76px; bottom: 20px; } }
+  </style>
+</head>
+
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- POPUP -->
+  <div id="centerPopup" class="center-popup">
+    <div class="popup-box">
+      <span class="close-btn">&times;</span>
+      <img src="img/popupimg.png" alt="Traffic Banner">
+    </div>
+  </div>
+
+  <!-- TOP HEADER -->
+  <header class="top-header">
+    <div class="container-htp">
+      <div class="row align-items-center gy-2">
+        <div class="col-lg-4 col-md-12 text-center text-lg-start">
+          <a href="index.html" class="d-inline-flex align-items-center gap-2" aria-label="Hyderabad Traffic Police Home">
+            <img src="img/MainLogo1.png" class="top-header__logo" alt="Hyderabad Traffic Police logo">
+            <div>
+              <div class="top-header__title">Hyderabad Traffic Police</div>
+              <div class="top-header__subtitle">For You, With You, Always</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-4 col-md-12 text-center">
+          <div class="top-header__actions">
+            <a href="https://echallan.tspolice.gov.in/publicview/" target="_blank" rel="noopener" class="btn-htp btn-challan">
+              <img src="img/Paynow.png" width="18" height="18" alt="" aria-hidden="true"> Pay Challan
+            </a>
+            <a href="https://wa.me/9010203626" target="_blank" rel="noopener" class="btn-htp btn-whatsapp">
+              <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
+            </a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdIr2t94wVePyi562lUbeOyavRPi6vNgLadZl-lPrj53PDTYw/viewform" target="_blank" rel="noopener" class="btn-htp btn-feedback">
+              <i class="fa fa-comment-dots" aria-hidden="true"></i> Feedback
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-12 text-center text-lg-end">
+          <div class="top-header__info mb-1">
+            <i class="fa fa-phone" aria-hidden="true"></i> Helpline:
+            <a href="tel:9010203626">9010203626</a>&nbsp;&nbsp;
+            <i class="fa fa-phone-alt" aria-hidden="true"></i> E-Challan:
+            <a href="tel:04027852721">040-27852721</a>
+          </div>
+          <div class="d-flex gap-2 justify-content-center justify-content-lg-end flex-wrap align-items-center">
+            <div class="zoom-ctrl" aria-label="Zoom controls">
+              <button onclick="pageZoom(1)"     aria-label="Zoom in"   title="Zoom In">A+</button>
+              <button onclick="pageZoomReset()" aria-label="Reset zoom" title="Reset" class="reset">&#8635;</button>
+              <button onclick="pageZoom(-1)"    aria-label="Zoom out"  title="Zoom Out">A&#8722;</button>
+            </div>
+            <div class="lang-dropdown-wrap" aria-label="Select language">
+              <i class="fa fa-globe lang-globe" aria-hidden="true"></i>
+              <select class="lang-select" id="langSelect" onchange="doTranslate(this.value)" aria-label="Select language">
+                <option value="en">English</option>
+                <option value="te">తెలుగు</option>
+                <option value="hi">हिन्दी</option>
+                <option value="ta">தமிழ்</option>
+                <option value="ur">اردو</option>
+                <option value="kn">ಕನ್ನಡ</option>
+                <option value="ml">മലയാളം</option>
+              </select>
+              <i class="fa fa-chevron-down lang-caret" aria-hidden="true"></i>
+            </div>
+            <div id="gt_hidden" style="display:none;position:absolute;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAVBAR -->
+  <nav class="main-nav navbar navbar-expand-lg" aria-label="Main navigation">
+    <div class="container-htp">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain" aria-controls="navMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">About Us</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="introduction.html">Introduction</a></li>
+              <li><a class="dropdown-item" href="org_chart.html">Organization Chart</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" data-bs-toggle="dropdown" aria-expanded="false">Services</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="wrong_challan.html">Wrong Challan</a></li>
+              <li><a class="dropdown-item" href="wheel.html">Wheel Clamp</a></li>
+              <li><a class="dropdown-item active" href="trafficmarshal.html">Traffic Marshal</a></li>
+              <li><a class="dropdown-item" href="noc_tov.html">Vehicle NOC</a></li>
+              <li><a class="dropdown-item" href="noc_schools.html">School NOC</a></li>
+              <li><a class="dropdown-item" href="noc_plying.html">Vehicle Plying</a></li>
+              <li><a class="dropdown-item" href="noc_petrol.html">Petrol Pump NOC</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Information</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="road_rules.html">Road Rules</a></li>
+              <li><a class="dropdown-item" href="road_sense.html">Road Sense</a></li>
+              <li><a class="dropdown-item" href="road_smart.html">Road Smart</a></li>
+              <li><a class="dropdown-item" href="statistics.html">Statistics</a></li>
+              <li><a class="dropdown-item" href="driving_license.html">Driving License</a></li>
+              <li><a class="dropdown-item" href="vehicle_registration.html">Vehicle Registration</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="know_your_ps.html">Know Your PS</a></li>
+          <li class="nav-item"><a class="nav-link" href="rti.html">RTI</a></li>
+          <li class="nav-item"><a class="nav-link" href="campaigns.html">Road Safety</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">T20 Test</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="https://echallan.tspolice.gov.in/TGTrafficTest/jsp/LoginView.jsp" target="_blank" rel="noopener">Online Test</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="contact_us.html">Contact</a></li>
+        </ul>
+        <div class="nav-extras d-flex align-items-center gap-2 ms-3">
+          <div class="nav-search" role="search">
+            <label for="navSearchInput" class="visually-hidden">Search site</label>
+            <input type="search" id="navSearchInput" placeholder="Search…" aria-label="Search site content">
+            <i class="fa fa-search nav-search-icon" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main id="main-content">
+
+    <!-- HERO -->
+    <section style="background:linear-gradient(120deg, var(--navy-dark) 0%, var(--navy-light) 100%); color:#fff; padding:50px 0 40px;">
+      <div class="container-htp">
+        <h1 style="font-size:2.2rem; font-weight:800; margin:0 0 10px; color:#fff;">
+          <i class="fa fa-user-shield" style="color:var(--gold); margin-right:12px;"></i>Traffic Marshal Scheme
+        </h1>
+        <p style="font-size:1rem; color:rgba(255,255,255,.85); max-width:720px; margin:0 0 20px;">
+          Hyderabad Traffic Police's PPP initiative deploying trained marshals and patrol bikes to improve traffic flow and road safety across the city.
+        </p>
+        <div class="hero-accent">
+          <div class="hero-accent-item"><i class="fa fa-calendar-alt"></i> Launched August 21, 2025</div>
+          <div class="hero-accent-divider"></div>
+          <div class="hero-accent-item"><i class="fa fa-handshake"></i> Public-Private Partnership</div>
+          <div class="hero-accent-divider"></div>
+          <div class="hero-accent-item"><i class="fa fa-graduation-cap"></i> TTI Goshamahal Trained</div>
+          <div class="hero-accent-divider"></div>
+          <div class="hero-accent-item"><i class="fa fa-phone"></i> Helpline: <a href="tel:9010203626" style="color:var(--gold); font-weight:700; margin-left:4px;">9010203626</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTENT -->
+    <section style="padding:36px 0 60px; background:var(--off-white);">
+      <div class="container-htp">
+
+        <!-- STAT CARDS -->
+        <div class="stat-cards">
+          <div class="stat-card">
+            <div class="num">100+</div>
+            <div class="lbl"><i class="fa fa-users" style="margin-right:4px; color:var(--navy);"></i> Trained Marshals</div>
+          </div>
+          <div class="stat-card green-top">
+            <div class="num">50</div>
+            <div class="lbl"><i class="fa fa-motorcycle" style="margin-right:4px;"></i> Patrol Bikes Deployed</div>
+          </div>
+          <div class="stat-card gold-top">
+            <div class="num">5–10%</div>
+            <div class="lbl"><i class="fa fa-chart-line" style="margin-right:4px;"></i> Traffic Efficiency Boost</div>
+          </div>
+          <div class="stat-card red-top">
+            <div class="num">500</div>
+            <div class="lbl"><i class="fa fa-expand-arrows-alt" style="margin-right:4px;"></i> Scale-Up Target</div>
+          </div>
+        </div>
+
+        <!-- INTRO BANNER -->
+        <div class="intro-banner">
+          <i class="fa fa-info-circle"></i>
+          <p>
+            The Hyderabad Traffic Police launched the <strong>Traffic Marshal Scheme</strong> on <strong>August 21, 2025</strong>, deploying trained marshals and patrol bikes to improve traffic flow and road safety under a <strong>Public-Private Partnership (PPP)</strong> model. The initiative is spearheaded by the <strong>Hyderabad City Security Council (HCSC)</strong> to improve coordination for better city safety.
+          </p>
+        </div>
+
+        <!-- KEY ASPECTS + EQUIPMENT -->
+        <div class="content-card">
+          <div class="section-heading"><i class="fa fa-clipboard-list" aria-hidden="true"></i> Scheme Overview</div>
+          <div class="detail-grid">
+
+            <!-- Structure & Personnel -->
+            <div class="detail-card">
+              <div class="detail-card-header blue">
+                <i class="fa fa-sitemap"></i> Structure & Personnel
+              </div>
+              <div class="detail-card-body">
+                <p><strong>Structure & Partnership:</strong><br>
+                  The scheme operates as a Public-Private Partnership (PPP) wherein private firms, hospitals, and schools sponsor the marshals' salaries — making the program self-sustaining without government budget burden.</p>
+                <p><strong>Personnel & Recruitment:</strong><br>
+                  100–125 traffic marshals have been trained for 10–15 days at the <strong>Traffic Training Institute (TTI)</strong> in Goshamahal. The program has plans to scale up to <strong>500 personnel</strong> across the city.</p>
+                <p><strong>Uniform & Shifts:</strong><br>
+                  Marshals wear a distinctive <strong>white uniform</strong> and work <strong>8-hour shifts</strong>, focusing on traffic regulation and congestion control at key junctions and busy corridors.</p>
+              </div>
+            </div>
+
+            <!-- Objectives -->
+            <div class="detail-card">
+              <div class="detail-card-header green">
+                <i class="fa fa-bullseye"></i> Objectives & Impact
+              </div>
+              <div class="detail-card-body">
+                <p><strong>Primary Objective:</strong><br>
+                  Improve traffic flow, reduce congestion, and enhance road safety at key locations across Hyderabad — especially during peak hours.</p>
+                <p><strong>Measured Impact:</strong><br>
+                  The scheme aims to deliver a <strong>5–10% improvement</strong> in overall traffic efficiency at deployed junctions, reducing average commute delays for citizens.</p>
+                <ul class="feature-list" style="margin-top:6px;">
+                  <li><i class="fa fa-check-circle green-dot"></i> Reduce junction congestion during peak hours</li>
+                  <li><i class="fa fa-check-circle green-dot"></i> Support regular traffic police personnel</li>
+                  <li><i class="fa fa-check-circle green-dot"></i> Faster incident response and crowd control</li>
+                  <li><i class="fa fa-check-circle green-dot"></i> Promote road discipline among motorists</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- PATROL BIKE EQUIPMENT -->
+        <div class="content-card">
+          <div class="section-heading"><i class="fa fa-motorcycle" aria-hidden="true"></i> Patrol Bike Equipment</div>
+          <p style="font-size:.88rem; color:var(--gray-600); margin-bottom:20px; line-height:1.6;">Each patrol bike deployed under the scheme is equipped with modern surveillance and enforcement technology to maximize effectiveness on the ground.</p>
+          <div class="equip-grid">
+            <div class="equip-card">
+              <div class="equip-icon" style="background:#EDF5FF;">
+                <i class="fa fa-video" style="color:var(--navy-light);"></i>
+              </div>
+              <h4>Body Cameras</h4>
+              <p>Live recording of interactions and violations for accountability and evidence.</p>
+            </div>
+            <div class="equip-card">
+              <div class="equip-icon" style="background:#E8F8F0;">
+                <i class="fa fa-bullhorn" style="color:var(--green);"></i>
+              </div>
+              <h4>PA Systems</h4>
+              <p>Public address speakers to guide motorists and manage crowd movement at junctions.</p>
+            </div>
+            <div class="equip-card">
+              <div class="equip-icon" style="background:#FFF8E1;">
+                <i class="fa fa-camera" style="color:var(--gold-dark);"></i>
+              </div>
+              <h4>Dashboard Cameras</h4>
+              <p>Forward-facing cameras to capture road conditions, violations, and incidents.</p>
+            </div>
+            <div class="equip-card">
+              <div class="equip-icon" style="background:#FDE8EA;">
+                <i class="fa fa-truck-pickup" style="color:var(--red);"></i>
+              </div>
+              <h4>Towing Equipment</h4>
+              <p>On-the-spot capability to address illegally parked or abandoned vehicles swiftly.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- HOW THE SCHEME WORKS -->
+        <div class="content-card">
+          <div class="section-heading"><i class="fa fa-cogs" aria-hidden="true"></i> How the Scheme Works</div>
+          <div class="process-steps">
+            <div class="step-row">
+              <div class="step-num">1</div>
+              <div class="step-body">
+                <h4><i class="fa fa-handshake" style="color:var(--navy-light); margin-right:8px;"></i>PPP Sponsorship Secured</h4>
+                <p>Private firms, hospitals, and schools partner with the Hyderabad City Security Council (HCSC) to sponsor marshal salaries. This ensures the scheme is financially sustainable without drawing from public funds.</p>
+              </div>
+            </div>
+            <div class="step-row">
+              <div class="step-num">2</div>
+              <div class="step-body">
+                <h4><i class="fa fa-graduation-cap" style="color:var(--navy-light); margin-right:8px;"></i>Recruitment & Training at TTI</h4>
+                <p>Candidates are recruited and undergo a structured <strong>10–15 day training program</strong> at the Traffic Training Institute (TTI), Goshamahal. Training covers traffic regulation, hand signals, emergency response, and equipment operation.</p>
+              </div>
+            </div>
+            <div class="step-row">
+              <div class="step-num">3</div>
+              <div class="step-body">
+                <h4><i class="fa fa-map-marker-alt" style="color:var(--navy-light); margin-right:8px;"></i>Deployment at Key Locations</h4>
+                <p>Trained marshals in white uniforms are deployed in <strong>8-hour shifts</strong> at high-congestion junctions, busy corridors, school zones, and hospital areas across Hyderabad to actively manage traffic flow.</p>
+              </div>
+            </div>
+            <div class="step-row">
+              <div class="step-num">4</div>
+              <div class="step-body">
+                <h4><i class="fa fa-motorcycle" style="color:var(--navy-light); margin-right:8px;"></i>Patrol Bikes on Active Duty</h4>
+                <p>Equipped patrol bikes provide rapid response capability — marshals can quickly reach incidents, manage violations, assist with towing of illegally parked vehicles, and broadcast instructions via PA systems.</p>
+              </div>
+            </div>
+            <div class="step-row">
+              <div class="step-num">5</div>
+              <div class="step-body">
+                <h4><i class="fa fa-chart-bar" style="color:var(--green); margin-right:8px;"></i>Performance Monitoring & Scale-Up</h4>
+                <p>Traffic efficiency improvements are continuously measured. With an initial batch of 100–125 marshals delivering a 5–10% efficiency boost, the program is on track to expand to <strong>500 marshals</strong> city-wide.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PPP SPONSORS -->
+        <div class="content-card">
+          <div class="section-heading"><i class="fa fa-handshake" aria-hidden="true"></i> PPP Sponsoring Partners</div>
+          <p style="font-size:.88rem; color:var(--gray-600); margin-bottom:20px; line-height:1.6;">The Traffic Marshal Scheme is funded entirely through private sector partnerships, allowing Hyderabad Traffic Police to expand its workforce without additional budgetary allocations.</p>
+          <div class="ppp-grid">
+            <div class="ppp-card">
+              <div class="ppp-badge" style="background:#EDF5FF;">
+                <i class="fa fa-building" style="color:var(--navy-light);"></i>
+              </div>
+              <div>
+                <h4>Private Firms</h4>
+                <p>Corporate organizations sponsoring marshal salaries as part of their CSR and road safety commitments.</p>
+              </div>
+            </div>
+            <div class="ppp-card">
+              <div class="ppp-badge" style="background:#FDE8EA;">
+                <i class="fa fa-hospital" style="color:var(--red);"></i>
+              </div>
+              <div>
+                <h4>Hospitals</h4>
+                <p>Healthcare institutions near busy roads sponsoring marshals to improve access for emergency vehicles and patients.</p>
+              </div>
+            </div>
+            <div class="ppp-card">
+              <div class="ppp-badge" style="background:#E8F8F0;">
+                <i class="fa fa-school" style="color:var(--green);"></i>
+              </div>
+              <div>
+                <h4>Schools</h4>
+                <p>Educational institutions sponsoring marshals to manage traffic during peak school hours and protect student safety.</p>
+              </div>
+            </div>
+            <div class="ppp-card">
+              <div class="ppp-badge" style="background:#FFF8E1;">
+                <i class="fa fa-shield-alt" style="color:var(--gold-dark);"></i>
+              </div>
+              <div>
+                <h4>HCSC Coordination</h4>
+                <p>Hyderabad City Security Council oversees the scheme, coordinating between sponsors, police, and marshal teams.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- HCSC BANNER -->
+        <div class="hcsc-banner">
+          <div class="hcsc-icon-wrap">
+            <i class="fa fa-city"></i>
+          </div>
+          <div class="hcsc-info">
+            <h4>Hyderabad City Security Council (HCSC)</h4>
+            <p>The Traffic Marshal Scheme is spearheaded by the HCSC, which coordinates multi-stakeholder partnerships between the traffic police, private sector, and civic institutions to improve coordination for better city safety and smarter urban traffic management.</p>
+          </div>
+        </div>
+
+        <!-- QUICK NAV -->
+     <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:14px; margin-top:28px;">
+              <a href="index.html" class="icon-box blue"><i class="fa fa-home" style="font-size:28px; color:var(--navy-light);"></i><span>Back to Home</span></a>
+              <a href="contact_us.html" class="icon-box green"><i class="fa fa-envelope" style="font-size:28px; color:var(--green);"></i><span>Contact Us</span></a>
+              <a href="https://echallan.tspolice.gov.in/publicview/" target="_blank" rel="noopener" class="icon-box red"><i class="fa fa-file-invoice" style="font-size:28px; color:var(--red);"></i><span>Pay Challan</span></a>
+              <a href="road_sense.html" class="icon-box orange"><i class="fa fa-lightbulb" style="font-size:28px; color:#d97706;"></i><span>Road Sense</span></a>
+            </div>
+    </section>
+  </main>
+
+  <!-- Patrol car marquee -->
+  <marquee behavior="scroll" direction="right" scrollamount="15" onmouseover="this.stop();" onmouseout="this.start();">
+    <img src="img/Parol car 2.gif" width="7%">
+  </marquee>
+
+  <!-- ARRIVE ALIVE BANNER -->
+  <div class="aa-banner">
+    <div class="aa-inner">
+      <div class="aa-content">
+        <span class="aa-badge">Road Safety Initiative</span>
+        <h2 class="aa-title">Arrive Alive Campaign</h2>
+        <p class="aa-desc">Join us in our mission to make Hyderabad's roads safer. Follow traffic rules, wear helmets, use seat belts, and say no to drunk driving.</p>
+        <a href="arriveAlive.html" class="aa-btn">Learn More</a>
+      </div>
+      <div class="aa-visual">
+        <img src="img/ArriveAlive.png" alt="Arrive Alive campaign logo" style="width:auto; height:230px; object-fit:contain; filter:drop-shadow(0 4px 16px rgba(0,0,0,0.25));">
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="modern-footer">
+    <div class="container-htp py-5">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 text-center text-lg-start">
+          <img src="img/MainLogo1.png" class="footer-logo mb-3" alt="HTP Logo">
+          <h4 class="footer-heading">Hyderabad Traffic Police</h4>
+          <p class="footer-text">Dedicated to safer roads, better traffic management and citizen-friendly digital services.</p>
+          <a href="campaigns.html" class="footer-btn">🚦 Road Safety Campaigns</a>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h5 class="footer-title">Useful Links</h5>
+          <ul class="footer-links">
+            <li><a href="https://echallan.tspolice.gov.in/publicview/">E-Challan</a></li>
+            <li><a href="wrong_challan.html">Wrong Challan</a></li>
+            <li><a href="wheel.html">Wheel Clamp</a></li>
+            <li><a href="trafficmarshal.html">Traffic Marshal</a></li>
+            <li><a href="noc_tov.html">NOC</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h5 class="footer-title">Information</h5>
+          <ul class="footer-links">
+            <li><a href="road_rules.html">Road Rules</a></li>
+            <li><a href="road_sense.html">Road Sense</a></li>
+            <li><a href="road_smart.html">Road Smart</a></li>
+            <li><a href="statistics.html">Statistics</a></li>
+            <li><a href="rti.html">RTI</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <h5 class="footer-title">Connect With Us</h5>
+          <div class="social-icons mb-4">
+            <a onclick="window.open('https://www.facebook.com/HYDTP','_blank');" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a onclick="window.open('https://twitter.com/HYDTP','_blank');" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+            <a onclick="window.open('https://www.instagram.com/hyderabadtrafficpolice','_blank');" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a onclick="window.open('https://youtube.com/@hyderabadtrafficpoliceshik6556','_blank');" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+          <h6 class="footer-subtitle">Official Website</h6>
+          <a href="https://hyderabadpolice.gov.in/" target="_blank" rel="noopener" class="official-link">Hyderabad Police</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container-htp">
+        <div class="row align-items-center">
+          <div class="col-md-6 text-center text-md-start">COPYRIGHT &copy; 2026, Hyderabad Traffic Police</div>
+          <div class="col-md-6 text-center text-md-end">Designed and developed by <a href="https://ts.nic.in/" target="_blank" rel="noopener">NIC Telangana</a></div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CHATBOT -->
+  <button id="chatbotToggle" onclick="toggleChatbot()" aria-label="Open Traffic Assistant" title="Chat with HTP Assistant">
+    <i class="fa fa-robot" aria-hidden="true"></i>
+    <span class="chat-badge">AI</span>
+  </button>
+
+  <div id="chatbotWindow" role="dialog" aria-label="HTP Traffic Assistant" aria-modal="true">
+    <div class="chatbot-header">
+      <div class="chatbot-avatar">🚔</div>
+      <div class="chatbot-header-info">
+        <h6>Traffic Assistant</h6>
+        <small>🟢 Online – Ask me anything</small>
+      </div>
+      <button class="chatbot-close" onclick="toggleChatbot()" aria-label="Close chatbot">
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div class="chatbot-body" id="chatBody">
+      <div class="chat-msg bot">
+        <div class="chat-mini-avatar">🚔</div>
+        <div class="chat-bubble">
+          👋 Hi! I can answer questions about the <strong>Traffic Marshal Scheme</strong> — how it works, the PPP model, training, equipment, and more.
+        </div>
+      </div>
+      <div class="chat-msg bot">
+        <div class="chat-mini-avatar">🚔</div>
+        <div>
+          <div class="chat-bubble" style="margin-bottom:8px;">What would you like to know?</div>
+          <div class="chatbot-suggestions">
+            <button class="chat-suggest-btn" onclick="askBot('What is the Traffic Marshal Scheme?')"><i class="fa fa-user-shield"></i> What is this scheme?</button>
+            <button class="chat-suggest-btn" onclick="askBot('Who funds the Traffic Marshal Scheme?')"><i class="fa fa-handshake"></i> Who funds it?</button>
+            <button class="chat-suggest-btn" onclick="askBot('What equipment do marshals use?')"><i class="fa fa-motorcycle"></i> Marshal equipment?</button>
+            <button class="chat-suggest-btn" onclick="askBot('How are marshals trained?')"><i class="fa fa-graduation-cap"></i> How are they trained?</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="chatbot-footer">
+      <div class="chatbot-input-row">
+        <input type="text" id="chatInput" placeholder="Ask about Traffic Marshals…" aria-label="Chat input" onkeydown="if(event.key==='Enter') sendChat()">
+        <button class="chatbot-send" onclick="sendChat()" aria-label="Send">
+          <i class="fa fa-paper-plane" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCROLL TOP -->
+  <button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">
+    <i class="fa fa-arrow-up" aria-hidden="true"></i>
+  </button>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+  <!-- Google Translate -->
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({ pageLanguage:'en', includedLanguages:'en,te,hi,ta,ur,kn,ml', layout:google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay:false }, 'gt_hidden');
+    }
+    function doTranslate(lang) {
+      var exp = new Date(Date.now()-1000).toUTCString();
+      if (lang==='en') {
+        ['',location.hostname,'.'+location.hostname].forEach(function(d){ var b='googtrans=; expires='+exp+'; path=/'; document.cookie=d?b+'; domain='+d:b; });
+      } else {
+        var val='/en/'+lang;
+        ['',location.hostname,'.'+location.hostname].forEach(function(d){ var b='googtrans='+val+'; path=/'; document.cookie=d?b+'; domain='+d:b; });
+      }
+      var gt=document.querySelector('.goog-te-combo');
+      if(gt){gt.value=lang==='en'?'':lang; gt.dispatchEvent(new Event('change'));} else { location.reload(); }
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <script>
+    // ── ZOOM ──
+    var _zoom=1.0, _zoomWrap=null;
+    document.addEventListener('DOMContentLoaded',function(){
+      _zoomWrap=document.createElement('div'); _zoomWrap.id='zoom-wrap'; _zoomWrap.style.transformOrigin='top left';
+      while(document.body.firstChild) _zoomWrap.appendChild(document.body.firstChild);
+      document.body.appendChild(_zoomWrap);
+    });
+    function pageZoom(d){ _zoom=Math.min(1.5,Math.max(0.6,parseFloat((_zoom+d*0.1).toFixed(2)))); applyZoom(); }
+    function pageZoomReset(){ _zoom=1.0; applyZoom(); }
+    function applyZoom(){ if(!_zoomWrap)return; _zoomWrap.style.transform='scale('+_zoom+')'; _zoomWrap.style.width=(100/_zoom)+'%'; }
+
+    // ── LANGUAGE ──
+    document.addEventListener('DOMContentLoaded',function(){ var m=document.cookie.match(/googtrans=\/en\/([a-z]+)/); var sel=document.getElementById('langSelect'); if(sel&&m) sel.value=m[1]; });
+
+    // ── POPUP ──
+    document.addEventListener('DOMContentLoaded',function(){
+      var popup=document.getElementById('centerPopup'), closeBtn=document.querySelector('.close-btn');
+      if(!popup)return;
+      if(sessionStorage.getItem('htpPopupSeen')){popup.style.display='none';return;}
+      popup.style.display='flex';
+      function closePopup(){ popup.style.display='none'; sessionStorage.setItem('htpPopupSeen','1'); }
+      if(closeBtn) closeBtn.addEventListener('click',closePopup);
+      popup.addEventListener('click',function(e){ if(e.target===popup) closePopup(); });
+      document.addEventListener('keydown',function(e){ if(e.key==='Escape') closePopup(); });
+    });
+
+    // ── CHATBOT ──
+    function toggleChatbot(){ document.getElementById('chatbotWindow').classList.toggle('open'); }
+
+    var botAnswers = {
+      what:     "The Traffic Marshal Scheme was launched by Hyderabad Traffic Police on August 21, 2025. It deploys trained marshals and patrol bikes to improve traffic flow and road safety. It operates under a Public-Private Partnership (PPP) model, spearheaded by the Hyderabad City Security Council (HCSC).",
+      fund:     "The scheme is funded through a PPP model — private firms, hospitals, and schools sponsor the marshals' salaries. This makes the program self-sustaining without requiring additional government budget. The Hyderabad City Security Council (HCSC) coordinates between all stakeholders.",
+      equip:    "Each patrol bike is equipped with: 📷 Body cameras (recording interactions), 📢 PA systems (guiding motorists), 🎥 Dashboard cameras (capturing violations), and 🚛 Towing equipment (handling illegally parked vehicles).",
+      train:    "Marshals undergo a 10–15 day structured training program at the Traffic Training Institute (TTI) in Goshamahal. Training covers traffic regulation, hand signals, emergency response, and proper use of equipment including body cameras and PA systems.",
+      numbers:  "Current strength: 100–125 trained marshals, 50 patrol bikes, delivering 5–10% traffic efficiency improvement. The scheme plans to scale to 500 marshals city-wide as the program expands.",
+      hcsc:     "HCSC stands for Hyderabad City Security Council. It spearheads the Traffic Marshal Scheme by coordinating partnerships between the traffic police, private sector firms, hospitals, and schools to improve city safety.",
+      helpline: "Traffic Helpline: 📞 9010203626 | E-Challan: ☎ 040-27852721 | Police Emergency: 100",
+      default:  "I can help with questions about the Traffic Marshal Scheme! Try asking: 'What is this scheme?', 'Who funds it?', 'What equipment do marshals have?', or 'How are marshals trained?'"
+    };
+
+    function askBot(q){ document.getElementById('chatInput').value=q; sendChat(); }
+    function sendChat(){
+      var input=document.getElementById('chatInput'), text=input.value.trim();
+      if(!text) return;
+      input.value='';
+      var body=document.getElementById('chatBody');
+      body.innerHTML+=`<div class="chat-msg user"><div class="chat-bubble">${text}</div></div>`;
+      var typId='typing-'+Date.now();
+      body.innerHTML+=`<div class="chat-msg bot" id="${typId}"><div class="chat-mini-avatar">🚔</div><div class="chat-typing"><span></span><span></span><span></span></div></div>`;
+      body.scrollTop=body.scrollHeight;
+      setTimeout(function(){
+        document.getElementById(typId)?.remove();
+        var lower=text.toLowerCase(), answer=botAnswers.default;
+        if      (lower.includes('what')||lower.includes('scheme')||lower.includes('about'))       answer=botAnswers.what;
+        else if (lower.includes('fund')||lower.includes('sponsor')||lower.includes('ppp')||lower.includes('pay')) answer=botAnswers.fund;
+        else if (lower.includes('equip')||lower.includes('bike')||lower.includes('camera')||lower.includes('pa')||lower.includes('tow')) answer=botAnswers.equip;
+        else if (lower.includes('train')||lower.includes('tti')||lower.includes('goshamahal'))    answer=botAnswers.train;
+        else if (lower.includes('number')||lower.includes('how many')||lower.includes('100')||lower.includes('500')||lower.includes('50')) answer=botAnswers.numbers;
+        else if (lower.includes('hcsc')||lower.includes('council')||lower.includes('security'))  answer=botAnswers.hcsc;
+        else if (lower.includes('helpline')||lower.includes('contact')||lower.includes('call'))  answer=botAnswers.helpline;
+        body.innerHTML+=`<div class="chat-msg bot"><div class="chat-mini-avatar">🚔</div><div class="chat-bubble">${answer}</div></div>`;
+        body.scrollTop=body.scrollHeight;
+      },900);
+    }
+
+    // ── SCROLL TOP ──
+    var scrollBtn=document.getElementById('scrollTopBtn');
+    window.addEventListener('scroll',function(){ scrollBtn.classList.toggle('visible',window.scrollY>300); },{passive:true});
+
+    // ── NAVBAR SEARCH ──
+   document.addEventListener('DOMContentLoaded', function () {
+      var navInput = document.getElementById('navSearchInput');
+      var navIcon  = document.querySelector('.nav-search-icon');
+      function doNavSearch() {
+        var q = navInput.value.trim();
+        if (q) window.location.href = 'search.html?q=' + encodeURIComponent(q);
+      }
+      if (navInput) navInput.addEventListener('keydown', function(e){ if (e.key === 'Enter') doNavSearch(); });
+      if (navIcon)  { navIcon.style.pointerEvents = 'auto'; navIcon.style.cursor = 'pointer'; navIcon.addEventListener('click', doNavSearch); }
+    });
+  </script>
+</body>
+</html>

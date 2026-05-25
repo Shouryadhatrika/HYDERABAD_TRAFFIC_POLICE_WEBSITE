@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Us – Hyderabad Traffic Police</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:       #0B3C5D;
+      --navy-dark:  #072a43;
+      --navy-light: #145DA0;
+      --gold:       #FFC107;
+      --red:        #D72638;
+      --green:      #198754;
+      --white:      #ffffff;
+      --off-white:  #f5f7fa;
+      --gray-100:   #e9ecef;
+      --gray-300:   #dee2e6;
+      --gray-600:   #6c757d;
+      --gray-800:   #343a40;
+      --radius-sm:  6px;
+      --radius-md:  10px;
+      --radius-lg:  16px;
+      --shadow-sm:  0 2px 8px rgba(0,0,0,.08);
+      --shadow-md:  0 4px 20px rgba(0,0,0,.12);
+      --transition: 0.22s ease;
+      --font-body:  'DM Sans', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { font-family: var(--font-body); font-size: 15px; color: var(--gray-800); background: var(--off-white); margin: 0; padding: 0; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+
+    .container-htp { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+    @media (max-width: 768px) { .container-htp { padding: 0 16px; } }
+
+    /* ── TOP HEADER ── */
+    .top-header { background: linear-gradient(100deg, var(--navy-dark) 0%, var(--navy-light) 100%); border-bottom: 3px solid var(--gold); color: var(--white); padding: 10px 0; }
+    .top-header__logo { height: 80px; }
+    .top-header__title { font-size: 1.5rem; font-weight: 700; color: var(--gold); line-height: 1.2; }
+    .top-header__subtitle { font-size: .78rem; color: rgba(255,255,255,.75); }
+    .btn-htp { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: var(--radius-sm); font-size: .8rem; font-weight: 600; border: none; cursor: pointer; transition: filter .2s, transform .2s; }
+    .btn-htp:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .btn-challan  { background: var(--red); color: var(--white); }
+    .btn-whatsapp { background: #25D366; color: var(--white); }
+    .btn-feedback { background: var(--gold); color: #000; }
+    .top-header__info { font-size: .8rem; color: rgba(255,255,255,.85); }
+    .top-header__info a { color: var(--gold); font-weight: 600; }
+
+    /* ── ZOOM CONTROLS ── */
+    .zoom-ctrl { display:flex; align-items:center; gap:2px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.15); border-radius:24px; padding:3px; }
+    .zoom-ctrl button { background:transparent; border:none; color:rgba(255,255,255,.75); padding:4px 9px; border-radius:20px; font-size:.78rem; font-weight:700; cursor:pointer; font-family:var(--font-body); transition:background .2s,color .2s; }
+    .zoom-ctrl button:hover { background:rgba(255,255,255,.15); color:#fff; }
+    .zoom-ctrl button.reset { color:var(--gold); font-size:.85rem; }
+
+    /* ── LANGUAGE DROPDOWN ── */
+    .lang-dropdown-wrap { position:relative; display:inline-flex; align-items:center; }
+    .lang-dropdown-wrap .lang-globe { position:absolute; left:9px; color:rgba(255,255,255,.6); font-size:.78rem; pointer-events:none; z-index:1; }
+    .lang-select { appearance:none; -webkit-appearance:none; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.25); border-radius:20px; color:#fff; font-family:var(--font-body); font-size:.78rem; font-weight:600; padding:5px 28px 5px 26px; cursor:pointer; outline:none; min-width:90px; }
+    .lang-select:hover { background:rgba(255,255,255,.18); border-color:rgba(255,255,255,.45); }
+    .lang-select:focus { border-color:var(--gold); }
+    .lang-select option { background:var(--navy-dark); color:#fff; }
+    .lang-caret { position:absolute; right:9px; color:rgba(255,255,255,.55); font-size:.65rem; pointer-events:none; }
+
+    /* ── NAVBAR ── */
+    .main-nav { background: var(--navy); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,.2); }
+    .main-nav .nav-link { color: rgba(255,255,255,.85) !important; font-weight: 500; font-size: .88rem; padding: 10px 14px !important; border-radius: var(--radius-sm); transition: background .2s, color .2s; }
+    .main-nav .nav-link:hover, .main-nav .nav-link.active { color: var(--gold) !important; background: rgba(255,255,255,.08); }
+    .main-nav .dropdown-menu { border: none; border-radius: var(--radius-md); padding: 8px; box-shadow: var(--shadow-md); margin-top: 6px; }
+    .main-nav .dropdown-item { border-radius: var(--radius-sm); padding: 8px 12px; font-size: .86rem; }
+    .main-nav .dropdown-item:hover { background: var(--navy); color: #fff; }
+
+    /* ── NAVBAR SEARCH ── */
+    .nav-search { position:relative; display:flex; align-items:center; }
+    .nav-search input { background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2); border-radius:20px; color:#fff; padding:6px 14px 6px 34px; font-size:.8rem; width:180px; outline:none; font-family:var(--font-body); transition:background .2s,border-color .2s,width .2s; }
+    .nav-search input::placeholder { color:rgba(255,255,255,.45); }
+    .nav-search input:focus { background:rgba(255,255,255,.18); border-color:var(--gold); width:220px; }
+    .nav-search-icon { position:absolute; left:11px; color:rgba(255,255,255,.45); font-size:.78rem; pointer-events:none; }
+    .nav-search:focus-within .nav-search-icon { color:var(--gold); }
+    @media (max-width:991px) { .nav-extras { margin:10px 0 6px; width:100%; } .nav-search { width:100%; } .nav-search input { width:100% !important; border-radius:8px; } }
+
+    /* NEED ASSISTANCE BANNER */
+    .need-assistance-banner { background: linear-gradient(135deg, #0B3C5D 0%, #145DA0 100%); border-radius: var(--radius-lg); padding: 20px 28px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; box-shadow: 0 6px 24px rgba(11,60,93,.25); margin-bottom: 2rem; }
+    .need-assistance-banner .na-left { display: flex; align-items: center; gap: 16px; }
+    .na-icon { width: 52px; height: 52px; background: rgba(255,193,7,.15); border: 2px solid rgba(255,193,7,.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .na-icon i { font-size: 22px; color: var(--gold); }
+    .na-text h4 { margin: 0 0 4px; font-size: 1.05rem; font-weight: 700; color: #fff; }
+    .na-text p { margin: 0; font-size: .85rem; color: rgba(255,255,255,.8); }
+    .na-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+    .na-btn-call { background: var(--red); color: #fff; padding: 10px 20px; border-radius: var(--radius-sm); font-weight: 700; font-size: .88rem; display: inline-flex; align-items: center; gap: 8px; transition: filter .2s, transform .2s; }
+    .na-btn-call:hover { filter: brightness(1.1); transform: translateY(-2px); color: #fff; }
+    .na-btn-wa { background: #25D366; color: #fff; padding: 10px 20px; border-radius: var(--radius-sm); font-weight: 700; font-size: .88rem; display: inline-flex; align-items: center; gap: 8px; transition: filter .2s, transform .2s; }
+    .na-btn-wa:hover { filter: brightness(1.1); transform: translateY(-2px); color: #fff; }
+
+    /* SECTION HEADING */
+    .section-heading { display: flex; align-items: center; gap: 10px; font-size: 1.1rem; font-weight: 700; color: var(--white); background: linear-gradient(90deg, var(--navy) 0%, var(--navy-light) 100%); padding: 12px 24px; border-radius: var(--radius-md); letter-spacing: .5px; margin-bottom: 1.5rem; }
+
+    /* DIRECTORY SECTION */
+    .dir-section { background: #fff; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); overflow: hidden; margin-bottom: 2rem; }
+    .dir-section-header { background: linear-gradient(90deg, var(--navy) 0%, var(--navy-light) 100%); padding: 14px 20px; display: flex; align-items: center; gap: 10px; }
+    .dir-section-header h3 { margin: 0; font-size: 1rem; font-weight: 700; color: #fff; }
+    .dir-section-header i { color: var(--gold); font-size: 1.1rem; }
+
+    /* TABLE */
+    .dir-table-wrap { overflow-x: auto; }
+    .dir-table { width: 100%; border-collapse: collapse; font-size: .84rem; }
+    .dir-table thead tr { background: #f0f4f8; }
+    .dir-table thead th { padding: 12px 16px; font-weight: 700; color: var(--navy); border-bottom: 2px solid var(--gray-300); text-align: left; white-space: nowrap; }
+    .dir-table tbody tr { border-bottom: 1px solid var(--gray-100); transition: background .15s; }
+    .dir-table tbody tr:hover { background: #f8fafc; }
+    .dir-table td { padding: 10px 16px; vertical-align: middle; }
+    .dir-table td:first-child { font-weight: 600; color: var(--gray-800); }
+    .rank-badge { background: #EDF5FF; color: var(--navy-light); padding: 3px 10px; border-radius: 12px; font-size: .75rem; font-weight: 600; white-space: nowrap; display: inline-block; }
+    .rank-badge.senior { background: #FDE8EA; color: var(--red); }
+    .rank-badge.acp { background: #E8F8F0; color: var(--green); }
+    .phone-link { color: var(--navy-light); font-weight: 600; display: inline-flex; align-items: center; gap: 5px; }
+    .phone-link:hover { color: var(--red); text-decoration: underline; }
+    .email-link { color: var(--gray-600); font-size: .78rem; }
+    .email-link:hover { color: var(--navy); }
+    .hotline-row { background: linear-gradient(90deg, rgba(215,38,56,.06), rgba(215,38,56,.03)); }
+    .hotline-row td { font-weight: 700; color: var(--red); }
+
+    /* QUICK CONTACT CARDS */
+    .quick-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 2rem; }
+    .qcard { background: #fff; border-radius: var(--radius-md); padding: 20px; box-shadow: var(--shadow-sm); border-top: 4px solid transparent; display: flex; flex-direction: column; gap: 8px; transition: transform .2s, box-shadow .2s; }
+    .qcard:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .qcard.c-red { border-top-color: var(--red); }
+    .qcard.c-navy { border-top-color: var(--navy); }
+    .qcard.c-green { border-top-color: var(--green); }
+    .qcard.c-gold { border-top-color: var(--gold); }
+    .qcard-icon { font-size: 1.5rem; margin-bottom: 4px; }
+    .qcard h5 { margin: 0; font-size: .9rem; font-weight: 700; color: var(--gray-800); }
+    .qcard .qnum { font-size: 1.1rem; font-weight: 800; color: var(--red); }
+    .qcard .qemail { font-size: .75rem; color: var(--gray-600); word-break: break-all; }
+
+    /* ICON BOXES */
+    .icon-box-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
+    .icon-box { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 20px 12px; border-radius: var(--radius-md); border: 1px solid var(--gray-300); background: var(--white); text-align: center; cursor: pointer; transition: transform .2s, box-shadow .2s, border-color .2s; }
+    .icon-box:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--navy-light); }
+    .icon-box span { font-size: .82rem; font-weight: 600; line-height: 1.3; }
+    .icon-box.blue   { background: #EDF5FF; border-color: #b6d4fe; }
+    .icon-box.green  { background: #E8F8F0; border-color: #a3cfbb; }
+    .icon-box.red    { background: #FDE8EA; border-color: #f5c2c7; }
+    .icon-box.orange { background: #FFF4E6; border-color: #fecba1; }
+
+    /* ARRIVE ALIVE */
+    .aa-banner { background: linear-gradient(120deg, #16A085 0%, #1ABC9C 100%); padding: 10px 40px; position: relative; overflow: hidden; }
+    .aa-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; }
+    .aa-badge { display: inline-block; background: rgba(255,255,255,.2); color: #fff; font-size: .72rem; font-weight: 600; padding: 4px 14px; border-radius: 20px; margin-bottom: 8px; }
+    .aa-title { font-size: 1.5rem; font-weight: 800; color: #fff; margin: 0 0 6px; }
+    .aa-desc { font-size: .88rem; color: rgba(255,255,255,.88); margin: 0 0 10px; }
+    .aa-btn { display: inline-block; background: #fff; color: #16A085; font-size: .88rem; font-weight: 700; padding: 10px 28px; border-radius: var(--radius-sm); transition: background .2s, transform .2s; }
+    .aa-btn:hover { background: #e8faf6; transform: translateY(-2px); color: #16A085; }
+    @media (max-width: 768px) { .aa-inner { grid-template-columns: 1fr; } .aa-visual { display: none; } .aa-banner { padding: 10px 16px; } }
+
+    /* FOOTER */
+    .modern-footer { background: #f4f7fb; border-top: 4px solid #0B3D91; }
+    .footer-logo { width: 130px; }
+    .footer-heading { color: #0B3D91; font-weight: 700; margin-bottom: 15px; }
+    .footer-text { color: #555; line-height: 1.8; font-size: .88rem; }
+    .footer-btn { display: inline-block; margin-top: 10px; background: #0B3D91; color: #fff; padding: 12px 22px; border-radius: 30px; font-weight: 600; transition: .3s; }
+    .footer-btn:hover { background: #1565C0; color: #fff; transform: translateY(-2px); }
+    .footer-title { color: #111; font-weight: 700; margin-bottom: 20px; font-size: .95rem; }
+    .footer-title::after { content: ''; width: 45px; height: 3px; background: #8BC34A; display: block; margin-top: 8px; }
+    .footer-links { list-style: none; padding: 0; }
+    .footer-links li { margin-bottom: 12px; }
+    .footer-links a { color: #444; font-size: .85rem; transition: .3s; }
+    .footer-links a:hover { color: #0B3D91; padding-left: 5px; }
+    .social-icons { display: flex; gap: 15px; flex-wrap: wrap; }
+    .social-icons a { width: 48px; height: 48px; border-radius: 50%; background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,.1); display: flex; align-items: center; justify-content: center; color: #0B3D91; font-size: 20px; transition: .3s; cursor: pointer; }
+    .social-icons a:hover { background: #0B3D91; color: #fff; transform: translateY(-4px); }
+    .footer-bottom { background: #111c2e; color: #fff; padding: 18px 0; font-size: .82rem; }
+    .footer-bottom a { color: #fff; }
+    .footer-bottom a:hover { color: var(--gold); }
+
+    /* CHATBOT */
+    #chatbotToggle { position: fixed; bottom: 24px; right: 80px; z-index: 1001; width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); border: 2.5px solid var(--gold); color: var(--white); cursor: pointer; font-size: 22px; box-shadow: 0 4px 20px rgba(11,60,93,.4); display: flex; align-items: center; justify-content: center; transition: transform .2s; animation: chatPulse 2.5s infinite; }
+    #chatbotToggle:hover { transform: translateY(-3px) scale(1.07); animation: none; }
+    @keyframes chatPulse { 0%,100%{ box-shadow:0 4px 20px rgba(11,60,93,.4),0 0 0 0 rgba(255,193,7,.55); } 50%{ box-shadow:0 4px 20px rgba(11,60,93,.4),0 0 0 10px rgba(255,193,7,0); } }
+    #chatbotToggle .chat-badge { position: absolute; top: -4px; right: -4px; background: var(--gold); color: #000; font-size: .6rem; font-weight: 800; border-radius: 10px; padding: 1px 5px; border: 1.5px solid #fff; }
+    #scrollTopBtn { position: fixed; bottom: 24px; right: 24px; z-index: 999; width: 46px; height: 46px; border-radius: 50%; background: var(--red); color: var(--white); border: none; cursor: pointer; font-size: 18px; box-shadow: var(--shadow-md); opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; display: flex; align-items: center; justify-content: center; }
+    #scrollTopBtn.visible { opacity: 1; pointer-events: auto; }
+    #scrollTopBtn:hover { transform: translateY(-3px); }
+
+    /* SEARCH FILTER */
+    .search-filter { position: relative; margin-bottom: 1.5rem; }
+    .search-filter input { width: 100%; padding: 12px 16px 12px 44px; border: 1.5px solid var(--gray-300); border-radius: var(--radius-md); font-size: .9rem; font-family: var(--font-body); outline: none; transition: border-color .2s; background: #fff; }
+    .search-filter input:focus { border-color: var(--navy-light); }
+    .search-filter i { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--gray-600); }
+
+    /* ZONE TABS */
+    .zone-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.5rem; }
+    .zone-tab { padding: 6px 16px; border-radius: 20px; border: 1.5px solid var(--gray-300); background: #fff; font-size: .82rem; font-weight: 600; cursor: pointer; transition: all .2s; font-family: var(--font-body); color: var(--gray-800); }
+    .zone-tab:hover { border-color: var(--navy-light); color: var(--navy-light); }
+    .zone-tab.active { background: var(--navy); border-color: var(--navy); color: #fff; }
+    .no-results { text-align: center; padding: 40px; color: var(--gray-600); display: none; }
+
+    @media (max-width: 768px) {
+      .need-assistance-banner { flex-direction: column; align-items: flex-start; }
+      .dir-table { font-size: .78rem; }
+      .dir-table td, .dir-table th { padding: 8px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP HEADER -->
+  <header class="top-header">
+    <div class="container-htp">
+      <div class="row align-items-center gy-2">
+
+        <!-- Logo + Title -->
+        <div class="col-lg-4 col-md-12 text-center text-lg-start">
+          <a href="index.html" class="d-inline-flex align-items-center gap-2">
+            <img src="img/MainLogo1.png" class="top-header__logo" alt="Hyderabad Traffic Police logo">
+            <div>
+              <div class="top-header__title">Hyderabad Traffic Police</div>
+              <div class="top-header__subtitle">For You, With You, Always</div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="col-lg-4 col-md-12 text-center">
+          <div class="d-flex flex-wrap gap-2 justify-content-center">
+            <a href="https://echallan.tspolice.gov.in/publicview/" target="_blank" class="btn-htp btn-challan"><i class="fa fa-file-invoice"></i> Pay Challan</a>
+            <a href="https://wa.me/9010203626" target="_blank" class="btn-htp btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdIr2t94wVePyi562lUbeOyavRPi6vNgLadZl-lPrj53PDTYw/viewform" target="_blank" class="btn-htp btn-feedback"><i class="fa fa-comment-dots"></i> Feedback</a>
+          </div>
+        </div>
+
+        <!-- Helpline + Zoom + Language -->
+        <div class="col-lg-4 col-md-12 text-center text-lg-end">
+          <div class="top-header__info mb-1">
+            <i class="fa fa-phone"></i> Helpline: <a href="tel:9010203626">9010203626</a>&nbsp;&nbsp;
+            <i class="fa fa-phone-alt"></i> E-Challan: <a href="tel:04027852721">040-27852721</a>
+          </div>
+          <div class="d-flex gap-2 justify-content-center justify-content-lg-end flex-wrap align-items-center">
+            <!-- Zoom controls -->
+            <div class="zoom-ctrl" aria-label="Zoom controls">
+              <button onclick="pageZoom(1)" title="Zoom In">A+</button>
+              <button onclick="pageZoomReset()" class="reset" title="Reset">&#8635;</button>
+              <button onclick="pageZoom(-1)" title="Zoom Out">A&#8722;</button>
+            </div>
+            <!-- Language dropdown -->
+            <div class="lang-dropdown-wrap">
+              <i class="fa fa-globe lang-globe"></i>
+              <select class="lang-select" id="langSelect" onchange="doTranslate(this.value)" aria-label="Select language">
+                <option value="en">English</option>
+                <option value="te">తెలుగు</option>
+                <option value="hi">हिन्दी</option>
+                <option value="ta">தமிழ்</option>
+                <option value="ur">اردو</option>
+                <option value="kn">ಕನ್ನಡ</option>
+                <option value="ml">മലയാളം</option>
+              </select>
+              <i class="fa fa-chevron-down lang-caret"></i>
+            </div>
+            <div id="gt_hidden" style="display:none;position:absolute;"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- NAVBAR -->
+  <nav class="main-nav navbar navbar-expand-lg" aria-label="Main navigation">
+    <div class="container-htp">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">About Us</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="introduction.html">Introduction</a></li>
+              <li><a class="dropdown-item" href="org_chart.html">Organization Chart</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Services</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="wrong_challan.html">Wrong Challan</a></li>
+              <li><a class="dropdown-item" href="noc_tov.html">Vehicle NOC</a></li>
+              <li><a class="dropdown-item" href="noc_schools.html">School NOC</a></li>
+              <li><a class="dropdown-item" href="noc_plying.html">Vehicle Plying</a></li>
+              <li><a class="dropdown-item" href="noc_petrol.html">Petrol Pump NOC</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Information</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="road_rules.html">Road Rules</a></li>
+              <li><a class="dropdown-item" href="road_sense.html">Road Sense</a></li>
+              <li><a class="dropdown-item" href="road_smart.html">Road Smart</a></li>
+              <li><a class="dropdown-item" href="statistics.html">Statistics</a></li>
+              <li><a class="dropdown-item" href="driving_license.html">Driving License</a></li>
+              <li><a class="dropdown-item" href="vehicle_registration.html">Vehicle Registration</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="know_your_ps.html">Know Your PS</a></li>
+          <li class="nav-item"><a class="nav-link" href="rti.html">RTI</a></li>
+          <li class="nav-item"><a class="nav-link" href="campaigns.html">Road Safety</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link active" href="contact_us.html">Contact</a></li>
+        </ul>
+
+        <!-- Navbar Search -->
+        <div class="nav-extras d-flex align-items-center gap-2 ms-3">
+          <div class="nav-search" role="search">
+            <label for="navSearchInput" class="visually-hidden">Search site</label>
+            <input type="search" id="navSearchInput" placeholder="Search…" aria-label="Search site">
+            <i class="fa fa-search nav-search-icon"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main id="main-content">
+    <section style="padding:40px 0; background:var(--off-white);">
+      <div class="container-htp">
+
+        <!-- NEED ASSISTANCE BANNER -->
+        <div class="need-assistance-banner">
+          <div class="na-left">
+            <div class="na-icon"><i class="fa fa-headset"></i></div>
+            <div class="na-text">
+              <h4>Need Assistance?</h4>
+              <p>Contact the Traffic Helpline or visit your nearest traffic police station for guidance on your application.</p>
+            </div>
+          </div>
+          <div class="na-btns">
+            <a href="tel:9010203626" class="na-btn-call"><i class="fa fa-phone"></i> 9010203626</a>
+            <a href="https://wa.me/9010203626" target="_blank" class="na-btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+          </div>
+        </div>
+
+        <!-- QUICK CONTACT CARDS -->
+        <div class="quick-cards">
+          <div class="qcard c-red">
+            <div class="qcard-icon">🚨</div>
+            <h5>Traffic Helpline</h5>
+            <a href="tel:9010203626" class="qnum">9010203626</a>
+            <div><a href="tel:04027852471" class="phone-link" style="font-size:.82rem;"><i class="fa fa-phone fa-sm"></i> 040-27852471 / 040-27852482</a></div>
+          </div>
+          <div class="qcard c-navy">
+            <div class="qcard-icon">📋</div>
+            <h5>eChallan Helpdesk</h5>
+            <a href="tel:04027852721" class="qnum" style="color:var(--navy-light);">040-27852721</a>
+            <div class="qemail"><a href="mailto:insp-echallantrf-hyd@tspolice.gov.in" class="email-link">insp-echallantrf-hyd@tspolice.gov.in</a></div>
+          </div>
+          <div class="qcard c-green">
+            <div class="qcard-icon">🏛️</div>
+            <h5>Jt. Commissioner (Traffic)</h5>
+            <a href="tel:04023240800" class="qnum" style="color:var(--green); font-size:.95rem;">040-23240800</a>
+            <div class="qemail"><a href="mailto:jtcp-trf-hyd@tspolice.gov.in" class="email-link">jtcp-trf-hyd@tspolice.gov.in</a></div>
+          </div>
+          <div class="qcard c-gold">
+            <div class="qcard-icon">🏢</div>
+            <h5>ACP Admin Traffic</h5>
+            <a href="tel:04027852247" class="qnum" style="color:#b45309; font-size:.95rem;">040-27852247</a>
+            <div class="qemail"><a href="mailto:acp-trfadmin-hyd@tspolice.gov.in" class="email-link">acp-trfadmin-hyd@tspolice.gov.in</a></div>
+          </div>
+        </div>
+
+        <!-- SEARCH & ZONE FILTER -->
+        <div class="search-filter">
+          <i class="fa fa-search"></i>
+          <input type="text" id="dirSearch" placeholder="Search by name, rank, zone, phone or email…" oninput="filterDir()">
+        </div>
+
+        <div class="zone-tabs" id="zoneTabs">
+          <button class="zone-tab active" data-zone="all" onclick="filterZone(this)">All</button>
+          <button class="zone-tab" data-zone="senior" onclick="filterZone(this)">Senior Officers</button>
+          <button class="zone-tab" data-zone="admin" onclick="filterZone(this)">Admin &amp; Operations</button>
+          <button class="zone-tab" data-zone="north" onclick="filterZone(this)">North Zone</button>
+          <button class="zone-tab" data-zone="south" onclick="filterZone(this)">South Zone</button>
+          <button class="zone-tab" data-zone="east" onclick="filterZone(this)">East Zone</button>
+          <button class="zone-tab" data-zone="west" onclick="filterZone(this)">West Zone</button>
+          <button class="zone-tab" data-zone="central" onclick="filterZone(this)">Central Zone</button>
+          <button class="zone-tab" data-zone="charminar" onclick="filterZone(this)">Charminar Zone</button>
+          <button class="zone-tab" data-zone="sec" onclick="filterZone(this)">Secunderabad Zone</button>
+          <button class="zone-tab" data-zone="rjn" onclick="filterZone(this)">Rajendra Nagar</button>
+          <button class="zone-tab" data-zone="airport" onclick="filterZone(this)">Airport</button>
+        </div>
+
+        <!-- DIRECTORY TABLE -->
+        <div class="dir-section">
+          <div class="dir-section-header"><i class="fa fa-address-book"></i><h3>Telephone &amp; Email Directory</h3></div>
+          <div class="dir-table-wrap">
+            <table class="dir-table" id="dirTable">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Designation / Rank</th>
+                  <th>Office No.</th>
+                  <th>Mobile No.</th>
+                  <th>Email</th>
+                </tr>
+              </thead>
+              <tbody id="dirBody">
+                <tr data-zone="senior" data-text="sri d joel davis ips jt commissioner of police traffic 040-23240800 040-27852663 jtcp-trf-hyd@tspolice.gov.in">
+                  <td>Sri. D Joel Davis, IPS</td>
+                  <td><span class="rank-badge senior">Jt. Commissioner of Police (Traffic)</span></td>
+                  <td><a href="tel:04023240800" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-23240800</a> / <a href="tel:04027852663" class="phone-link">040-27852663</a></td>
+                  <td>—</td>
+                  <td><a href="mailto:jtcp-trf-hyd@tspolice.gov.in" class="email-link">jtcp-trf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="senior" data-text="sri vara prasad pa to jt commissioner 040-23240800 8712569401 cc-addlcptrf-hyd@tspolice.gov.in">
+                  <td>Sri. Vara Prasad</td>
+                  <td><span class="rank-badge">PA to Jt. Commissioner (Traffic)</span></td>
+                  <td><a href="tel:04023240800" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-23240800</a></td>
+                  <td><a href="tel:8712569401" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712569401</a></td>
+                  <td><a href="mailto:cc-addlcptrf-hyd@tspolice.gov.in" class="email-link">cc-addlcptrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="senior" data-text="sri avinash kumar ips dcp traffic 1 040-27852466 dcp-trf1-hyd@tspolice.gov.in">
+                  <td>Sri Avinash Kumar, IPS</td>
+                  <td><span class="rank-badge senior">DCP Traffic – I</span></td>
+                  <td><a href="tel:04027852466" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27852466 / 040-23233799</a></td>
+                  <td>—</td>
+                  <td><a href="mailto:dcp-trf1-hyd@tspolice.gov.in" class="email-link">dcp-trf1-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="senior" data-text="sri siva chaitanya pa dcp traffic i 040-27852466 8712660604">
+                  <td>Sri. Siva Chaitanya</td>
+                  <td><span class="rank-badge">PA to DCP Traffic – I</span></td>
+                  <td><a href="tel:04027852466" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27852466</a></td>
+                  <td><a href="tel:8712660604" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660604</a></td>
+                  <td><a href="mailto:cc-dcptrf1-hyd@tspolice.gov.in" class="email-link">cc-dcptrf1-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="senior" data-text="ms kajal ips dcp traffic ii 040-27852404 dcp-trf2-hyd@tspolice.gov.in">
+                  <td>Ms. Kajal, IPS</td>
+                  <td><span class="rank-badge senior">DCP Traffic – II</span></td>
+                  <td><a href="tel:04027852404" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27852404</a></td>
+                  <td>—</td>
+                  <td><a href="mailto:dcp-trf2-hyd@tspolice.gov.in" class="email-link">dcp-trf2-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="senior" data-text="vacant pa dcp traffic ii 040-27854745 8712660602">
+                  <td>Vacant</td>
+                  <td><span class="rank-badge">PA to DCP Traffic – II</span></td>
+                  <td><a href="tel:04027854745" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27854745</a></td>
+                  <td><a href="tel:8712660602" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660602</a></td>
+                  <td><a href="mailto:cc-dcptrf2-hyd@tspolice.gov.in" class="email-link">cc-dcptrf2-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="senior" data-text="sri rahul hegde bk ips dcp traffic iii 040-27853725 dcp-trf3-hyd@tspolice.gov.in">
+                  <td>Sri. Rahul Hegde B.K., IPS</td>
+                  <td><span class="rank-badge senior">DCP Traffic – III</span></td>
+                  <td><a href="tel:04027853725" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27853725</a></td>
+                  <td>—</td>
+                  <td><a href="mailto:dcp-trf3-hyd@tspolice.gov.in" class="email-link">dcp-trf3-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="senior" data-text="sri g srinivas pa dcp traffic iii 8712660610">
+                  <td>Sri. G. Srinivas</td>
+                  <td><span class="rank-badge">PA to DCP Traffic – III</span></td>
+                  <td>—</td>
+                  <td><a href="tel:8712660610" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660610</a></td>
+                  <td><a href="mailto:cc-dcptrf3-hyd@tspolice.gov.in" class="email-link">cc-dcptrf3-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="senior" data-text="sri a ramulu addl dcp traffic i 040-27853725 8712660605 addldcp-trf1-hyd@tspolice.gov.in">
+                  <td>Sri. A. Ramulu</td>
+                  <td><span class="rank-badge senior">Addl. DCP Traffic – I</span></td>
+                  <td><a href="tel:04027853725" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27853725</a></td>
+                  <td><a href="tel:8712660605" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660605</a></td>
+                  <td><a href="mailto:addldcp-trf1-hyd@tspolice.gov.in" class="email-link">addldcp-trf1-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="senior" data-text="sri c venugopal reddy addl dcp traffic ii 040-27854007 8712660607 addldcp-trf2-hyd@tspolice.gov.in">
+                  <td>Sri. C. Venugopal Reddy</td>
+                  <td><span class="rank-badge senior">Addl. DCP Traffic – II</span></td>
+                  <td><a href="tel:04027854007" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27854007</a></td>
+                  <td><a href="tel:8712660607" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660607</a></td>
+                  <td><a href="mailto:addldcp-trf2-hyd@tspolice.gov.in" class="email-link">addldcp-trf2-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="senior" data-text="sri t ram das teja addl dcp traffic iii 040-27857154 8712665780 addldcp-trf3-hyd@tspolice.gov.in">
+                  <td>Sri. T. Ram Das Teja</td>
+                  <td><span class="rank-badge senior">Addl. DCP Traffic – III</span></td>
+                  <td><a href="tel:04027857154" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27857154</a></td>
+                  <td><a href="tel:8712665780" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712665780</a></td>
+                  <td><a href="mailto:addldcp-trf3-hyd@tspolice.gov.in" class="email-link">addldcp-trf3-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="admin" data-text="sri g laxman acp admin traffic 040-27852247 8712660620 acp-trfadmin-hyd@tspolice.gov.in">
+                  <td>Sri. G. Laxman</td>
+                  <td><span class="rank-badge acp">ACP Admin Traffic</span></td>
+                  <td><a href="tel:04027852247" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27852247</a></td>
+                  <td><a href="tel:8712660620" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660620</a></td>
+                  <td><a href="mailto:acp-trfadmin-hyd@tspolice.gov.in" class="email-link">acp-trfadmin-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="admin" data-text="smt chitti burra insp admin 040-27852486 8712660652 inspadmn-trf-hyd@tspolice.gov.in">
+                  <td>Smt Chitti Burra</td>
+                  <td><span class="rank-badge">Insp. Admin</span></td>
+                  <td><a href="tel:04027852486" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27852486 / 040-27852416</a></td>
+                  <td><a href="tel:8712660652" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660652</a></td>
+                  <td><a href="mailto:inspadmn-trf-hyd@tspolice.gov.in" class="email-link">inspadmn-trf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="admin" data-text="sri ramanjaneyulu insp e-challan itms 040-27852721 8712660653 insp-echallantrf-hyd@tspolice.gov.in">
+                  <td>Sri Ramanjaneyulu</td>
+                  <td><span class="rank-badge">Inc. Insp. E-Challan &amp; ITMS</span></td>
+                  <td><a href="tel:04027852721" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27852721 / 040-27852772</a></td>
+                  <td><a href="tel:8712660653" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660653</a></td>
+                  <td><a href="mailto:insp-echallantrf-hyd@tspolice.gov.in" class="email-link">insp-echallantrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="admin" data-text="sri hussain dheeravath scmc traffic control 040-27852031 8712660654 insp-tcctrf-hyd@tspolice.gov.in">
+                  <td>Sri Hussain Dheeravath</td>
+                  <td><span class="rank-badge">SCMC &amp; Traffic Control</span></td>
+                  <td><a href="tel:04027852031" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27852031 / 040-27852035</a></td>
+                  <td><a href="tel:8712660654" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660654</a></td>
+                  <td><a href="mailto:insp-tcctrf-hyd@tspolice.gov.in" class="email-link">insp-tcctrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr class="hotline-row" data-zone="admin" data-text="traffic help line helpline 040-27852471 9010203626 insp-tcctrf-hyd@tspolice.gov.in">
+                  <td><i class="fa fa-phone-alt me-1"></i>Traffic Help Line</td>
+                  <td><span class="rank-badge" style="background:#FDE8EA;color:var(--red);">Emergency Helpline</span></td>
+                  <td><a href="tel:04027852471" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27852471 / 040-27852482</a></td>
+                  <td><a href="tel:9010203626" class="phone-link" style="color:var(--red); font-size:1rem;"><i class="fa fa-mobile fa-xs"></i>9010203626</a></td>
+                  <td><a href="mailto:insp-tcctrf-hyd@tspolice.gov.in" class="email-link">insp-tcctrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="admin" data-text="sri mogulla narender insp engineering cell 040-27853576 8712661656 insp-ectrf-hyd@tspolice.gov.in">
+                  <td>Sri. Mogulla Narender</td>
+                  <td><span class="rank-badge">Insp. Engineering Cell</span></td>
+                  <td><a href="tel:04027853576" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27853576</a></td>
+                  <td><a href="tel:8712661656" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712661656</a></td>
+                  <td><a href="mailto:insp-ectrf-hyd@tspolice.gov.in" class="email-link">insp-ectrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="admin" data-text="sri vajja ravi kumar ri admin 040-27852320 8712661657 iriadmn-trf-hyd@tspolice.gov.in">
+                  <td>Sri. Vajja Ravi Kumar</td>
+                  <td><span class="rank-badge">RI. Admin</span></td>
+                  <td><a href="tel:04027852320" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27852320</a></td>
+                  <td><a href="tel:8712661657" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712661657</a></td>
+                  <td><a href="mailto:iriadmn-trf-hyd@tspolice.gov.in" class="email-link">iriadmn-trf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="admin" data-text="sri m vamsi krishna ri mto 04027852441 8712661658 insp-mtotrf-hyd@tspolice.gov.in">
+                  <td>Sri. M. Vamsi Krishna</td>
+                  <td><span class="rank-badge">RI. MTO</span></td>
+                  <td><a href="tel:04027852441" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27852441</a></td>
+                  <td><a href="tel:8712661658" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712661658</a></td>
+                  <td><a href="mailto:insp-mtotrf-hyd@tspolice.gov.in" class="email-link">insp-mtotrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="admin" data-text="vacant jao tr branch 04027852463 8712660099 jao-trbh-hyd@tspolice.gov.in">
+                  <td>Vacant</td>
+                  <td><span class="rank-badge">JAO. Tr. Branch</span></td>
+                  <td><a href="tel:04027852463" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27852463</a></td>
+                  <td><a href="tel:8712660099" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660099</a></td>
+                  <td><a href="mailto:jao-trbh-hyd@tspolice.gov.in" class="email-link">jao-trbh-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="admin" data-text="sri s gajanand office supdt i 040-27852463 8712660047 supdt-trbh1-hyd@tspolice.gov.in">
+                  <td>Sri. S. Gajanand</td>
+                  <td><span class="rank-badge">Office Supdt-I Traffic Branch</span></td>
+                  <td><a href="tel:04027852463" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27852463</a></td>
+                  <td><a href="tel:8712660047" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660047</a></td>
+                  <td><a href="mailto:supdt-trbh1-hyd@tspolice.gov.in" class="email-link">supdt-trbh1-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="admin" data-text="sri m gopal fmc 8712661529">
+                  <td>Sri. M Gopal</td>
+                  <td><span class="rank-badge">FMC</span></td>
+                  <td>—</td>
+                  <td><a href="tel:8712661529" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712661529</a></td>
+                  <td>—</td>
+                </tr>
+                <tr data-zone="admin" data-text="sri shiva rsi pilot governor 9491912480">
+                  <td>Sri. Shiva, RSI</td>
+                  <td><span class="rank-badge">Pilot to Governor</span></td>
+                  <td>—</td>
+                  <td><a href="tel:9491912480" class="phone-link"><i class="fa fa-mobile fa-xs"></i>9491912480</a></td>
+                  <td>—</td>
+                </tr>
+                <tr data-zone="admin" data-text="sri g harish inspector tti goshamahal 8712660655 tti-goltrf-hyd@tspolice.gov.in">
+                  <td>Sri. G. Harish</td>
+                  <td><span class="rank-badge">Inspector TTI Goshamahal</span></td>
+                  <td>—</td>
+                  <td><a href="tel:8712660655" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660655</a></td>
+                  <td><a href="mailto:tti-goltrf-hyd@tspolice.gov.in" class="email-link">tti-goltrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="admin" data-text="sri ashok nagula inspector tti begumpet 04027854847 8712661659 tti-bpttrf-hyd@tspolice.gov.in">
+                  <td>Sri. Ashok Nagula</td>
+                  <td><span class="rank-badge">Inspector TTI Begumpet</span></td>
+                  <td><a href="tel:04027854847" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27854847</a></td>
+                  <td><a href="tel:8712661659" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712661659</a></td>
+                  <td><a href="mailto:tti-bpttrf-hyd@tspolice.gov.in" class="email-link">tti-bpttrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <!-- North Zone -->
+                <tr data-zone="north" data-text="sri s mohan kumar acp khairtabad traffic 040-27853563 8712660614 acp-trfnz-hyd@tspolice.gov.in">
+                  <td>Sri. S. Mohan Kumar</td>
+                  <td><span class="rank-badge acp">ACP Khairtabad Traffic (North)</span></td>
+                  <td><a href="tel:04027853563" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27853563</a></td>
+                  <td><a href="tel:8712660614" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660614</a></td>
+                  <td><a href="mailto:acp-trfnz-hyd@tspolice.gov.in" class="email-link">acp-trfnz-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="north" data-text="inspector traffic panjagutta 040-27852491 8712660636 sho-pgtrf-hyd@tspolice.gov.in">
+                  <td>Inspector – Traffic Panjagutta</td>
+                  <td><span class="rank-badge">Inspector</span></td>
+                  <td><a href="tel:04027852491" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27852491</a></td>
+                  <td><a href="tel:8712660636" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660636</a></td>
+                  <td><a href="mailto:sho-pgtrf-hyd@tspolice.gov.in" class="email-link">sho-pgtrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="north" data-text="addl inspector traffic panjagutta 040-27852491 8712660680">
+                  <td>Addl Inspector – Traffic Panjagutta</td>
+                  <td><span class="rank-badge">Addl. Inspector</span></td>
+                  <td><a href="tel:04027852491" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27852491</a></td>
+                  <td><a href="tel:8712660680" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660680</a></td>
+                  <td><a href="mailto:sho-pgtrf-hyd@tspolice.gov.in" class="email-link">sho-pgtrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="north" data-text="inspector traffic saifabad 040-27852028 8712660627 sho-sbtrf-hyd@tspolice.gov.in">
+                  <td>Inspector – Traffic Saifabad</td>
+                  <td><span class="rank-badge">Inspector</span></td>
+                  <td><a href="tel:04027852028" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27852028 / 040-27852492</a></td>
+                  <td><a href="tel:8712660627" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660627</a></td>
+                  <td><a href="mailto:sho-sbtrf-hyd@tspolice.gov.in" class="email-link">sho-sbtrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="north" data-text="addl inspector traffic saifabad 8712660631">
+                  <td>Addl Inspector – Traffic Saifabad</td>
+                  <td><span class="rank-badge">Addl. Inspector</span></td>
+                  <td>—</td>
+                  <td><a href="tel:8712660631" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660631</a></td>
+                  <td><a href="mailto:sho-sbtrf-hyd@tspolice.gov.in" class="email-link">sho-sbtrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="north" data-text="inspector traffic abids 040-27852450 8712660626 sho-abdtrf-hyd@tspolice.gov.in">
+                  <td>Inspector – Traffic Abids</td>
+                  <td><span class="rank-badge">Inspector</span></td>
+                  <td><a href="tel:04027852450" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27852450</a></td>
+                  <td><a href="tel:8712660626" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660626</a></td>
+                  <td><a href="mailto:sho-abdtrf-hyd@tspolice.gov.in" class="email-link">sho-abdtrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="north" data-text="inspector traffic sultanbazar 040-27854988 8712660644 sho-sbzrtrf-hyd@tspolice.gov.in">
+                  <td>Inspector – Traffic Sultanbazar</td>
+                  <td><span class="rank-badge">Inspector</span></td>
+                  <td><a href="tel:04027854988" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27854988</a></td>
+                  <td><a href="tel:8712660644" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660644</a></td>
+                  <td><a href="mailto:sho-sbzrtrf-hyd@tspolice.gov.in" class="email-link">sho-sbzrtrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <!-- West Zone -->
+                <tr data-zone="west" data-text="sri k hari prasad acp jubilee hills traffic 040-27852026 8712660615 acp-trfwz-hyd@tspolice.gov.in">
+                  <td>Sri. K Hari Prasad</td>
+                  <td><span class="rank-badge acp">ACP Jubilee Hills Traffic (West)</span></td>
+                  <td><a href="tel:04027852026" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27852026</a></td>
+                  <td><a href="tel:8712660615" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660615</a></td>
+                  <td><a href="mailto:acp-trfwz-hyd@tspolice.gov.in" class="email-link">acp-trfwz-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="west" data-text="inspector traffic sr nagar 040-27852506 8712660637 sho-srntrf-hyd@tspolice.gov.in">
+                  <td>Inspector – Traffic S.R. Nagar</td>
+                  <td><span class="rank-badge">Inspector</span></td>
+                  <td><a href="tel:04027852506" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27852506</a></td>
+                  <td><a href="tel:8712660637" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660637</a></td>
+                  <td><a href="mailto:sho-srntrf-hyd@tspolice.gov.in" class="email-link">sho-srntrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="west" data-text="inspector traffic jubilee hills 040-27852349 8712660635 sho-jbhtrf-hyd@tspolice.gov.in">
+                  <td>Inspector – Traffic Jubilee Hills</td>
+                  <td><span class="rank-badge">Inspector</span></td>
+                  <td><a href="tel:04027852349" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27852349</a></td>
+                  <td><a href="tel:8712660635" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660635</a></td>
+                  <td><a href="mailto:sho-jbhtrf-hyd@tspolice.gov.in" class="email-link">sho-jbhtrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="west" data-text="addl inspector traffic jubilee hills 040-27852349 7981040905">
+                  <td>Addl Inspector – Traffic Jubilee Hills</td>
+                  <td><span class="rank-badge">Addl. Inspector</span></td>
+                  <td><a href="tel:04027852349" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27852349</a></td>
+                  <td><a href="tel:7981040905" class="phone-link"><i class="fa fa-mobile fa-xs"></i>7981040905</a></td>
+                  <td><a href="mailto:sho-jbhtrf-hyd@tspolice.gov.in" class="email-link">sho-jbhtrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="west" data-text="inspector traffic banjara hills 040-27852534 8712660634 sho-bhtrf-hyd@tspolice.gov.in">
+                  <td>Inspector – Traffic Banjara Hills</td>
+                  <td><span class="rank-badge">Inspector</span></td>
+                  <td><a href="tel:04027852534" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27852534</a></td>
+                  <td><a href="tel:8712660634" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660634</a></td>
+                  <td><a href="mailto:sho-bhtrf-hyd@tspolice.gov.in" class="email-link">sho-bhtrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="west" data-text="addl inspector traffic banjara hills 040-27852534 8712580223">
+                  <td>Addl Inspector – Traffic Banjara Hills</td>
+                  <td><span class="rank-badge">Addl. Inspector</span></td>
+                  <td><a href="tel:04027852534" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27852534</a></td>
+                  <td><a href="tel:8712580223" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712580223</a></td>
+                  <td><a href="mailto:sho-bhtrf-hyd@tspolice.gov.in" class="email-link">sho-bhtrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <!-- East Zone -->
+                <tr data-zone="east" data-text="sri d dhana laxmi acp golconda traffic 040-27854915 8712660616 acp-trfez-hyd@tspolice.gov.in">
+                  <td>Sri D. Dhana Laxmi</td>
+                  <td><span class="rank-badge acp">ACP Golconda Traffic (East)</span></td>
+                  <td><a href="tel:04027854915" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27854915</a></td>
+                  <td><a href="tel:8712660616" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660616</a></td>
+                  <td><a href="mailto:acp-trfez-hyd@tspolice.gov.in" class="email-link">acp-trfez-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="east" data-text="inspector traffic tolichowki 040-27852539 8712660641 sho-tcktrf-hyd@tspolice.gov.in">
+                  <td>Inspector – Traffic Tolichowki</td>
+                  <td><span class="rank-badge">Inspector</span></td>
+                  <td><a href="tel:04027852539" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27852539</a></td>
+                  <td><a href="tel:8712660641" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660641</a></td>
+                  <td><a href="mailto:sho-tcktrf-hyd@tspolice.gov.in" class="email-link">sho-tcktrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="east" data-text="inspector traffic asifnagar 040-27852023 8712660640 sho-antrf-hyd@tspolice.gov.in">
+                  <td>Inspector – Traffic Asifnagar</td>
+                  <td><span class="rank-badge">Inspector</span></td>
+                  <td><a href="tel:04027852023" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27852023 / 040-27854767</a></td>
+                  <td><a href="tel:8712660640" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660640</a></td>
+                  <td><a href="mailto:sho-antrf-hyd@tspolice.gov.in" class="email-link">sho-antrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="east" data-text="inspector traffic kulsumpura 8712660754 sho-kmptrf-hyd@tspolice.gov.in">
+                  <td>Inspector – Traffic Kulsumpura</td>
+                  <td><span class="rank-badge">Inspector</span></td>
+                  <td>—</td>
+                  <td><a href="tel:8712660754" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660754</a></td>
+                  <td><a href="mailto:sho-kmptrf-hyd@tspolice.gov.in" class="email-link">sho-kmptrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="east" data-text="inspector traffic goshamahal 040-27854986 8712660639 sho-gmtrf-hyd@tspolice.gov.in">
+                  <td>Inspector – Traffic Goshamahal</td>
+                  <td><span class="rank-badge">Inspector</span></td>
+                  <td><a href="tel:04027854986" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27854986 / 040-27854768</a></td>
+                  <td><a href="tel:8712660639" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660639</a></td>
+                  <td><a href="mailto:sho-gmtrf-hyd@tspolice.gov.in" class="email-link">sho-gmtrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="east" data-text="addl inspector traffic goshamahal 8712660625 sho-gmtrf-hyd@tspolice.gov.in">
+                  <td>Addl Inspector – Traffic Goshamahal</td>
+                  <td><span class="rank-badge">Addl. Inspector</span></td>
+                  <td>—</td>
+                  <td><a href="tel:8712660625" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660625</a></td>
+                  <td><a href="mailto:sho-gmtrf-hyd@tspolice.gov.in" class="email-link">sho-gmtrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <!-- Secunderabad Zone -->
+                <tr data-zone="sec" data-text="sri a srinivas acp secunderabad traffic 040-27852286 8712660617 acp-trfcz-hyd@tspolice.gov.in">
+                  <td>Sri. A. Srinivas</td>
+                  <td><span class="rank-badge acp">ACP Secunderabad Traffic (Central)</span></td>
+                  <td><a href="tel:04027852286" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27852286</a></td>
+                  <td><a href="tel:8712660617" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660617</a></td>
+                  <td><a href="mailto:acp-trfcz-hyd@tspolice.gov.in" class="email-link">acp-trfcz-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="sec" data-text="inspector traffic kachiguda 040-27853776 8712660646 sho-kcgatrf-hyd@tspolice.gov.in">
+                  <td>Inspector – Traffic Kachiguda</td>
+                  <td><span class="rank-badge">Inspector</span></td>
+                  <td><a href="tel:04027853776" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27853776</a></td>
+                  <td><a href="tel:8712660646" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660646</a></td>
+                  <td><a href="mailto:sho-kcgatrf-hyd@tspolice.gov.in" class="email-link">sho-kcgatrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="sec" data-text="inspector traffic ou city 040-27852351 8712660647 sho-outrf-hyd@tspolice.gov.in">
+                  <td>Inspector – Traffic O.U. City</td>
+                  <td><span class="rank-badge">Inspector</span></td>
+                  <td><a href="tel:04027852351" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27852351</a></td>
+                  <td><a href="tel:8712660647" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660647</a></td>
+                  <td><a href="mailto:sho-outrf-hyd@tspolice.gov.in" class="email-link">sho-outrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="sec" data-text="inspector traffic chilakalguda 8712660753 sho-ckdtrf-hyd@tspolice.gov.in">
+                  <td>Inspector – Traffic Chilakalguda</td>
+                  <td><span class="rank-badge">Inspector</span></td>
+                  <td>—</td>
+                  <td><a href="tel:8712660753" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660753</a></td>
+                  <td><a href="mailto:sho-ckdtrf-hyd@tspolice.gov.in" class="email-link">sho-ckdtrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="sec" data-text="inspector traffic chikkadpally 040-27853576 8712660629 sho-ckptrf-hyd@tspolice.gov.in">
+                  <td>Inspector – Traffic Chikkadpally</td>
+                  <td><span class="rank-badge">Inspector</span></td>
+                  <td><a href="tel:04027853576" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27853576</a></td>
+                  <td><a href="tel:8712660629" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660629</a></td>
+                  <td><a href="mailto:sho-ckptrf-hyd@tspolice.gov.in" class="email-link">sho-ckptrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="sec" data-text="inspector traffic gandhi nagar 040-27852490 8712660638 sho-gnrtrf-hyd@tspolice.gov.in">
+                  <td>Inspector – Traffic Gandhi Nagar</td>
+                  <td><span class="rank-badge">Inspector</span></td>
+                  <td><a href="tel:04027852490" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27852490</a></td>
+                  <td><a href="tel:8712660638" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660638</a></td>
+                  <td><a href="mailto:sho-gnrtrf-hyd@tspolice.gov.in" class="email-link">sho-gnrtrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="sec" data-text="inspector traffic mahankali 040-27853726 8712660622 sho-mkltrf-hyd@tspolice.gov.in">
+                  <td>Inspector – Traffic Mahankali</td>
+                  <td><span class="rank-badge">Inspector</span></td>
+                  <td><a href="tel:04027853726" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27853726</a></td>
+                  <td><a href="tel:8712660622" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660622</a></td>
+                  <td><a href="mailto:sho-mkltrf-hyd@tspolice.gov.in" class="email-link">sho-mkltrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <!-- Charminar Zone -->
+                <tr data-zone="charminar" data-text="sri k laxman acp charminar traffic 8712660618 acp-trfsz-hyd@tspolice.gov.in">
+                  <td>Sri. K. Laxman</td>
+                  <td><span class="rank-badge acp">ACP Charminar Traffic</span></td>
+                  <td>—</td>
+                  <td><a href="tel:8712660618" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660618</a></td>
+                  <td><a href="mailto:acp-trfsz-hyd@tspolice.gov.in" class="email-link">acp-trfsz-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="charminar" data-text="inspector traffic mirchowk 04027854987 8712660648 sho-mcktrf-hyd@tspolice.gov.in">
+                  <td>Inspector – Traffic Mirchowk</td>
+                  <td><span class="rank-badge">Inspector</span></td>
+                  <td><a href="tel:04027854987" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27854987</a></td>
+                  <td><a href="tel:8712660648" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660648</a></td>
+                  <td><a href="mailto:sho-mcktrf-hyd@tspolice.gov.in" class="email-link">sho-mcktrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="charminar" data-text="inspector traffic charminar 040-27854780 8712660650 sho-cmnrtrf-hyd@tspolice.gov.in">
+                  <td>Inspector – Traffic Charminar</td>
+                  <td><span class="rank-badge">Inspector</span></td>
+                  <td><a href="tel:04027854780" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27854780</a></td>
+                  <td><a href="tel:8712660650" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660650</a></td>
+                  <td><a href="mailto:sho-cmnrtrf-hyd@tspolice.gov.in" class="email-link">sho-cmnrtrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="charminar" data-text="inspector traffic chatrinka 8712660651 sho-cnktrf-hyd@tspolice.gov.in">
+                  <td>Inspector – Traffic Chatrinka</td>
+                  <td><span class="rank-badge">Inspector</span></td>
+                  <td>—</td>
+                  <td><a href="tel:8712660651" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660651</a></td>
+                  <td><a href="mailto:sho-cnktrf-hyd@tspolice.gov.in" class="email-link">sho-cnktrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <!-- South Zone -->
+                <tr data-zone="south" data-text="sri v chandra kumar acp chandrayangutta traffic 8712661693 acp-trfsez-hyd@tspolice.gov.in">
+                  <td>Sri. V. Chandra Kumar</td>
+                  <td><span class="rank-badge acp">ACP Chandrayangutta Traffic (South)</span></td>
+                  <td>—</td>
+                  <td><a href="tel:8712661693" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712661693</a></td>
+                  <td><a href="mailto:acp-trfsez-hyd@tspolice.gov.in" class="email-link">acp-trfsez-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="south" data-text="inspector traffic malakpet 040-27854795 8712660642 sho-mlpttrf-hyd@tspolice.gov.in">
+                  <td>Inspector – Traffic Malakpet</td>
+                  <td><span class="rank-badge">Inspector</span></td>
+                  <td><a href="tel:04027854795" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27854795</a></td>
+                  <td><a href="tel:8712660642" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660642</a></td>
+                  <td><a href="mailto:sho-mlpttrf-hyd@tspolice.gov.in" class="email-link">sho-mlpttrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="south" data-text="inspector traffic saidabad 8712660752 sho-sdbdtrf-hyd@tspolice.gov.in">
+                  <td>Inspector – Traffic Saidabad</td>
+                  <td><span class="rank-badge">Inspector</span></td>
+                  <td>—</td>
+                  <td><a href="tel:8712660752" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660752</a></td>
+                  <td><a href="mailto:sho-sdbdtrf-hyd@tspolice.gov.in" class="email-link">sho-sdbdtrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="south" data-text="inspector traffic chandrayangutta 8712660748 sho-cgttrf-hyd@tspolice.gov.in">
+                  <td>Inspector – Traffic Chandrayangutta</td>
+                  <td><span class="rank-badge">Inspector</span></td>
+                  <td>—</td>
+                  <td><a href="tel:8712660748" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660748</a></td>
+                  <td><a href="mailto:sho-cgttrf-hyd@tspolice.gov.in" class="email-link">sho-cgttrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="south" data-text="inspector traffic santosh nagar 8712660749 sho-snttrf-hyd@tspolice.gov.in">
+                  <td>Inspector – Traffic Santosh Nagar</td>
+                  <td><span class="rank-badge">Inspector</span></td>
+                  <td>—</td>
+                  <td><a href="tel:8712660749" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660749</a></td>
+                  <td><a href="mailto:sho-snttrf-hyd@tspolice.gov.in" class="email-link">sho-snttrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <!-- Rajendra Nagar -->
+                <tr data-zone="rjn" data-text="sri d sudheer reddy acp rajendra nagar traffic 8712663055 acp-trfswz-hyd@tspolice.gov.in">
+                  <td>Sri D. Sudheer Reddy</td>
+                  <td><span class="rank-badge acp">ACP Rajendra Nagar Traffic</span></td>
+                  <td>—</td>
+                  <td><a href="tel:8712663055" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712663055</a></td>
+                  <td><a href="mailto:acp-trfswz-hyd@tspolice.gov.in" class="email-link">acp-trfswz-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="rjn" data-text="inspector traffic falaknuma 040-27854762 8712660649 sho-fntrf-hyd@tspolice.gov.in">
+                  <td>Inspector – Traffic Falaknuma</td>
+                  <td><span class="rank-badge">Inspector</span></td>
+                  <td><a href="tel:04027854762" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27854762</a></td>
+                  <td><a href="tel:8712660649" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660649</a></td>
+                  <td><a href="mailto:sho-fntrf-hyd@tspolice.gov.in" class="email-link">sho-fntrf-hyd@tspolice.gov.in</a></td>
+                </tr>
+                <tr data-zone="rjn" data-text="inspector traffic rajendra nagar 8712663600">
+                  <td>Inspector – Traffic Rajendra Nagar</td>
+                  <td><span class="rank-badge">Inspector</span></td>
+                  <td>—</td>
+                  <td><a href="tel:8712663600" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712663600</a></td>
+                  <td>—</td>
+                </tr>
+                <tr data-zone="rjn" data-text="addl inspector traffic rajendra nagar 8712663601">
+                  <td>Addl Inspector – Traffic Rajendra Nagar</td>
+                  <td><span class="rank-badge">Addl. Inspector</span></td>
+                  <td>—</td>
+                  <td><a href="tel:8712663601" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712663601</a></td>
+                  <td>—</td>
+                </tr>
+                <!-- Airport Zone -->
+                <tr data-zone="airport" data-text="sri p nagabhushanam acp shamshabad traffic airport 8712680305">
+                  <td>Sri P. Nagabhushanam</td>
+                  <td><span class="rank-badge acp">ACP Shamshabad Traffic (Airport)</span></td>
+                  <td>—</td>
+                  <td><a href="tel:8712680305" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712680305</a></td>
+                  <td>—</td>
+                </tr>
+                <tr data-zone="airport" data-text="inspector traffic rgi airport 8712680415">
+                  <td>Inspector – Traffic RGI Airport</td>
+                  <td><span class="rank-badge">Inspector</span></td>
+                  <td>—</td>
+                  <td><a href="tel:8712680415" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712680415</a></td>
+                  <td>—</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="no-results" id="noResults">
+              <i class="fa fa-search" style="font-size:2rem; margin-bottom:10px; display:block; color:var(--gray-300);"></i>
+              No records found. Try a different search term.
+            </div>
+          </div>
+
+          <!-- QUICK LINKS -->
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:16px; margin-top:30px; padding:20px 0;">
+            <a href="index.html" class="icon-box blue"><i class="fa fa-home" style="font-size:32px; color:var(--navy-light);"></i><span>Back to Home</span></a>
+            <a href="contact_us.html" class="icon-box green"><i class="fa fa-envelope" style="font-size:32px; color:var(--green);"></i><span>Contact Us</span></a>
+            <a href="https://echallan.tspolice.gov.in/publicview/" target="_blank" class="icon-box red"><i class="fa fa-file-invoice" style="font-size:32px; color:var(--red);"></i><span>Pay Challan</span></a>
+            <a href="road_rules.html" class="icon-box orange"><i class="fa fa-book" style="font-size:32px; color:#d97706;"></i><span>Road Rules</span></a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ARRIVE ALIVE -->
+  <div class="aa-banner">
+    <div class="aa-inner">
+      <div>
+        <span class="aa-badge">Road Safety Initiative</span>
+        <h2 class="aa-title">Arrive Alive Campaign</h2>
+        <p class="aa-desc">Join us in our mission to make Hyderabad's roads safer. Follow traffic rules, wear helmets, use seat belts, and say no to drunk driving.</p>
+        <a href="arriveAlive.html" class="aa-btn">Learn More</a>
+      </div>
+      <div class="aa-visual">
+        <img src="img/ArriveAlive.png" alt="Arrive Alive" style="height:230px; object-fit:contain; filter:drop-shadow(0 4px 16px rgba(0,0,0,.25));">
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="modern-footer">
+    <div class="container-htp py-5">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 text-center text-lg-start">
+          <img src="img/MainLogo1.png" class="footer-logo mb-3" alt="HTP Logo">
+          <h4 class="footer-heading">Hyderabad Traffic Police</h4>
+          <p class="footer-text">Dedicated to safer roads, better traffic management and citizen-friendly digital services.</p>
+          <a href="campaigns.html" class="footer-btn">🚦 Road Safety Campaigns</a>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h5 class="footer-title">Useful Links</h5>
+          <ul class="footer-links">
+            <li><a href="https://echallan.tspolice.gov.in/publicview/">E-Challan</a></li>
+            <li><a href="wrong_challan.html">Wrong Challan</a></li>
+            <li><a href="noc_tov.html">NOC</a></li>
+            <li><a href="driving_license.html">Driving License</a></li>
+            <li><a href="vehicle_registration.html">Vehicle Registration</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h5 class="footer-title">Information</h5>
+          <ul class="footer-links">
+            <li><a href="road_rules.html">Road Rules</a></li>
+            <li><a href="road_sense.html">Road Sense</a></li>
+            <li><a href="road_smart.html">Road Smart</a></li>
+            <li><a href="statistics.html">Statistics</a></li>
+            <li><a href="rti.html">RTI</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <h5 class="footer-title">Connect With Us</h5>
+          <div class="social-icons mb-4">
+            <a onclick="window.open('https://www.facebook.com/HYDTP','_blank');" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a onclick="window.open('https://twitter.com/HYDTP','_blank');" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+            <a onclick="window.open('https://www.instagram.com/hyderabadtrafficpolice','_blank');" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a onclick="window.open('https://youtube.com/@hyderabadtrafficpoliceshik6556','_blank');" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+          <h6 style="font-weight:700; margin-bottom:10px;">Official Website</h6>
+          <a href="https://hyderabadpolice.gov.in/" target="_blank" style="color:#0B3D91; font-weight:600;">Hyderabad Police</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container-htp">
+        <div class="row align-items-center">
+          <div class="col-md-6 text-center text-md-start">COPYRIGHT &copy; 2026, Hyderabad Traffic Police</div>
+          <div class="col-md-6 text-center text-md-end">Designed and developed by <a href="https://ts.nic.in/" target="_blank">NIC Telangana</a></div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CHATBOT TOGGLE -->
+  <button id="chatbotToggle" aria-label="Open AI Chatbot">
+    <i class="fa fa-robot"></i>
+    <span class="chat-badge">AI</span>
+  </button>
+  <button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">
+    <i class="fa fa-arrow-up"></i>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    /* ── Google Translate ── */
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({ pageLanguage:'en', includedLanguages:'en,te,hi,ta,ur,kn,ml', autoDisplay:false }, 'gt_hidden');
+    }
+    function doTranslate(lang) {
+      if (lang === 'en') {
+        var exp = new Date(Date.now()-1000).toUTCString();
+        ['',location.hostname,'.'+location.hostname].forEach(function(d){ var b='googtrans=; expires='+exp+'; path=/'; document.cookie=d?b+'; domain='+d:b; });
+      } else {
+        var val='/en/'+lang;
+        ['',location.hostname,'.'+location.hostname].forEach(function(d){ var b='googtrans='+val+'; path=/'; document.cookie=d?b+'; domain='+d:b; });
+      }
+      var gt=document.querySelector('.goog-te-combo');
+      if(gt){ gt.value=lang==='en'?'':lang; gt.dispatchEvent(new Event('change')); } else { location.reload(); }
+    }
+
+    /* ── Zoom ── */
+    var _zoom=1.0, _zoomWrap=null;
+    document.addEventListener('DOMContentLoaded', function(){
+      _zoomWrap=document.createElement('div');
+      _zoomWrap.id='zoom-wrap'; _zoomWrap.style.transformOrigin='top left';
+      while(document.body.firstChild) _zoomWrap.appendChild(document.body.firstChild);
+      document.body.appendChild(_zoomWrap);
+      var m=document.cookie.match(/googtrans=\/en\/([a-z]+)/);
+      var sel=document.getElementById('langSelect');
+      if(sel && m) sel.value=m[1];
+
+     /* ── Navbar search → search.html ── */
+      var navInput = document.getElementById('navSearchInput');
+      var navIcon  = document.querySelector('.nav-search-icon');
+      function doNavSearch() {
+        var q = navInput.value.trim();
+        if (q) window.location.href = 'search.html?q=' + encodeURIComponent(q);
+      }
+      if (navInput) navInput.addEventListener('keydown', function(e){ if (e.key === 'Enter') doNavSearch(); });
+      if (navIcon)  { navIcon.style.pointerEvents = 'auto'; navIcon.style.cursor = 'pointer'; navIcon.addEventListener('click', doNavSearch); }
+    });
+    function pageZoom(d){ _zoom=Math.min(1.5,Math.max(0.6,parseFloat((_zoom+d*0.1).toFixed(2)))); applyZoom(); }
+    function pageZoomReset(){ _zoom=1.0; applyZoom(); }
+    function applyZoom(){ if(!_zoomWrap)return; _zoomWrap.style.transform='scale('+_zoom+')'; _zoomWrap.style.width=(100/_zoom)+'%'; }
+
+    /* ── Scroll top ── */
+    var scrollBtn = document.getElementById('scrollTopBtn');
+    window.addEventListener('scroll', function(){ scrollBtn.classList.toggle('visible', window.scrollY > 300); }, { passive: true });
+
+    /* ── Zone filter ── */
+    var activeZone = 'all';
+    function filterZone(btn) {
+      document.querySelectorAll('.zone-tab').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      activeZone = btn.getAttribute('data-zone');
+      applyFilter();
+    }
+    function filterDir() { applyFilter(); }
+    function applyFilter() {
+      var q = document.getElementById('dirSearch').value.trim().toLowerCase();
+      var rows = document.querySelectorAll('#dirBody tr');
+      var visible = 0;
+      rows.forEach(function(row) {
+        var zone = row.getAttribute('data-zone') || '';
+        var text = (row.getAttribute('data-text') || '') + row.textContent.toLowerCase();
+        var zoneMatch = (activeZone === 'all') || (zone === activeZone);
+        var textMatch = !q || text.includes(q);
+        if (zoneMatch && textMatch) { row.style.display = ''; visible++; }
+        else row.style.display = 'none';
+      });
+      document.getElementById('noResults').style.display = visible === 0 ? 'block' : 'none';
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>

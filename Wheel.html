@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Hyderabad Traffic Police – Vehicle Wheel Clamp: Purpose, process, legal guidelines and how to get your vehicle released.">
+  <meta property="og:title" content="Vehicle Wheel Clamp – Hyderabad Traffic Police">
+  <meta property="og:type" content="website">
+  <title>Vehicle Wheel Clamp – Hyderabad Traffic Police</title>
+  <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy:       #0B3C5D;
+      --navy-dark:  #072a43;
+      --navy-light: #145DA0;
+      --gold:       #FFC107;
+      --gold-dark:  #e0a800;
+      --red:        #D72638;
+      --green:      #198754;
+      --white:      #ffffff;
+      --off-white:  #f5f7fa;
+      --gray-100:   #e9ecef;
+      --gray-300:   #dee2e6;
+      --gray-600:   #6c757d;
+      --gray-800:   #343a40;
+      --radius-sm:  6px;
+      --radius-md:  10px;
+      --radius-lg:  16px;
+      --shadow-sm:  0 2px 8px rgba(0,0,0,.08);
+      --shadow-md:  0 4px 20px rgba(0,0,0,.12);
+      --transition: 0.22s ease;
+      --font-body:  'DM Sans', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { margin: 0; padding: 0; overflow-x: hidden; }
+    body {
+      font-family: var(--font-body); font-size: 15px;
+      color: var(--gray-800); background: var(--off-white);
+      margin: 0; padding: 0; overflow-x: hidden; transform-origin: top left;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+
+    .skip-link {
+      position: absolute; top: -40px; left: 0;
+      background: var(--gold); color: #000; padding: 8px 16px;
+      font-weight: 700; z-index: 99999; transition: top .2s;
+    }
+    .skip-link:focus { top: 0; }
+
+    .container-htp {
+      width: 100%; max-width: 1280px;
+      margin-left: auto; margin-right: auto;
+      padding-left: 32px; padding-right: 32px;
+    }
+    @media (max-width: 768px) { .container-htp { padding-left: 16px; padding-right: 16px; } }
+
+    /* TOP HEADER */
+    .top-header {
+      width: 100%;
+      background: linear-gradient(100deg, var(--navy-dark) 0%, var(--navy-light) 100%);
+      border-bottom: 3px solid var(--gold);
+      color: var(--white); padding: 10px 0;
+    }
+    .top-header__logo { height: 80px; width: auto; }
+    .top-header__title { font-size: 1.5rem; font-weight: 700; color: var(--gold); line-height: 1.2; white-space: nowrap; }
+    .top-header__subtitle { font-size: 0.78rem; color: rgba(255,255,255,.75); letter-spacing: .5px; }
+    .top-header__actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+    .btn-htp {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 7px 14px; border-radius: var(--radius-sm);
+      font-size: 0.8rem; font-weight: 600; border: none; cursor: pointer;
+      transition: filter var(--transition), transform var(--transition);
+    }
+    .btn-htp:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .btn-challan  { background: var(--red);   color: var(--white); }
+    .btn-whatsapp { background: #25D366;       color: var(--white); }
+    .btn-feedback { background: var(--gold);   color: #000; }
+    .top-header__info { font-size: .8rem; color: rgba(255,255,255,.85); }
+    .top-header__info a { color: var(--gold); font-weight: 600; }
+    .top-header__info a:hover { text-decoration: underline; }
+
+    .zoom-ctrl {
+      display: flex; align-items: center; gap: 2px;
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
+      border-radius: 24px; padding: 3px;
+    }
+    .zoom-ctrl button {
+      background: transparent; border: none; color: rgba(255,255,255,.75);
+      padding: 4px 9px; border-radius: 20px; font-size: .78rem; font-weight: 700;
+      cursor: pointer; font-family: var(--font-body);
+      transition: background var(--transition), color var(--transition);
+    }
+    .zoom-ctrl button:hover { background: rgba(255,255,255,.15); color: #fff; }
+    .zoom-ctrl button.reset { color: var(--gold); font-size: .85rem; }
+
+    .lang-dropdown-wrap { position: relative; display: inline-flex; align-items: center; }
+    .lang-dropdown-wrap .lang-globe { position: absolute; left: 9px; color: rgba(255,255,255,.6); font-size: .78rem; pointer-events: none; z-index: 1; }
+    .lang-select {
+      appearance: none; -webkit-appearance: none;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.25);
+      border-radius: 20px; color: #fff; font-family: var(--font-body);
+      font-size: .78rem; font-weight: 600; padding: 5px 28px 5px 26px;
+      cursor: pointer; outline: none; min-width: 90px;
+      transition: background var(--transition), border-color var(--transition);
+    }
+    .lang-select:hover  { background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.45); }
+    .lang-select:focus  { border-color: var(--gold); background: rgba(255,255,255,.18); }
+    .lang-select option { background: var(--navy-dark); color: #fff; font-weight: 600; }
+    .lang-caret { position: absolute; right: 9px; color: rgba(255,255,255,.55); font-size: .65rem; pointer-events: none; }
+
+    /* NAVBAR */
+    .main-nav {
+      width: 100%; background: var(--navy);
+      position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,.2);
+    }
+    .main-nav .nav-link {
+      color: rgba(255,255,255,.85) !important; font-weight: 500; font-size: .88rem;
+      padding: 10px 14px !important; border-radius: var(--radius-sm);
+      transition: background var(--transition), color var(--transition);
+    }
+    .main-nav .nav-link:hover,
+    .main-nav .nav-link:focus  { color: var(--gold) !important; background: rgba(255,255,255,.08); }
+    .main-nav .nav-link.active { color: var(--gold) !important; }
+    .main-nav .dropdown-menu { border: none; border-radius: var(--radius-md); padding: 8px; box-shadow: var(--shadow-md); margin-top: 6px; }
+    .main-nav .dropdown-item { border-radius: var(--radius-sm); padding: 8px 12px; font-size: .86rem; transition: background var(--transition); }
+    .main-nav .dropdown-item:hover { background: var(--navy); color: #fff; }
+    .nav-extras { flex-shrink: 0; }
+    .nav-search { position: relative; display: flex; align-items: center; }
+    .nav-search input {
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
+      border-radius: 20px; color: var(--white); padding: 6px 14px 6px 34px;
+      font-size: .8rem; width: 180px; outline: none; font-family: var(--font-body);
+      transition: background var(--transition), border-color var(--transition), width var(--transition);
+    }
+    .nav-search input::placeholder { color: rgba(255,255,255,.45); }
+    .nav-search input:focus { background: rgba(255,255,255,.18); border-color: var(--gold); width: 220px; }
+    .nav-search-icon { position: absolute; left: 11px; color: rgba(255,255,255,.45); font-size: .78rem; pointer-events: none; }
+    .nav-search:focus-within .nav-search-icon { color: var(--gold); }
+    @media (max-width: 991px) {
+      .nav-extras { margin: 10px 0 6px; flex-wrap: wrap; justify-content: center; width: 100%; }
+      .nav-search input { width: 100%; border-radius: 8px; padding-left: 34px; }
+      .nav-search input:focus { width: 100%; }
+      .nav-search { width: 100%; }
+    }
+
+    /* SECTION HEADING */
+    .section-heading {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 1.1rem; font-weight: 700; color: var(--white);
+      background: linear-gradient(90deg, var(--navy) 0%, var(--navy-light) 100%);
+      padding: 12px 24px; border-radius: var(--radius-md);
+      letter-spacing: .5px; margin-bottom: 1.5rem;
+    }
+
+    /* ── WHEEL CLAMP SPECIFIC STYLES ── */
+
+    /* HERO ACCENT BAR */
+    .hero-accent {
+      display: flex; align-items: center; gap: 14px;
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
+      border-radius: var(--radius-md); padding: 10px 20px; margin-top: 24px;
+      flex-wrap: wrap;
+    }
+    .hero-accent-item { display: flex; align-items: center; gap: 8px; font-size: .82rem; color: rgba(255,255,255,.85); }
+    .hero-accent-item i { color: var(--gold); }
+    .hero-accent-divider { width: 1px; height: 20px; background: rgba(255,255,255,.2); }
+    @media (max-width: 640px) { .hero-accent-divider { display: none; } }
+
+    /* STAT CARDS */
+    .stat-cards {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 60px ; margin-bottom: 28px;
+    }
+    .stat-card {
+      background: var(--white); border-radius: var(--radius-md);
+      padding: 22px 20px; box-shadow: var(--shadow-sm);
+      border-top: 4px solid var(--navy); text-align: center;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .stat-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .stat-card .num { font-size: 1.9rem; font-weight: 800; color: var(--navy); line-height: 1; }
+    .stat-card .lbl { font-size: .78rem; color: var(--gray-600); margin-top: 6px; font-weight: 500; }
+    .stat-card.red-top   { border-top-color: var(--red); }
+    .stat-card.red-top .num { color: var(--red); }
+    .stat-card.green-top { border-top-color: var(--green); }
+    .stat-card.green-top .num { color: var(--green); }
+    .stat-card.gold-top  { border-top-color: var(--gold-dark); }
+    .stat-card.gold-top .num { color: var(--gold-dark); }
+
+    /* CONTENT CARD */
+    .content-card {
+      background: var(--white); border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm); padding: 32px;
+      margin-bottom: 24px;
+    }
+
+    /* PURPOSE GRID */
+    .purpose-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .purpose-card {
+      border-radius: var(--radius-md); padding: 22px 18px;
+      border: 1px solid var(--gray-300); display: flex;
+      flex-direction: column; gap: 10px;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+    .purpose-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--navy-light); }
+    .purpose-icon {
+      width: 48px; height: 48px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .purpose-card h4 { font-size: .95rem; font-weight: 700; margin: 0; color: var(--navy); }
+    .purpose-card p  { font-size: .83rem; color: var(--gray-600); margin: 0; line-height: 1.6; }
+
+    /* PROCESS STEPS */
+    .process-steps { display: flex; flex-direction: column; gap: 0; }
+    .step-row {
+      display: flex; gap: 20px; align-items: flex-start; position: relative;
+    }
+    .step-row:not(:last-child)::after {
+      content: ''; position: absolute; left: 19px; top: 48px;
+      width: 2px; height: calc(100% - 8px);
+      background: linear-gradient(to bottom, var(--navy-light), var(--gray-300));
+      z-index: 0;
+    }
+    .step-num {
+      width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
+      background: var(--navy); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: .9rem; z-index: 1;
+      box-shadow: 0 0 0 4px var(--off-white);
+    }
+    .step-body {
+      background: var(--white); border: 1px solid var(--gray-300);
+      border-radius: var(--radius-md); padding: 16px 18px;
+      flex: 1; margin-bottom: 14px;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    .step-body:hover { border-color: var(--navy-light); box-shadow: var(--shadow-sm); }
+    .step-body h4 { font-size: .9rem; font-weight: 700; color: var(--navy); margin: 0 0 5px; }
+    .step-body p  { font-size: .82rem; color: var(--gray-600); margin: 0; line-height: 1.6; }
+
+    /* LEGAL CARDS */
+    .legal-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .legal-card {
+      border-radius: var(--radius-md); padding: 20px 18px;
+      border: 1px solid; display: flex; flex-direction: column; gap: 10px;
+    }
+    .legal-card.do {
+      background: #E8F8F0; border-color: #a3cfbb;
+    }
+    .legal-card.dont {
+      background: #FDE8EA; border-color: #f5c2c7;
+    }
+    .legal-card.note {
+      background: #FFF8E1; border-color: #ffe082;
+    }
+    .legal-card h4 { font-size: .88rem; font-weight: 700; margin: 0; display: flex; align-items: center; gap: 8px; }
+    .legal-card h4.do-h   { color: var(--green); }
+    .legal-card h4.dont-h { color: var(--red); }
+    .legal-card h4.note-h { color: #92580a; }
+    .legal-card ul { margin: 0; padding-left: 16px; }
+    .legal-card ul li { font-size: .82rem; color: var(--gray-800); margin-bottom: 6px; line-height: 1.5; }
+    .legal-card ul li:last-child { margin-bottom: 0; }
+
+    /* FINE TABLE */
+    .fine-table { width: 100%; border-collapse: collapse; background: var(--white); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-sm); }
+    .fine-table thead { background: var(--navy); }
+    .fine-table thead th { color: #fff; font-size: .8rem; font-weight: 700; padding: 12px 16px; text-align: left; letter-spacing: .3px; }
+    .fine-table tbody tr:nth-child(even) { background: #f8fafc; }
+    .fine-table tbody tr:hover { background: #eef4ff; }
+    .fine-table td { padding: 11px 16px; font-size: .83rem; border-bottom: 1px solid #f0f3f6; }
+    .fine-table td:last-child { font-weight: 700; color: var(--red); }
+    .badge-type {
+      display: inline-block; font-size: .72rem; font-weight: 700;
+      padding: 2px 9px; border-radius: 20px;
+    }
+    .badge-type.heavy   { background: #FDE8EA; color: var(--red); }
+    .badge-type.medium  { background: #FFF8E1; color: #92580a; }
+    .badge-type.light   { background: #E8F8F0; color: var(--green); }
+
+    /* IMPORTANT ALERT */
+    .alert-banner {
+      background: #FDE8EA; border-left: 5px solid var(--red);
+      border-radius: var(--radius-md); padding: 18px 22px;
+      display: flex; gap: 14px; align-items: flex-start; margin-top: 28px;
+    }
+    .alert-banner i { color: var(--red); font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+    .alert-banner .alert-title { font-weight: 700; font-size: .92rem; color: var(--red); margin-bottom: 4px; }
+    .alert-banner .alert-text  { font-size: .83rem; color: var(--gray-800); line-height: 1.6; margin: 0; }
+
+    /* RELEASE STEPS - accordion style */
+    .release-steps { display: flex; flex-direction: column; gap: 10px; }
+    .release-step {
+      background: var(--white); border: 1px solid var(--gray-300);
+      border-radius: var(--radius-md); overflow: hidden;
+    }
+    .release-step-header {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 18px; cursor: pointer;
+      transition: background var(--transition);
+    }
+    .release-step-header:hover { background: var(--off-white); }
+    .release-step-num {
+      width: 30px; height: 30px; border-radius: 50%;
+      background: var(--navy-light); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .8rem; font-weight: 700; flex-shrink: 0;
+    }
+    .release-step-title { font-weight: 700; font-size: .9rem; color: var(--navy); flex: 1; }
+    .release-step-body { padding: 0 18px 14px 62px; font-size: .83rem; color: var(--gray-600); line-height: 1.6; }
+    .release-step-icon { color: var(--gold); font-size: .85rem; }
+
+    /* CONTACT CARDS */
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 40px; }
+    .contact-card {
+      background: var(--white); border: 1px solid var(--gray-300);
+      border-radius: var(--radius-md); padding: 18px;
+      display: flex; flex-direction: column; align-items: center;
+      gap: 30px; text-align: center;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .contact-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .contact-icon {
+      width: 52px; height: 52px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; font-size: 20px;
+    }
+    .contact-card .c-num { font-size: 1.2rem; font-weight: 800; color: var(--navy); }
+    .contact-card .c-lbl { font-size: .78rem; color: var(--gray-600); }
+    .contact-card a.c-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 7px 16px; border-radius: 20px; font-size: .8rem; font-weight: 600;
+      background: var(--navy); color: #fff; margin-top: 4px;
+      transition: background var(--transition);
+    }
+    .contact-card a.c-btn:hover { background: var(--navy-light); }
+
+    /* QUICK NAV */
+    .icon-box-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
+    .icon-box {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 10px; padding: 20px 12px; border-radius: var(--radius-md);
+      border: 1px solid var(--gray-300); background: var(--white);
+      text-align: center; cursor: pointer;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      text-decoration: none; color: var(--gray-800);
+    }
+    .icon-box:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--navy-light); }
+    .icon-box span { font-size: .82rem; font-weight: 600; line-height: 1.3; }
+    .icon-box.blue   { background: #EDF5FF; border-color: #b6d4fe; }
+    .icon-box.green  { background: #E8F8F0; border-color: #a3cfbb; }
+    .icon-box.red    { background: #FDE8EA; border-color: #f5c2c7; }
+    .icon-box.orange { background: #FFF4E6; border-color: #fecba1; }
+
+    /* ARRIVE ALIVE */
+    .aa-banner {
+      width: 100%; background: linear-gradient(120deg, #16A085 0%, #1ABC9C 100%);
+      padding: 10px 40px; position: relative; overflow: hidden; margin-bottom: 0;
+    }
+    .aa-banner::before {
+      content: ''; position: absolute; top: -80px; right: -80px;
+      width: 340px; height: 300px; background: rgba(255,255,255,.06);
+      border-radius: 50%; pointer-events: none;
+    }
+    .aa-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 24px; align-items: center; position: relative; z-index: 1;
+    }
+    .aa-badge { display: inline-block; background: rgba(255,255,255,.2); color: #fff; font-size: .72rem; font-weight: 600; padding: 4px 14px; border-radius: 20px; letter-spacing: .4px; margin-bottom: 8px; }
+    .aa-title { font-size: 1.5rem; font-weight: 800; color: #fff; margin: 0 0 6px; line-height: 1.2; }
+    .aa-desc  { font-size: .88rem; color: rgba(255,255,255,.88); line-height: 1.6; margin: 0 0 10px; }
+    .aa-btn   { display: inline-block; background: #fff; color: #16A085; font-size: .88rem; font-weight: 700; padding: 10px 28px; border-radius: var(--radius-sm); transition: background var(--transition), transform var(--transition); }
+    .aa-btn:hover { background: #e8faf6; transform: translateY(-2px); color: #16A085; }
+    .aa-visual { background: transparent; border: none; padding: 0; display: flex; align-items: center; justify-content: center; }
+    @media (max-width: 768px) {
+      .aa-inner { grid-template-columns: 1fr; gap: 0; }
+      .aa-visual { display: none; }
+      .aa-title  { font-size: 1.3rem; }
+      .aa-banner { padding: 10px 16px; }
+    }
+
+    /* FOOTER */
+    .modern-footer { width: 100%; background: #f4f7fb; border-top: 4px solid #0B3D91; display: block; }
+    .footer-logo { width: 130px; }
+    .footer-heading { color: #0B3D91; font-weight: 700; margin-bottom: 15px; }
+    .footer-text { color: #555; line-height: 1.8; font-size: .88rem; }
+    .footer-btn { display: inline-block; margin-top: 10px; background: #0B3D91; color: #fff; padding: 12px 22px; border-radius: 30px; text-decoration: none; font-weight: 600; transition: .3s; }
+    .footer-btn:hover { background: #1565C0; color: #fff; transform: translateY(-2px); }
+    .footer-title { color: #111; font-weight: 700; margin-bottom: 20px; position: relative; font-size: .95rem; }
+    .footer-title::after { content: ''; width: 45px; height: 3px; background: #8BC34A; display: block; margin-top: 8px; }
+    .footer-links { list-style: none; padding: 0; }
+    .footer-links li { margin-bottom: 12px; }
+    .footer-links a { color: #444; text-decoration: none; font-size: .85rem; transition: .3s; }
+    .footer-links a:hover { color: #0B3D91; padding-left: 5px; }
+    .social-icons { display: flex; gap: 15px; flex-wrap: wrap; }
+    .social-icons a { width: 48px; height: 48px; border-radius: 50%; background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,.1); display: flex; align-items: center; justify-content: center; color: #0B3D91; font-size: 20px; transition: .3s; cursor: pointer; }
+    .social-icons a:hover { background: #0B3D91; color: #fff; transform: translateY(-4px); }
+    .footer-subtitle { font-weight: 700; margin-bottom: 10px; }
+    .official-link { color: #0B3D91; text-decoration: none; font-weight: 600; }
+    .footer-bottom { width: 100%; background: #111c2e; color: #fff; padding: 18px 0; font-size: .82rem; display: block; }
+    .footer-bottom a { color: #fff; text-decoration: none; }
+    .footer-bottom a:hover { color: var(--gold); }
+    @media (max-width: 768px) {
+      .footer-title, .footer-heading, .footer-text { text-align: center; }
+      .footer-title::after { margin: auto; margin-top: 8px; }
+      .social-icons { justify-content: center; }
+      .top-header__actions { justify-content: center; }
+      .top-header__info { text-align: center; }
+    }
+
+    /* POPUP */
+    .center-popup { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; justify-content: center; align-items: center; z-index: 99999; }
+    .popup-box { position: relative; width: 70%; max-width: 900px; background: #fff; padding: 10px; border-radius: 15px; box-shadow: 0 5px 25px rgba(0,0,0,0.5); animation: popupZoom 0.4s ease; }
+    .popup-box img { width: 100%; height: auto; border-radius: 10px; display: block; }
+    .close-btn { position: absolute; top: -15px; right: -15px; background: red; color: #fff; width: 35px; height: 35px; line-height: 35px; text-align: center; border-radius: 50%; font-size: 22px; font-weight: bold; cursor: pointer; box-shadow: 0 3px 10px rgba(0,0,0,0.5); }
+    .close-btn:hover { background: #cc0000; }
+    @keyframes popupZoom { from { transform: scale(0.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+    /* CHATBOT */
+    #chatbotToggle {
+      position: fixed; bottom: 24px; right: 80px; z-index: 1001;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      border: 2.5px solid var(--gold); color: var(--white);
+      cursor: pointer; font-size: 22px; box-shadow: 0 4px 20px rgba(11,60,93,.4);
+      display: flex; align-items: center; justify-content: center;
+      transition: transform var(--transition), box-shadow var(--transition);
+      animation: chatPulse 2.5s infinite;
+    }
+    #chatbotToggle:hover { transform: translateY(-3px) scale(1.07); animation: none; }
+    @keyframes chatPulse {
+      0%,100% { box-shadow: 0 4px 20px rgba(11,60,93,.4), 0 0 0 0 rgba(255,193,7,.55); }
+      50%      { box-shadow: 0 4px 20px rgba(11,60,93,.4), 0 0 0 10px rgba(255,193,7,0); }
+    }
+    #chatbotToggle .chat-badge { position: absolute; top: -4px; right: -4px; background: var(--gold); color: #000; font-size: .6rem; font-weight: 800; border-radius: 10px; padding: 1px 5px; letter-spacing: .3px; border: 1.5px solid #fff; }
+
+    #chatbotWindow {
+      position: fixed; bottom: 94px; right: 80px; z-index: 1000;
+      width: 340px; max-height: 480px; background: var(--white);
+      border-radius: var(--radius-lg); box-shadow: 0 8px 40px rgba(0,0,0,.18);
+      display: flex; flex-direction: column; overflow: hidden;
+      opacity: 0; pointer-events: none; transform: translateY(16px) scale(.97);
+      transition: opacity .25s ease, transform .25s ease;
+    }
+    #chatbotWindow.open { opacity: 1; pointer-events: auto; transform: none; }
+    .chatbot-header { background: linear-gradient(100deg, var(--navy-dark) 0%, var(--navy-light) 100%); border-bottom: 3px solid var(--gold); padding: 14px 16px; display: flex; align-items: center; gap: 12px; }
+    .chatbot-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .chatbot-header-info { flex: 1; }
+    .chatbot-header-info h6 { margin: 0; color: var(--white); font-size: .9rem; font-weight: 700; }
+    .chatbot-header-info small { color: rgba(255,255,255,.7); font-size: .72rem; }
+    .chatbot-close { background: rgba(255,255,255,.12); border: none; color: rgba(255,255,255,.7); width: 28px; height: 28px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: .8rem; }
+    .chatbot-close:hover { background: rgba(255,255,255,.22); color: #fff; }
+    .chatbot-body { flex: 1; padding: 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: var(--off-white); }
+    .chat-msg { display: flex; gap: 8px; align-items: flex-end; }
+    .chat-msg.bot  { justify-content: flex-start; }
+    .chat-msg.user { justify-content: flex-end; }
+    .chat-bubble { max-width: 80%; padding: 10px 14px; border-radius: 16px; font-size: .83rem; line-height: 1.5; }
+    .chat-msg.bot  .chat-bubble { background: var(--white); color: var(--gray-800); border-bottom-left-radius: 4px; box-shadow: var(--shadow-sm); }
+    .chat-msg.user .chat-bubble { background: var(--navy); color: #fff; border-bottom-right-radius: 4px; }
+    .chat-mini-avatar { width: 26px; height: 26px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; }
+    .chatbot-suggestions { display: flex; flex-direction: column; gap: 6px; margin-top: 4px; }
+    .chat-suggest-btn { background: var(--white); border: 1.5px solid var(--gray-300); border-radius: 20px; padding: 7px 12px; font-size: .78rem; color: var(--navy); font-weight: 600; cursor: pointer; text-align: left; transition: border-color var(--transition), background var(--transition); font-family: var(--font-body); display: flex; align-items: center; gap: 7px; }
+    .chat-suggest-btn:hover { border-color: var(--navy); background: #EDF5FF; }
+    .chat-suggest-btn i { color: var(--gold); }
+    .chat-typing { display: flex; gap: 4px; align-items: center; padding: 10px 14px; background: var(--white); border-radius: 16px; border-bottom-left-radius: 4px; box-shadow: var(--shadow-sm); width: fit-content; }
+    .chat-typing span { width: 7px; height: 7px; border-radius: 50%; background: var(--gray-600); animation: typBounce 1.2s infinite; }
+    .chat-typing span:nth-child(2) { animation-delay: .2s; }
+    .chat-typing span:nth-child(3) { animation-delay: .4s; }
+    @keyframes typBounce { 0%,60%,100% { transform: translateY(0); } 30% { transform: translateY(-6px); } }
+    .chatbot-footer { padding: 10px; border-top: 1px solid var(--gray-100); background: var(--white); }
+    .chatbot-input-row { display: flex; gap: 8px; align-items: center; background: var(--off-white); border: 1.5px solid var(--gray-300); border-radius: 24px; padding: 6px 6px 6px 14px; }
+    .chatbot-input-row input { flex: 1; border: none; background: transparent; font-size: .82rem; font-family: var(--font-body); color: var(--gray-800); outline: none; }
+    .chatbot-input-row input::placeholder { color: var(--gray-600); }
+    .chatbot-send { width: 32px; height: 32px; border-radius: 50%; background: var(--navy); border: none; color: #fff; display: flex; align-items: center; justify-content: center; font-size: .8rem; cursor: pointer; transition: background var(--transition); }
+    .chatbot-send:hover { background: var(--navy-light); }
+
+    /* SCROLL TO TOP */
+    #scrollTopBtn { position: fixed; bottom: 24px; right: 24px; z-index: 999; width: 46px; height: 46px; border-radius: 50%; background: var(--red); color: var(--white); border: none; cursor: pointer; font-size: 18px; box-shadow: var(--shadow-md); opacity: 0; pointer-events: none; transition: opacity var(--transition), transform var(--transition); display: flex; align-items: center; justify-content: center; }
+    #scrollTopBtn.visible { opacity: 1; pointer-events: auto; }
+    #scrollTopBtn:hover { transform: translateY(-3px); }
+
+    mark.htp-highlight { background: var(--gold); color: #000; border-radius: 2px; padding: 0 2px; }
+
+    @media (max-width: 480px) {
+      #chatbotWindow { right: 12px; left: 12px; width: auto; bottom: 86px; }
+      #chatbotToggle { right: 76px; bottom: 20px; }
+    }
+  </style>
+</head>
+
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- POPUP -->
+  <div id="centerPopup" class="center-popup">
+    <div class="popup-box">
+      <span class="close-btn">&times;</span>
+      <img src="img/popupimg.png" alt="Traffic Banner">
+    </div>
+  </div>
+
+  <!-- TOP HEADER -->
+  <header class="top-header">
+    <div class="container-htp">
+      <div class="row align-items-center gy-2">
+        <div class="col-lg-4 col-md-12 text-center text-lg-start">
+          <a href="index.html" class="d-inline-flex align-items-center gap-2" aria-label="Hyderabad Traffic Police Home">
+            <img src="img/MainLogo1.png" class="top-header__logo" alt="Hyderabad Traffic Police logo">
+            <div>
+              <div class="top-header__title">Hyderabad Traffic Police</div>
+              <div class="top-header__subtitle">For You, With You, Always</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-4 col-md-12 text-center">
+          <div class="top-header__actions">
+            <a href="https://echallan.tspolice.gov.in/publicview/" target="_blank" rel="noopener" class="btn-htp btn-challan">
+              <img src="img/Paynow.png" width="18" height="18" alt="" aria-hidden="true"> Pay Challan
+            </a>
+            <a href="https://wa.me/9010203626" target="_blank" rel="noopener" class="btn-htp btn-whatsapp">
+              <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
+            </a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdIr2t94wVePyi562lUbeOyavRPi6vNgLadZl-lPrj53PDTYw/viewform" target="_blank" rel="noopener" class="btn-htp btn-feedback">
+              <i class="fa fa-comment-dots" aria-hidden="true"></i> Feedback
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-12 text-center text-lg-end">
+          <div class="top-header__info mb-1">
+            <i class="fa fa-phone" aria-hidden="true"></i> Helpline:
+            <a href="tel:9010203626">9010203626</a>&nbsp;&nbsp;
+            <i class="fa fa-phone-alt" aria-hidden="true"></i> E-Challan:
+            <a href="tel:04027852721">040-27852721</a>
+          </div>
+          <div class="d-flex gap-2 justify-content-center justify-content-lg-end flex-wrap align-items-center">
+            <div class="zoom-ctrl" aria-label="Zoom controls">
+              <button onclick="pageZoom(1)"     aria-label="Zoom in"    title="Zoom In">A+</button>
+              <button onclick="pageZoomReset()" aria-label="Reset zoom" title="Reset"   class="reset">&#8635;</button>
+              <button onclick="pageZoom(-1)"    aria-label="Zoom out"   title="Zoom Out">A&#8722;</button>
+            </div>
+            <div class="lang-dropdown-wrap" aria-label="Select language">
+              <i class="fa fa-globe lang-globe" aria-hidden="true"></i>
+              <select class="lang-select" id="langSelect" onchange="doTranslate(this.value)" aria-label="Select language">
+                <option value="en">English</option>
+                <option value="te">తెలుగు</option>
+                <option value="hi">हिन्दी</option>
+                <option value="ta">தமிழ்</option>
+                <option value="ur">اردو</option>
+                <option value="kn">ಕನ್ನಡ</option>
+                <option value="ml">മലയാളം</option>
+              </select>
+              <i class="fa fa-chevron-down lang-caret" aria-hidden="true"></i>
+            </div>
+            <div id="gt_hidden" style="display:none;position:absolute;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAVBAR -->
+  <nav class="main-nav navbar navbar-expand-lg" aria-label="Main navigation">
+    <div class="container-htp">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain" aria-controls="navMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">About Us</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="introduction.html">Introduction</a></li>
+              <li><a class="dropdown-item" href="org_chart.html">Organization Chart</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" data-bs-toggle="dropdown" aria-expanded="false">Services</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="wrong_challan.html">Wrong Challan</a></li>
+              <li><a class="dropdown-item active" href="wheel.html">Wheel Clamp</a></li>
+              <li><a class="dropdown-item" href="noc_tov.html">Vehicle NOC</a></li>
+              <li><a class="dropdown-item" href="noc_schools.html">School NOC</a></li>
+              <li><a class="dropdown-item" href="noc_plying.html">Vehicle Plying</a></li>
+              <li><a class="dropdown-item" href="noc_petrol.html">Petrol Pump NOC</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Information</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="road_rules.html">Road Rules</a></li>
+              <li><a class="dropdown-item" href="road_sense.html">Road Sense</a></li>
+              <li><a class="dropdown-item" href="road_smart.html">Road Smart</a></li>
+              <li><a class="dropdown-item" href="statistics.html">Statistics</a></li>
+              <li><a class="dropdown-item" href="driving_license.html">Driving License</a></li>
+              <li><a class="dropdown-item" href="vehicle_registration.html">Vehicle Registration</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="know_your_ps.html">Know Your PS</a></li>
+          <li class="nav-item"><a class="nav-link" href="rti.html">RTI</a></li>
+          <li class="nav-item"><a class="nav-link" href="campaigns.html">Road Safety</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">T20 Test</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="https://echallan.tspolice.gov.in/TGTrafficTest/jsp/LoginView.jsp" target="_blank" rel="noopener">Online Test</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="contact_us.html">Contact</a></li>
+        </ul>
+        <div class="nav-extras d-flex align-items-center gap-2 ms-3">
+          <div class="nav-search" role="search">
+            <label for="navSearchInput" class="visually-hidden">Search site</label>
+            <input type="search" id="navSearchInput" placeholder="Search…" aria-label="Search site content">
+            <i class="fa fa-search nav-search-icon" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main id="main-content">
+
+    <!-- HERO -->
+    <section style="background:linear-gradient(120deg, var(--navy-dark) 0%, var(--navy-light) 100%); color:#fff; padding:50px 0 40px;">
+      <div class="container-htp">
+        <nav aria-label="breadcrumb" style="margin-bottom:10px;">
+        </nav>
+        <h1 style="font-size:2.2rem; font-weight:800; margin:0 0 10px; color:#fff;">
+          <i class="fa fa-lock" style="color:var(--gold); margin-right:12px;"></i>Vehicle Wheel Clamp
+        </h1>
+        <p style="font-size:1rem; color:rgba(255,255,255,.85); max-width:720px; margin:0 0 20px;">
+          Understand how wheel clamping works, why it is applied, and how to get your vehicle released quickly.
+        </p>
+        <div class="hero-accent">
+          <div class="hero-accent-item"><i class="fa fa-shield-alt"></i> Authorized Personnel Only</div>
+          <div class="hero-accent-divider"></div>
+          <div class="hero-accent-item"><i class="fa fa-gavel"></i> Motor Vehicles Act Enforced</div>
+          <div class="hero-accent-divider"></div>
+          <div class="hero-accent-item"><i class="fa fa-phone"></i> Helpline: <a href="tel:9010203626" style="color:var(--gold); font-weight:700; margin-left:4px;">9010203626</a></div>
+          <div class="hero-accent-divider"></div>
+          <div class="hero-accent-item"><i class="fa fa-clock"></i> 24 × 7 Enforcement</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTENT -->
+    <section style="padding:36px 0 60px; background:var(--off-white);">
+      <div class="container-htp">
+
+        <!-- STAT CARDS -->
+        <div class="stat-cards">
+          <div class="stat-card red-top">
+            <div class="num">₹500+</div>
+            <div class="lbl"><i class="fa fa-rupee-sign" style="margin-right:4px;"></i>Minimum Fine on Clamping</div>
+          </div>
+          <div class="stat-card">
+            <div class="num">24/7</div>
+            <div class="lbl"><i class="fa fa-clock" style="margin-right:4px; color:var(--navy);"></i>Enforcement Active</div>
+          </div>
+          <div class="stat-card gold-top">
+            <div class="num">0 DMG</div>
+            <div class="lbl"><i class="fa fa-car" style="margin-right:4px;"></i>Vehicle Damage Guarantee</div>
+          </div>
+          <div class="stat-card green-top">
+            <div class="num">100</div>
+            <div class="lbl"><i class="fa fa-phone" style="margin-right:4px;"></i>Police Emergency Number</div>
+          </div>
+        </div>
+
+        <!-- WHAT IS WHEEL CLAMP -->
+        <div class="content-card">
+          <div class="section-heading"><i class="fa fa-info-circle" aria-hidden="true"></i> What Is a Wheel Clamp?</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:center;">
+            <div>
+              <p style="font-size:.92rem; line-height:1.8; color:var(--gray-800); margin-bottom:14px;">
+                A <strong>vehicle wheel clamp</strong> (commonly known as a <em>wheel boot</em>) is a mechanical device fitted to one or more wheels of a stationary vehicle by traffic police to completely immobilize it.
+              </p>
+              <p style="font-size:.88rem; line-height:1.8; color:var(--gray-600); margin-bottom:14px;">
+                The device locks onto the wheel hub and rim, preventing any forward or backward movement. Only authorized traffic police personnel possess the tools required to remove it — the vehicle cannot be driven until the clamp is unlocked.
+              </p>
+              <p style="font-size:.88rem; line-height:1.8; color:var(--gray-600); margin: 0;">
+                Wheel clamping is governed under the <strong>Motor Vehicles Act</strong> and local GHMC/HMDA parking regulations. It is one of the most effective on-street enforcement tools available to Hyderabad Traffic Police.
+              </p>
+            </div>
+            <div style="background:var(--off-white); border-radius:var(--radius-lg); padding:28px; display:flex; flex-direction:column; gap:14px; border:1px solid var(--gray-300);">
+              <div style="display:flex; align-items:center; gap:12px;">
+                <div style="width:36px; height:36px; background:#FDE8EA; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                  <i class="fa fa-lock" style="color:var(--red); font-size:15px;"></i>
+                </div>
+                <div>
+                  <div style="font-size:.82rem; font-weight:700; color:var(--navy);">Immobilizes the vehicle completely</div>
+                  <div style="font-size:.76rem; color:var(--gray-600);">No movement possible until removal</div>
+                </div>
+              </div>
+              <div style="display:flex; align-items:center; gap:12px;">
+                <div style="width:36px; height:36px; background:#EDF5FF; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                  <i class="fa fa-user-shield" style="color:var(--navy-light); font-size:15px;"></i>
+                </div>
+                <div>
+                  <div style="font-size:.82rem; font-weight:700; color:var(--navy);">Only authorized personnel can remove</div>
+                  <div style="font-size:.76rem; color:var(--gray-600);">Special key required for unlocking</div>
+                </div>
+              </div>
+              <div style="display:flex; align-items:center; gap:12px;">
+                <div style="width:36px; height:36px; background:#E8F8F0; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                  <i class="fa fa-check-circle" style="color:var(--green); font-size:15px;"></i>
+                </div>
+                <div>
+                  <div style="font-size:.82rem; font-weight:700; color:var(--navy);">Vehicle-safe design</div>
+                  <div style="font-size:.76rem; color:var(--gray-600);">Applied carefully to avoid damage</div>
+                </div>
+              </div>
+              <div style="display:flex; align-items:center; gap:12px;">
+                <div style="width:36px; height:36px; background:#FFF8E1; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                  <i class="fa fa-gavel" style="color:var(--gold-dark); font-size:15px;"></i>
+                </div>
+                <div>
+                  <div style="font-size:.82rem; font-weight:700; color:var(--navy);">Legal authority under MVA</div>
+                  <div style="font-size:.76rem; color:var(--gray-600);">Motor Vehicles Act enforced strictly</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PURPOSE -->
+        <div class="content-card">
+          <div class="section-heading"><i class="fa fa-bullseye" aria-hidden="true"></i> Purpose of Wheel Clamping</div>
+          <div class="purpose-grid">
+            <div class="purpose-card">
+              <div class="purpose-icon" style="background:#FDE8EA;">
+                <i class="fa fa-ban" style="color:var(--red); font-size:20px;"></i>
+              </div>
+              <h4>Prevent Illegal Parking</h4>
+              <p>Stops vehicles parked in restricted zones, no-parking areas, on footpaths, or in spaces causing obstruction to traffic and pedestrians.</p>
+            </div>
+            <div class="purpose-card">
+              <div class="purpose-icon" style="background:#FFF8E1;">
+                <i class="fa fa-rupee-sign" style="color:var(--gold-dark); font-size:20px;"></i>
+              </div>
+              <h4>Enforce Outstanding Fines</h4>
+              <p>Ensures pending penalties and challan dues are cleared by the vehicle owner before the clamp is removed and the vehicle released.</p>
+            </div>
+            <div class="purpose-card">
+              <div class="purpose-icon" style="background:#EDF5FF;">
+                <i class="fa fa-traffic-light" style="color:var(--navy-light); font-size:20px;"></i>
+              </div>
+              <h4>Improve Traffic Flow</h4>
+              <p>Reduces congestion and bottlenecks in busy corridors, intersections, and commercial zones caused by illegally parked vehicles.</p>
+            </div>
+            <div class="purpose-card">
+              <div class="purpose-icon" style="background:#E8F8F0;">
+                <i class="fa fa-user-check" style="color:var(--green); font-size:20px;"></i>
+              </div>
+              <h4>Promote Discipline</h4>
+              <p>Serves as a strong deterrent against repeat parking violations, encouraging motorists to follow designated parking norms consistently.</p>
+            </div>
+            <div class="purpose-card">
+              <div class="purpose-icon" style="background:#FDE8EA;">
+                <i class="fa fa-wheelchair" style="color:var(--red); font-size:20px;"></i>
+              </div>
+              <h4>Protect Public Access</h4>
+              <p>Keeps fire hydrant areas, emergency vehicle paths, pedestrian crossings, and disability bays clear and accessible at all times.</p>
+            </div>
+            <div class="purpose-card">
+              <div class="purpose-icon" style="background:#EDF5FF;">
+                <i class="fa fa-shield-alt" style="color:var(--navy-light); font-size:20px;"></i>
+              </div>
+              <h4>Enhance Road Safety</h4>
+              <p>Reduces the risk of accidents caused by illegally parked vehicles that obstruct sightlines at junctions, bends, and bus stops.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- HOW IT WORKS -->
+        <div class="content-card">
+          <div class="section-heading"><i class="fa fa-cogs" aria-hidden="true"></i> How the Clamping Process Works</div>
+          <div class="process-steps">
+            <div class="step-row">
+              <div class="step-num">1</div>
+              <div class="step-body">
+                <h4><i class="fa fa-search" style="color:var(--navy-light); margin-right:8px;"></i>Violation Detected</h4>
+                <p>A traffic police officer or enforcement squad identifies a vehicle parked illegally — in a no-parking zone, on a busy road shoulder, in a fire lane, or blocking traffic flow.</p>
+              </div>
+            </div>
+            <div class="step-row">
+              <div class="step-num">2</div>
+              <div class="step-body">
+                <h4><i class="fa fa-camera" style="color:var(--navy-light); margin-right:8px;"></i>Documentation & Notice</h4>
+                <p>The violation is photographed and logged. A challan notice is prepared citing the specific violation. A visible notice sticker is placed on the vehicle windshield informing the owner of the clamp and instructions for release.</p>
+              </div>
+            </div>
+            <div class="step-row">
+              <div class="step-num">3</div>
+              <div class="step-body">
+                <h4><i class="fa fa-lock" style="color:var(--red); margin-right:8px;"></i>Clamp Applied</h4>
+                <p>The wheel clamp is securely attached to the vehicle's front or rear wheel by the authorized officer. The device is locked with a tamper-proof key mechanism, making it impossible to remove without the correct tools.</p>
+              </div>
+            </div>
+            <div class="step-row">
+              <div class="step-num">4</div>
+              <div class="step-body">
+                <h4><i class="fa fa-rupee-sign" style="color:var(--gold-dark); margin-right:8px;"></i>Owner Pays Fine</h4>
+                <p>The vehicle owner contacts the traffic police helpline or visits the nearest traffic police station. The applicable fine and clamping fee must be paid — online via e-challan portal or at the station — before any removal is arranged.</p>
+              </div>
+            </div>
+            <div class="step-row">
+              <div class="step-num">5</div>
+              <div class="step-body">
+                <h4><i class="fa fa-unlock-alt" style="color:var(--green); margin-right:8px;"></i>Clamp Removed</h4>
+                <p>Upon payment confirmation, an authorized officer returns to the vehicle location and removes the clamp using the official key. The owner receives a clearance receipt and may drive the vehicle away.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TWO-COLUMN: FINES + LEGAL -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:24px;" class="responsive-two-col">
+
+          <!-- FINES TABLE -->
+          <div class="content-card" style="margin-bottom:0;">
+            <div class="section-heading" style="font-size:1rem;"><i class="fa fa-rupee-sign" aria-hidden="true"></i> Common Fines & Penalties</div>
+            <div style="overflow-x:auto;">
+              <table class="fine-table">
+                <thead>
+                  <tr>
+                    <th>Violation</th>
+                    <th>Severity</th>
+                    <th>Fine (₹)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Parking in No-Parking Zone</td>
+                    <td><span class="badge-type medium">Medium</span></td>
+                    <td>500</td>
+                  </tr>
+                  <tr>
+                    <td>Blocking Fire Hydrant / Emergency Access</td>
+                    <td><span class="badge-type heavy">High</span></td>
+                    <td>1,000</td>
+                  </tr>
+                  <tr>
+                    <td>Parking on Footpath / Zebra Crossing</td>
+                    <td><span class="badge-type medium">Medium</span></td>
+                    <td>500</td>
+                  </tr>
+                  <tr>
+                    <td>Double Parking / Obstructing Traffic</td>
+                    <td><span class="badge-type heavy">High</span></td>
+                    <td>1,000</td>
+                  </tr>
+                  <tr>
+                    <td>Parking in Disabled Bay (without permit)</td>
+                    <td><span class="badge-type heavy">High</span></td>
+                    <td>2,000</td>
+                  </tr>
+                  <tr>
+                    <td>Clamping Fee (service charge)</td>
+                    <td><span class="badge-type light">Fixed</span></td>
+                    <td>250</td>
+                  </tr>
+                  <tr>
+                    <td>Tampering with / Unauthorized Removal</td>
+                    <td><span class="badge-type heavy">Severe</span></td>
+                    <td>5,000+</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p style="font-size:.75rem; color:var(--gray-600); margin-top:10px;"><i class="fa fa-info-circle" style="color:var(--navy-light); margin-right:4px;"></i>Fines are indicative. Actual amounts may vary per the Motor Vehicles (Amendment) Act 2019 and Telangana State rules.</p>
+          </div>
+
+          <!-- LEGAL CARDS -->
+          <div class="content-card" style="margin-bottom:0;">
+            <div class="section-heading" style="font-size:1rem;"><i class="fa fa-balance-scale" aria-hidden="true"></i> Legal & Safety Guidelines</div>
+            <div style="display:flex; flex-direction:column; gap:12px;">
+              <div class="legal-card do">
+                <h4 class="do-h"><i class="fa fa-check-circle"></i> Authorized Actions</h4>
+                <ul>
+                  <li>Only <strong>licensed traffic police officers</strong> may apply or remove clamps</li>
+                  <li>All clampings must be recorded in the official enforcement log</li>
+                  <li>A visible notice must be placed on the vehicle window</li>
+                  <li>Clamps must be applied carefully to avoid vehicle damage</li>
+                </ul>
+              </div>
+              <div class="legal-card dont">
+                <h4 class="dont-h"><i class="fa fa-times-circle"></i> Prohibited Actions</h4>
+                <ul>
+                  <li>Unauthorized removal of a clamp is a criminal offence</li>
+                  <li>Tampering with or cutting the device leads to enhanced penalties</li>
+                  <li>Attempting to drive a clamped vehicle causes severe wheel damage</li>
+                  <li>Private individuals or non-police personnel cannot apply clamps</li>
+                </ul>
+              </div>
+              <div class="legal-card note">
+                <h4 class="note-h"><i class="fa fa-exclamation-triangle"></i> Vehicle Owner Rights</h4>
+                <ul>
+                  <li>You may request to view the violation notice and officer's ID</li>
+                  <li>You can contest a wrong clamp through the grievance portal</li>
+                  <li>Clamp must be removed within a reasonable time after fine payment</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- HOW TO GET VEHICLE RELEASED -->
+        <div class="content-card">
+          <div class="section-heading"><i class="fa fa-unlock-alt" aria-hidden="true"></i> How to Get Your Vehicle Released</div>
+          <div class="release-steps">
+            <div class="release-step">
+              <div class="release-step-header">
+                <div class="release-step-num">1</div>
+                <div class="release-step-title">Note the clamp reference number on the notice sticker</div>
+                <i class="fa fa-chevron-down release-step-icon"></i>
+              </div>
+              <div class="release-step-body">Find the yellow notice placed on your windshield. It contains the challan number, officer details, violation code, and the helpline number to call. Keep a photo of this for your records.</div>
+            </div>
+            <div class="release-step">
+              <div class="release-step-header">
+                <div class="release-step-num">2</div>
+                <div class="release-step-title">Call the Traffic Helpline: 9010203626</div>
+                <i class="fa fa-chevron-down release-step-icon"></i>
+              </div>
+              <div class="release-step-body">Contact the Traffic Helpline or visit your nearest Traffic Police Station. Provide your vehicle registration number and challan number. An officer will guide you on the payment process and estimated removal time.</div>
+            </div>
+            <div class="release-step">
+              <div class="release-step-header">
+                <div class="release-step-num">3</div>
+                <div class="release-step-title">Pay the fine online or at the station</div>
+                <i class="fa fa-chevron-down release-step-icon"></i>
+              </div>
+              <div class="release-step-body">Pay via the <a href="https://echallan.tspolice.gov.in/publicview/" target="_blank" rel="noopener" style="color:var(--navy-light); font-weight:600;">TS Police E-Challan portal</a>, UPI, or cash at the station. The clamping service fee (₹250) is payable in addition to the traffic fine. Keep your payment receipt or transaction ID.</div>
+            </div>
+            <div class="release-step">
+              <div class="release-step-header">
+                <div class="release-step-num">4</div>
+                <div class="release-step-title">Wait for authorized officer to arrive and remove the clamp</div>
+                <i class="fa fa-chevron-down release-step-icon"></i>
+              </div>
+              <div class="release-step-body">Once payment is confirmed, an authorized officer will be dispatched to your vehicle's location. Do not attempt to move or tamper with the clamped vehicle. Average removal time varies by location and availability of personnel.</div>
+            </div>
+            <div class="release-step">
+              <div class="release-step-header">
+                <div class="release-step-num">5</div>
+                <div class="release-step-title">Collect clearance receipt and drive away</div>
+                <i class="fa fa-chevron-down release-step-icon"></i>
+              </div>
+              <div class="release-step-body">The officer will remove the clamp and issue a clearance receipt. Inspect your vehicle for any concerns before driving. If you believe your vehicle was wrongly clamped, you may file a grievance at the station or online within 7 days.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ALERT BANNER -->
+        <div class="alert-banner">
+          <i class="fa fa-exclamation-circle"></i>
+          <div>
+            <div class="alert-title">Important Notice</div>
+            <p class="alert-text">Wheel clamping is a strict enforcement tool that promotes discipline and compliance with traffic laws. <strong>Never attempt to tamper with, cut, or forcibly remove a wheel clamp</strong> — this is a criminal offence under the Motor Vehicles Act and may result in arrest, vehicle impoundment, and enhanced fines. If you believe your vehicle has been wrongly clamped, please contact the Traffic Helpline at <strong>9010203626</strong> and raise a formal complaint.</p>
+          </div>
+        </div>
+
+        <!-- CONTACT / HELPLINE -->
+        <div style="margin-top:28px;">
+          <div class="section-heading"><i class="fa fa-headset" aria-hidden="true"></i> Contact & Helpline</div>
+          <div class="contact-grid">
+            <div class="contact-card">
+              <div class="contact-icon" style="background:#FDE8EA;">
+                <i class="fa fa-phone" style="color:var(--red);"></i>
+              </div>
+              <div class="c-num">9010203626</div>
+              <div class="c-lbl">Traffic Helpline (24/7)</div>
+              <a href="tel:9010203626" class="c-btn"><i class="fa fa-phone"></i> Call Now</a>
+            </div>
+            <div class="contact-card">
+              <div class="contact-icon" style="background:#E8F8F0;">
+                <i class="fab fa-whatsapp" style="color:var(--green); font-size:22px;"></i>
+              </div>
+              <div class="c-num">WhatsApp</div>
+              <div class="c-lbl">Quick Assistance</div>
+              <a href="https://wa.me/919010203626" target="_blank" rel="noopener" class="c-btn" style="background:#25D366;"><i class="fab fa-whatsapp"></i> Chat</a>
+            </div>
+            <div class="contact-card">
+              <div class="contact-icon" style="background:#FDE8EA;">
+                <i class="fa fa-exclamation-triangle" style="color:var(--red);"></i>
+              </div>
+              <div class="c-num">100</div>
+              <div class="c-lbl">Police Emergency</div>
+              <a href="tel:100" class="c-btn"><i class="fa fa-phone-alt"></i> Emergency</a>
+            </div>
+            <div class="contact-card">
+              <div class="contact-icon" style="background:#EDF5FF;">
+                <i class="fa fa-file-invoice" style="color:var(--navy-light);"></i>
+              </div>
+              <div class="c-num">E-Challan</div>
+              <div class="c-lbl">Pay Fine Online</div>
+              <a href="https://echallan.tspolice.gov.in/publicview/" target="_blank" rel="noopener" class="c-btn"><i class="fa fa-external-link-alt"></i> Pay Now</a>
+            </div>
+          </div>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:14px; margin-top:28px;">
+              <a href="index.html" class="icon-box blue"><i class="fa fa-home" style="font-size:28px; color:var(--navy-light);"></i><span>Back to Home</span></a>
+              <a href="contact_us.html" class="icon-box green"><i class="fa fa-envelope" style="font-size:28px; color:var(--green);"></i><span>Contact Us</span></a>
+              <a href="https://echallan.tspolice.gov.in/publicview/" target="_blank" rel="noopener" class="icon-box red"><i class="fa fa-file-invoice" style="font-size:28px; color:var(--red);"></i><span>Pay Challan</span></a>
+              <a href="road_sense.html" class="icon-box orange"><i class="fa fa-lightbulb" style="font-size:28px; color:#d97706;"></i><span>Road Sense</span></a>
+            </div>
+
+        <!-- QUICK NAV -->
+      
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Patrol car marquee -->
+  <marquee behavior="scroll" direction="right" scrollamount="15" onmouseover="this.stop();" onmouseout="this.start();">
+    <img src="img/Parol car 2.gif" width="7%">
+  </marquee>
+
+  <!-- ARRIVE ALIVE BANNER -->
+  <div class="aa-banner">
+    <div class="aa-inner">
+      <div class="aa-content">
+        <span class="aa-badge">Road Safety Initiative</span>
+        <h2 class="aa-title">Arrive Alive Campaign</h2>
+        <p class="aa-desc">Join us in our mission to make Hyderabad's roads safer. Follow traffic rules, wear helmets, use seat belts, and say no to drunk driving.</p>
+        <a href="arriveAlive.html" class="aa-btn">Learn More</a>
+      </div>
+      <div class="aa-visual">
+        <img src="img/ArriveAlive.png" alt="Arrive Alive road safety campaign logo" style="width:auto; height:230px; object-fit:contain; filter: drop-shadow(0 4px 16px rgba(0,0,0,0.25));">
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="modern-footer">
+    <div class="container-htp py-5">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 text-center text-lg-start">
+          <img src="img/MainLogo1.png" class="footer-logo mb-3" alt="HTP Logo">
+          <h4 class="footer-heading">Hyderabad Traffic Police</h4>
+          <p class="footer-text">Dedicated to safer roads, better traffic management and citizen-friendly digital services.</p>
+          <a href="campaigns.html" class="footer-btn">🚦 Road Safety Campaigns</a>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h5 class="footer-title">Useful Links</h5>
+          <ul class="footer-links">
+            <li><a href="https://echallan.tspolice.gov.in/publicview/">E-Challan</a></li>
+            <li><a href="wrong_challan.html">Wrong Challan</a></li>
+            <li><a href="wheel.html">Wheel Clamp</a></li>
+            <li><a href="noc_tov.html">NOC</a></li>
+            <li><a href="driving_license.html">Driving License</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h5 class="footer-title">Information</h5>
+          <ul class="footer-links">
+            <li><a href="road_rules.html">Road Rules</a></li>
+            <li><a href="road_sense.html">Road Sense</a></li>
+            <li><a href="road_smart.html">Road Smart</a></li>
+            <li><a href="statistics.html">Statistics</a></li>
+            <li><a href="rti.html">RTI</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <h5 class="footer-title">Connect With Us</h5>
+          <div class="social-icons mb-4">
+            <a onclick="window.open('https://www.facebook.com/HYDTP','_blank');" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a onclick="window.open('https://twitter.com/HYDTP','_blank');" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+            <a onclick="window.open('https://www.instagram.com/hyderabadtrafficpolice','_blank');" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a onclick="window.open('https://youtube.com/@hyderabadtrafficpoliceshik6556','_blank');" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+          <h6 class="footer-subtitle">Official Website</h6>
+          <a href="https://hyderabadpolice.gov.in/" target="_blank" rel="noopener" class="official-link">Hyderabad Police</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container-htp">
+        <div class="row align-items-center">
+          <div class="col-md-6 text-center text-md-start">COPYRIGHT &copy; 2026, Hyderabad Traffic Police</div>
+          <div class="col-md-6 text-center text-md-end">Designed and developed by <a href="https://ts.nic.in/" target="_blank" rel="noopener">NIC Telangana</a></div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CHATBOT -->
+  <button id="chatbotToggle" onclick="toggleChatbot()" aria-label="Open Traffic Assistant" title="Chat with HTP Assistant">
+    <i class="fa fa-robot" aria-hidden="true"></i>
+    <span class="chat-badge">AI</span>
+  </button>
+
+  <div id="chatbotWindow" role="dialog" aria-label="HTP Traffic Assistant" aria-modal="true">
+    <div class="chatbot-header">
+      <div class="chatbot-avatar">🚔</div>
+      <div class="chatbot-header-info">
+        <h6>Traffic Assistant</h6>
+        <small>🟢 Online – Ask me anything</small>
+      </div>
+      <button class="chatbot-close" onclick="toggleChatbot()" aria-label="Close chatbot">
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div class="chatbot-body" id="chatBody">
+      <div class="chat-msg bot">
+        <div class="chat-mini-avatar">🚔</div>
+        <div class="chat-bubble">
+          👋 Hi! I can help you with <strong>wheel clamp</strong> queries — how to get your vehicle released, fines, legal rights, and more.
+        </div>
+      </div>
+      <div class="chat-msg bot">
+        <div class="chat-mini-avatar">🚔</div>
+        <div>
+          <div class="chat-bubble" style="margin-bottom:8px;">What would you like to know?</div>
+          <div class="chatbot-suggestions">
+            <button class="chat-suggest-btn" onclick="askBot('How do I get my clamped vehicle released?')"><i class="fa fa-unlock-alt"></i> How to release my vehicle?</button>
+            <button class="chat-suggest-btn" onclick="askBot('How much is the clamping fine?')"><i class="fa fa-rupee-sign"></i> What is the clamping fine?</button>
+            <button class="chat-suggest-btn" onclick="askBot('Can I contest a wrong clamp?')"><i class="fa fa-balance-scale"></i> Contest a wrong clamp?</button>
+            <button class="chat-suggest-btn" onclick="askBot('What happens if I remove the clamp myself?')"><i class="fa fa-exclamation-triangle"></i> Remove clamp myself?</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="chatbot-footer">
+      <div class="chatbot-input-row">
+        <input type="text" id="chatInput" placeholder="Ask about wheel clamping…" aria-label="Chat input" onkeydown="if(event.key==='Enter') sendChat()">
+        <button class="chatbot-send" onclick="sendChat()" aria-label="Send">
+          <i class="fa fa-paper-plane" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCROLL TO TOP -->
+  <button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">
+    <i class="fa fa-arrow-up" aria-hidden="true"></i>
+  </button>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+  <!-- Google Translate -->
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({ pageLanguage:'en', includedLanguages:'en,te,hi,ta,ur,kn,ml', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay:false }, 'gt_hidden');
+    }
+    function doTranslate(lang) {
+      var exp = new Date(Date.now()-1000).toUTCString();
+      if (lang === 'en') {
+        ['','location.hostname','.'+location.hostname].forEach(d=>{ var b='googtrans=; expires='+exp+'; path=/'; document.cookie = d? b+'; domain='+d : b; });
+      } else {
+        var val='/en/'+lang;
+        ['',location.hostname,'.'+location.hostname].forEach(d=>{ var b='googtrans='+val+'; path=/'; document.cookie = d? b+'; domain='+d : b; });
+      }
+      var gtSelect=document.querySelector('.goog-te-combo');
+      if(gtSelect){gtSelect.value=lang==='en'?'':lang; gtSelect.dispatchEvent(new Event('change'));} else { location.reload(); }
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <script>
+    // ── PAGE ZOOM ──
+    var _zoom=1.0, _zoomWrap=null;
+    document.addEventListener('DOMContentLoaded',function(){
+      _zoomWrap=document.createElement('div');
+      _zoomWrap.id='zoom-wrap'; _zoomWrap.style.transformOrigin='top left';
+      while(document.body.firstChild) _zoomWrap.appendChild(document.body.firstChild);
+      document.body.appendChild(_zoomWrap);
+    });
+    function pageZoom(d){ _zoom=Math.min(1.5,Math.max(0.6,parseFloat((_zoom+d*0.1).toFixed(2)))); applyZoom(); }
+    function pageZoomReset(){ _zoom=1.0; applyZoom(); }
+    function applyZoom(){ if(!_zoomWrap)return; _zoomWrap.style.transform='scale('+_zoom+')'; _zoomWrap.style.width=(100/_zoom)+'%'; }
+
+    // ── LANGUAGE COOKIE ──
+    document.addEventListener('DOMContentLoaded',function(){
+      var m=document.cookie.match(/googtrans=\/en\/([a-z]+)/);
+      var sel=document.getElementById('langSelect');
+      if(sel&&m) sel.value=m[1];
+    });
+
+    // ── POPUP ──
+    document.addEventListener('DOMContentLoaded',function(){
+      var popup=document.getElementById('centerPopup');
+      var closeBtn=document.querySelector('.close-btn');
+      if(!popup)return;
+      if(sessionStorage.getItem('htpPopupSeen')){popup.style.display='none';return;}
+      popup.style.display='flex';
+      function closePopup(){popup.style.display='none'; sessionStorage.setItem('htpPopupSeen','1');}
+      if(closeBtn) closeBtn.addEventListener('click',closePopup);
+      popup.addEventListener('click',function(e){if(e.target===popup)closePopup();});
+      document.addEventListener('keydown',function(e){if(e.key==='Escape')closePopup();});
+    });
+
+    // ── RESPONSIVE TWO COL ──
+    function handleResize(){
+      var cols=document.querySelectorAll('.responsive-two-col');
+      cols.forEach(function(el){
+        el.style.gridTemplateColumns = window.innerWidth < 768 ? '1fr' : '1fr 1fr';
+      });
+    }
+    window.addEventListener('resize', handleResize);
+    document.addEventListener('DOMContentLoaded', handleResize);
+
+    // ── CHATBOT ──
+    function toggleChatbot(){ document.getElementById('chatbotWindow').classList.toggle('open'); }
+
+    const botAnswers = {
+      release: "To get your vehicle released: 1) Note the clamp reference number on the windshield notice. 2) Call Traffic Helpline 9010203626. 3) Pay the fine online at echallan.tspolice.gov.in or at the nearest police station (plus ₹250 service fee). 4) An authorized officer will come remove the clamp. Keep your payment receipt!",
+      fine: "Fines vary by violation: No-parking zone = ₹500, Blocking fire hydrant = ₹1,000, Footpath parking = ₹500, Double parking = ₹1,000, Disabled bay = ₹2,000. Plus a fixed ₹250 clamping service fee. Tampering with a clamp = ₹5,000+.",
+      contest: "Yes, you can contest a wrong clamp! Visit your nearest Traffic Police Station with your vehicle documents and the clamp notice within 7 days. You can also file a grievance online at the TS Police portal. An officer will review your case and if valid, the fine will be waived.",
+      tamper: "⚠️ Never attempt to remove a wheel clamp yourself! This is a criminal offence under the Motor Vehicles Act and can result in: arrest, enhanced fines (₹5,000+), and vehicle impoundment. Always contact the helpline at 9010203626 for official removal.",
+      time: "Average clamp removal time varies by location and officer availability. After payment confirmation, officers typically arrive within 30-60 minutes. If there is an undue delay, call 9010203626 to follow up.",
+      purpose: "Wheel clamping is used to: prevent illegal parking, enforce outstanding fines, improve traffic flow, protect emergency vehicle access, and promote road discipline. It is one of the most effective enforcement tools in Hyderabad.",
+      helpline: "Traffic Helpline: 📞 9010203626 | E-Challan: ☎ 040-27852721 | Police Emergency: 100 | WhatsApp: wa.me/919010203626",
+      default: "I can help with wheel clamp queries! Ask me about: how to get your vehicle released, fine amounts, contesting a wrong clamp, legal consequences of tampering, or the Traffic Helpline number."
+    };
+
+    function askBot(q){ document.getElementById('chatInput').value=q; sendChat(); }
+
+    function sendChat(){
+      var input=document.getElementById('chatInput');
+      var text=input.value.trim();
+      if(!text)return;
+      input.value='';
+      var body=document.getElementById('chatBody');
+      body.innerHTML+=`<div class="chat-msg user"><div class="chat-bubble">${text}</div></div>`;
+      var typId='typing-'+Date.now();
+      body.innerHTML+=`<div class="chat-msg bot" id="${typId}"><div class="chat-mini-avatar">🚔</div><div class="chat-typing"><span></span><span></span><span></span></div></div>`;
+      body.scrollTop=body.scrollHeight;
+      setTimeout(function(){
+        document.getElementById(typId)?.remove();
+        var lower=text.toLowerCase();
+        var answer=botAnswers.default;
+        if(lower.includes('release')||lower.includes('released')||lower.includes('remove')||lower.includes('unlock')) answer=botAnswers.release;
+        else if(lower.includes('fine')||lower.includes('fee')||lower.includes('penalty')||lower.includes('cost')||lower.includes('much')) answer=botAnswers.fine;
+        else if(lower.includes('contest')||lower.includes('wrong')||lower.includes('dispute')||lower.includes('grievance')) answer=botAnswers.contest;
+        else if(lower.includes('tamper')||lower.includes('myself')||lower.includes('cut')||lower.includes('break')) answer=botAnswers.tamper;
+        else if(lower.includes('time')||lower.includes('long')||lower.includes('wait')||lower.includes('how long')) answer=botAnswers.time;
+        else if(lower.includes('purpose')||lower.includes('why')||lower.includes('reason')) answer=botAnswers.purpose;
+        else if(lower.includes('helpline')||lower.includes('contact')||lower.includes('number')||lower.includes('call')) answer=botAnswers.helpline;
+        body.innerHTML+=`<div class="chat-msg bot"><div class="chat-mini-avatar">🚔</div><div class="chat-bubble">${answer}</div></div>`;
+        body.scrollTop=body.scrollHeight;
+      },900);
+    }
+
+    // ── SCROLL TOP ──
+    var scrollBtn=document.getElementById('scrollTopBtn');
+    window.addEventListener('scroll',function(){ scrollBtn.classList.toggle('visible',window.scrollY>300); },{passive:true});
+
+    // ── NAVBAR SEARCH ──
+   document.addEventListener('DOMContentLoaded', function () {
+      var navInput = document.getElementById('navSearchInput');
+      var navIcon  = document.querySelector('.nav-search-icon');
+      function doNavSearch() {
+        var q = navInput.value.trim();
+        if (q) window.location.href = 'search.html?q=' + encodeURIComponent(q);
+      }
+      if (navInput) navInput.addEventListener('keydown', function(e){ if (e.key === 'Enter') doNavSearch(); });
+      if (navIcon)  { navIcon.style.pointerEvents = 'auto'; navIcon.style.cursor = 'pointer'; navIcon.addEventListener('click', doNavSearch); }
+    });
+  </script>
+</body>
+</html>

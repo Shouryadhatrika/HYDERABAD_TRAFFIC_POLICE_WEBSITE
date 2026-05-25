@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Parking Rules & Zones – Hyderabad Traffic Police</title>
+  <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:       #0B3C5D;
+      --navy-dark:  #072a43;
+      --navy-light: #145DA0;
+      --gold:       #FFC107;
+      --red:        #D72638;
+      --green:      #198754;
+      --orange:     #E67E22;
+      --purple:     #7C3AED;
+      --white:      #ffffff;
+      --off-white:  #f5f7fa;
+      --gray-100:   #e9ecef;
+      --gray-300:   #dee2e6;
+      --gray-600:   #6c757d;
+      --gray-800:   #343a40;
+      --radius-sm:  6px;
+      --radius-md:  10px;
+      --radius-lg:  16px;
+      --shadow-sm:  0 2px 8px rgba(0,0,0,.08);
+      --shadow-md:  0 4px 20px rgba(0,0,0,.12);
+      --transition: 0.22s ease;
+      --font-body:  'DM Sans', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { overflow-x: hidden; }
+    body { font-family: var(--font-body); font-size: 15px; color: var(--gray-800); background: var(--off-white); margin: 0; padding: 0; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; }
+
+    .container-htp { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+    @media (max-width: 768px) { .container-htp { padding: 0 16px; } }
+
+    /* ── TOP HEADER ── */
+    .top-header { background: linear-gradient(100deg, var(--navy-dark) 0%, var(--navy-light) 100%); border-bottom: 3px solid var(--gold); color: #fff; padding: 10px 0; }
+    .top-header__logo { height: 80px; width: auto; }
+    .top-header__title { font-size: 1.5rem; font-weight: 700; color: var(--gold); line-height: 1.2; white-space: nowrap; }
+    .top-header__subtitle { font-size: .78rem; color: rgba(255,255,255,.75); letter-spacing: .5px; }
+    .top-header__actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+    .top-header__info { font-size: .8rem; color: rgba(255,255,255,.85); }
+    .top-header__info a { color: var(--gold); font-weight: 600; }
+    .btn-htp { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: var(--radius-sm); font-size: .8rem; font-weight: 600; border: none; cursor: pointer; transition: filter .2s, transform .2s; }
+    .btn-htp:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .btn-challan  { background: var(--red); color: #fff; }
+    .btn-whatsapp { background: #25D366; color: #fff; }
+    .btn-feedback { background: var(--gold); color: #000; }
+    .zoom-ctrl { display: flex; align-items: center; gap: 2px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); border-radius: 24px; padding: 3px; }
+    .zoom-ctrl button { background: transparent; border: none; color: rgba(255,255,255,.75); padding: 4px 9px; border-radius: 20px; font-size: .78rem; font-weight: 700; cursor: pointer; font-family: var(--font-body); transition: background .2s; }
+    .zoom-ctrl button:hover { background: rgba(255,255,255,.15); color: #fff; }
+    .zoom-ctrl button.reset { color: var(--gold); }
+    .lang-dropdown-wrap { position: relative; display: inline-flex; align-items: center; }
+    .lang-globe { position: absolute; left: 9px; color: rgba(255,255,255,.6); font-size: .78rem; pointer-events: none; z-index: 1; }
+    .lang-select { appearance: none; -webkit-appearance: none; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.25); border-radius: 20px; color: #fff; font-family: var(--font-body); font-size: .78rem; font-weight: 600; padding: 5px 28px 5px 26px; cursor: pointer; outline: none; min-width: 90px; }
+    .lang-select option { background: var(--navy-dark); color: #fff; }
+    .lang-caret { position: absolute; right: 9px; color: rgba(255,255,255,.55); font-size: .65rem; pointer-events: none; }
+
+    /* ── NAVBAR ── */
+    .main-nav { background: var(--navy); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,.2); }
+    .main-nav .nav-link { color: rgba(255,255,255,.85) !important; font-weight: 500; font-size: .88rem; padding: 10px 14px !important; border-radius: var(--radius-sm); transition: background .2s, color .2s; }
+    .main-nav .nav-link:hover, .main-nav .nav-link.active { color: var(--gold) !important; background: rgba(255,255,255,.08); }
+    .main-nav .dropdown-menu { border: none; border-radius: var(--radius-md); padding: 8px; box-shadow: var(--shadow-md); margin-top: 6px; }
+    .main-nav .dropdown-item { border-radius: var(--radius-sm); padding: 8px 12px; font-size: .86rem; }
+    .main-nav .dropdown-item:hover { background: var(--navy); color: #fff; }
+    .nav-extras { flex-shrink: 0; }
+    .nav-search { position: relative; display: flex; align-items: center; }
+    .nav-search input { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); border-radius: 20px; color: #fff; padding: 6px 14px 6px 34px; font-size: .8rem; width: 180px; outline: none; font-family: var(--font-body); transition: background .2s, border-color .2s, width .2s; }
+    .nav-search input::placeholder { color: rgba(255,255,255,.45); }
+    .nav-search input:focus { background: rgba(255,255,255,.18); border-color: var(--gold); width: 220px; }
+    .nav-search-icon { position: absolute; left: 11px; color: rgba(255,255,255,.45); font-size: .78rem; pointer-events: none; }
+    .nav-search:focus-within .nav-search-icon { color: var(--gold); }
+    @media (max-width: 991px) { .nav-extras { margin: 10px 0 6px; flex-wrap: wrap; justify-content: center; width: 100%; } .nav-search input { width: 100%; } .nav-search { width: 100%; } }
+
+    /* ── NOC CARD SHELL ── */
+    .noc-card { background: #fff; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); overflow: hidden; border: 1px solid var(--gray-100); }
+    .noc-card__header { background: linear-gradient(120deg, var(--navy-dark) 0%, var(--navy-light) 100%); padding: 24px 32px; display: flex; align-items: center; gap: 18px; border-bottom: 3px solid var(--gold); position: relative; overflow: hidden; }
+    .noc-card__header::before { content: ''; position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: rgba(255,255,255,.05); border-radius: 50%; pointer-events: none; }
+    .noc-header-icon { width: 58px; height: 58px; border-radius: 50%; background: rgba(255,193,7,.18); border: 2px solid rgba(255,193,7,.4); display: flex; align-items: center; justify-content: center; font-size: 26px; color: var(--gold); flex-shrink: 0; position: relative; z-index: 1; }
+    .noc-header-text { position: relative; z-index: 1; }
+    .noc-header-text h2 { margin: 0 0 4px; font-size: 1.25rem; font-weight: 800; color: #fff; }
+    .noc-header-text p { margin: 0; font-size: .82rem; color: rgba(255,255,255,.7); }
+    .noc-header-badge { margin-left: auto; position: relative; z-index: 1; background: var(--gold); color: #000; font-size: .72rem; font-weight: 700; padding: 5px 14px; border-radius: 20px; white-space: nowrap; }
+
+    /* ── BREADCRUMB ── */
+    .noc-breadcrumb { background: var(--off-white); border-bottom: 1px solid var(--gray-100); padding: 10px 32px; font-size: .8rem; color: var(--gray-600); display: flex; align-items: center; gap: 6px; }
+    .noc-breadcrumb a { color: var(--navy-light); font-weight: 600; }
+    .noc-breadcrumb .sep { color: var(--gray-300); }
+
+    .noc-card__body { padding: 32px; }
+    @media (max-width: 575px) { .noc-card__body { padding: 20px 16px; } .noc-card__header { flex-wrap: wrap; gap: 12px; padding: 20px 18px; } .noc-header-badge { margin-left: 0; } }
+
+    /* ── SECTION TITLE ── */
+    .section-title { display: flex; align-items: center; gap: 10px; font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 16px; }
+    .sect-pill { width: 34px; height: 34px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
+    .sp-red    { background: #FDE8EA; color: var(--red); }
+    .sp-blue   { background: #EDF5FF; color: var(--navy-light); }
+    .sp-green  { background: #E8F8F0; color: var(--green); }
+    .sp-orange { background: #FFF4E6; color: var(--orange); }
+    .sp-purple { background: #F3E8FF; color: var(--purple); }
+    .sp-gold   { background: #fffbea; color: #b45309; }
+    .sp-navy   { background: #EDF5FF; color: var(--navy); }
+
+    /* ── ACCORDION ── */
+    .park-acc { display: flex; flex-direction: column; gap: 10px; }
+    .park-acc-item { border: 1px solid var(--gray-100); border-radius: var(--radius-md); overflow: hidden; }
+    .park-acc-btn { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 18px; background: var(--off-white); border: none; cursor: pointer; font-family: var(--font-body); font-size: .92rem; font-weight: 700; color: var(--navy); text-align: left; transition: background .2s; }
+    .park-acc-btn:hover { background: #e8f0fb; }
+    .park-acc-btn.open { background: linear-gradient(90deg, var(--navy) 0%, var(--navy-light) 100%); color: #fff; }
+    .park-acc-btn.open .acc-chevron { transform: rotate(180deg); color: var(--gold); }
+    .park-acc-btn .acc-left { display: flex; align-items: center; gap: 10px; }
+    .acc-icon-box { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+    .park-acc-btn.open .acc-icon-box { background: rgba(255,255,255,.15); color: var(--gold); }
+    .acc-chevron { font-size: .78rem; transition: transform .22s; flex-shrink: 0; }
+    .park-acc-body { display: none; padding: 24px; background: #fff; animation: fadeSlide .22s ease; }
+    .park-acc-body.open { display: block; }
+    @keyframes fadeSlide { from { opacity:0; transform:translateY(4px);} to { opacity:1; transform:none; } }
+
+    /* ── RULE INTRO BOX ── */
+    .rule-intro { background: var(--off-white); border-left: 4px solid var(--gold); border-radius: var(--radius-md); padding: 12px 16px; font-size: .88rem; line-height: 1.7; color: var(--gray-800); margin-bottom: 18px; }
+
+    /* ── RULE LIST ── */
+    .rule-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+    .rule-list li { display: flex; align-items: flex-start; gap: 12px; padding: 10px 14px; border-radius: var(--radius-md); background: var(--off-white); border: 1px solid var(--gray-100); font-size: .87rem; line-height: 1.6; transition: background .2s, border-color .2s; }
+    .rule-list li:hover { background: #EDF5FF; border-color: #b6d4fe; }
+    .rule-num { width: 26px; height: 26px; border-radius: 50%; background: var(--navy); color: #fff; font-size: .72rem; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+    .rule-dot { width: 26px; height: 26px; border-radius: 50%; background: var(--gold); color: #000; font-size: .75rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+
+    /* ── DON'T LIST ── */
+    .dont-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+    .dont-list li { display: flex; align-items: flex-start; gap: 10px; padding: 10px 14px; border-radius: var(--radius-md); background: #FDE8EA; border: 1px solid #f5c2c7; font-size: .87rem; line-height: 1.55; }
+    .dont-list li i { color: var(--red); font-size: .85rem; margin-top: 3px; flex-shrink: 0; }
+
+    /* ── DIVIDER ── */
+    .noc-divider { border: none; border-top: 1px solid var(--gray-100); margin: 28px 0; }
+
+    /* ── QUICK LINKS ── */
+    .icon-box { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 20px 12px; border-radius: var(--radius-md); border: 1px solid var(--gray-300); background: #fff; text-align: center; cursor: pointer; transition: transform .2s, box-shadow .2s, border-color .2s; }
+    .icon-box:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--navy-light); }
+    .icon-box span { font-size: .82rem; font-weight: 600; line-height: 1.3; }
+    .icon-box.blue   { background: #EDF5FF; border-color: #b6d4fe; }
+    .icon-box.green  { background: #E8F8F0; border-color: #a3cfbb; }
+    .icon-box.red    { background: #FDE8EA; border-color: #f5c2c7; }
+    .icon-box.orange { background: #FFF4E6; border-color: #fecba1; }
+
+    /* ── HELPLINE ── */
+    .helpline-bar { background: #fff; border: 1px solid var(--gray-100); border-radius: var(--radius-lg); padding: 18px 24px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 32px; box-shadow: var(--shadow-sm); }
+    .helpline-bar .h-icon { width: 48px; height: 48px; border-radius: 50%; background: #fde8ea; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .helpline-bar .h-icon i { color: var(--red); font-size: 1.2rem; }
+    .helpline-bar .h-text { flex: 1; }
+    .helpline-bar .h-text strong { display: block; font-size: .95rem; margin-bottom: 2px; }
+    .helpline-bar .h-text p { margin: 0; color: var(--gray-600); font-size: .84rem; }
+    .helpline-bar .h-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+    .hbtn { display: inline-flex; align-items: center; gap: 7px; padding: 9px 20px; border-radius: var(--radius-sm); font-size: .85rem; font-weight: 700; transition: filter .2s, transform .2s; }
+    .hbtn:hover { filter: brightness(1.08); transform: translateY(-1px); }
+    .hbtn-red { background: var(--red); color: #fff; }
+    .hbtn-wa  { background: #25D366; color: #fff; }
+
+    /* ── ARRIVE ALIVE ── */
+    .aa-banner { background: linear-gradient(120deg, #16A085 0%, #1ABC9C 100%); padding: 10px 40px; position: relative; overflow: hidden; }
+    .aa-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; position: relative; z-index: 1; }
+    .aa-badge { display: inline-block; background: rgba(255,255,255,.2); color: #fff; font-size: .72rem; font-weight: 600; padding: 4px 14px; border-radius: 20px; margin-bottom: 8px; }
+    .aa-title { font-size: 1.5rem; font-weight: 800; color: #fff; margin: 0 0 6px; }
+    .aa-desc { font-size: .88rem; color: rgba(255,255,255,.88); margin: 0 0 10px; }
+    .aa-btn { display: inline-block; background: #fff; color: #16A085; font-size: .88rem; font-weight: 700; padding: 10px 28px; border-radius: var(--radius-sm); transition: background .2s, transform .2s; }
+    .aa-btn:hover { background: #e8faf6; transform: translateY(-2px); color: #16A085; }
+    @media (max-width: 768px) { .aa-inner { grid-template-columns: 1fr; } .aa-visual { display: none; } .aa-banner { padding: 10px 16px; } }
+
+    /* ── FOOTER ── */
+    .modern-footer { background: #f4f7fb; border-top: 4px solid #0B3D91; }
+    .footer-logo { width: 130px; }
+    .footer-heading { color: #0B3D91; font-weight: 700; margin-bottom: 15px; }
+    .footer-text { color: #555; line-height: 1.8; font-size: .88rem; }
+    .footer-btn { display: inline-block; margin-top: 10px; background: #0B3D91; color: #fff; padding: 12px 22px; border-radius: 30px; font-weight: 600; transition: .3s; }
+    .footer-btn:hover { background: #1565C0; color: #fff; transform: translateY(-2px); }
+    .footer-title { color: #111; font-weight: 700; margin-bottom: 20px; font-size: .95rem; }
+    .footer-title::after { content: ''; width: 45px; height: 3px; background: #8BC34A; display: block; margin-top: 8px; }
+    .footer-links { list-style: none; padding: 0; }
+    .footer-links li { margin-bottom: 12px; }
+    .footer-links a { color: #444; font-size: .85rem; transition: .3s; }
+    .footer-links a:hover { color: #0B3D91; padding-left: 5px; }
+    .social-icons { display: flex; gap: 15px; flex-wrap: wrap; }
+    .social-icons a { width: 48px; height: 48px; border-radius: 50%; background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,.1); display: flex; align-items: center; justify-content: center; color: #0B3D91; font-size: 20px; transition: .3s; cursor: pointer; }
+    .social-icons a:hover { background: #0B3D91; color: #fff; transform: translateY(-4px); }
+    .footer-bottom { background: #111c2e; color: #fff; padding: 18px 0; font-size: .82rem; }
+    .footer-bottom a { color: #fff; }
+    .footer-bottom a:hover { color: var(--gold); }
+    @media (max-width: 768px) { .footer-title, .footer-heading, .footer-text { text-align: center; } .footer-title::after { margin: auto; margin-top: 8px; } .social-icons { justify-content: center; } }
+
+    /* ── POPUP ── */
+    .center-popup { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: none; justify-content: center; align-items: center; z-index: 99999; }
+    .popup-box { position: relative; width: 70%; max-width: 900px; background: #fff; padding: 10px; border-radius: 15px; box-shadow: 0 5px 25px rgba(0,0,0,0.5); animation: popupZoom 0.4s ease; }
+    .popup-box img { width: 100%; height: auto; border-radius: 10px; display: block; }
+    .close-btn { position: absolute; top: -15px; right: -15px; background: red; color: #fff; width: 35px; height: 35px; line-height: 35px; text-align: center; border-radius: 50%; font-size: 22px; font-weight: bold; cursor: pointer; box-shadow: 0 3px 10px rgba(0,0,0,.5); }
+    .close-btn:hover { background: #cc0000; }
+    @keyframes popupZoom { from { transform: scale(0.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    @media (max-width: 480px) { .popup-box { width: 95%; } .close-btn { width: 30px; height: 30px; line-height: 30px; font-size: 18px; } }
+
+    /* ── FIXED BUTTONS ── */
+    #chatbotToggle { position: fixed; bottom: 24px; right: 80px; z-index: 1001; width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); border: 2.5px solid var(--gold); color: #fff; cursor: pointer; font-size: 22px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(11,60,93,.4); animation: chatPulse 2.5s infinite; transition: transform .2s; }
+    #chatbotToggle:hover { transform: translateY(-3px) scale(1.07); animation: none; }
+    @keyframes chatPulse { 0%,100%{box-shadow:0 4px 20px rgba(11,60,93,.4),0 0 0 0 rgba(255,193,7,.55);}50%{box-shadow:0 4px 20px rgba(11,60,93,.4),0 0 0 10px rgba(255,193,7,0);} }
+    .chat-badge { position: absolute; top: -4px; right: -4px; background: var(--gold); color: #000; font-size: .6rem; font-weight: 800; border-radius: 10px; padding: 1px 5px; border: 1.5px solid #fff; }
+    #scrollTopBtn { position: fixed; bottom: 24px; right: 24px; z-index: 999; width: 46px; height: 46px; border-radius: 50%; background: var(--red); color: #fff; border: none; cursor: pointer; font-size: 18px; box-shadow: var(--shadow-md); opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; display: flex; align-items: center; justify-content: center; }
+    #scrollTopBtn.visible { opacity: 1; pointer-events: auto; }
+    #scrollTopBtn:hover { transform: translateY(-3px); }
+
+    /* ── CHATBOT WINDOW ── */
+    #chatbotWindow { position: fixed; bottom: 94px; right: 80px; z-index: 1000; width: 340px; max-height: 480px; background: #fff; border-radius: var(--radius-lg); box-shadow: 0 8px 40px rgba(0,0,0,.18); display: flex; flex-direction: column; overflow: hidden; opacity: 0; pointer-events: none; transform: translateY(16px) scale(.97); transition: opacity .25s ease, transform .25s ease; }
+    #chatbotWindow.open { opacity: 1; pointer-events: auto; transform: none; }
+    .chatbot-header { background: linear-gradient(100deg, var(--navy-dark) 0%, var(--navy-light) 100%); border-bottom: 3px solid var(--gold); padding: 14px 16px; display: flex; align-items: center; gap: 12px; }
+    .chatbot-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .chatbot-header-info { flex: 1; }
+    .chatbot-header-info h6 { margin: 0; color: #fff; font-size: .9rem; font-weight: 700; }
+    .chatbot-header-info small { color: rgba(255,255,255,.7); font-size: .72rem; }
+    .chatbot-close { background: rgba(255,255,255,.12); border: none; color: rgba(255,255,255,.7); width: 28px; height: 28px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: .8rem; }
+    .chatbot-close:hover { background: rgba(255,255,255,.22); color: #fff; }
+    .chatbot-body { flex: 1; padding: 20px 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; background: var(--off-white); }
+    .chat-msg { display: flex; gap: 8px; align-items: flex-end; }
+    .chat-msg.bot { justify-content: flex-start; }
+    .chat-bubble { max-width: 78%; padding: 10px 14px; border-radius: 16px; font-size: .83rem; line-height: 1.5; }
+    .chat-msg.bot .chat-bubble { background: #fff; color: var(--gray-800); border-bottom-left-radius: 4px; box-shadow: var(--shadow-sm); }
+    .chat-mini-avatar { width: 26px; height: 26px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; }
+    .chatbot-coming-soon { margin: 4px 0 8px; padding: 14px; background: linear-gradient(135deg, #fffbea 0%, #fff8e1 100%); border: 1.5px dashed var(--gold); border-radius: var(--radius-md); text-align: center; }
+    .chatbot-coming-soon i { font-size: 1.6rem; color: var(--gold); margin-bottom: 6px; display: block; }
+    .chatbot-coming-soon p { margin: 0; font-size: .8rem; color: var(--gray-600); line-height: 1.5; }
+    .chatbot-coming-soon strong { color: var(--navy); }
+    .chatbot-suggestions { display: flex; flex-direction: column; gap: 6px; margin-top: 4px; }
+    .chat-suggest-btn { background: #fff; border: 1.5px solid var(--gray-300); border-radius: 20px; padding: 7px 12px; font-size: .78rem; color: var(--navy); font-weight: 600; cursor: not-allowed; text-align: left; font-family: var(--font-body); opacity: .7; display: flex; align-items: center; gap: 7px; }
+    .chat-suggest-btn i { color: var(--gold); }
+    .chatbot-footer { padding: 12px; border-top: 1px solid var(--gray-100); background: #fff; }
+    .chatbot-input-row { display: flex; gap: 8px; align-items: center; background: var(--off-white); border: 1.5px solid var(--gray-300); border-radius: 24px; padding: 6px 6px 6px 14px; }
+    .chatbot-input-row input { flex: 1; border: none; background: transparent; font-size: .82rem; font-family: var(--font-body); color: var(--gray-800); outline: none; }
+    .chatbot-send { width: 32px; height: 32px; border-radius: 50%; background: var(--navy); border: none; color: #fff; display: flex; align-items: center; justify-content: center; font-size: .8rem; cursor: not-allowed; opacity: .5; }
+    @media (max-width: 480px) { #chatbotWindow { right: 12px; left: 12px; width: auto; bottom: 86px; } #chatbotToggle { right: 76px; bottom: 20px; } }
+
+    /* ── PARKING ZONE COMPONENTS ── */
+    .ps-zone-block { margin-bottom: 14px; }
+    .ps-zone-title { font-size: .85rem; font-weight: 700; color: var(--navy); padding: 8px 12px; background: #EDF5FF; border-left: 4px solid var(--navy-light); border-radius: var(--radius-sm); margin-bottom: 8px; display: flex; align-items: center; gap: 7px; }
+    .ps-zone-title i { font-size: .78rem; color: var(--navy-light); }
+    .no-park-badge { display: inline-flex; align-items: center; gap: 7px; background: #FDE8EA; color: var(--red); border: 1.5px solid #f5c2c7; border-radius: var(--radius-sm); padding: 6px 14px; font-size: .8rem; font-weight: 700; margin-bottom: 4px; }
+    .parking-spot-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 8px; }
+    .parking-spot { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: var(--radius-sm); background: var(--off-white); border: 1px solid var(--gray-100); font-size: .82rem; font-weight: 600; color: var(--gray-800); transition: background .2s, border-color .2s, color .2s; }
+    .parking-spot::before { content: '\f3c5'; font-family: 'Font Awesome 6 Free'; font-weight: 900; color: var(--red); font-size: .75rem; flex-shrink: 0; }
+    .parking-spot:hover { background: #E8F8F0; border-color: #a3cfbb; color: var(--green); }
+    .parking-spot:hover::before { color: var(--green); }
+    .vtype { display: inline-block; font-size: .65rem; font-weight: 800; padding: 1px 6px; border-radius: 10px; margin-left: 4px; background: var(--navy); color: #fff; }
+    .vtype.v4w { background: var(--navy-light); }
+    .vtype.vdcm { background: var(--gray-600); }
+    .zone-label { background: linear-gradient(90deg,#5B21B6,#7C3AED); color: #fff; padding: 8px 14px; border-radius: 8px; font-weight: 700; font-size: .85rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+
+    mark.htp-highlight { background: var(--gold); color: #000; border-radius: 2px; padding: 0 2px; }
+    @media (max-width: 768px) { .parking-spot-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <!-- POPUP -->
+  <div id="centerPopup" class="center-popup">
+    <div class="popup-box">
+      <span class="close-btn">&times;</span>
+      <img src="img/popupimg.png" alt="Traffic Banner">
+    </div>
+  </div>
+
+  <!-- TOP HEADER -->
+  <header class="top-header">
+    <div class="container-htp">
+      <div class="row align-items-center gy-2">
+        <div class="col-lg-4 col-md-12 text-center text-lg-start">
+          <a href="index.html" class="d-inline-flex align-items-center gap-2" aria-label="Hyderabad Traffic Police Home">
+            <img src="img/MainLogo1.png" class="top-header__logo" alt="Hyderabad Traffic Police logo">
+            <div>
+              <div class="top-header__title">Hyderabad Traffic Police</div>
+              <div class="top-header__subtitle">For You, With You, Always</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-4 col-md-12 text-center">
+          <div class="top-header__actions">
+            <a href="https://echallan.tspolice.gov.in/publicview/" target="_blank" rel="noopener" class="btn-htp btn-challan">
+              <img src="img/Paynow.png" width="18" height="18" alt=""> Pay Challan
+            </a>
+            <a href="https://wa.me/9010203626" target="_blank" rel="noopener" class="btn-htp btn-whatsapp">
+              <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdIr2t94wVePyi562lUbeOyavRPi6vNgLadZl-lPrj53PDTYw/viewform" target="_blank" rel="noopener" class="btn-htp btn-feedback">
+              <i class="fa fa-comment-dots"></i> Feedback
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-12 text-center text-lg-end">
+          <div class="top-header__info mb-1">
+            <i class="fa fa-phone"></i> Helpline: <a href="tel:9010203626">9010203626</a>&nbsp;&nbsp;
+            <i class="fa fa-phone-alt"></i> E-Challan: <a href="tel:04027852721">040-27852721</a>
+          </div>
+          <div class="d-flex gap-2 justify-content-center justify-content-lg-end flex-wrap align-items-center">
+            <div class="zoom-ctrl">
+              <button onclick="pageZoom(1)" title="Zoom In">A+</button>
+              <button onclick="pageZoomReset()" class="reset" title="Reset">&#8635;</button>
+              <button onclick="pageZoom(-1)" title="Zoom Out">A&#8722;</button>
+            </div>
+            <div class="lang-dropdown-wrap">
+              <i class="fa fa-globe lang-globe"></i>
+              <select class="lang-select" id="langSelect" onchange="doTranslate(this.value)">
+                <option value="en">English</option>
+                <option value="te">&#3108;&#3142;&#3122;&#3137;&#3095;&#3137;</option>
+                <option value="hi">&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</option>
+                <option value="ta">&#2980;&#2990;&#3007;&#2996;&#3021;</option>
+                <option value="ur">&#1575;&#1585;&#1583;&#1608;</option>
+                <option value="kn">&#3221;&#3240;&#3277;&#3240;&#3233;</option>
+                <option value="ml">&#3374;&#3378;&#3375;&#3390;&#3379;&#3330;</option>
+              </select>
+              <i class="fa fa-chevron-down lang-caret"></i>
+            </div>
+            <div id="gt_hidden" style="display:none;position:absolute;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAVBAR -->
+  <nav class="main-nav navbar navbar-expand-lg" aria-label="Main navigation">
+    <div class="container-htp">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain" aria-controls="navMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">About Us</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="introduction.html">Introduction</a></li>
+              <li><a class="dropdown-item" href="org_chart.html">Organization Chart</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Services</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="wrong_challan.html">Wrong Challan</a></li>
+              <li><a class="dropdown-item" href="noc_tov.html">Vehicle NOC</a></li>
+              <li><a class="dropdown-item" href="noc_schools.html">School NOC</a></li>
+              <li><a class="dropdown-item" href="noc_plying.html">Vehicle Plying</a></li>
+              <li><a class="dropdown-item" href="noc_petrol.html">Petrol Pump NOC</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Information</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="road_rules.html">Road Rules</a></li>
+              <li><a class="dropdown-item" href="road_sense.html">Road Sense</a></li>
+              <li><a class="dropdown-item" href="road_smart.html">Road Smart</a></li>
+              <li><a class="dropdown-item" href="statistics.html">Statistics</a></li>
+              <li><a class="dropdown-item" href="driving_license.html">Driving License</a></li>
+              <li><a class="dropdown-item" href="vehicle_registration.html">Vehicle Registration</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="know_your_ps.html">Know Your PS</a></li>
+          <li class="nav-item"><a class="nav-link" href="rti.html">RTI</a></li>
+          <li class="nav-item"><a class="nav-link" href="campaigns.html">Road Safety</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">T20 Test</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="https://echallan.tspolice.gov.in/TGTrafficTest/jsp/LoginView.jsp" target="_blank" rel="noopener">Online Test</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link active" href="parking.html" aria-current="page">Parking</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact_us.html">Contact</a></li>
+        </ul>
+        <div class="nav-extras d-flex align-items-center gap-2 ms-3">
+          <div class="nav-search" role="search">
+            <label for="navSearchInput" class="visually-hidden">Search site</label>
+            <input type="search" id="navSearchInput" placeholder="Search…">
+            <i class="fa fa-search nav-search-icon"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main id="main-content">
+    <section style="padding:48px 0 64px; background:var(--off-white);">
+      <div class="container-htp">
+        <div class="noc-card">
+
+          <!-- CARD HEADER -->
+          <div class="noc-card__header">
+            <div class="noc-header-icon"><i class="fa fa-map-location-dot"></i></div>
+            <div class="noc-header-text">
+              <h2>Parking Zones Across Greater Hyderabad &amp; Guidelines</h2>
+              <p>Official parking spots &amp; regulations for vehicles in Greater Hyderabad — as per the Motor Vehicles Act</p>
+            </div>
+            <span class="noc-header-badge">🅿️ Parking Info</span>
+          </div><!-- /noc-card__header -->
+
+          <!-- BREADCRUMB — correctly outside the header -->
+          <nav class="noc-breadcrumb" aria-label="breadcrumb">
+            <a href="index.html"><i class="fa fa-home" style="margin-right:4px;"></i>Home</a>
+            <span class="sep">›</span>
+            <span>Parking Rules</span>
+          </nav>
+
+          <!-- BODY -->
+          <div class="noc-card__body">
+
+            <!-- ══ SECTION 1: PARKING ZONES ══ -->
+            <div class="rule-intro">
+              Click on any DCP zone to expand and find designated parking spots near you. Each entry links directly to Google Maps.
+            </div>
+
+            <div class="park-acc">
+
+              <!-- DCP 1 -->
+              <div class="park-acc-item">
+                <button class="park-acc-btn open" onclick="toggleAcc(this)" aria-expanded="true">
+                  <span class="acc-left">
+                    <span class="acc-icon-box" style="background:#F3E8FF;color:#7C3AED;"><i class="fa fa-shield-halved"></i></span>
+                    DCP Traffic – I &nbsp;<small style="font-weight:400;opacity:.75;">Khairatabad &amp; Secunderabad Zones</small>
+                  </span>
+                  <i class="fa fa-chevron-down acc-chevron"></i>
+                </button>
+                <div class="park-acc-body open">
+
+                  <div class="zone-label"><i class="fa fa-location-dot"></i> Khairatabad Zone</div>
+
+                  <div class="ps-zone-block">
+                    <div class="ps-zone-title"><i class="fa fa-building-shield"></i> Panjagutta Traffic PS</div>
+                    <div class="no-park-badge"><i class="fa fa-ban"></i> No Designated Parking Area</div>
+                  </div>
+
+                  <div class="ps-zone-block">
+                    <div class="ps-zone-title"><i class="fa fa-building-shield"></i> Saifabad Traffic PS</div>
+                    <div class="parking-spot-grid">
+                      <a href="https://www.google.com/maps/search/?api=1&query=Khairtabad+Railway+Station+Parking+Hyderabad" target="_blank" class="parking-spot">Khairtabad Railway Station Parking</a>
+                      <a href="https://www.google.com/maps/search/?api=1&query=MMTS+Lakdikapool+Parking+Hyderabad" target="_blank" class="parking-spot">MMTS Lakdikapool Parking</a>
+                      <a href="https://www.google.com/maps/search/?api=1&query=Birla+Temple+Auditorium+Parking+Hyderabad" target="_blank" class="parking-spot">Birla Temple Auditorium Parking</a>
+                      <a href="https://www.google.com/maps/search/?api=1&query=Ravindra+Bharathi+Parking+Hyderabad" target="_blank" class="parking-spot">Ravindra Bharathi Parking</a>
+                      <a href="https://www.google.com/maps/search/?api=1&query=Martyrs+Memorial+Parking+Hyderabad" target="_blank" class="parking-spot">Martyrs Memorial Parking</a>
+                      <a href="https://www.google.com/maps/search/?api=1&query=Lumbini+Park+Parking+Hyderabad" target="_blank" class="parking-spot">Lumbini Park Parking</a>
+                      <a href="https://www.google.com/maps/search/?api=1&query=E+Car+Race+Road+Parking+Hyderabad" target="_blank" class="parking-spot">E-Car Race Road Parking</a>
+                      <a href="https://www.google.com/maps/search/?api=1&query=NTR+Ghat+Parking+Hyderabad" target="_blank" class="parking-spot">NTR Ghat Parking</a>
+                      <a href="https://www.google.com/maps/search/?api=1&query=NTR+Gardens+Parking+Hyderabad" target="_blank" class="parking-spot">NTR Garden Parking</a>
+                      <a href="https://www.google.com/maps/search/?api=1&query=Necklace+Road+MMTS+Parking+Hyderabad" target="_blank" class="parking-spot">Necklace Road MMTS Parking</a>
+                      <a href="https://www.google.com/maps/search/?api=1&query=MS+Maktha+Parking+Hyderabad" target="_blank" class="parking-spot">M.S Maktha Parking</a>
+                      <a href="https://www.google.com/maps/search/?api=1&query=People+Plaza+Hyderabad" target="_blank" class="parking-spot">People's Plaza Ground</a>
+                      <a href="https://www.google.com/maps/search/?api=1&query=Jalavihar+Hyderabad" target="_blank" class="parking-spot">Jalvihar Parking</a>
+                      <a href="https://www.google.com/maps/search/?api=1&query=Necklace+Road+Hyderabad" target="_blank" class="parking-spot">Necklace Road Single Lane</a>
+                      <a href="https://www.google.com/maps/search/?api=1&query=HMDA+Ground+Hyderabad" target="_blank" class="parking-spot">HMDA Ground Parking</a>
+                      <a href="https://www.google.com/maps/search/?api=1&query=Public+Gardens+Hyderabad" target="_blank" class="parking-spot">Public Garden Parking</a>
+                    </div>
+                  </div>
+
+                  <div class="ps-zone-block">
+                    <div class="ps-zone-title"><i class="fa fa-building-shield"></i> Abids Traffic PS</div>
+                    <div class="parking-spot-grid">
+                      <a href="https://www.google.com/maps/search/?api=1&query=GHMC+Head+Office+Complex+Hyderabad" target="_blank" class="parking-spot">GHMC Complex</a>
+                    </div>
+                  </div>
+
+                  <div class="ps-zone-block">
+                    <div class="ps-zone-title"><i class="fa fa-building-shield"></i> Sultanbazar Traffic PS</div>
+                    <div class="parking-spot-grid">
+                      <a href="https://www.google.com/maps/search/?api=1&query=Gokul+Chat+Koti+Hyderabad" target="_blank" class="parking-spot">Gokul Chat Opposite</a>
+                    </div>
+                  </div>
+
+                  <div class="zone-label" style="margin-top:20px;"><i class="fa fa-location-dot"></i> Secunderabad Zone</div>
+
+                  <div class="ps-zone-block">
+                    <div class="ps-zone-title"><i class="fa fa-building-shield"></i> Kachiguda Traffic PS</div>
+                    <div class="parking-spot-grid">
+                      <a href="https://www.google.com/maps/search/?api=1&query=RTC+Quarters+Backside+Railway+Station+Hyderabad" target="_blank" class="parking-spot">Railway Station Back Side, RTC Quarters</a>
+                      <a href="https://www.google.com/maps/search/?api=1&query=RG+Kedia+College+Chaderghat+Hyderabad" target="_blank" class="parking-spot">R.G. Kedia College, Chaderghat</a>
+                      <a href="https://www.google.com/maps/search/?api=1&query=Government+Junior+College+Kachiguda+Hyderabad" target="_blank" class="parking-spot">Govt. Kachiguda Jr. College, Barkathpura</a>
+                      <a href="https://www.google.com/maps/search/?api=1&query=Uma+Maheshwari+Temple+Hyderabad" target="_blank" class="parking-spot">GHMC Ground, Uma Maheshwari Temple</a>
+                      <a href="https://www.google.com/maps/search/?api=1&query=MCH+Ground+Amberpet+Hyderabad" target="_blank" class="parking-spot">MCH Ground, Amberpet</a>
+                    </div>
+                  </div>
+
+                  <div class="ps-zone-block">
+                    <div class="ps-zone-title"><i class="fa fa-building-shield"></i> OU City Traffic PS</div>
+                    <div class="parking-spot-grid">
+                      <a href="https://www.google.com/maps/search/?api=1&query=Tarnaka+Metro+Station+Hyderabad" target="_blank" class="parking-spot">Tarnaka Metro Station</a>
+                      <a href="https://www.google.com/maps/search/?api=1&query=Habsiguda+Metro+Station+Hyderabad" target="_blank" class="parking-spot">Habsiguda Metro Station</a>
+                      <a href="https://www.google.com/maps/search/?api=1&query=NGRI+Metro+Station+Hyderabad" target="_blank" class="parking-spot">NGRI Metro Station</a>
+                    </div>
+                  </div>
+
+                  <div class="ps-zone-block">
+                    <div class="ps-zone-title"><i class="fa fa-building-shield"></i> Chikkadpally Traffic PS</div>
+                    <div class="no-park-badge"><i class="fa fa-ban"></i> No Designated Parking Area</div>
+                  </div>
+
+                  <div class="ps-zone-block">
+                    <div class="ps-zone-title"><i class="fa fa-building-shield"></i> Gandhinagar Traffic PS</div>
+                    <div class="parking-spot-grid">
+                      <a href="https://www.google.com/maps/search/?api=1&query=NTR+Stadium+Hyderabad" target="_blank" class="parking-spot">NTR Stadium</a>
+                      <a href="https://www.google.com/maps/search/?api=1&query=Satwa+Mall+Hyderabad" target="_blank" class="parking-spot">Satwa Mall</a>
+                      <a href="https://www.google.com/maps/search/?api=1&query=DBR+Mills+Hyderabad" target="_blank" class="parking-spot">DBR Mills</a>
+                      <a href="https://www.google.com/maps/search/?api=1&query=Lower+Tank+Bund+Hyderabad" target="_blank" class="parking-spot">Tourism Parking (Lower Tank Bund)</a>
+                      <a href="https://www.google.com/maps/search/?api=1&query=PET+College+Hyderabad" target="_blank" class="parking-spot">PET College</a>
+                    </div>
+                  </div>
+
+                  <div class="ps-zone-block">
+                    <div class="ps-zone-title"><i class="fa fa-building-shield"></i> Chilakalaguda Traffic PS</div>
+                    <div class="parking-spot-grid">
+                      <a href="https://www.google.com/maps/search/?api=1&query=Mettuguda+Junction+Hyderabad" target="_blank" class="parking-spot">Mettuguda Junction (Bus Stop)</a>
+                      <a href="https://www.google.com/maps/search/?api=1&query=Mettuguda+Metro+Station+Hyderabad" target="_blank" class="parking-spot">Mettuguda Metro Stretch</a>
+                      <a href="https://www.google.com/maps/search/?api=1&query=St+Anthony+Church+Mettuguda+Hyderabad" target="_blank" class="parking-spot">St. Anthony Church, Mettuguda</a>
+                      <a href="https://www.google.com/maps/search/?api=1&query=Secunderabad+Railway+Station+Entrance" target="_blank" class="parking-spot">Secunderabad Railway Station (In Gate)</a>
+                      <a href="https://www.google.com/maps/search/?api=1&query=Secunderabad+Railway+Station+Exit" target="_blank" class="parking-spot">Secunderabad Railway Station (Out Gate)</a>
+                    </div>
+                  </div>
+
+                  <div class="ps-zone-block" style="margin-bottom:0;">
+                    <div class="ps-zone-title"><i class="fa fa-building-shield"></i> Mahankali Traffic PS</div>
+                    <div class="no-park-badge"><i class="fa fa-ban"></i> No Designated Parking Area</div>
+                  </div>
+
+                </div><!-- /DCP 1 body -->
+              </div>
+
+              <!-- DCP 2 -->
+              <div class="park-acc-item">
+                <button class="park-acc-btn" onclick="toggleAcc(this)" aria-expanded="false">
+                  <span class="acc-left">
+                    <span class="acc-icon-box" style="background:#CFFAFE;color:#0E7490;"><i class="fa fa-shield-halved"></i></span>
+                    DCP Traffic – II &nbsp;<small style="font-weight:400;opacity:.75;">Jubilee Hills &amp; Golconda Zones</small>
+                  </span>
+                  <i class="fa fa-chevron-down acc-chevron"></i>
+                </button>
+                <div class="park-acc-body">
+                  <div class="zone-label" style="background:linear-gradient(90deg,#0E7490,#0891B2);"><i class="fa fa-location-dot"></i> Jubilee Hills Zone</div>
+                  <div class="ps-zone-block"><div class="ps-zone-title"><i class="fa fa-building-shield"></i> SR Nagar Traffic PS</div><div class="no-park-badge"><i class="fa fa-ban"></i> No Designated Parking Area</div></div>
+                  <div class="ps-zone-block"><div class="ps-zone-title"><i class="fa fa-building-shield"></i> Jubilee Hills Traffic PS</div><div class="no-park-badge"><i class="fa fa-ban"></i> No Designated Parking Area</div></div>
+                  <div class="ps-zone-block"><div class="ps-zone-title"><i class="fa fa-building-shield"></i> Banjara Hills Traffic PS</div><div class="no-park-badge"><i class="fa fa-ban"></i> No Designated Parking Area</div></div>
+                  <div class="zone-label" style="background:linear-gradient(90deg,#0E7490,#0891B2);margin-top:20px;"><i class="fa fa-location-dot"></i> Golconda Zone</div>
+                  <div class="ps-zone-block"><div class="ps-zone-title"><i class="fa fa-building-shield"></i> Tolichowki Traffic PS</div><div class="no-park-badge"><i class="fa fa-ban"></i> No Designated Parking Area</div></div>
+                  <div class="ps-zone-block"><div class="ps-zone-title"><i class="fa fa-building-shield"></i> Asifnagar Traffic PS</div><div class="no-park-badge"><i class="fa fa-ban"></i> No Designated Parking Area</div></div>
+                  <div class="ps-zone-block"><div class="ps-zone-title"><i class="fa fa-building-shield"></i> Kulsumpura Traffic PS</div><div class="no-park-badge"><i class="fa fa-ban"></i> No Designated Parking Area</div></div>
+                  <div class="ps-zone-block" style="margin-bottom:0;">
+                    <div class="ps-zone-title"><i class="fa fa-building-shield"></i> Goshamahal Traffic PS</div>
+                    <div class="parking-spot-grid">
+                      <a href="https://www.google.com/maps/search/?api=1&query=Pillar+No+59+Hyderabad" target="_blank" class="parking-spot">At Pillar No. 59</a>
+                    </div>
+                  </div>
+                </div><!-- /DCP 2 body -->
+              </div>
+
+              <!-- DCP 3 -->
+              <div class="park-acc-item">
+                <button class="park-acc-btn" onclick="toggleAcc(this)" aria-expanded="false">
+                  <span class="acc-left">
+                    <span class="acc-icon-box" style="background:#FEF3C7;color:#D97706;"><i class="fa fa-shield-halved"></i></span>
+                    DCP Traffic – III &nbsp;<small style="font-weight:400;opacity:.75;">Rajendra Nagar · Charminar · Chandrayangutta · Shamshabad</small>
+                  </span>
+                  <i class="fa fa-chevron-down acc-chevron"></i>
+                </button>
+                <div class="park-acc-body">
+                  <div class="zone-label" style="background:linear-gradient(90deg,#92400E,#D97706);"><i class="fa fa-location-dot"></i> Rajendra Nagar Zone</div>
+                  <div class="ps-zone-block"><div class="ps-zone-title"><i class="fa fa-building-shield"></i> Falaknuma Traffic PS</div><div class="no-park-badge"><i class="fa fa-ban"></i> No Designated Parking Area</div></div>
+                  <div class="ps-zone-block">
+                    <div class="ps-zone-title"><i class="fa fa-building-shield"></i> Rajendra Nagar Traffic PS</div>
+                    <div class="parking-spot-grid">
+                      <a href="https://www.google.com/maps/search/?api=1&query=Vinayaka+Parking+Shivarampally+Hyderabad" target="_blank" class="parking-spot">Vinayaka Parking (Shivarampally)</a>
+                      <a href="https://www.google.com/maps/search/?api=1&query=Bharath+Lorry+Parking+Shivarampally+Hyderabad" target="_blank" class="parking-spot">Bharath Lorry Parking (Shivarampally)</a>
+                      <a href="https://www.google.com/maps/search/?api=1&query=SPR+Lorry+Parking+Budwel+Road+Hyderabad" target="_blank" class="parking-spot">SPR Lorry Parking (Budwel Road)</a>
+                      <a href="https://www.google.com/maps/search/?api=1&query=GMR+Lorry+Parking+Pallecheruvu+Hyderabad" target="_blank" class="parking-spot">GMR Lorry Parking (Pallecheruvu)</a>
+                      <a href="https://www.google.com/maps/search/?api=1&query=GMR+School+Bus+Parking+Hyderabad" target="_blank" class="parking-spot">GMR School Bus Parking (Pallecheruvu)</a>
+                    </div>
+                  </div>
+                  <div class="zone-label" style="background:linear-gradient(90deg,#92400E,#D97706);margin-top:20px;"><i class="fa fa-location-dot"></i> Charminar Zone</div>
+                  <div class="ps-zone-block"><div class="ps-zone-title"><i class="fa fa-building-shield"></i> Mirchowk Traffic PS</div><div class="no-park-badge"><i class="fa fa-ban"></i> No Designated Parking Area</div></div>
+                  <div class="ps-zone-block">
+                    <div class="ps-zone-title"><i class="fa fa-building-shield"></i> Charminar Traffic PS</div>
+                    <div class="parking-spot-grid">
+                      <a href="https://www.google.com/maps/search/?api=1&query=Charminar+Bus+Terminal+Hyderabad" target="_blank" class="parking-spot">Charminar Bus Terminal</a>
+                    </div>
+                  </div>
+                  <div class="ps-zone-block"><div class="ps-zone-title"><i class="fa fa-building-shield"></i> Chatrinaka Traffic PS</div><div class="no-park-badge"><i class="fa fa-ban"></i> No Designated Parking Area</div></div>
+                  <div class="zone-label" style="background:linear-gradient(90deg,#92400E,#D97706);margin-top:20px;"><i class="fa fa-location-dot"></i> Chandrayangutta Zone</div>
+                  <div class="ps-zone-block">
+                    <div class="ps-zone-title"><i class="fa fa-building-shield"></i> Malakpet Traffic PS</div>
+                    <div class="parking-spot-grid">
+                      <a href="https://www.google.com/maps/search/?api=1&query=Malakpet+Metro+Station+Causeway+Hyderabad" target="_blank" class="parking-spot">Malakpet Metro Station, Near Causeway <span class="vtype">2W</span></a>
+                      <a href="https://www.google.com/maps/search/?api=1&query=Malakpet+MMTS+Railway+Station+Hyderabad" target="_blank" class="parking-spot">Malakpet MMTS Railway Station <span class="vtype">2W</span><span class="vtype v4w">4W</span><span class="vtype vdcm">DCM</span></a>
+                      <a href="https://www.google.com/maps/search/?api=1&query=Musarambagh+Metro+Station+PVR+Mall+Hyderabad" target="_blank" class="parking-spot">Service Rd – Musarambagh Metro, Near PVR Mall <span class="vtype">2W</span></a>
+                      <a href="https://www.google.com/maps/search/?api=1&query=Musarambagh+Metro+Station+Malakpet+Police+Station+Hyderabad" target="_blank" class="parking-spot">Service Rd – Musarambagh Metro, Near Malakpet PS <span class="vtype">2W</span></a>
+                    </div>
+                  </div>
+                  <div class="ps-zone-block"><div class="ps-zone-title"><i class="fa fa-building-shield"></i> Saidabad Traffic PS</div><div class="no-park-badge"><i class="fa fa-ban"></i> No Designated Parking Area</div></div>
+                  <div class="ps-zone-block"><div class="ps-zone-title"><i class="fa fa-building-shield"></i> Santosh Nagar Traffic PS</div><div class="no-park-badge"><i class="fa fa-ban"></i> No Designated Parking Area</div></div>
+                  <div class="ps-zone-block"><div class="ps-zone-title"><i class="fa fa-building-shield"></i> Chandrayangutta Traffic PS</div><div class="no-park-badge"><i class="fa fa-ban"></i> No Designated Parking Area</div></div>
+                  <div class="zone-label" style="background:linear-gradient(90deg,#92400E,#D97706);margin-top:20px;"><i class="fa fa-location-dot"></i> Shamshabad Zone</div>
+                  <div class="ps-zone-block" style="margin-bottom:0;"><div class="ps-zone-title"><i class="fa fa-building-shield"></i> RGI Airport Traffic PS</div><div class="no-park-badge"><i class="fa fa-ban"></i> No Designated Parking Area</div></div>
+                </div><!-- /DCP 3 body -->
+              </div>
+
+            </div><!-- /park-acc zones -->
+
+            <hr class="noc-divider">
+
+            <!-- ══ SECTION 2: BASIC RULES ══ -->
+            <div class="section-title">
+              <span class="sect-pill sp-blue"><i class="fa fa-list-check"></i></span>
+              Basic Parking Rules
+            </div>
+            <div class="rule-intro">Every driver must follow these fundamental parking rules to ensure road safety and smooth traffic flow across Hyderabad.</div>
+            <ul class="rule-list">
+              <li><span class="rule-dot"><i class="fa fa-check" style="font-size:.65rem;"></i></span>Do not park any vehicle on the part of a road where traffic is flowing.</li>
+              <li><span class="rule-dot"><i class="fa fa-check" style="font-size:.65rem;"></i></span>Do not park in a place where you do not have a clear view for at least <strong>50 meters in both directions</strong>.</li>
+              <li><span class="rule-dot"><i class="fa fa-check" style="font-size:.65rem;"></i></span>Do not park in a place that blocks a vehicle already parked, a sidewalk, crosswalk, pedestrian crossing, or road entrance.</li>
+              <li><span class="rule-dot"><i class="fa fa-check" style="font-size:.65rem;"></i></span>Do not park your vehicle on <strong>bus bays or bus stops</strong>.</li>
+              <li><span class="rule-dot"><i class="fa fa-check" style="font-size:.65rem;"></i></span>Do not park near the public entrance to a hotel, theatre, or public hall when it is open to the public.</li>
+              <li><span class="rule-dot"><i class="fa fa-check" style="font-size:.65rem;"></i></span>Do not park near any <strong>intersection or roundabout</strong>.</li>
+              <li><span class="rule-dot"><i class="fa fa-check" style="font-size:.65rem;"></i></span>Do not park the vehicle in <strong>unauthorized parking areas</strong>.</li>
+              <li><span class="rule-dot"><i class="fa fa-check" style="font-size:.65rem;"></i></span>Before opening the door of the parked vehicle, look around. Close the door the moment you get down.</li>
+              <li><span class="rule-dot"><i class="fa fa-check" style="font-size:.65rem;"></i></span>Park the vehicle on the <strong>left side</strong> in the direction of the traffic.</li>
+            </ul>
+
+            <hr class="noc-divider">
+
+            <!-- ══ SECTION 3: PARKING TYPES ══ -->
+            <div class="section-title">
+              <span class="sect-pill sp-navy"><i class="fa fa-car"></i></span>
+              Parking Types &amp; Procedures
+            </div>
+            <div class="park-acc">
+              <div class="park-acc-item">
+                <button class="park-acc-btn" onclick="toggleAcc(this)" aria-expanded="false">
+                  <span class="acc-left"><span class="acc-icon-box" style="background:#EDF5FF;color:var(--navy-light);"><i class="fa fa-arrows-left-right"></i></span>Parallel Parking</span>
+                  <i class="fa fa-chevron-down acc-chevron"></i>
+                </button>
+                <div class="park-acc-body">
+                  <div class="rule-intro"><strong>Parallel Parking</strong> means parking the vehicle in a line (front to rear). The parking area should be <strong>one and a half times longer</strong> than the vehicle to be parked.</div>
+                  <ul class="rule-list">
+                    <li><span class="rule-num">1</span>Slowly reverse into the space, turning the steering wheel <strong>anti-clockwise</strong>. Ensure you have cleared the vehicle ahead.</li>
+                    <li><span class="rule-num">2</span>After seeing the outside rear corner of the vehicle ahead, turn the steering wheel <strong>clockwise</strong>. Look back to avoid hitting the vehicle behind.</li>
+                    <li><span class="rule-num">3</span>Bring the vehicle in line with the curb.</li>
+                    <li><span class="rule-num">4</span>If not parallel, drive forward to straighten. Ensure wheels are straight.</li>
+                    <li><span class="rule-num">5</span>Pull the <strong>handbrake</strong>, shift into first or reverse gear. Turn off the engine and remove the key.</li>
+                    <li><span class="rule-num">6</span>Check traffic before opening the door.</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="park-acc-item">
+                <button class="park-acc-btn" onclick="toggleAcc(this)" aria-expanded="false">
+                  <span class="acc-left"><span class="acc-icon-box" style="background:#FFF4E6;color:var(--orange);"><i class="fa fa-rotate-right"></i></span>Angular Parking</span>
+                  <i class="fa fa-chevron-down acc-chevron"></i>
+                </button>
+                <div class="park-acc-body">
+                  <div class="rule-intro"><strong>Angular Parking</strong> means parking at an angle to the curb. Follow these rules carefully.</div>
+                  <ul class="rule-list">
+                    <li><span class="rule-num">1</span>Check mirrors and over the shoulder for traffic behind.</li>
+                    <li><span class="rule-num">2</span>Give the <strong>left indicator</strong> to signal your intent to park.</li>
+                    <li><span class="rule-num">3</span>Steer into the parking space and straighten the wheels.</li>
+                    <li><span class="rule-num">4</span>Keep equal distance on both sides, pull the handbrake, shift gear.</li>
+                    <li><span class="rule-num">5</span><strong>For Exit:</strong> Check mirrors and shoulder — reverse slowly. Take extra care of <strong>cycles, rickshaws, and pedestrians</strong>.</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="park-acc-item">
+                <button class="park-acc-btn" onclick="toggleAcc(this)" aria-expanded="false">
+                  <span class="acc-left"><span class="acc-icon-box" style="background:#ede9fe;color:var(--purple);"><i class="fa fa-moon"></i></span>Parking at Night</span>
+                  <i class="fa fa-chevron-down acc-chevron"></i>
+                </button>
+                <div class="park-acc-body">
+                  <ul class="rule-list">
+                    <li><span class="rule-dot"><i class="fa fa-moon" style="font-size:.65rem;"></i></span>Try to park in a <strong>lighted place</strong> at night.</li>
+                    <li><span class="rule-dot"><i class="fa fa-lightbulb" style="font-size:.65rem;"></i></span>If the area is completely dark, turn the <strong>parking lights on</strong>.</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="park-acc-item">
+                <button class="park-acc-btn" onclick="toggleAcc(this)" aria-expanded="false">
+                  <span class="acc-left"><span class="acc-icon-box" style="background:#E8F8F0;color:var(--green);"><i class="fa fa-eye"></i></span>Precautions While Passing Parked Vehicles</span>
+                  <i class="fa fa-chevron-down acc-chevron"></i>
+                </button>
+                <div class="park-acc-body">
+                  <ul class="rule-list">
+                    <li><span class="rule-num">1</span>Be careful while passing a parked vehicle. <strong>Never open the door without looking</strong>.</li>
+                    <li><span class="rule-num">2</span>Beware — a child might come in front of your vehicle suddenly.</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="park-acc-item">
+                <button class="park-acc-btn" onclick="toggleAcc(this)" aria-expanded="false">
+                  <span class="acc-left"><span class="acc-icon-box" style="background:#fffbea;color:#b45309;"><i class="fa fa-triangle-exclamation"></i></span>Roadside Emergency Stop</span>
+                  <i class="fa fa-chevron-down acc-chevron"></i>
+                </button>
+                <div class="park-acc-body">
+                  <div class="rule-intro">In an emergency, if you have to stop by the side of the road, make the stop <strong>very short</strong>.</div>
+                  <ul class="rule-list">
+                    <li><span class="rule-num">1</span>Signal your intent to pull over. Check mirrors and blind spot.</li>
+                    <li><span class="rule-num">2</span>Steer to the side, stopping very close to the <strong>curb or edge</strong>.</li>
+                    <li><span class="rule-num">3</span>Put on the <strong>four-way emergency lights</strong>.</li>
+                    <li><span class="rule-num">4</span>Apply the handbrake.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <hr class="noc-divider">
+
+            <!-- ══ SECTION 4: WHAT NOT TO DO ══ -->
+            <div class="section-title">
+              <span class="sect-pill sp-red"><i class="fa fa-ban"></i></span>
+              What Not To Do While Parking
+            </div>
+            <div class="rule-intro" style="border-left-color:var(--red);background:#FDE8EA;"><strong>Never park your vehicle</strong> in any of the following situations — violations are punishable under the Motor Vehicles Act.</div>
+            <ul class="dont-list">
+              <li><i class="fa fa-circle-xmark"></i> On a footpath</li>
+              <li><i class="fa fa-circle-xmark"></i> Near a traffic crossing, roundabout, or a turn</li>
+              <li><i class="fa fa-circle-xmark"></i> On the main road</li>
+              <li><i class="fa fa-circle-xmark"></i> Where your vehicle obstructs traffic</li>
+              <li><i class="fa fa-circle-xmark"></i> On the wrong side of the road</li>
+              <li><i class="fa fa-circle-xmark"></i> Where parking is prohibited</li>
+            </ul>
+
+            <hr class="noc-divider">
+
+            <!-- HELPLINE -->
+            <div class="helpline-bar">
+              <div class="h-icon"><i class="fa fa-headset"></i></div>
+              <div class="h-text">
+                <strong>Need Assistance?</strong>
+                <p>Contact the Traffic Helpline or visit your nearest traffic police station for guidance.</p>
+              </div>
+              <div class="h-btns">
+                <a href="tel:9010203626" class="hbtn hbtn-red"><i class="fa fa-phone"></i> 9010203626</a>
+                <a href="https://wa.me/9010203626" target="_blank" rel="noopener" class="hbtn hbtn-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+              </div>
+            </div>
+
+            <!-- QUICK LINKS -->
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:28px;">
+              <a href="index.html" class="icon-box blue"><i class="fa fa-home" style="font-size:28px;color:var(--navy-light);"></i><span>Back to Home</span></a>
+              <a href="road_rules.html" class="icon-box orange"><i class="fa fa-book" style="font-size:28px;color:var(--orange);"></i><span>Road Rules</span></a>
+              <a href="https://echallan.tspolice.gov.in/publicview/" target="_blank" rel="noopener" class="icon-box red"><i class="fa fa-file-invoice" style="font-size:28px;color:var(--red);"></i><span>Pay Challan</span></a>
+              <a href="contact_us.html" class="icon-box green"><i class="fa fa-envelope" style="font-size:28px;color:var(--green);"></i><span>Contact Us</span></a>
+            </div>
+
+          </div><!-- /noc-card__body -->
+        </div><!-- /noc-card -->
+      </div>
+    </section>
+  </main>
+
+  <!-- MARQUEE -->
+  <marquee behavior="scroll" direction="right" scrollamount="15" onmouseover="this.stop();" onmouseout="this.start();">
+    <img src="img/Parol car 2.gif" width="7%" alt="Patrol car">
+  </marquee>
+
+  <!-- ARRIVE ALIVE -->
+  <div class="aa-banner">
+    <div class="aa-inner">
+      <div>
+        <span class="aa-badge">Road Safety Initiative</span>
+        <h2 class="aa-title">Arrive Alive Campaign</h2>
+        <p class="aa-desc">Join us in our mission to make Hyderabad's roads safer. Follow traffic rules, wear helmets, use seat belts, and say no to drunk driving.</p>
+        <a href="arriveAlive.html" class="aa-btn">Learn More</a>
+      </div>
+      <div class="aa-visual">
+        <img src="img/ArriveAlive.png" alt="Arrive Alive" style="height:230px;object-fit:contain;filter:drop-shadow(0 4px 16px rgba(0,0,0,.25));" onerror="this.style.display='none'">
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="modern-footer">
+    <div class="container-htp py-5">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 text-center text-lg-start">
+          <img src="img/MainLogo1.png" class="footer-logo mb-3" alt="HTP Logo">
+          <h4 class="footer-heading">Hyderabad Traffic Police</h4>
+          <p class="footer-text">Dedicated to safer roads, better traffic management and citizen-friendly digital services.</p>
+          <a href="campaigns.html" class="footer-btn">🚦 Road Safety Campaigns</a>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h5 class="footer-title">Useful Links</h5>
+          <ul class="footer-links">
+            <li><a href="https://echallan.tspolice.gov.in/publicview/">E-Challan</a></li>
+            <li><a href="wrong_challan.html">Wrong Challan</a></li>
+            <li><a href="noc_tov.html">NOC</a></li>
+            <li><a href="driving_license.html">Driving License</a></li>
+            <li><a href="vehicle_registration.html">Vehicle Registration</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h5 class="footer-title">Information</h5>
+          <ul class="footer-links">
+            <li><a href="road_rules.html">Road Rules</a></li>
+            <li><a href="road_sense.html">Road Sense</a></li>
+            <li><a href="road_smart.html">Road Smart</a></li>
+            <li><a href="statistics.html">Statistics</a></li>
+            <li><a href="rti.html">RTI</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <h5 class="footer-title">Connect With Us</h5>
+          <div class="social-icons mb-4">
+            <a onclick="window.open('https://www.facebook.com/HYDTP','_blank');" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a onclick="window.open('https://twitter.com/HYDTP','_blank');" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+            <a onclick="window.open('https://www.instagram.com/hyderabadtrafficpolice','_blank');" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a onclick="window.open('https://youtube.com/@hyderabadtrafficpoliceshik6556','_blank');" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+          <h6 style="font-weight:700;margin-bottom:10px;">Official Website</h6>
+          <a href="https://hyderabadpolice.gov.in/" target="_blank" rel="noopener" style="color:#0B3D91;font-weight:600;">Hyderabad Police</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container-htp">
+        <div class="row align-items-center">
+          <div class="col-md-6 text-center text-md-start">COPYRIGHT &copy; 2026, Hyderabad Traffic Police</div>
+          <div class="col-md-6 text-center text-md-end">Designed and developed by <a href="https://ts.nic.in/" target="_blank" rel="noopener">NIC Telangana</a></div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CHATBOT TOGGLE -->
+  <button id="chatbotToggle" onclick="toggleChatbot()" aria-label="Open AI Chatbot" title="Chat with HTP Assistant">
+    <i class="fa fa-robot"></i>
+    <span class="chat-badge">AI</span>
+  </button>
+
+  <!-- CHATBOT WINDOW -->
+  <div id="chatbotWindow" role="dialog" aria-label="HTP AI Assistant" aria-modal="true">
+    <div class="chatbot-header">
+      <div class="chatbot-avatar">🤖</div>
+      <div class="chatbot-header-info">
+        <h6>HTP Assistant</h6>
+        <small>Hyderabad Traffic Police · AI Powered</small>
+      </div>
+      <button class="chatbot-close" onclick="toggleChatbot()" aria-label="Close chatbot"><i class="fa fa-times"></i></button>
+    </div>
+    <div class="chatbot-body">
+      <div class="chat-msg bot">
+        <div class="chat-mini-avatar">🤖</div>
+        <div class="chat-bubble">👋 Hello! I'm the <strong>HTP AI Assistant</strong>. I'm here to help you with traffic queries, challans, NOC, and more.</div>
+      </div>
+      <div class="chatbot-coming-soon">
+        <i class="fa fa-clock"></i>
+        <p><strong>Full AI Chat — Coming Soon!</strong><br>We're building an intelligent assistant to answer all your traffic-related queries in real time.</p>
+      </div>
+      <div class="chatbot-suggestions">
+        <button class="chat-suggest-btn" disabled><i class="fa fa-file-invoice"></i> How do I pay my challan?</button>
+        <button class="chat-suggest-btn" disabled><i class="fa fa-car"></i> Apply for NOC</button>
+        <button class="chat-suggest-btn" disabled><i class="fa fa-map-marker-alt"></i> Nearest traffic police station</button>
+        <button class="chat-suggest-btn" disabled><i class="fa fa-phone"></i> Emergency contacts</button>
+      </div>
+    </div>
+    <div class="chatbot-footer">
+      <div class="chatbot-input-row">
+        <input type="text" placeholder="Chat coming soon…" disabled aria-label="Chat input (coming soon)">
+        <button class="chatbot-send" disabled aria-label="Send"><i class="fa fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">
+    <i class="fa fa-arrow-up"></i>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({ pageLanguage: 'en', includedLanguages: 'en,te,hi,ta,ur,kn,ml', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false }, 'gt_hidden');
+    }
+    function doTranslate(lang) {
+      var exp = new Date(Date.now() - 1000).toUTCString();
+      if (lang === 'en') {
+        ['', location.hostname, '.' + location.hostname].forEach(function(d) { document.cookie = (d ? 'googtrans=; expires=' + exp + '; path=/; domain=' + d : 'googtrans=; expires=' + exp + '; path=/'); });
+      } else {
+        var val = '/en/' + lang;
+        ['', location.hostname, '.' + location.hostname].forEach(function(d) { document.cookie = (d ? 'googtrans=' + val + '; path=/; domain=' + d : 'googtrans=' + val + '; path=/'); });
+      }
+      var gt = document.querySelector('.goog-te-combo');
+      if (gt) { gt.value = lang === 'en' ? '' : lang; gt.dispatchEvent(new Event('change')); } else { location.reload(); }
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script>
+    /* ── Accordion ── */
+    function toggleAcc(btn) {
+      var body = btn.nextElementSibling;
+      var isOpen = btn.classList.contains('open');
+      btn.classList.toggle('open', !isOpen);
+      body.classList.toggle('open', !isOpen);
+      btn.setAttribute('aria-expanded', String(!isOpen));
+    }
+
+    /* ── Chatbot ── */
+    function toggleChatbot() { document.getElementById('chatbotWindow').classList.toggle('open'); }
+
+    /* ── Zoom ── */
+   document.addEventListener('DOMContentLoaded', function () {
+      _zoomWrap = document.createElement('div');
+      _zoomWrap.id = 'zoom-wrap';
+      _zoomWrap.style.transformOrigin = 'top left';
+      while (document.body.firstChild) _zoomWrap.appendChild(document.body.firstChild);
+      document.body.appendChild(_zoomWrap);
+
+      /* ── Navbar search → search.html ── */
+      var navInput = document.getElementById('navSearchInput');
+      var navIcon  = document.querySelector('.nav-search-icon');
+      function doNavSearch() {
+        var q = navInput.value.trim();
+        if (q) window.location.href = 'search.html?q=' + encodeURIComponent(q);
+      }
+      if (navInput) navInput.addEventListener('keydown', function(e){ if (e.key === 'Enter') doNavSearch(); });
+      if (navIcon)  { navIcon.style.pointerEvents = 'auto'; navIcon.style.cursor = 'pointer'; navIcon.addEventListener('click', doNavSearch); }
+    });
+    function pageZoom(d) { _zoom = Math.min(1.5, Math.max(0.7, parseFloat((_zoom + d * 0.1).toFixed(2)))); applyZoom(); }
+    function pageZoomReset() { _zoom = 1.0; applyZoom(); }
+    function applyZoom() { if (!_zoomWrap) return; _zoomWrap.style.transform = 'scale(' + _zoom + ')'; _zoomWrap.style.width = (100 / _zoom) + '%'; }
+
+    /* ── Popup ── */
+    document.addEventListener('DOMContentLoaded', function() {
+      var popup = document.getElementById('centerPopup');
+      var closeBtn = document.querySelector('.close-btn');
+      if (!popup) return;
+      if (sessionStorage.getItem('htpPopupSeen')) { popup.style.display = 'none'; return; }
+      popup.style.display = 'flex';
+      function closePopup() { popup.style.display = 'none'; sessionStorage.setItem('htpPopupSeen', '1'); }
+      if (closeBtn) closeBtn.addEventListener('click', closePopup);
+      popup.addEventListener('click', function(e) { if (e.target === popup) closePopup(); });
+      document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closePopup(); });
+    });
+
+    /* ── Restore language ── */
+    document.addEventListener('DOMContentLoaded', function() {
+      var m = document.cookie.match(/googtrans=\/en\/([a-z]+)/);
+      var sel = document.getElementById('langSelect');
+      if (sel) sel.value = m ? m[1] : 'en';
+    });
+
+    /* ── Scroll to top ── */
+    var scrollBtn = document.getElementById('scrollTopBtn');
+    window.addEventListener('scroll', function() { scrollBtn.classList.toggle('visible', window.scrollY > 300); }, { passive: true });
+  </script>
+</body>
+</html>

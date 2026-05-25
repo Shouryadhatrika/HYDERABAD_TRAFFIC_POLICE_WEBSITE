@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Find Parking – Hyderabad Traffic Police</title>
+  <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:#0B3C5D; --navy-dark:#072a43; --navy-light:#145DA0;
+      --gold:#FFC107; --red:#D72638; --green:#198754; --orange:#E67E22;
+      --purple:#7C3AED; --teal:#0d9488;
+      --off-white:#f5f7fa; --gray-100:#e9ecef; --gray-200:#dee2e6;
+      --gray-400:#adb5bd; --gray-600:#6c757d; --gray-800:#343a40;
+      --radius-sm:6px; --radius-md:10px; --radius-lg:16px; --radius-xl:24px;
+      --shadow-sm:0 1px 4px rgba(0,0,0,.07); --shadow-md:0 4px 20px rgba(0,0,0,.11);
+      --shadow-lg:0 8px 32px rgba(0,0,0,.14);
+      --font:  'DM Sans', sans-serif;
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html{overflow-x:hidden;scroll-behavior:smooth}
+    body{font-family:var(--font);font-size:15px;color:var(--gray-800);background:var(--off-white);margin:0;padding:0}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%}
+    .c{width:100%;max-width:1280px;margin:0 auto;padding:0 32px}
+    @media(max-width:768px){.c{padding:0 16px}}
+
+    /* ── TOP HEADER ── */
+    .top-header{background:linear-gradient(100deg,var(--navy-dark) 0%,var(--navy-light) 100%);border-bottom:3px solid var(--gold);color:#fff;padding:10px 0}
+    .top-header__logo{height:80px;width:auto}
+    .top-header__title{font-size:1.5rem;font-weight:700;color:var(--gold);line-height:1.2;white-space:nowrap}
+    .top-header__subtitle{font-size:.78rem;color:rgba(255,255,255,.75);letter-spacing:.5px}
+    .top-header__actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+    .top-header__info{font-size:.8rem;color:rgba(255,255,255,.85)}
+    .top-header__info a{color:var(--gold);font-weight:600}
+    .btn-htp{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:var(--radius-sm);font-size:.8rem;font-weight:600;border:none;cursor:pointer;transition:filter .2s,transform .2s}
+    .btn-htp:hover{filter:brightness(1.1);transform:translateY(-1px)}
+    .btn-challan{background:var(--red);color:#fff}
+    .btn-whatsapp{background:#25D366;color:#fff}
+    .btn-feedback{background:var(--gold);color:#000}
+    .zoom-ctrl{display:flex;align-items:center;gap:2px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:24px;padding:3px}
+    .zoom-ctrl button{background:transparent;border:none;color:rgba(255,255,255,.75);padding:4px 9px;border-radius:20px;font-size:.78rem;font-weight:700;cursor:pointer;font-family:var(--font)}
+    .zoom-ctrl button.reset{color:var(--gold)}
+    .lang-dropdown-wrap{position:relative;display:inline-flex;align-items:center}
+    .lang-globe{position:absolute;left:9px;color:rgba(255,255,255,.6);font-size:.78rem;pointer-events:none;z-index:1}
+    .lang-select{appearance:none;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:20px;color:#fff;font-family:var(--font);font-size:.78rem;font-weight:600;padding:5px 28px 5px 26px;cursor:pointer;outline:none;min-width:90px}
+    .lang-select option{background:var(--navy-dark);color:#fff}
+    .lang-caret{position:absolute;right:9px;color:rgba(255,255,255,.55);font-size:.65rem;pointer-events:none}
+
+    /* ── NAVBAR ── */
+    .main-nav{background:var(--navy);position:sticky;top:0;z-index:1000;box-shadow:0 2px 10px rgba(0,0,0,.2)}
+    .main-nav .nav-link{color:rgba(255,255,255,.85)!important;font-weight:500;font-size:.88rem;padding:10px 14px!important;border-radius:var(--radius-sm);transition:background .2s,color .2s}
+    .main-nav .nav-link:hover,.main-nav .nav-link.active{color:var(--gold)!important;background:rgba(255,255,255,.08)}
+    .main-nav .dropdown-menu{border:none;border-radius:var(--radius-md);padding:8px;box-shadow:var(--shadow-md);margin-top:6px}
+    .main-nav .dropdown-item{border-radius:var(--radius-sm);padding:8px 12px;font-size:.86rem}
+    .main-nav .dropdown-item:hover{background:var(--navy);color:#fff}
+    .nav-extras{flex-shrink:0}
+    .nav-search{position:relative;display:flex;align-items:center}
+    .nav-search input{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:20px;color:#fff;padding:6px 14px 6px 34px;font-size:.8rem;width:180px;outline:none;font-family:var(--font);transition:background .2s,border-color .2s,width .2s}
+    .nav-search input::placeholder{color:rgba(255,255,255,.45)}
+    .nav-search input:focus{background:rgba(255,255,255,.18);border-color:var(--gold);width:220px}
+    .nav-search-icon{position:absolute;left:11px;color:rgba(255,255,255,.45);font-size:.78rem;pointer-events:none}
+    @media(max-width:991px){.nav-extras{margin:10px 0 6px;width:100%}.nav-search input{width:100%}.nav-search{width:100%}}
+    @media(max-width:768px){.top-header__actions{justify-content:center}.top-header__info{text-align:center}}
+
+    /* ── HERO ── */
+    .hero{background:linear-gradient(120deg,var(--navy-dark) 0%,var(--navy-light) 100%);padding:44px 0 0;color:#fff;position:relative;overflow:hidden}
+    .hero::after{content:'🅿️';position:absolute;right:4%;top:14px;font-size:9rem;opacity:.06;pointer-events:none}
+    .hero h1{font-size:2rem;font-weight:800;margin:0 0 8px}
+    .hero p{font-size:.95rem;color:rgba(255,255,255,.8);max-width:680px;margin:0 0 24px}
+
+    /* ── SEARCH BAR ── */
+    .sbar{background:#fff;border-radius:50px;padding:6px 6px 6px 20px;display:flex;align-items:center;gap:8px;max-width:720px;box-shadow:var(--shadow-lg)}
+    .sbar input{flex:1;border:none;outline:none;font-family:var(--font);font-size:.95rem;color:var(--gray-800);background:transparent}
+    .sbar input::placeholder{color:var(--gray-400)}
+    .sbar-btn{background:var(--navy);color:#fff;border:none;border-radius:40px;padding:10px 24px;font-size:.88rem;font-weight:600;cursor:pointer;font-family:var(--font);display:flex;align-items:center;gap:7px;transition:background .2s;white-space:nowrap}
+    .sbar-btn:hover{background:var(--navy-light)}
+    .loc-btn{background:transparent;border:none;cursor:pointer;color:var(--navy-light);font-size:1.1rem;padding:0 6px;display:flex;align-items:center;transition:color .2s}
+    .loc-btn:hover{color:var(--red)}
+
+    /* ── FILTER CHIPS ── */
+    .chips{display:flex;flex-wrap:wrap;gap:8px;padding:18px 0 26px}
+    .chip{padding:7px 16px;border-radius:20px;font-size:.8rem;font-weight:600;cursor:pointer;border:1.5px solid rgba(255,255,255,.3);color:rgba(255,255,255,.85);background:rgba(255,255,255,.08);transition:all .2s;display:flex;align-items:center;gap:6px}
+    .chip:hover{border-color:var(--gold);color:var(--gold)}
+    .chip.active{background:var(--gold);border-color:var(--gold);color:#000}
+
+    /* ── MAIN BODY ── */
+    .body-wrap{padding:36px 0 64px;background:var(--off-white)}
+
+    /* ── STATS ── */
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px}
+    @media(max-width:767px){.stats{grid-template-columns:repeat(2,1fr)}}
+    .stat{background:#fff;border:1px solid var(--gray-100);border-radius:var(--radius-md);padding:14px 16px;display:flex;align-items:center;gap:12px;box-shadow:var(--shadow-sm)}
+    .stat-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+    .si-blue{background:#EDF5FF;color:var(--navy-light)}
+    .si-green{background:#E8F8F0;color:var(--green)}
+    .si-orange{background:#FFF4E6;color:var(--orange)}
+    .si-purple{background:#F3E8FF;color:var(--purple)}
+    .stat-n{font-size:1.3rem;font-weight:800;color:var(--gray-800);line-height:1}
+    .stat-l{font-size:.72rem;color:var(--gray-600);margin-top:2px}
+
+    /* ── QUICK ZONES ── */
+    .section-title{display:flex;align-items:center;gap:10px;font-size:1rem;font-weight:700;color:#fff;background:linear-gradient(90deg,var(--navy) 0%,var(--navy-light) 100%);padding:11px 22px;border-radius:var(--radius-md);margin-bottom:18px}
+    .qz-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px;margin-bottom:28px}
+    .qz{background:#fff;border:1px solid var(--gray-100);border-radius:var(--radius-md);padding:13px 16px;display:flex;align-items:center;gap:11px;cursor:pointer;transition:all .2s;box-shadow:var(--shadow-sm)}
+    .qz:hover{border-color:var(--navy-light);box-shadow:var(--shadow-md);transform:translateY(-2px)}
+    .qz-ic{font-size:1.4rem;flex-shrink:0}
+    .qz-n{font-size:.85rem;font-weight:700;color:var(--navy);line-height:1.3}
+    .qz-c{font-size:.74rem;color:var(--gray-600)}
+
+    /* ── RESULTS BAR ── */
+    .results-bar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:14px}
+    .results-info{font-size:.9rem;color:var(--gray-600)}
+    .results-info strong{color:var(--navy)}
+    .sort-sel{padding:7px 12px;border-radius:var(--radius-sm);border:1px solid var(--gray-200);font-family:var(--font);font-size:.82rem;color:var(--gray-800);background:#fff;cursor:pointer;outline:none}
+    .sort-sel:focus{border-color:var(--navy-light)}
+
+    /* ── ZONE TABS ── */
+    .zone-tabs{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap}
+    .ztab{padding:9px 18px;border-radius:20px;border:1.5px solid var(--gray-200);background:#fff;color:var(--gray-600);font-family:var(--font);font-size:.82rem;font-weight:600;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:7px}
+    .ztab:hover{border-color:var(--navy-light);color:var(--navy)}
+    .ztab.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+    .ztab-count{background:rgba(255,255,255,.2);padding:1px 8px;border-radius:10px;font-size:.72rem;display:none}
+    .ztab.active .ztab-count{display:inline}
+
+    /* ── CARDS ── */
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-bottom:36px}
+    @media(max-width:680px){.grid{grid-template-columns:1fr}}
+    .pcard{background:#fff;border:1px solid var(--gray-100);border-radius:var(--radius-lg);padding:20px;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column;gap:11px;position:relative;overflow:hidden}
+    .pcard:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+    .pcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+    .pc1::before{background:var(--purple)}
+    .pc2::before{background:var(--teal)}
+    .pc3::before{background:var(--orange)}
+    .card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+    .card-name{font-size:.97rem;font-weight:700;color:var(--gray-800);line-height:1.3;margin:0}
+    .dcp-badge{font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap;flex-shrink:0}
+    .db1{background:#F3E8FF;color:#5B21B6}
+    .db2{background:#CFFAFE;color:#0E7490}
+    .db3{background:#FEF3C7;color:#92400E}
+    .card-ps{font-size:.78rem;color:var(--gray-600);display:flex;align-items:center;gap:5px;margin:0}
+    .card-ps i{font-size:.72rem;color:var(--navy-light)}
+    .vtags{display:flex;flex-wrap:wrap;gap:5px}
+    .vtag{display:inline-flex;align-items:center;gap:3px;padding:3px 9px;border-radius:10px;font-size:.72rem;font-weight:700}
+    .vt-2w{background:#EDF5FF;color:#145DA0}
+    .vt-4w{background:#E8F8F0;color:#198754}
+    .vt-dcm{background:#F1F5F9;color:#475569}
+    .vt-all{background:#FFF4E6;color:#92400E}
+    .card-actions{display:flex;gap:8px;margin-top:2px}
+    .map-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;background:#4285F4;color:#fff;border:none;border-radius:var(--radius-sm);padding:10px 14px;font-size:.82rem;font-weight:600;cursor:pointer;font-family:var(--font);transition:background .2s;text-decoration:none}
+    .map-btn:hover{background:#3367d6;color:#fff}
+    .copy-btn{width:40px;height:40px;border-radius:var(--radius-sm);background:var(--off-white);border:1px solid var(--gray-200);display:flex;align-items:center;justify-content:center;color:var(--gray-600);cursor:pointer;font-size:.9rem;transition:background .2s,color .2s;flex-shrink:0}
+    .copy-btn:hover{background:var(--gray-100);color:var(--navy)}
+
+    /* ── NO RESULTS ── */
+    .no-results{display:none;text-align:center;padding:60px 20px;background:#fff;border-radius:var(--radius-lg);border:1px dashed var(--gray-200)}
+    .no-results i{font-size:3rem;color:var(--gray-400);display:block;margin-bottom:12px}
+    .no-results h3{font-size:1.1rem;font-weight:700;color:var(--gray-800);margin:0 0 6px}
+    .no-results p{font-size:.88rem;color:var(--gray-600);margin:0}
+
+    /* ── LEGEND ── */
+    .legend{background:#fff;border:1px solid var(--gray-100);border-radius:var(--radius-md);padding:12px 20px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:18px;box-shadow:var(--shadow-sm)}
+    .lg-item{display:flex;align-items:center;gap:6px;font-size:.8rem;color:var(--gray-600)}
+    .lg-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+
+    /* ── ARRIVE ALIVE ── */
+    .aa-banner{background:linear-gradient(120deg,#16A085 0%,#1ABC9C 100%);padding:10px 40px;position:relative;overflow:hidden}
+    .aa-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;position:relative;z-index:1}
+    .aa-badge{display:inline-block;background:rgba(255,255,255,.2);color:#fff;font-size:.72rem;font-weight:600;padding:4px 14px;border-radius:20px;margin-bottom:8px}
+    .aa-title{font-size:1.5rem;font-weight:800;color:#fff;margin:0 0 6px}
+    .aa-desc{font-size:.88rem;color:rgba(255,255,255,.88);margin:0 0 10px}
+    .aa-btn{display:inline-block;background:#fff;color:#16A085;font-size:.88rem;font-weight:700;padding:10px 28px;border-radius:6px;transition:background .2s}
+    .aa-btn:hover{background:#e8faf6;color:#16A085}
+    @media(max-width:768px){.aa-inner{grid-template-columns:1fr}.aa-visual{display:none}.aa-banner{padding:10px 16px}}
+
+    /* ── FOOTER ── */
+    .modern-footer{background:#f4f7fb;border-top:4px solid #0B3D91}
+    .footer-logo{width:130px}
+    .footer-heading{color:#0B3D91;font-weight:700;margin-bottom:15px}
+    .footer-text{color:#555;line-height:1.8;font-size:.88rem}
+    .footer-btn{display:inline-block;margin-top:10px;background:#0B3D91;color:#fff;padding:12px 22px;border-radius:30px;font-weight:600;transition:.3s}
+    .footer-btn:hover{background:#1565C0;color:#fff}
+    .footer-title{color:#111;font-weight:700;margin-bottom:20px;font-size:.95rem}
+    .footer-title::after{content:'';width:45px;height:3px;background:#8BC34A;display:block;margin-top:8px}
+    .footer-links{list-style:none;padding:0}
+    .footer-links li{margin-bottom:12px}
+    .footer-links a{color:#444;font-size:.85rem;transition:.3s}
+    .footer-links a:hover{color:#0B3D91;padding-left:5px}
+    .social-icons{display:flex;gap:15px;flex-wrap:wrap}
+    .social-icons a{width:48px;height:48px;border-radius:50%;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.1);display:flex;align-items:center;justify-content:center;color:#0B3D91;font-size:20px;transition:.3s;cursor:pointer}
+    .social-icons a:hover{background:#0B3D91;color:#fff;transform:translateY(-4px)}
+    .footer-bottom{background:#111c2e;color:#fff;padding:18px 0;font-size:.82rem}
+    .footer-bottom a{color:#fff}
+    .footer-bottom a:hover{color:var(--gold)}
+    @media(max-width:768px){.footer-title,.footer-heading,.footer-text{text-align:center}.footer-title::after{margin:auto;margin-top:8px}.social-icons{justify-content:center}}
+
+    /* ── POPUP ── */
+    .center-popup{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);display:none;justify-content:center;align-items:center;z-index:99999}
+    .popup-box{position:relative;width:70%;max-width:900px;background:#fff;padding:10px;border-radius:15px;box-shadow:0 5px 25px rgba(0,0,0,.5);animation:popupZoom .4s ease}
+    .popup-box img{width:100%;height:auto;border-radius:10px;display:block}
+    .close-btn{position:absolute;top:-15px;right:-15px;background:red;color:#fff;width:35px;height:35px;line-height:35px;text-align:center;border-radius:50%;font-size:22px;font-weight:bold;cursor:pointer}
+    @keyframes popupZoom{from{transform:scale(.7);opacity:0}to{transform:scale(1);opacity:1}}
+
+    /* ── FIXED BTNS ── */
+    #chatbotToggle{position:fixed;bottom:24px;right:80px;z-index:1001;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);border:2.5px solid var(--gold);color:#fff;cursor:pointer;font-size:22px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(11,60,93,.4);animation:chatPulse 2.5s infinite;transition:transform .2s}
+    #chatbotToggle:hover{transform:translateY(-3px) scale(1.07);animation:none}
+    @keyframes chatPulse{0%,100%{box-shadow:0 4px 20px rgba(11,60,93,.4),0 0 0 0 rgba(255,193,7,.55)}50%{box-shadow:0 4px 20px rgba(11,60,93,.4),0 0 0 10px rgba(255,193,7,0)}}
+    .chat-badge{position:absolute;top:-4px;right:-4px;background:var(--gold);color:#000;font-size:.6rem;font-weight:800;border-radius:10px;padding:1px 5px;border:1.5px solid #fff}
+    #scrollTopBtn{position:fixed;bottom:24px;right:24px;z-index:999;width:46px;height:46px;border-radius:50%;background:var(--red);color:#fff;border:none;cursor:pointer;font-size:18px;box-shadow:var(--shadow-md);opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;display:flex;align-items:center;justify-content:center}
+    #scrollTopBtn.visible{opacity:1;pointer-events:auto}
+    #scrollTopBtn:hover{transform:translateY(-3px)}
+
+    /* ── CHATBOT ── */
+    #chatbotWindow{position:fixed;bottom:94px;right:80px;z-index:1000;width:340px;max-height:480px;background:#fff;border-radius:var(--radius-lg);box-shadow:0 8px 40px rgba(0,0,0,.18);display:flex;flex-direction:column;overflow:hidden;opacity:0;pointer-events:none;transform:translateY(16px) scale(.97);transition:opacity .25s ease,transform .25s ease}
+    #chatbotWindow.open{opacity:1;pointer-events:auto;transform:none}
+    .cbot-hdr{background:linear-gradient(100deg,var(--navy-dark) 0%,var(--navy-light) 100%);border-bottom:3px solid var(--gold);padding:14px 16px;display:flex;align-items:center;gap:12px}
+    .cbot-av{width:38px;height:38px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+    .cbot-info{flex:1}
+    .cbot-info h6{margin:0;color:#fff;font-size:.9rem;font-weight:700}
+    .cbot-info small{color:rgba(255,255,255,.7);font-size:.72rem}
+    .cbot-close{background:rgba(255,255,255,.12);border:none;color:rgba(255,255,255,.7);width:28px;height:28px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.8rem}
+    .cbot-body{flex:1;padding:20px 16px;overflow-y:auto;display:flex;flex-direction:column;gap:12px;background:var(--off-white)}
+    .chat-bot{display:flex;gap:8px;align-items:flex-end}
+    .cbubble{max-width:78%;padding:10px 14px;border-radius:16px;font-size:.83rem;line-height:1.5;background:#fff;color:var(--gray-800);border-bottom-left-radius:4px;box-shadow:var(--shadow-sm)}
+    .cav{width:26px;height:26px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0}
+    .cbot-soon{padding:14px;background:linear-gradient(135deg,#fffbea,#fff8e1);border:1.5px dashed var(--gold);border-radius:var(--radius-md);text-align:center}
+    .cbot-soon i{font-size:1.6rem;color:var(--gold);margin-bottom:6px;display:block}
+    .cbot-soon p{margin:0;font-size:.8rem;color:var(--gray-600);line-height:1.5}
+    .cbot-sugg{display:flex;flex-direction:column;gap:6px;margin-top:4px}
+    .csug{background:#fff;border:1.5px solid var(--gray-200);border-radius:20px;padding:7px 12px;font-size:.78rem;color:var(--navy);font-weight:600;cursor:not-allowed;text-align:left;font-family:var(--font);opacity:.7;display:flex;align-items:center;gap:7px}
+    .csug i{color:var(--gold)}
+    .cbot-ftr{padding:12px;border-top:1px solid var(--gray-100);background:#fff}
+    .cbot-inp{display:flex;gap:8px;align-items:center;background:var(--off-white);border:1.5px solid var(--gray-200);border-radius:24px;padding:6px 6px 6px 14px}
+    .cbot-inp input{flex:1;border:none;background:transparent;font-size:.82rem;font-family:var(--font);color:var(--gray-800);outline:none}
+    .csend{width:32px;height:32px;border-radius:50%;background:var(--navy);border:none;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.8rem;cursor:not-allowed;opacity:.5}
+    @media(max-width:480px){#chatbotWindow{right:12px;left:12px;width:auto;bottom:86px}#chatbotToggle{right:76px;bottom:20px}}
+
+    /* ── TOAST ── */
+    .toast-wrap{position:fixed;bottom:88px;left:50%;transform:translateX(-50%);z-index:9999;pointer-events:none}
+    .toast-msg{background:var(--navy);color:#fff;padding:10px 20px;border-radius:24px;font-size:.84rem;font-weight:600;opacity:0;transition:opacity .3s;box-shadow:0 4px 20px rgba(0,0,0,.2);white-space:nowrap}
+    .toast-msg.show{opacity:1}
+  </style>
+</head>
+<body>
+
+  <!-- POPUP -->
+  <div id="centerPopup" class="center-popup">
+    <div class="popup-box">
+      <span class="close-btn">&times;</span>
+      <img src="img/popupimg.png" alt="Traffic Banner">
+    </div>
+  </div>
+
+  <!-- TOP HEADER -->
+  <header class="top-header">
+    <div class="c">
+      <div class="row align-items-center gy-2">
+        <div class="col-lg-4 col-md-12 text-center text-lg-start">
+          <a href="index.html" class="d-inline-flex align-items-center gap-2" aria-label="Home">
+            <img src="img/MainLogo1.png" class="top-header__logo" alt="Hyderabad Traffic Police">
+            <div>
+              <div class="top-header__title">Hyderabad Traffic Police</div>
+              <div class="top-header__subtitle">For You, With You, Always</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-lg-4 col-md-12 text-center">
+          <div class="top-header__actions">
+            <a href="https://echallan.tspolice.gov.in/publicview/" target="_blank" rel="noopener" class="btn-htp btn-challan"><img src="img/Paynow.png" width="18" height="18" alt=""> Pay Challan</a>
+            <a href="https://wa.me/9010203626" target="_blank" rel="noopener" class="btn-htp btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdIr2t94wVePyi562lUbeOyavRPi6vNgLadZl-lPrj53PDTYw/viewform" target="_blank" rel="noopener" class="btn-htp btn-feedback"><i class="fa fa-comment-dots"></i> Feedback</a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-12 text-center text-lg-end">
+          <div class="top-header__info mb-1">
+            <i class="fa fa-phone"></i> Helpline: <a href="tel:9010203626">9010203626</a>&nbsp;&nbsp;
+            <i class="fa fa-phone-alt"></i> E-Challan: <a href="tel:04027852721">040-27852721</a>
+          </div>
+          <div class="d-flex gap-2 justify-content-center justify-content-lg-end flex-wrap align-items-center">
+            <div class="zoom-ctrl">
+              <button onclick="pageZoom(1)" title="Zoom In">A+</button>
+              <button onclick="pageZoomReset()" class="reset" title="Reset">&#8635;</button>
+              <button onclick="pageZoom(-1)" title="Zoom Out">A&#8722;</button>
+            </div>
+            <div class="lang-dropdown-wrap">
+              <i class="fa fa-globe lang-globe"></i>
+              <select class="lang-select" id="langSelect" onchange="doTranslate(this.value)">
+                <option value="en">English</option>
+                <option value="te">&#3108;&#3142;&#3122;&#3137;&#3095;&#3137;</option>
+                <option value="hi">&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</option>
+                <option value="ta">&#2980;&#2990;&#3007;&#2996;&#3021;</option>
+                <option value="ur">&#1575;&#1585;&#1583;&#1608;</option>
+                <option value="kn">&#3221;&#3240;&#3277;&#3240;&#3233;</option>
+                <option value="ml">&#3374;&#3378;&#3375;&#3390;&#3379;&#3330;</option>
+              </select>
+              <i class="fa fa-chevron-down lang-caret"></i>
+            </div>
+            <div id="gt_hidden" style="display:none;position:absolute;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAVBAR -->
+  <nav class="main-nav navbar navbar-expand-lg" aria-label="Main navigation">
+    <div class="c">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain" aria-controls="navMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">About Us</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="introduction.html">Introduction</a></li>
+              <li><a class="dropdown-item" href="org_chart.html">Organization Chart</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Services</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="wrong_challan.html">Wrong Challan</a></li>
+              <li><a class="dropdown-item" href="noc_tov.html">Vehicle NOC</a></li>
+              <li><a class="dropdown-item" href="noc_schools.html">School NOC</a></li>
+              <li><a class="dropdown-item" href="noc_plying.html">Vehicle Plying</a></li>
+              <li><a class="dropdown-item" href="noc_petrol.html">Petrol Pump NOC</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Information</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="road_rules.html">Road Rules</a></li>
+              <li><a class="dropdown-item" href="road_sense.html">Road Sense</a></li>
+              <li><a class="dropdown-item" href="road_smart.html">Road Smart</a></li>
+              <li><a class="dropdown-item" href="statistics.html">Statistics</a></li>
+              <li><a class="dropdown-item" href="driving_license.html">Driving License</a></li>
+              <li><a class="dropdown-item" href="vehicle_registration.html">Vehicle Registration</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="know_your_ps.html">Know Your PS</a></li>
+          <li class="nav-item"><a class="nav-link" href="rti.html">RTI</a></li>
+          <li class="nav-item"><a class="nav-link" href="campaigns.html">Road Safety</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">T20 Test</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="https://echallan.tspolice.gov.in/TGTrafficTest/jsp/LoginView.jsp" target="_blank" rel="noopener">Online Test</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link active" href="parking_zones.html" aria-current="page">Find Parking</a></li>
+          <li class="nav-item"><a class="nav-link" href="parking.html">Parking Rules</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact_us.html">Contact</a></li>
+        </ul>
+        <div class="nav-extras d-flex align-items-center gap-2 ms-3">
+          <div class="nav-search" role="search">
+            <label for="navSI" class="visually-hidden">Search site</label>
+            <input type="search" id="navSearchInput" placeholder="Search…" aria-label="Search site content">
+            <i class="fa fa-search nav-search-icon"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="c">
+      <nav aria-label="breadcrumb" style="margin-bottom:14px;">
+        <a href="index.html" style="color:var(--gold);font-size:.85rem;font-weight:600;"><i class="fa fa-home"></i> Home</a>
+        <span style="opacity:.6;margin:0 8px;">/</span>
+        <span style="color:rgba(255,255,255,.8);font-size:.85rem;">Find Parking</span>
+      </nav>
+      <h1>🅿️ Find Parking Near You</h1>
+      <p>Instantly locate official designated parking zones across Greater Hyderabad. Search, filter by vehicle type or zone — then open in Google Maps in one tap.</p>
+      <div class="sbar">
+        <i class="fa fa-search" style="color:var(--gray-400);font-size:.9rem;flex-shrink:0;"></i>
+        <input type="text" id="mainSearch" placeholder="Search by area, PS, or parking name…" oninput="filterAll()" autocomplete="off">
+        <button class="loc-btn" onclick="useLocation()" title="Use my location" aria-label="Use my location">
+          <i class="fa fa-location-crosshairs"></i>
+        </button>
+        <button class="sbar-btn" onclick="filterAll()"><i class="fa fa-search"></i> Search</button>
+      </div>
+      <div class="chips">
+        <div class="chip active" onclick="setV('all',this)"><i class="fa fa-car"></i> All Vehicles</div>
+        <div class="chip" onclick="setV('2w',this)"><i class="fa fa-motorcycle"></i> Two-Wheeler</div>
+        <div class="chip" onclick="setV('4w',this)"><i class="fa fa-car-side"></i> Four-Wheeler</div>
+        <div class="chip" onclick="setV('dcm',this)"><i class="fa fa-truck"></i> DCM / Goods</div>
+        <div class="chip" onclick="setD('dcp1',this)"><i class="fa fa-shield-halved"></i> DCP Zone I</div>
+        <div class="chip" onclick="setD('dcp2',this)"><i class="fa fa-shield-halved"></i> DCP Zone II</div>
+        <div class="chip" onclick="setD('dcp3',this)"><i class="fa fa-shield-halved"></i> DCP Zone III</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN -->
+  <main id="main-content" class="body-wrap">
+    <div class="c">
+
+      <!-- Stats -->
+      <div class="stats">
+        <div class="stat"><div class="stat-icon si-blue"><i class="fa fa-map-marker-alt"></i></div><div><div class="stat-n" id="totalCount">47</div><div class="stat-l">Total parking spots</div></div></div>
+        <div class="stat"><div class="stat-icon si-purple"><i class="fa fa-shield-halved"></i></div><div><div class="stat-n">3</div><div class="stat-l">DCP zones covered</div></div></div>
+        <div class="stat"><div class="stat-icon si-green"><i class="fa fa-subway"></i></div><div><div class="stat-n">8</div><div class="stat-l">Metro station parking</div></div></div>
+        <div class="stat"><div class="stat-icon si-orange"><i class="fa fa-train"></i></div><div><div class="stat-n">5</div><div class="stat-l">Railway station parking</div></div></div>
+      </div>
+
+      <!-- Quick access -->
+      <div class="section-title"><i class="fa fa-fire"></i> Popular Areas — Quick Access</div>
+      <div class="qz-grid">
+        <div class="qz" onclick="qs('Necklace Road')"><div class="qz-ic">🌊</div><div><div class="qz-n">Necklace Road</div><div class="qz-c">3 parking spots</div></div></div>
+        <div class="qz" onclick="qs('Metro')"><div class="qz-ic">🚇</div><div><div class="qz-n">Metro Stations</div><div class="qz-c">8 parking spots</div></div></div>
+        <div class="qz" onclick="qs('Railway')"><div class="qz-ic">🚂</div><div><div class="qz-n">Railway Stations</div><div class="qz-c">5 parking spots</div></div></div>
+        <div class="qz" onclick="qs('Saifabad')"><div class="qz-ic">🏛️</div><div><div class="qz-n">Saifabad / Lumbini</div><div class="qz-c">16 parking spots</div></div></div>
+        <div class="qz" onclick="qs('Malakpet')"><div class="qz-ic">🏙️</div><div><div class="qz-n">Malakpet</div><div class="qz-c">4 parking spots</div></div></div>
+        <div class="qz" onclick="qs('Lorry')"><div class="qz-ic">🚛</div><div><div class="qz-n">Lorry Parking</div><div class="qz-c">4 parking spots</div></div></div>
+      </div>
+
+      <!-- Legend -->
+      <div class="legend">
+        <strong style="font-size:.82rem;color:var(--navy);">Vehicle Types:</strong>
+        <div class="lg-item"><div class="lg-dot" style="background:#145DA0;"></div> 2W — Two-wheeler</div>
+        <div class="lg-item"><div class="lg-dot" style="background:#198754;"></div> 4W — Four-wheeler</div>
+        <div class="lg-item"><div class="lg-dot" style="background:#475569;"></div> DCM — Goods / Heavy</div>
+        <div class="lg-item"><div class="lg-dot" style="background:#E67E22;"></div> All — All vehicle types</div>
+        <span style="margin-left:auto;font-size:.78rem;color:var(--gray-600);"><i class="fa fa-info-circle" style="margin-right:4px;"></i>Tap any card to open in Google Maps</span>
+      </div>
+
+      <!-- Results bar -->
+      <div class="results-bar">
+        <div class="results-info">Showing <strong id="showingCount">47</strong> parking spots</div>
+        <select class="sort-sel" id="sortSel" onchange="sortCards()">
+          <option value="default">Sort: Default</option>
+          <option value="az">Sort: A → Z</option>
+          <option value="za">Sort: Z → A</option>
+          <option value="zone">Sort: By DCP Zone</option>
+        </select>
+      </div>
+
+      <!-- Zone tabs -->
+     
+
+      <!-- Cards -->
+      <div class="grid" id="parkingGrid"></div>
+      <div class="no-results" id="noResults">
+        <i class="fa fa-search"></i>
+        <h3>No parking spots found</h3>
+        <p>Try a different keyword or clear your filters.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Marquee -->
+  <marquee behavior="scroll" direction="right" scrollamount="15" onmouseover="this.stop();" onmouseout="this.start();">
+    <img src="img/Parol car 2.gif" width="7%" alt="Patrol car">
+  </marquee>
+
+  <!-- Arrive Alive -->
+  <div class="aa-banner">
+    <div class="aa-inner">
+      <div>
+        <span class="aa-badge">Road Safety Initiative</span>
+        <h2 class="aa-title">Arrive Alive Campaign</h2>
+        <p class="aa-desc">Join us in making Hyderabad's roads safer. Follow traffic rules, wear helmets, use seat belts, and say no to drunk driving.</p>
+        <a href="arriveAlive.html" class="aa-btn">Learn More</a>
+      </div>
+      <div class="aa-visual">
+        <img src="img/ArriveAlive.png" alt="Arrive Alive" style="height:230px;object-fit:contain;filter:drop-shadow(0 4px 16px rgba(0,0,0,.25));" onerror="this.style.display='none'">
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="modern-footer">
+    <div class="c py-5">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 text-center text-lg-start">
+          <img src="img/MainLogo1.png" class="footer-logo mb-3" alt="HTP Logo">
+          <h4 class="footer-heading">Hyderabad Traffic Police</h4>
+          <p class="footer-text">Dedicated to safer roads, better traffic management and citizen-friendly digital services.</p>
+          <a href="campaigns.html" class="footer-btn">🚦 Road Safety Campaigns</a>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h5 class="footer-title">Useful Links</h5>
+          <ul class="footer-links">
+            <li><a href="https://echallan.tspolice.gov.in/publicview/">E-Challan</a></li>
+            <li><a href="wrong_challan.html">Wrong Challan</a></li>
+            <li><a href="noc_tov.html">NOC</a></li>
+            <li><a href="driving_license.html">Driving License</a></li>
+            <li><a href="vehicle_registration.html">Vehicle Registration</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h5 class="footer-title">Information</h5>
+          <ul class="footer-links">
+            <li><a href="road_rules.html">Road Rules</a></li>
+            <li><a href="parking.html">Parking Rules</a></li>
+            <li><a href="statistics.html">Statistics</a></li>
+            <li><a href="rti.html">RTI</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <h5 class="footer-title">Connect With Us</h5>
+          <div class="social-icons mb-4">
+            <a onclick="window.open('https://www.facebook.com/HYDTP','_blank');" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a onclick="window.open('https://twitter.com/HYDTP','_blank');" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+            <a onclick="window.open('https://www.instagram.com/hyderabadtrafficpolice','_blank');" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a onclick="window.open('https://youtube.com/@hyderabadtrafficpoliceshik6556','_blank');" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+          <h6 style="font-weight:700;margin-bottom:10px;">Official Website</h6>
+          <a href="https://hyderabadpolice.gov.in/" target="_blank" rel="noopener" style="color:#0B3D91;font-weight:600;">Hyderabad Police</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="c">
+        <div class="row align-items-center">
+          <div class="col-md-6 text-center text-md-start">COPYRIGHT &copy; 2026, Hyderabad Traffic Police</div>
+          <div class="col-md-6 text-center text-md-end">Designed and developed by <a href="https://ts.nic.in/" target="_blank" rel="noopener">NIC Telangana</a></div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Chatbot -->
+  <button id="chatbotToggle" onclick="toggleCbot()" aria-label="Open AI Chatbot">
+    <i class="fa fa-robot"></i><span class="chat-badge">AI</span>
+  </button>
+  <div id="chatbotWindow" role="dialog" aria-label="HTP AI Assistant" aria-modal="true">
+    <div class="cbot-hdr">
+      <div class="cbot-av">🤖</div>
+      <div class="cbot-info"><h6>HTP Assistant</h6><small>Hyderabad Traffic Police · AI Powered</small></div>
+      <button class="cbot-close" onclick="toggleCbot()"><i class="fa fa-times"></i></button>
+    </div>
+    <div class="cbot-body">
+      <div class="chat-bot"><div class="cav">🤖</div><div class="cbubble">👋 Hello! I'm the <strong>HTP AI Assistant</strong>. Find parking, pay challans, and more.</div></div>
+      <div class="cbot-soon"><i class="fa fa-clock"></i><p><strong>Full AI Chat — Coming Soon!</strong><br>Real-time traffic queries powered by AI.</p></div>
+      <div class="cbot-sugg">
+        <button class="csug" disabled><i class="fa fa-parking"></i> Find parking near me</button>
+        <button class="csug" disabled><i class="fa fa-file-invoice"></i> Pay my challan</button>
+        <button class="csug" disabled><i class="fa fa-map-marker-alt"></i> Nearest traffic PS</button>
+      </div>
+    </div>
+    <div class="cbot-ftr">
+      <div class="cbot-inp">
+        <input type="text" placeholder="Chat coming soon…" disabled>
+        <button class="csend" disabled><i class="fa fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">
+    <i class="fa fa-arrow-up"></i>
+  </button>
+  <div class="toast-wrap"><div class="toast-msg" id="toastMsg"></div></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+  /* ═══════════ DATA — sourced from the original page ═══════════ */
+  var SPOTS = [
+    /* DCP 1 – Khairatabad Zone – Saifabad PS */
+    {n:'Khairtabad Railway Station Parking',   ps:'Saifabad',     zone:'Khairatabad',   dcp:'dcp1', v:['all'], lat:17.4302,lng:78.4617, tags:'railway saifabad khairtabad'},
+    {n:'MMTS Lakdikapool Parking',             ps:'Saifabad',     zone:'Khairatabad',   dcp:'dcp1', v:['all'], lat:17.4028,lng:78.4664, tags:'mmts lakdikapool saifabad'},
+    {n:'Birla Temple Auditorium Parking',      ps:'Saifabad',     zone:'Khairatabad',   dcp:'dcp1', v:['all'], lat:17.4093,lng:78.4660, tags:'birla temple saifabad'},
+    {n:'Ravindra Bharathi Parking',            ps:'Saifabad',     zone:'Khairatabad',   dcp:'dcp1', v:['all'], lat:17.4064,lng:78.4695, tags:'ravindra bharathi saifabad'},
+    {n:'Martyrs Memorial Parking',             ps:'Saifabad',     zone:'Khairatabad',   dcp:'dcp1', v:['all'], lat:17.4087,lng:78.4740, tags:'martyrs memorial saifabad'},
+    {n:'Lumbini Park Parking',                 ps:'Saifabad',     zone:'Khairatabad',   dcp:'dcp1', v:['all'], lat:17.4076,lng:78.4746, tags:'lumbini park hussain sagar saifabad'},
+    {n:'E-Car Race Road Parking',              ps:'Saifabad',     zone:'Khairatabad',   dcp:'dcp1', v:['all'], lat:17.4087,lng:78.4745, tags:'race road necklace road saifabad'},
+    {n:'NTR Ghat Parking',                     ps:'Saifabad',     zone:'Khairatabad',   dcp:'dcp1', v:['all'], lat:17.4120,lng:78.4748, tags:'ntr ghat hussain sagar saifabad'},
+    {n:'NTR Garden Parking',                   ps:'Saifabad',     zone:'Khairatabad',   dcp:'dcp1', v:['all'], lat:17.4131,lng:78.4751, tags:'ntr garden necklace road saifabad'},
+    {n:'Necklace Road MMTS Parking',           ps:'Saifabad',     zone:'Khairatabad',   dcp:'dcp1', v:['all'], lat:17.4112,lng:78.4743, tags:'necklace road mmts saifabad'},
+    {n:'M.S Maktha Parking',                   ps:'Saifabad',     zone:'Khairatabad',   dcp:'dcp1', v:['all'], lat:17.4109,lng:78.4739, tags:'maktha necklace road saifabad'},
+    {n:"People's Plaza Ground",                ps:'Saifabad',     zone:'Khairatabad',   dcp:'dcp1', v:['all'], lat:17.4120,lng:78.4698, tags:"people's plaza saifabad"},
+    {n:'Jalvihar Parking',                     ps:'Saifabad',     zone:'Khairatabad',   dcp:'dcp1', v:['all'], lat:17.4088,lng:78.4731, tags:'jalvihar hussain sagar saifabad'},
+    {n:'Necklace Road Single Lane Parking',    ps:'Saifabad',     zone:'Khairatabad',   dcp:'dcp1', v:['all'], lat:17.4108,lng:78.4742, tags:'necklace road saifabad'},
+    {n:'HMDA Ground Parking',                  ps:'Saifabad',     zone:'Khairatabad',   dcp:'dcp1', v:['all'], lat:17.4130,lng:78.4763, tags:'hmda ground saifabad'},
+    {n:'Public Garden Parking',                ps:'Saifabad',     zone:'Khairatabad',   dcp:'dcp1', v:['all'], lat:17.4091,lng:78.4733, tags:'public garden necklace road saifabad'},
+    /* DCP 1 – Abids PS */
+    {n:'GHMC Complex',                         ps:'Abids',        zone:'Khairatabad',   dcp:'dcp1', v:['all'], lat:17.3923,lng:78.4748, tags:'ghmc complex abids'},
+    /* DCP 1 – Sultanbazar PS */
+    {n:'Gokul Chat Opposite',                  ps:'Sultanbazar',  zone:'Khairatabad',   dcp:'dcp1', v:['all'], lat:17.3820,lng:78.4744, tags:'sultanbazar gokul chat koti'},
+    /* DCP 1 – Secunderabad Zone – Kachiguda PS */
+    {n:'Railway Station Back Side, RTC Quarters', ps:'Kachiguda', zone:'Secunderabad',  dcp:'dcp1', v:['all'], lat:17.3850,lng:78.5017, tags:'railway rtc kachiguda secunderabad'},
+    {n:'R.G. Kedia College, Chaderghat',       ps:'Kachiguda',    zone:'Secunderabad',  dcp:'dcp1', v:['all'], lat:17.3772,lng:78.4987, tags:'college chaderghat kachiguda'},
+    {n:'Govt. Kachiguda Jr. College, Barkathpura', ps:'Kachiguda',zone:'Secunderabad',  dcp:'dcp1', v:['all'], lat:17.3908,lng:78.4972, tags:'college barkathpura kachiguda'},
+    {n:'GHMC Ground, Uma Maheshwari Temple',   ps:'Kachiguda',    zone:'Secunderabad',  dcp:'dcp1', v:['all'], lat:17.3860,lng:78.4978, tags:'ghmc uma maheshwari kachiguda'},
+    {n:'MCH Ground, Amberpet',                 ps:'Kachiguda',    zone:'Secunderabad',  dcp:'dcp1', v:['all'], lat:17.3945,lng:78.5091, tags:'mch ground amberpet kachiguda'},
+    /* DCP 1 – OU City PS */
+    {n:'Tarnaka Metro Station',                ps:'OU City',      zone:'Secunderabad',  dcp:'dcp1', v:['2w','4w'], lat:17.4189,lng:78.5303, tags:'metro tarnaka ou city'},
+    {n:'Habsiguda Metro Station',              ps:'OU City',      zone:'Secunderabad',  dcp:'dcp1', v:['2w','4w'], lat:17.4178,lng:78.5402, tags:'metro habsiguda ou city'},
+    {n:'NGRI Metro Station',                   ps:'OU City',      zone:'Secunderabad',  dcp:'dcp1', v:['2w','4w'], lat:17.4133,lng:78.5488, tags:'metro ngri ou city'},
+    /* DCP 1 – Gandhinagar PS */
+    {n:'NTR Stadium',                          ps:'Gandhinagar',  zone:'Secunderabad',  dcp:'dcp1', v:['all'], lat:17.3863,lng:78.4939, tags:'ntr stadium gandhinagar'},
+    {n:'Satwa Mall',                           ps:'Gandhinagar',  zone:'Secunderabad',  dcp:'dcp1', v:['all'], lat:17.3853,lng:78.4904, tags:'satwa mall gandhinagar'},
+    {n:'DBR Mills',                            ps:'Gandhinagar',  zone:'Secunderabad',  dcp:'dcp1', v:['all'], lat:17.3840,lng:78.4900, tags:'dbr mills gandhinagar'},
+    {n:'Tourism Parking (Lower Tank Bund)',    ps:'Gandhinagar',  zone:'Secunderabad',  dcp:'dcp1', v:['all'], lat:17.4221,lng:78.4746, tags:'tank bund tourism gandhinagar'},
+    {n:'PET College',                          ps:'Gandhinagar',  zone:'Secunderabad',  dcp:'dcp1', v:['all'], lat:17.3870,lng:78.4951, tags:'pet college gandhinagar'},
+    /* DCP 1 – Chilakalaguda PS */
+    {n:'Mettuguda Junction (Bus Stop)',        ps:'Chilakalaguda',zone:'Secunderabad',  dcp:'dcp1', v:['all'], lat:17.4395,lng:78.5176, tags:'mettuguda junction bus chilakalaguda'},
+    {n:'Mettuguda Metro Stretch',              ps:'Chilakalaguda',zone:'Secunderabad',  dcp:'dcp1', v:['all'], lat:17.4403,lng:78.5180, tags:'mettuguda metro chilakalaguda'},
+    {n:'St. Anthony Church, Mettuguda',        ps:'Chilakalaguda',zone:'Secunderabad',  dcp:'dcp1', v:['all'], lat:17.4399,lng:78.5169, tags:'church mettuguda chilakalaguda'},
+    {n:'Secunderabad Railway Station (In Gate)',  ps:'Chilakalaguda',zone:'Secunderabad',dcp:'dcp1',v:['all'],lat:17.4343,lng:78.4999, tags:'railway secunderabad station'},
+    {n:'Secunderabad Railway Station (Out Gate)', ps:'Chilakalaguda',zone:'Secunderabad',dcp:'dcp1',v:['all'],lat:17.4338,lng:78.4995, tags:'railway secunderabad station'},
+    /* DCP 2 – Golconda Zone – Goshamahal PS */
+    {n:'At Pillar No. 59',                     ps:'Goshamahal',   zone:'Golconda',      dcp:'dcp2', v:['all'], lat:17.3720,lng:78.4601, tags:'pillar 59 goshamahal golconda'},
+    /* DCP 3 – Rajendra Nagar Zone */
+    {n:'Vinayaka Parking (Shivarampally)',     ps:'Rajendra Nagar',zone:'Rajendra Nagar',dcp:'dcp3',v:['all'], lat:17.3281,lng:78.4385, tags:'vinayaka shivarampally lorry rajendra nagar'},
+    {n:'Bharath Lorry Parking (Shivarampally)',ps:'Rajendra Nagar',zone:'Rajendra Nagar',dcp:'dcp3',v:['dcm'], lat:17.3274,lng:78.4391, tags:'lorry shivarampally bharath rajendra nagar'},
+    {n:'SPR Lorry Parking (Budwel Road)',      ps:'Rajendra Nagar',zone:'Rajendra Nagar',dcp:'dcp3',v:['dcm'], lat:17.3152,lng:78.4440, tags:'lorry budwel road spr rajendra nagar'},
+    {n:'GMR Lorry Parking (Pallecheruvu)',     ps:'Rajendra Nagar',zone:'Rajendra Nagar',dcp:'dcp3',v:['dcm'], lat:17.3160,lng:78.4398, tags:'lorry pallecheruvu gmr rajendra nagar'},
+    {n:'GMR School Bus Parking (Pallecheruvu)',ps:'Rajendra Nagar',zone:'Rajendra Nagar',dcp:'dcp3',v:['4w'],  lat:17.3158,lng:78.4402, tags:'school bus pallecheruvu gmr rajendra nagar'},
+    /* DCP 3 – Charminar Zone */
+    {n:'Charminar Bus Terminal',               ps:'Charminar',    zone:'Charminar',     dcp:'dcp3', v:['all'], lat:17.3616,lng:78.4747, tags:'charminar bus terminal old city'},
+    /* DCP 3 – Chandrayangutta Zone – Malakpet PS */
+    {n:'Malakpet Metro Station, Near Causeway',                          ps:'Malakpet',zone:'Chandrayangutta',dcp:'dcp3',v:['2w'],        lat:17.3730,lng:78.5093, tags:'metro malakpet causeway'},
+    {n:'Malakpet MMTS Railway Station',                                  ps:'Malakpet',zone:'Chandrayangutta',dcp:'dcp3',v:['2w','4w','dcm'],lat:17.3735,lng:78.5099,tags:'mmts railway malakpet'},
+    {n:'Service Rd – Musarambagh Metro, Near PVR Mall',                  ps:'Malakpet',zone:'Chandrayangutta',dcp:'dcp3',v:['2w'],        lat:17.3760,lng:78.5122, tags:'metro musarambagh pvr malakpet'},
+    {n:'Service Rd – Musarambagh Metro, Near Malakpet L&O PS',           ps:'Malakpet',zone:'Chandrayangutta',dcp:'dcp3',v:['2w'],        lat:17.3762,lng:78.5126, tags:'metro musarambagh malakpet'},
+  ];
+
+  var aV='all', aD='all', aT='all';
+
+  function gMapsUrl(s){ return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(s.n+' Hyderabad'); }
+
+  function buildCard(s){
+    var cc=s.dcp==='dcp1'?'pc1':s.dcp==='dcp2'?'pc2':'pc3';
+    var dc=s.dcp==='dcp1'?'db1':s.dcp==='dcp2'?'db2':'db3';
+    var dl=s.dcp==='dcp1'?'DCP Zone I':s.dcp==='dcp2'?'DCP Zone II':'DCP Zone III';
+    var vhtml='';
+    if(s.v.includes('all')) vhtml='<span class="vtag vt-all"><i class="fa fa-car" style="font-size:.65rem;"></i> All vehicles</span>';
+    else{
+      if(s.v.includes('2w'))  vhtml+='<span class="vtag vt-2w"><i class="fa fa-motorcycle" style="font-size:.65rem;"></i> 2W</span>';
+      if(s.v.includes('4w'))  vhtml+='<span class="vtag vt-4w"><i class="fa fa-car" style="font-size:.65rem;"></i> 4W</span>';
+      if(s.v.includes('dcm')) vhtml+='<span class="vtag vt-dcm"><i class="fa fa-truck" style="font-size:.65rem;"></i> DCM</span>';
+    }
+    return '<div class="pcard '+cc+'" data-dcp="'+s.dcp+'" data-v=\''+JSON.stringify(s.v)+'\' data-n="'+s.n.toLowerCase()+'" data-ps="'+s.ps.toLowerCase()+'" data-zone="'+s.zone.toLowerCase()+'" data-tags="'+s.tags+'">'+
+      '<div class="card-top"><p class="card-name">'+s.n+'</p><span class="dcp-badge '+dc+'">'+dl+'</span></div>'+
+      '<p class="card-ps"><i class="fa fa-building-shield"></i> '+s.ps+' Traffic PS &nbsp;·&nbsp; '+s.zone+' Zone</p>'+
+      '<div class="vtags">'+vhtml+'</div>'+
+      '<div class="card-actions">'+
+        '<a href="'+gMapsUrl(s)+'" target="_blank" rel="noopener" class="map-btn"><i class="fa fa-map-marker-alt"></i> Open in Maps</a>'+
+        '<button class="copy-btn" onclick="cpSpot(\''+s.n.replace(/'/g,"\\'")+'\')" title="Copy name"><i class="fa fa-copy"></i></button>'+
+      '</div></div>';
+  }
+
+  function getFilt(){
+    var q=(document.getElementById('mainSearch').value||'').toLowerCase().trim();
+    return SPOTS.filter(function(s){
+      var mv=aV==='all'||s.v.includes('all')||s.v.includes(aV);
+      var md=aD==='all'||s.dcp===aD;
+      var mt=aT==='all'||s.dcp===aT;
+      var ms=!q||s.n.toLowerCase().includes(q)||s.ps.toLowerCase().includes(q)||s.zone.toLowerCase().includes(q)||s.tags.includes(q);
+      return mv&&md&&mt&&ms;
+    });
+  }
+
+  function render(spots){
+    var g=document.getElementById('parkingGrid'),nr=document.getElementById('noResults');
+    g.innerHTML='';
+    if(!spots.length){nr.style.display='block';document.getElementById('showingCount').textContent='0';return;}
+    nr.style.display='none';
+    document.getElementById('showingCount').textContent=spots.length;
+    spots.forEach(function(s){g.innerHTML+=buildCard(s);});
+  }
+
+  function filterAll(){render(getFilt());}
+
+  function setV(v,el){
+    aV=v;
+    document.querySelectorAll('.chip').forEach(function(c){c.classList.remove('active');});
+    el.classList.add('active');
+    filterAll();
+  }
+
+  function setD(d,el){
+    if(aD===d){aD='all';el.classList.remove('active');}
+    else{
+      document.querySelectorAll('.chip').forEach(function(c){if(c.textContent.includes('DCP'))c.classList.remove('active');});
+      aD=d;el.classList.add('active');
+    }
+    filterAll();
+  }
+
+  function setTab(t,el){
+    aT=t;
+    document.querySelectorAll('.ztab').forEach(function(b){b.classList.remove('active');});
+    el.classList.add('active');
+    filterAll();
+  }
+
+  function sortCards(){
+    var v=document.getElementById('sortSel').value,s=getFilt();
+    if(v==='az') s.sort(function(a,b){return a.n.localeCompare(b.n);});
+    if(v==='za') s.sort(function(a,b){return b.n.localeCompare(a.n);});
+    if(v==='zone') s.sort(function(a,b){return a.dcp.localeCompare(b.dcp);});
+    render(s);
+  }
+
+  function qs(q){
+    document.getElementById('mainSearch').value=q;
+    aT='all';aD='all';
+    document.querySelectorAll('.ztab').forEach(function(b){b.classList.remove('active');});
+    document.querySelector('.ztab').classList.add('active');
+    filterAll();
+    document.getElementById('main-content').scrollIntoView({behavior:'smooth'});
+  }
+
+  function haversine(a,b,c,d){
+    var R=6371,dL=(c-a)*Math.PI/180,dG=(d-b)*Math.PI/180;
+    var x=Math.sin(dL/2)*Math.sin(dL/2)+Math.cos(a*Math.PI/180)*Math.cos(c*Math.PI/180)*Math.sin(dG/2)*Math.sin(dG/2);
+    return R*2*Math.atan2(Math.sqrt(x),Math.sqrt(1-x));
+  }
+
+  function useLocation(){
+    if(!navigator.geolocation){showToast('Geolocation not supported.');return;}
+    showToast('📍 Getting your location…');
+    navigator.geolocation.getCurrentPosition(function(p){
+      var sorted=SPOTS.slice().sort(function(a,b){return haversine(p.coords.latitude,p.coords.longitude,a.lat,a.lng)-haversine(p.coords.latitude,p.coords.longitude,b.lat,b.lng);});
+      render(sorted);
+      showToast('✅ Sorted by nearest to you!');
+      document.getElementById('main-content').scrollIntoView({behavior:'smooth'});
+    },function(){showToast('⚠️ Could not get location. Please allow access.');});
+  }
+
+  function cpSpot(n){
+    var t=n+', Hyderabad';
+    if(navigator.clipboard){navigator.clipboard.writeText(t).then(function(){showToast('📋 Copied: '+t);});}
+    else{showToast('📋 '+t);}
+  }
+
+  function showToast(m){
+    var t=document.getElementById('toastMsg');
+    t.textContent=m;t.classList.add('show');
+    setTimeout(function(){t.classList.remove('show');},3000);
+  }
+
+  function toggleCbot(){document.getElementById('chatbotWindow').classList.toggle('open');}
+
+  /* ── Zoom ── */
+  var _z=1.0,_zw=null;
+  document.addEventListener('DOMContentLoaded',function(){
+    _zw=document.createElement('div');_zw.id='zoom-wrap';_zw.style.transformOrigin='top left';
+    while(document.body.firstChild)_zw.appendChild(document.body.firstChild);
+    document.body.appendChild(_zw);
+  });
+  function pageZoom(d){_z=Math.min(1.5,Math.max(0.7,parseFloat((_z+d*0.1).toFixed(2))));applyZoom();}
+  function pageZoomReset(){_z=1.0;applyZoom();}
+  function applyZoom(){if(!_zw)return;_zw.style.transform='scale('+_z+')';_zw.style.width=(100/_z)+'%';}
+
+  /* ── Popup ── */
+  document.addEventListener('DOMContentLoaded',function(){
+    var popup=document.getElementById('centerPopup'),cb=document.querySelector('.close-btn');
+    if(!popup)return;
+    if(sessionStorage.getItem('htpPopupSeen')){popup.style.display='none';return;}
+    popup.style.display='flex';
+    function cp(){popup.style.display='none';sessionStorage.setItem('htpPopupSeen','1');}
+    if(cb)cb.addEventListener('click',cp);
+    popup.addEventListener('click',function(e){if(e.target===popup)cp();});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')cp();});
+  });
+
+  /* ── Init ── */
+  document.addEventListener('DOMContentLoaded',function(){
+    document.getElementById('mainSearch').addEventListener('keydown',function(e){if(e.key==='Enter')filterAll();});
+
+    /* ── Navbar search → search.html ── */
+    var navInput = document.getElementById('navSearchInput');
+    var navIcon  = document.querySelector('.nav-search-icon');
+    function doNavSearch() {
+      var q = navInput.value.trim();
+      if (q) window.location.href = 'search.html?q=' + encodeURIComponent(q);
+    }
+    if (navInput) navInput.addEventListener('keydown', function(e){ if (e.key === 'Enter') doNavSearch(); });
+    if (navIcon)  { navIcon.style.pointerEvents = 'auto'; navIcon.style.cursor = 'pointer'; navIcon.addEventListener('click', doNavSearch); }
+
+    render(SPOTS);
+    document.getElementById('totalCount').textContent=SPOTS.length;
+    document.getElementById('showingCount').textContent=SPOTS.length;
+    var d1=SPOTS.filter(function(s){return s.dcp==='dcp1';}).length;
+    var d2=SPOTS.filter(function(s){return s.dcp==='dcp2';}).length;
+    var d3=SPOTS.filter(function(s){return s.dcp==='dcp3';}).length;
+  });
+
+  /* ── Scroll ── */
+  var sb=document.getElementById('scrollTopBtn');
+  window.addEventListener('scroll',function(){sb.classList.toggle('visible',window.scrollY>300);},{passive:true});
+
+  /* ── Translate ── */
+  function googleTranslateElementInit(){
+    new google.translate.TranslateElement({pageLanguage:'en',includedLanguages:'en,te,hi,ta,ur,kn,ml',layout:google.translate.TranslateElement.InlineLayout.SIMPLE,autoDisplay:false},'gt_hidden');
+  }
+  function doTranslate(lang){
+    var exp=new Date(Date.now()-1000).toUTCString();
+    if(lang==='en'){['',location.hostname,'.'+location.hostname].forEach(function(d){document.cookie=(d?'googtrans=; expires='+exp+'; path=/; domain='+d:'googtrans=; expires='+exp+'; path=/');});}
+    else{['',location.hostname,'.'+location.hostname].forEach(function(d){document.cookie=(d?'googtrans=/en/'+lang+'; path=/; domain='+d:'googtrans=/en/'+lang+'; path=/');});}
+    var g=document.querySelector('.goog-te-combo');
+    if(g){g.value=lang==='en'?'':lang;g.dispatchEvent(new Event('change'));}else{location.reload();}
+  }
+  document.addEventListener('DOMContentLoaded',function(){
+    var m=document.cookie.match(/googtrans=\/en\/([a-z]+)/);
+    var sel=document.getElementById('langSelect');
+    if(sel)sel.value=m?m[1]:'en';
+  });
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>

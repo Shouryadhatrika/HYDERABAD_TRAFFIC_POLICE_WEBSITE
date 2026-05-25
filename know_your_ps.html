@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Know Your Police Station – Hyderabad Traffic Police</title>
+  <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:       #0B3C5D;
+      --navy-dark:  #072a43;
+      --navy-light: #145DA0;
+      --gold:       #FFC107;
+      --red:        #D72638;
+      --green:      #198754;
+      --white:      #ffffff;
+      --off-white:  #f5f7fa;
+      --gray-100:   #e9ecef;
+      --gray-300:   #dee2e6;
+      --gray-600:   #6c757d;
+      --gray-800:   #343a40;
+      --radius-sm:  6px;
+      --radius-md:  10px;
+      --radius-lg:  16px;
+      --shadow-sm:  0 2px 8px rgba(0,0,0,.08);
+      --shadow-md:  0 4px 20px rgba(0,0,0,.12);
+      --transition: 0.22s ease;
+      --font-body:  'DM Sans', sans-serif;
+
+      /* DCP accent colours */
+      --dcp1: #7C3AED;
+      --dcp2: #0891B2;
+      --dcp3: #D97706;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { overflow-x: hidden; }
+    body { font-family: var(--font-body); font-size: 15px; color: var(--gray-800); background: var(--off-white); margin: 0; padding: 0; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; }
+
+    .container-htp { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+    @media (max-width: 768px) { .container-htp { padding: 0 16px; } }
+
+    /* ── TOP HEADER ── */
+    .top-header { background: linear-gradient(100deg, var(--navy-dark) 0%, var(--navy-light) 100%); border-bottom: 3px solid var(--gold); color: var(--white); padding: 10px 0; }
+    .top-header__logo { height: 80px; }
+    .top-header__title { font-size: 1.5rem; font-weight: 700; color: var(--gold); line-height: 1.2; }
+    .top-header__subtitle { font-size: .78rem; color: rgba(255,255,255,.75); }
+    .btn-htp { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: var(--radius-sm); font-size: .8rem; font-weight: 600; border: none; cursor: pointer; transition: filter .2s, transform .2s; }
+    .btn-htp:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .btn-challan { background: var(--red); color: #fff; }
+    .btn-whatsapp { background: #25D366; color: #fff; }
+    .btn-feedback { background: var(--gold); color: #000; }
+    .top-header__info { font-size: .8rem; color: rgba(255,255,255,.85); }
+    .top-header__info a { color: var(--gold); font-weight: 600; }
+    .top-header__actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+    .zoom-ctrl { display: flex; align-items: center; gap: 2px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); border-radius: 24px; padding: 3px; }
+    .zoom-ctrl button { background: transparent; border: none; color: rgba(255,255,255,.75); padding: 4px 9px; border-radius: 20px; font-size: .78rem; font-weight: 700; cursor: pointer; font-family: var(--font-body); transition: background .2s, color .2s; }
+    .zoom-ctrl button:hover { background: rgba(255,255,255,.15); color: #fff; }
+    .zoom-ctrl button.reset { color: var(--gold); }
+    .lang-dropdown-wrap { position: relative; display: inline-flex; align-items: center; }
+    .lang-dropdown-wrap .lang-globe { position: absolute; left: 9px; color: rgba(255,255,255,.6); font-size: .78rem; pointer-events: none; z-index: 1; }
+    .lang-select { appearance: none; -webkit-appearance: none; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.25); border-radius: 20px; color: #fff; font-family: var(--font-body); font-size: .78rem; font-weight: 600; padding: 5px 28px 5px 26px; cursor: pointer; outline: none; transition: background .2s, border-color .2s; min-width: 90px; }
+    .lang-select:hover { background: rgba(255,255,255,.18); border-color: rgba(255,255,255,.45); }
+    .lang-select:focus { border-color: var(--gold); background: rgba(255,255,255,.18); }
+    .lang-select option { background: var(--navy-dark); color: #fff; font-weight: 600; }
+    .lang-caret { position: absolute; right: 9px; color: rgba(255,255,255,.55); font-size: .65rem; pointer-events: none; }
+
+    /* ── NAVBAR ── */
+    .main-nav { background: var(--navy); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,.2); }
+    .main-nav .nav-link { color: rgba(255,255,255,.85) !important; font-weight: 500; font-size: .88rem; padding: 10px 14px !important; border-radius: var(--radius-sm); transition: background .2s, color .2s; }
+    .main-nav .nav-link:hover, .main-nav .nav-link.active { color: var(--gold) !important; background: rgba(255,255,255,.08); }
+    .main-nav .dropdown-menu { border: none; border-radius: var(--radius-md); padding: 8px; box-shadow: var(--shadow-md); margin-top: 6px; }
+    .main-nav .dropdown-item { border-radius: var(--radius-sm); padding: 8px 12px; font-size: .86rem; }
+    .main-nav .dropdown-item:hover { background: var(--navy); color: #fff; }
+    .nav-extras { flex-shrink: 0; }
+    .nav-search { position: relative; display: flex; align-items: center; }
+    .nav-search input { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); border-radius: 20px; color: var(--white); padding: 6px 14px 6px 34px; font-size: .8rem; width: 180px; outline: none; font-family: var(--font-body); transition: background .2s, border-color .2s, width .2s; }
+    .nav-search input::placeholder { color: rgba(255,255,255,.45); }
+    .nav-search input:focus { background: rgba(255,255,255,.18); border-color: var(--gold); width: 220px; }
+    .nav-search-icon { position: absolute; left: 11px; color: rgba(255,255,255,.45); font-size: .78rem; pointer-events: none; }
+    .nav-search:focus-within .nav-search-icon { color: var(--gold); }
+    @media (max-width: 991px) { .nav-extras { margin: 10px 0 6px; flex-wrap: wrap; justify-content: center; width: 100%; } .nav-search input { width: 100%; border-radius: 8px; padding-left: 34px; } .nav-search input:focus { width: 100%; } .nav-search { width: 100%; } }
+
+    /* ── PAGE HERO ── */
+    .page-hero { background: linear-gradient(120deg, var(--navy-dark) 0%, var(--navy-light) 100%); color: #fff; padding: 52px 0 40px; position: relative; overflow: hidden; }
+    .page-hero::after { content: ''; position: absolute; right: -80px; top: -80px; width: 320px; height: 320px; border-radius: 50%; background: rgba(255,255,255,.04); pointer-events: none; }
+    .page-hero h1 { font-size: 2rem; font-weight: 800; margin: 0 0 8px; }
+    .page-hero p { font-size: .95rem; color: rgba(255,255,255,.8); margin: 0; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,193,7,.15); border: 1.5px solid rgba(255,193,7,.4); color: var(--gold); font-size: .75rem; font-weight: 700; padding: 4px 14px; border-radius: 20px; margin-bottom: 14px; }
+
+    /* ── MAP ── */
+    .map-wrap { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); border: 3px solid var(--white); }
+
+    /* ── DCP SECTION HEADER ── */
+    .dcp-header {
+      display: flex; align-items: center; gap: 14px;
+      padding: 16px 24px; border-radius: var(--radius-lg);
+      color: #fff; margin-bottom: 20px; margin-top: 40px;
+      position: relative; overflow: hidden;
+    }
+    .dcp-header::before { content: ''; position: absolute; right: -30px; top: -30px; width: 140px; height: 140px; border-radius: 50%; background: rgba(255,255,255,.08); pointer-events: none; }
+    .dcp-1 { background: linear-gradient(100deg, #5B21B6 0%, #7C3AED 60%, #A855F7 100%); }
+    .dcp-2 { background: linear-gradient(100deg, #0E7490 0%, #0891B2 60%, #22D3EE 100%); }
+    .dcp-3 { background: linear-gradient(100deg, #92400E 0%, #D97706 60%, #F59E0B 100%); }
+    .dcp-num { width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,.2); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: 800; flex-shrink: 0; border: 2px solid rgba(255,255,255,.3); }
+    .dcp-title-text h3 { margin: 0; font-size: 1.1rem; font-weight: 800; }
+    .dcp-title-text p { margin: 0; font-size: .78rem; opacity: .8; }
+
+    /* ── ZONE CARD ── */
+    .zone-card {
+      background: #fff; border-radius: var(--radius-lg);
+      overflow: hidden; box-shadow: var(--shadow-sm);
+      border: 1px solid var(--gray-100);
+      height: 100%;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .zone-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .zone-card__head {
+      padding: 12px 16px; display: flex; align-items: center; gap: 10px;
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .zone-card__head h5 { margin: 0; font-size: .9rem; font-weight: 700; color: var(--white); }
+    .zone-card__head .zone-icon { font-size: 1rem; opacity: .9; }
+    .zh-purple { background: linear-gradient(90deg, #5B21B6, #7C3AED); }
+    .zh-teal   { background: linear-gradient(90deg, #0E7490, #0891B2); }
+    .zh-amber  { background: linear-gradient(90deg, #92400E, #D97706); }
+
+    .zone-card__body { padding: 16px; }
+    .ps-link {
+      display: flex; align-items: center; gap: 10px;
+      padding: 9px 12px; border-radius: var(--radius-md);
+      font-size: .85rem; font-weight: 600; color: var(--gray-800);
+      transition: background var(--transition), color var(--transition), padding-left var(--transition);
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .ps-link:last-child { border-bottom: none; }
+    .ps-link:hover { background: var(--off-white); color: var(--navy-light); padding-left: 16px; }
+    .ps-link i { font-size: .7rem; color: var(--gray-600); transition: color var(--transition); flex-shrink: 0; }
+    .ps-link:hover i { color: var(--navy-light); }
+
+    /* ── ARRIVE ALIVE ── */
+    .aa-banner { background: linear-gradient(120deg, #16A085 0%, #1ABC9C 100%); padding: 10px 40px; position: relative; overflow: hidden; }
+    .aa-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; position: relative; z-index: 1; }
+    .aa-badge { display: inline-block; background: rgba(255,255,255,.2); color: #fff; font-size: .72rem; font-weight: 600; padding: 4px 14px; border-radius: 20px; margin-bottom: 8px; }
+    .aa-title { font-size: 1.5rem; font-weight: 800; color: #fff; margin: 0 0 6px; }
+    .aa-desc { font-size: .88rem; color: rgba(255,255,255,.88); margin: 0 0 10px; }
+    .aa-btn { display: inline-block; background: #fff; color: #16A085; font-size: .88rem; font-weight: 700; padding: 10px 28px; border-radius: var(--radius-sm); transition: background .2s, transform .2s; }
+    .aa-btn:hover { background: #e8faf6; transform: translateY(-2px); color: #16A085; }
+    @media (max-width: 768px) { .aa-inner { grid-template-columns: 1fr; } .aa-visual { display: none; } .aa-banner { padding: 10px 16px; } }
+
+    /* ── FOOTER ── */
+    .modern-footer { background: #f4f7fb; border-top: 4px solid #0B3D91; }
+    .footer-logo { width: 130px; }
+    .footer-heading { color: #0B3D91; font-weight: 700; margin-bottom: 15px; }
+    .footer-text { color: #555; line-height: 1.8; font-size: .88rem; }
+    .footer-btn { display: inline-block; margin-top: 10px; background: #0B3D91; color: #fff; padding: 12px 22px; border-radius: 30px; font-weight: 600; transition: .3s; }
+    .footer-btn:hover { background: #1565C0; color: #fff; transform: translateY(-2px); }
+    .footer-title { color: #111; font-weight: 700; margin-bottom: 20px; font-size: .95rem; }
+    .footer-title::after { content: ''; width: 45px; height: 3px; background: #8BC34A; display: block; margin-top: 8px; }
+    .footer-links { list-style: none; padding: 0; }
+    .footer-links li { margin-bottom: 12px; }
+    .footer-links a { color: #444; font-size: .85rem; transition: .3s; }
+    .footer-links a:hover { color: #0B3D91; padding-left: 5px; }
+    .social-icons { display: flex; gap: 15px; flex-wrap: wrap; }
+    .social-icons a { width: 48px; height: 48px; border-radius: 50%; background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,.1); display: flex; align-items: center; justify-content: center; color: #0B3D91; font-size: 20px; transition: .3s; cursor: pointer; }
+    .social-icons a:hover { background: #0B3D91; color: #fff; transform: translateY(-4px); }
+    .footer-bottom { background: #111c2e; color: #fff; padding: 18px 0; font-size: .82rem; }
+    .footer-bottom a { color: #fff; }
+    .footer-bottom a:hover { color: var(--gold); }
+    @media (max-width: 768px) { .footer-title, .footer-heading, .footer-text { text-align: center; } .footer-title::after { margin: auto; margin-top: 8px; } .social-icons { justify-content: center; } }
+
+    /* ── CHATBOT ── */
+    #chatbotToggle { position: fixed; bottom: 24px; right: 80px; z-index: 1001; width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); border: 2.5px solid var(--gold); color: #fff; cursor: pointer; font-size: 22px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(11,60,93,.4); animation: chatPulse 2.5s infinite; transition: transform .2s; }
+    #chatbotToggle:hover { transform: translateY(-3px) scale(1.07); animation: none; }
+    @keyframes chatPulse { 0%,100%{box-shadow:0 4px 20px rgba(11,60,93,.4),0 0 0 0 rgba(255,193,7,.55);}50%{box-shadow:0 4px 20px rgba(11,60,93,.4),0 0 0 10px rgba(255,193,7,0);} }
+    .chat-badge { position: absolute; top: -4px; right: -4px; background: var(--gold); color: #000; font-size: .6rem; font-weight: 800; border-radius: 10px; padding: 1px 5px; border: 1.5px solid #fff; }
+    #scrollTopBtn { position: fixed; bottom: 24px; right: 24px; z-index: 999; width: 46px; height: 46px; border-radius: 50%; background: var(--red); color: #fff; border: none; cursor: pointer; font-size: 18px; box-shadow: var(--shadow-md); opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; display: flex; align-items: center; justify-content: center; }
+    #scrollTopBtn.visible { opacity: 1; pointer-events: auto; }
+    #scrollTopBtn:hover { transform: translateY(-3px); }
+
+    /* ── STATS BAR ── */
+    .stats-bar { background: #fff; border-radius: var(--radius-lg); padding: 20px 28px; box-shadow: var(--shadow-sm); border: 1px solid var(--gray-100); display: flex; align-items: center; gap: 0; flex-wrap: wrap; margin-bottom: 32px; }
+    .stat-item { flex: 1; min-width: 120px; text-align: center; padding: 8px 16px; border-right: 1px solid var(--gray-100); }
+    .stat-item:last-child { border-right: none; }
+    .stat-num { font-size: 1.6rem; font-weight: 800; color: var(--navy); line-height: 1; }
+    .stat-label { font-size: .75rem; color: var(--gray-600); margin-top: 4px; font-weight: 600; text-transform: uppercase; letter-spacing: .4px; }
+    @media (max-width: 576px) { .stat-item { border-right: none; border-bottom: 1px solid var(--gray-100); } .stat-item:last-child { border-bottom: none; } }
+
+    /* section label */
+    .section-label { font-size: .72rem; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--gray-600); margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--gray-300); }
+  </style>
+</head>
+<body>
+
+  <!-- TOP HEADER -->
+  <header class="top-header">
+    <div class="container-htp">
+      <div class="row align-items-center gy-2">
+
+        <!-- Logo + Title -->
+        <div class="col-lg-4 col-md-12 text-center text-lg-start">
+          <a href="index.html" class="d-inline-flex align-items-center gap-2" aria-label="Hyderabad Traffic Police Home">
+            <img src="img/MainLogo1.png" class="top-header__logo" alt="Hyderabad Traffic Police logo">
+            <div>
+              <div class="top-header__title">Hyderabad Traffic Police</div>
+              <div class="top-header__subtitle">For You, With You, Always</div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="col-lg-4 col-md-12 text-center">
+          <div class="top-header__actions">
+            <a href="https://echallan.tspolice.gov.in/publicview/" target="_blank" rel="noopener" class="btn-htp btn-challan">
+              <img src="img/Paynow.png" width="18" height="18" alt="" aria-hidden="true"> Pay Challan
+            </a>
+            <a href="https://wa.me/9010203626" target="_blank" rel="noopener" class="btn-htp btn-whatsapp">
+              <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
+            </a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdIr2t94wVePyi562lUbeOyavRPi6vNgLadZl-lPrj53PDTYw/viewform" target="_blank" rel="noopener" class="btn-htp btn-feedback">
+              <i class="fa fa-comment-dots" aria-hidden="true"></i> Feedback
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: helpline + zoom + language -->
+        <div class="col-lg-4 col-md-12 text-center text-lg-end">
+          <div class="top-header__info mb-1">
+            <i class="fa fa-phone" aria-hidden="true"></i> Helpline:
+            <a href="tel:9010203626">9010203626</a>&nbsp;&nbsp;
+            <i class="fa fa-phone-alt" aria-hidden="true"></i> E-Challan:
+            <a href="tel:04027852721">040-27852721</a>
+          </div>
+          <div class="d-flex gap-2 justify-content-center justify-content-lg-end flex-wrap align-items-center">
+            <!-- Zoom controls -->
+            <div class="zoom-ctrl" aria-label="Zoom controls">
+              <button onclick="pageZoom(1)"     aria-label="Zoom in"    title="Zoom In">A+</button>
+              <button onclick="pageZoomReset()" aria-label="Reset zoom" title="Reset" class="reset">&#8635;</button>
+              <button onclick="pageZoom(-1)"    aria-label="Zoom out"   title="Zoom Out">A&#8722;</button>
+            </div>
+            <!-- Language dropdown -->
+            <div class="lang-dropdown-wrap" aria-label="Select language">
+              <i class="fa fa-globe lang-globe" aria-hidden="true"></i>
+              <select class="lang-select" id="langSelect" onchange="doTranslate(this.value)" aria-label="Select language">
+                <option value="en">English</option>
+                <option value="te">&#3108;&#3142;&#3122;&#3137;&#3095;&#3137;</option>
+                <option value="hi">&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</option>
+                <option value="ta">&#2980;&#2990;&#3007;&#2996;&#3021;</option>
+                <option value="ur">&#1575;&#1585;&#1583;&#1608;</option>
+                <option value="kn">&#3221;&#3240;&#3277;&#3240;&#3233;</option>
+                <option value="ml">&#3374;&#3378;&#3375;&#3390;&#3379;&#3330;</option>
+              </select>
+              <i class="fa fa-chevron-down lang-caret" aria-hidden="true"></i>
+            </div>
+            <div id="gt_hidden" style="display:none;position:absolute;"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- NAVBAR -->
+  <nav class="main-nav navbar navbar-expand-lg">
+    <div class="container-htp">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">About Us</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="introduction.html">Introduction</a></li>
+              <li><a class="dropdown-item" href="org_chart.html">Organization Chart</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Services</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="wrong_challan.html">Wrong Challan</a></li>
+              <li><a class="dropdown-item" href="noc_tov.html">Vehicle NOC</a></li>
+              <li><a class="dropdown-item" href="noc_schools.html">School NOC</a></li>
+              <li><a class="dropdown-item" href="noc_plying.html">Vehicle Plying</a></li>
+              <li><a class="dropdown-item" href="noc_petrol.html">Petrol Pump NOC</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Information</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="road_rules.html">Road Rules</a></li>
+              <li><a class="dropdown-item" href="road_sense.html">Road Sense</a></li>
+              <li><a class="dropdown-item" href="road_smart.html">Road Smart</a></li>
+              <li><a class="dropdown-item" href="statistics.html">Statistics</a></li>
+              <li><a class="dropdown-item" href="driving_license.html">Driving License</a></li>
+              <li><a class="dropdown-item" href="vehicle_registration.html">Vehicle Registration</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link active" href="know_your_ps.html">Know Your PS</a></li>
+          <li class="nav-item"><a class="nav-link" href="rti.html">RTI</a></li>
+          <li class="nav-item"><a class="nav-link" href="campaigns.html">Road Safety</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">T20 Test</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="https://echallan.tspolice.gov.in/TGTrafficTest/jsp/LoginView.jsp" target="_blank">Online Test</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="contact_us.html">Contact</a></li>
+        </ul>
+
+        <!-- Navbar Search -->
+        <div class="nav-extras d-flex align-items-center gap-2 ms-3">
+          <div class="nav-search" role="search">
+            <label for="navSearchInput" class="visually-hidden">Search site</label>
+            <input type="search" id="navSearchInput" placeholder="Search…" aria-label="Search site content">
+            <i class="fa fa-search nav-search-icon" aria-hidden="true"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="container-htp">
+      <h1><i class="fa fa-shield-halved" style="color:var(--gold); margin-right:12px;"></i>Know Your Police Station</h1>
+      <p>Find your nearest traffic police station across all zones in Hyderabad. Click on any station to view its details, jurisdiction, and contact information.</p>
+    </div>
+  </section>
+
+  <main id="main-content">
+    <section style="padding:40px 0 60px; background:var(--off-white);">
+      <div class="container-htp">
+
+        <!-- STATS BAR -->
+        <div class="stats-bar">
+          <div class="stat-item">
+            <div class="stat-num">3</div>
+            <div class="stat-label">DCP Zones</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">8</div>
+            <div class="stat-label">Sub Zones</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">26</div>
+            <div class="stat-label">Police Stations</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">24/7</div>
+            <div class="stat-label">Active Service</div>
+          </div>
+        </div>
+
+        <!-- MAP -->
+        <div class="map-wrap mb-5" style="height:420px;">
+          <iframe
+            src="https://www.google.com/maps/d/u/2/embed?mid=104GN48Fco3R44_zOSQ9JahBZ3AomJuU&ehbc=2E312F"
+            width="100%" height="420" style="border:0; display:block;"
+            allowfullscreen loading="lazy" title="Hyderabad Traffic Police Stations Map">
+          </iframe>
+        </div>
+
+        <!-- ══════════════════════════════════
+             DCP TRAFFIC – 1
+        ══════════════════════════════════ -->
+        <div class="dcp-header dcp-1">
+          <div class="dcp-num">1</div>
+          <div class="dcp-title-text">
+            <h3>DCP Traffic – I</h3>
+            <p>Sri Avinash Kumar, IPS &nbsp;·&nbsp; Khairatabad Zone &amp; Secunderabad Zone</p>
+          </div>
+          <i class="fa fa-shield ms-auto" style="font-size:2rem; opacity:.2;"></i>
+        </div>
+
+        <div class="section-label">Khairatabad Zone &amp; Secunderabad Zone</div>
+        <div class="row g-3 mb-2">
+
+          <!-- Khairatabad Zone -->
+          <div class="col-lg-6">
+            <div class="zone-card">
+              <div class="zone-card__head zh-purple">
+                <i class="fa fa-location-dot zone-icon"></i>
+                <h5>Khairatabad Zone</h5>
+                <span style="margin-left:auto; font-size:.7rem; background:rgba(255,255,255,.2); padding:3px 10px; border-radius:20px;">4 Stations</span>
+              </div>
+              <div class="zone-card__body">
+                <a href="know_your_ps/Panjagutta.html"class="ps-link"><i class="fa fa-chevron-right"></i> Panjagutta Traffic PS</a>
+                <a href="know_your_ps/Saifabad.html" class="ps-link"><i class="fa fa-chevron-right"></i> Saifabad Traffic PS</a>
+                <a href="know_your_ps/Abids.html" class="ps-link"><i class="fa fa-chevron-right"></i> Abids Traffic PS</a>
+                <a href="know_your_ps/Sultan_Bazar.html" class="ps-link"><i class="fa fa-chevron-right"></i> Sultanbazar Traffic PS</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Secunderabad Zone -->
+          <div class="col-lg-6">
+            <div class="zone-card">
+              <div class="zone-card__head zh-purple">
+                <i class="fa fa-location-dot zone-icon"></i>
+                <h5>Secunderabad Zone</h5>
+                <span style="margin-left:auto; font-size:.7rem; background:rgba(255,255,255,.2); padding:3px 10px; border-radius:20px;">6 Stations</span>
+              </div>
+              <div class="zone-card__body">
+                <a href="know_your_ps/Kachiguda.html" class="ps-link"><i class="fa fa-chevron-right"></i> Kachiguda Traffic PS</a>
+                <a href="know_your_ps/OU.html" class="ps-link"><i class="fa fa-chevron-right"></i> OU City Traffic PS</a>
+                <a href="know_your_ps/Chikkadpally.html" class="ps-link"><i class="fa fa-chevron-right"></i> Chikkadpally Traffic PS</a>
+                <a href="know_your_ps/GanthiNagar.html" class="ps-link"><i class="fa fa-chevron-right"></i> Gandhinagar Traffic PS</a>
+                <a href="know_your_ps/Mahankali.html" class="ps-link"><i class="fa fa-chevron-right"></i> Mahankali Traffic PS</a>
+                <a href="know_your_ps/Chilakalaguda.html" class="ps-link"><i class="fa fa-chevron-right"></i> Chilakalaguda Traffic PS</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══════════════════════════════════
+             DCP TRAFFIC – 2
+        ══════════════════════════════════ -->
+        <div class="dcp-header dcp-2">
+          <div class="dcp-num">2</div>
+          <div class="dcp-title-text">
+            <h3>DCP Traffic – II</h3>
+            <p>Ms. Kajal, IPS &nbsp;·&nbsp; Jubilee Hills Zone &amp; Golconda Zone</p>
+          </div>
+          <i class="fa fa-shield ms-auto" style="font-size:2rem; opacity:.2;"></i>
+        </div>
+
+        <div class="section-label">Jubilee Hills Zone &amp; Golconda Zone</div>
+        <div class="row g-3 mb-2">
+
+          <!-- Jubilee Hills Zone -->
+          <div class="col-lg-6">
+            <div class="zone-card">
+              <div class="zone-card__head zh-teal">
+                <i class="fa fa-location-dot zone-icon"></i>
+                <h5>Jubilee Hills Zone</h5>
+                <span style="margin-left:auto; font-size:.7rem; background:rgba(255,255,255,.2); padding:3px 10px; border-radius:20px;">3 Stations</span>
+              </div>
+              <div class="zone-card__body">
+                <a href="know_your_ps/S.R.Nagar.html" class="ps-link"><i class="fa fa-chevron-right"></i> SR Nagar Traffic PS</a>
+                <a href="know_your_ps/Jubilee_Hills.html" class="ps-link"><i class="fa fa-chevron-right"></i> Jubilee Hills Traffic PS</a>
+                <a href="know_your_ps/Banjara_Hills.html" class="ps-link"><i class="fa fa-chevron-right"></i> Banjara Hills Traffic PS</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Golconda Zone -->
+          <div class="col-lg-6">
+            <div class="zone-card">
+              <div class="zone-card__head zh-teal">
+                <i class="fa fa-location-dot zone-icon"></i>
+                <h5>Golconda Zone</h5>
+                <span style="margin-left:auto; font-size:.7rem; background:rgba(255,255,255,.2); padding:3px 10px; border-radius:20px;">4 Stations</span>
+              </div>
+              <div class="zone-card__body">
+                <a href="know_your_ps/Tolichowki.html" class="ps-link"><i class="fa fa-chevron-right"></i> Tolichowki Traffic PS</a>
+                <a href="know_your_ps/Asif_Nagar.html" class="ps-link"><i class="fa fa-chevron-right"></i> Asifnagar Traffic PS</a>
+                <a href="know_your_ps/Kulsumpura.html" class="ps-link"><i class="fa fa-chevron-right"></i> Kulsumpura Traffic PS</a>
+                <a href="know_your_ps/Goshamahal.html" class="ps-link"><i class="fa fa-chevron-right"></i> Goshamahal Traffic PS</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ══════════════════════════════════
+             DCP TRAFFIC – 3
+        ══════════════════════════════════ -->
+        <div class="dcp-header dcp-3">
+          <div class="dcp-num">3</div>
+          <div class="dcp-title-text">
+            <h3>DCP Traffic – III</h3>
+            <p>Sri. Rahul Hegde B.K., IPS &nbsp;·&nbsp; Rajendra Nagar · Charminar · Chandrayangutta · Shamshabad</p>
+          </div>
+          <i class="fa fa-shield ms-auto" style="font-size:2rem; opacity:.2;"></i>
+        </div>
+
+        <div class="section-label">Rajendra Nagar · Charminar · Chandrayangutta · Shamshabad</div>
+        <div class="row g-3 mb-4">
+
+          <!-- Rajendra Nagar -->
+          <div class="col-lg-3 col-md-6">
+            <div class="zone-card">
+              <div class="zone-card__head zh-amber">
+                <i class="fa fa-location-dot zone-icon"></i>
+                <h5>Rajendra Nagar Zone</h5>
+                <span style="margin-left:auto; font-size:.7rem; background:rgba(255,255,255,.2); padding:3px 10px; border-radius:20px;">2</span>
+              </div>
+              <div class="zone-card__body">
+                <a href="know_your_ps/Falaknuma.html" class="ps-link"><i class="fa fa-chevron-right"></i> Falaknuma Traffic PS</a>
+                <a href="know_your_ps/Rj_Nagar.html" class="ps-link"><i class="fa fa-chevron-right"></i> Rajendra Nagar Traffic PS</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Charminar -->
+          <div class="col-lg-3 col-md-6">
+            <div class="zone-card">
+              <div class="zone-card__head zh-amber">
+                <i class="fa fa-location-dot zone-icon"></i>
+                <h5>Charminar Zone</h5>
+                <span style="margin-left:auto; font-size:.7rem; background:rgba(255,255,255,.2); padding:3px 10px; border-radius:20px;">3</span>
+              </div>
+              <div class="zone-card__body">
+                <a href="know_your_ps/Mirchowk.html" class="ps-link"><i class="fa fa-chevron-right"></i> Mirchowk Traffic PS</a>
+                <a href="know_your_ps/Charminar.html" class="ps-link"><i class="fa fa-chevron-right"></i> Charminar Traffic PS</a>
+                <a href="know_your_ps/Chatrinka.html" class="ps-link"><i class="fa fa-chevron-right"></i> Chatrinka Traffic PS</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chandrayangutta -->
+          <div class="col-lg-3 col-md-6">
+            <div class="zone-card">
+              <div class="zone-card__head zh-amber">
+                <i class="fa fa-location-dot zone-icon"></i>
+                <h5>Chandrayangutta Zone</h5>
+                <span style="margin-left:auto; font-size:.7rem; background:rgba(255,255,255,.2); padding:3px 10px; border-radius:20px;">4</span>
+              </div>
+              <div class="zone-card__body">
+                <a href="know_your_ps/Malakpet.html" class="ps-link"><i class="fa fa-chevron-right"></i> Malakpet Traffic PS</a>
+                <a href="know_your_ps/Saidabad.html" class="ps-link"><i class="fa fa-chevron-right"></i> Saidabad Traffic PS</a>
+                <a href="know_your_ps/Santhosh_Nagar.html" class="ps-link"><i class="fa fa-chevron-right"></i> Santosh Nagar Traffic PS</a>
+                <a href="know_your_ps/Chandrayangutta.html" class="ps-link"><i class="fa fa-chevron-right"></i> Chandrayangutta Traffic PS</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Shamshabad -->
+          <div class="col-lg-3 col-md-6">
+            <div class="zone-card">
+              <div class="zone-card__head zh-amber">
+                <i class="fa fa-location-dot zone-icon"></i>
+                <h5>Shamshabad Zone</h5>
+                <span style="margin-left:auto; font-size:.7rem; background:rgba(255,255,255,.2); padding:3px 10px; border-radius:20px;">1</span>
+              </div>
+              <div class="zone-card__body">
+                <a href="know_your_ps/RGI.html" class="ps-link"><i class="fa fa-chevron-right"></i> RGI Airport Traffic PS</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- HELPLINE STRIP -->
+        <div style="background:#fff; border-radius:var(--radius-lg); padding:20px 28px; display:flex; align-items:center; gap:16px; flex-wrap:wrap; box-shadow:var(--shadow-sm); border:1px solid var(--gray-100);">
+          <div style="width:48px;height:48px;border-radius:50%;background:#fde8ea;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i class="fa fa-headset" style="color:var(--red);font-size:1.2rem;"></i>
+          </div>
+          <div style="flex:1;">
+            <strong style="display:block; font-size:.95rem; margin-bottom:2px;">Need Assistance?</strong>
+            <p style="margin:0; color:var(--gray-600); font-size:.84rem;">Contact the Traffic Helpline or visit your nearest traffic police station for guidance.</p>
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <a href="tel:9010203626" style="background:var(--red);color:#fff;padding:9px 20px;border-radius:var(--radius-sm);font-size:.85rem;font-weight:700;display:inline-flex;align-items:center;gap:7px;"><i class="fa fa-phone"></i> 9010203626</a>
+            <a href="https://wa.me/9010203626" target="_blank" style="background:#25D366;color:#fff;padding:9px 20px;border-radius:var(--radius-sm);font-size:.85rem;font-weight:700;display:inline-flex;align-items:center;gap:7px;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ARRIVE ALIVE -->
+  <div class="aa-banner">
+    <div class="aa-inner">
+      <div>
+        <span class="aa-badge">Road Safety Initiative</span>
+        <h2 class="aa-title">Arrive Alive Campaign</h2>
+        <p class="aa-desc">Join us in our mission to make Hyderabad's roads safer. Follow traffic rules, wear helmets, use seat belts, and say no to drunk driving.</p>
+        <a href="arriveAlive.html" class="aa-btn">Learn More</a>
+      </div>
+      <div class="aa-visual">
+        <img src="img/ArriveAlive.png" alt="Arrive Alive" style="height:230px;object-fit:contain;filter:drop-shadow(0 4px 16px rgba(0,0,0,.25));" onerror="this.style.display='none'">
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="modern-footer">
+    <div class="container-htp py-5">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 text-center text-lg-start">
+          <img src="img/MainLogo1.png" class="footer-logo mb-3" alt="HTP Logo">
+          <h4 class="footer-heading">Hyderabad Traffic Police</h4>
+          <p class="footer-text">Dedicated to safer roads, better traffic management and citizen-friendly digital services.</p>
+          <a href="campaigns.html" class="footer-btn">🚦 Road Safety Campaigns</a>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h5 class="footer-title">Useful Links</h5>
+          <ul class="footer-links">
+            <li><a href="https://echallan.tspolice.gov.in/publicview/">E-Challan</a></li>
+            <li><a href="wrong_challan.html">Wrong Challan</a></li>
+            <li><a href="noc_tov.html">NOC</a></li>
+            <li><a href="driving_license.html">Driving License</a></li>
+            <li><a href="vehicle_registration.html">Vehicle Registration</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h5 class="footer-title">Information</h5>
+          <ul class="footer-links">
+            <li><a href="road_rules.html">Road Rules</a></li>
+            <li><a href="road_sense.html">Road Sense</a></li>
+            <li><a href="road_smart.html">Road Smart</a></li>
+            <li><a href="statistics.html">Statistics</a></li>
+            <li><a href="rti.html">RTI</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <h5 class="footer-title">Connect With Us</h5>
+          <div class="social-icons mb-4">
+            <a onclick="window.open('https://www.facebook.com/HYDTP','_blank');" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a onclick="window.open('https://twitter.com/HYDTP','_blank');" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+            <a onclick="window.open('https://www.instagram.com/hyderabadtrafficpolice','_blank');" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a onclick="window.open('https://youtube.com/@hyderabadtrafficpoliceshik6556','_blank');" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+          <h6 style="font-weight:700;">Official Website</h6>
+          <a href="https://hyderabadpolice.gov.in/" target="_blank" style="color:#0B3D91;font-weight:600;">Hyderabad Police</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container-htp">
+        <div class="row align-items-center">
+          <div class="col-md-6 text-center text-md-start">COPYRIGHT &copy; 2026, Hyderabad Traffic Police</div>
+          <div class="col-md-6 text-center text-md-end">Designed and developed by <a href="https://ts.nic.in/" target="_blank">NIC Telangana</a></div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CHATBOT -->
+  <button id="chatbotToggle" aria-label="Open AI Chatbot">
+    <i class="fa fa-robot"></i>
+    <span class="chat-badge">AI</span>
+  </button>
+  <button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">
+    <i class="fa fa-arrow-up"></i>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({ pageLanguage: 'en', includedLanguages: 'en,te,hi,ta,ur,kn,ml', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false }, 'gt_hidden');
+    }
+    function doTranslate(lang) {
+      if (lang === 'en') {
+        var exp = new Date(Date.now() - 1000).toUTCString();
+        ['', location.hostname, '.' + location.hostname].forEach(function(d) { var base = 'googtrans=; expires=' + exp + '; path=/'; document.cookie = d ? base + '; domain=' + d : base; });
+      } else {
+        var val = '/en/' + lang;
+        ['', location.hostname, '.' + location.hostname].forEach(function(d) { var base = 'googtrans=' + val + '; path=/'; document.cookie = d ? base + '; domain=' + d : base; });
+      }
+      var gtSelect = document.querySelector('.goog-te-combo');
+      if (gtSelect) { gtSelect.value = lang === 'en' ? '' : lang; gtSelect.dispatchEvent(new Event('change')); } else { location.reload(); }
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script>
+    var scrollBtn = document.getElementById('scrollTopBtn');
+    window.addEventListener('scroll', function(){ scrollBtn.classList.toggle('visible', window.scrollY > 300); }, { passive: true });
+
+    var _zoom = 1.0, _zoomWrap = null;
+   document.addEventListener('DOMContentLoaded', function () {
+      _zoomWrap = document.createElement('div');
+      _zoomWrap.id = 'zoom-wrap';
+      _zoomWrap.style.transformOrigin = 'top left';
+      while (document.body.firstChild) _zoomWrap.appendChild(document.body.firstChild);
+      document.body.appendChild(_zoomWrap);
+
+      /* ── Navbar search → search.html ── */
+      var navInput = document.getElementById('navSearchInput');
+      var navIcon  = document.querySelector('.nav-search-icon');
+      function doNavSearch() {
+        var q = navInput.value.trim();
+        if (q) window.location.href = 'search.html?q=' + encodeURIComponent(q);
+      }
+      if (navInput) navInput.addEventListener('keydown', function(e){ if (e.key === 'Enter') doNavSearch(); });
+      if (navIcon)  { navIcon.style.pointerEvents = 'auto'; navIcon.style.cursor = 'pointer'; navIcon.addEventListener('click', doNavSearch); }
+    });
+    function pageZoom(d){ _zoom = Math.min(1.5, Math.max(0.7, parseFloat((_zoom + d*0.1).toFixed(2)))); applyZoom(); }
+    function pageZoomReset(){ _zoom = 1.0; applyZoom(); }
+    function applyZoom(){ if(!_zoomWrap) return; _zoomWrap.style.transform='scale('+_zoom+')'; _zoomWrap.style.width=(100/_zoom)+'%'; }
+  </script>
+</body>
+</html>

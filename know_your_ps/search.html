@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Search Results – Hyderabad Traffic Police</title>
+  <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0B3C5D; --navy-dark: #072a43; --navy-light: #145DA0;
+      --gold: #FFC107; --red: #D72638; --green: #198754;
+      --white: #ffffff; --off-white: #f5f7fa;
+      --gray-100: #e9ecef; --gray-300: #dee2e6; --gray-600: #6c757d; --gray-800: #343a40;
+      --radius-sm: 6px; --radius-md: 10px; --radius-lg: 16px;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,.08); --shadow-md: 0 4px 20px rgba(0,0,0,.12);
+      --transition: 0.22s ease; --font-body: 'DM Sans', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { font-family: var(--font-body); font-size: 15px; color: var(--gray-800); background: var(--off-white); margin: 0; }
+    a { text-decoration: none; color: inherit; }
+
+    /* HEADER */
+    .top-header { background: linear-gradient(100deg, var(--navy-dark) 0%, var(--navy-light) 100%); border-bottom: 3px solid var(--gold); color: #fff; padding: 10px 0; }
+    .container-htp { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+    .top-header__logo { height: 64px; width: auto; }
+    .top-header__title { font-size: 1.4rem; font-weight: 700; color: var(--gold); }
+    .top-header__subtitle { font-size: .75rem; color: rgba(255,255,255,.7); }
+
+    /* NAVBAR */
+    .main-nav { background: var(--navy); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,.2); }
+    .main-nav .nav-link { color: rgba(255,255,255,.85) !important; font-weight: 500; font-size: .88rem; padding: 10px 14px !important; border-radius: var(--radius-sm); transition: background var(--transition), color var(--transition); }
+    .main-nav .nav-link:hover { color: var(--gold) !important; background: rgba(255,255,255,.08); }
+    .main-nav .dropdown-menu { border: none; border-radius: var(--radius-md); padding: 8px; box-shadow: var(--shadow-md); }
+    .main-nav .dropdown-item { border-radius: var(--radius-sm); padding: 8px 12px; font-size: .86rem; }
+    .main-nav .dropdown-item:hover { background: var(--navy); color: #fff; }
+
+    /* SEARCH BAR */
+    .search-hero { background: linear-gradient(120deg, var(--navy-dark) 0%, var(--navy-light) 100%); padding: 40px 0 36px; }
+    .search-hero h1 { color: #fff; font-size: 1.5rem; font-weight: 700; margin-bottom: 20px; }
+    .search-bar-wrap { display: flex; gap: 0; max-width: 640px; }
+    .search-bar-wrap input {
+      flex: 1; padding: 14px 20px; border: none; border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+      font-family: var(--font-body); font-size: 1rem; outline: none;
+      background: #fff; color: var(--gray-800);
+    }
+    .search-bar-wrap button {
+      padding: 14px 28px; background: var(--gold); color: #000; border: none;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-family: var(--font-body); font-size: 1rem; font-weight: 700; cursor: pointer;
+      transition: background var(--transition);
+    }
+    .search-bar-wrap button:hover { background: #e0a800; }
+
+    /* RESULTS AREA */
+    .results-wrap { max-width: 860px; margin: 0 auto; padding: 32px 16px 60px; }
+    .results-meta { font-size: .85rem; color: var(--gray-600); margin-bottom: 20px; }
+    .results-meta strong { color: var(--navy); }
+
+    /* RESULT CARD */
+    .result-card {
+      background: var(--white); border: 1px solid var(--gray-100);
+      border-left: 4px solid var(--navy-light); border-radius: var(--radius-md);
+      padding: 18px 20px; margin-bottom: 14px;
+      display: flex; gap: 16px; align-items: flex-start;
+      transition: box-shadow var(--transition), transform var(--transition), border-left-color var(--transition);
+      cursor: pointer;
+    }
+    .result-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); border-left-color: var(--gold); }
+    .result-icon {
+      width: 42px; height: 42px; border-radius: 50%; flex-shrink: 0;
+      background: rgba(20,93,160,.1); display: flex; align-items: center; justify-content: center;
+      color: var(--navy-light); font-size: 1rem;
+    }
+    .result-icon.ext { background: rgba(215,38,56,.08); color: var(--red); }
+    .result-body { flex: 1; }
+    .result-title { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .result-title mark { background: #fff3cd; color: #000; border-radius: 2px; padding: 0 2px; font-weight: 700; }
+    .result-desc { font-size: .84rem; color: var(--gray-600); line-height: 1.55; margin-bottom: 6px; }
+    .result-desc mark { background: #fff3cd; color: #000; border-radius: 2px; padding: 0 2px; }
+    .result-url { font-size: .75rem; color: var(--green); font-weight: 600; display: flex; align-items: center; gap: 4px; }
+    .result-url i { font-size: .7rem; }
+
+    /* No results */
+    .no-results { text-align: center; padding: 60px 20px; }
+    .no-results i { font-size: 3rem; color: var(--gray-300); margin-bottom: 16px; display: block; }
+    .no-results h3 { color: var(--gray-600); font-size: 1.1rem; margin-bottom: 8px; }
+    .no-results p { font-size: .88rem; color: var(--gray-600); }
+    .no-results .suggestions a { display: inline-block; margin: 4px 6px; padding: 6px 16px; border-radius: 20px; background: var(--navy); color: #fff; font-size: .82rem; font-weight: 600; }
+    .no-results .suggestions a:hover { background: var(--navy-light); }
+
+    /* Skeleton loading */
+    .skeleton { background: linear-gradient(90deg, var(--gray-100) 25%, #ececec 50%, var(--gray-100) 75%); background-size: 200% 100%; animation: shimmer 1.4s infinite; border-radius: var(--radius-sm); }
+    @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+    .skeleton-card { background: var(--white); border: 1px solid var(--gray-100); border-left: 4px solid var(--gray-300); border-radius: var(--radius-md); padding: 18px 20px; margin-bottom: 14px; display: flex; gap: 16px; }
+    .sk-icon { width: 42px; height: 42px; border-radius: 50%; flex-shrink: 0; }
+    .sk-body { flex: 1; }
+    .sk-title { height: 16px; width: 55%; margin-bottom: 10px; }
+    .sk-line  { height: 12px; margin-bottom: 7px; }
+    .sk-line.w80 { width: 80%; }
+    .sk-line.w60 { width: 60%; }
+    .sk-url   { height: 10px; width: 30%; margin-top: 6px; }
+
+    /* FOOTER */
+    .simple-footer { background: #111c2e; color: rgba(255,255,255,.65); text-align: center; padding: 18px; font-size: .82rem; margin-top: auto; }
+    .simple-footer a { color: var(--gold); }
+
+    /* Nav search */
+    .nav-search { position: relative; display: flex; align-items: center; }
+    .nav-search input { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); border-radius: 20px; color: #fff; padding: 6px 14px 6px 34px; font-size: .8rem; width: 180px; outline: none; font-family: var(--font-body); transition: background .22s, border-color .22s, width .22s; }
+    .nav-search input::placeholder { color: rgba(255,255,255,.45); }
+    .nav-search input:focus { background: rgba(255,255,255,.18); border-color: var(--gold); width: 220px; }
+    .nav-search-icon { position: absolute; left: 11px; color: rgba(255,255,255,.45); font-size: .78rem; pointer-events: none; }
+
+    @media (max-width: 768px) {
+      .container-htp { padding: 0 16px; }
+      .search-hero { padding: 28px 0 24px; }
+      .search-bar-wrap { flex-direction: column; }
+      .search-bar-wrap input { border-radius: var(--radius-sm) var(--radius-sm) 0 0; }
+      .search-bar-wrap button { border-radius: 0 0 var(--radius-sm) var(--radius-sm); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP HEADER -->
+<header class="top-header">
+  <div class="container-htp">
+    <div class="d-flex align-items-center gap-3">
+      <a href="#" data-testpage="index.html" class="d-inline-flex align-items-center gap-2">
+        <img src="" id="logoImg" data-imgname="MainLogo1.png" class="top-header__logo" alt="HTP Logo">
+        <div>
+          <div class="top-header__title">Hyderabad Traffic Police</div>
+          <div class="top-header__subtitle">For You, With You, Always</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- NAVBAR -->
+<nav class="main-nav navbar navbar-expand-lg">
+  <div class="container-htp">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMain">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+        <li class="nav-item"><a class="nav-link" href="#" data-testpage="index.html">Home</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">About Us</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#" data-testpage="introduction.html">Introduction</a></li>
+            <li><a class="dropdown-item" href="#" data-testpage="org_chart.html">Organization Chart</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Services</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#" data-testpage="wrong_challan.html">Wrong Challan</a></li>
+            <li><a class="dropdown-item" href="#" data-testpage="noc_tov.html">Vehicle NOC</a></li>
+            <li><a class="dropdown-item" href="#" data-testpage="noc_schools.html">School NOC</a></li>
+            <li><a class="dropdown-item" href="#" data-testpage="noc_plying.html">Vehicle Plying</a></li>
+            <li><a class="dropdown-item" href="#" data-testpage="noc_petrol.html">Petrol Pump NOC</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Information</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#" data-testpage="road_rules.html">Road Rules</a></li>
+            <li><a class="dropdown-item" href="#" data-testpage="road_sense.html">Road Sense</a></li>
+            <li><a class="dropdown-item" href="#" data-testpage="road_smart.html">Road Smart</a></li>
+            <li><a class="dropdown-item" href="#" data-testpage="statistics.html">Statistics</a></li>
+            <li><a class="dropdown-item" href="#" data-testpage="driving_license.html">Driving License</a></li>
+            <li><a class="dropdown-item" href="#" data-testpage="vehicle_registration.html">Vehicle Registration</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="#" data-testpage="know_your_ps.html">Know Your PS</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-testpage="rti.html">RTI</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-testpage="campaigns.html">Road Safety</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-testpage="gallery.html">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-testpage="contact_us.html">Contact</a></li>
+      </ul>
+      <div class="d-flex align-items-center gap-2 ms-3">
+        <div class="nav-search">
+          <label for="navSearchInput" class="visually-hidden">Search site</label>
+          <input type="search" id="navSearchInput" placeholder="Search…" aria-label="Search">
+          <i class="fa fa-search nav-search-icon"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- SEARCH HERO -->
+<div class="search-hero">
+  <div class="container-htp">
+    <h1><i class="fa fa-search" style="color:var(--gold); margin-right:10px;"></i>Site Search</h1>
+    <div class="search-bar-wrap">
+      <input type="search" id="mainSearchInput" placeholder="Search pages, services, contacts…" autocomplete="off" aria-label="Main search">
+      <button onclick="doSearch()" aria-label="Search"><i class="fa fa-search"></i> Search</button>
+    </div>
+  </div>
+</div>
+
+<!-- RESULTS -->
+<div class="results-wrap">
+  <div id="resultsMeta" class="results-meta"></div>
+  <div id="resultsContainer"></div>
+</div>
+
+<footer class="simple-footer">
+  COPYRIGHT &copy; 2026, <a href="#" data-testpage="index.html">Hyderabad Traffic Police</a> &nbsp;&middot;&nbsp; Designed by <a href="https://ts.nic.in/" target="_blank">NIC Telangana</a>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  /* ─────────────────────────────────────────────────────────
+     AUTO-DETECT BASE PATH
+     Structure:
+       TEST/search.html              -> pages are in same folder -> BASE = ''
+       TEST/know_your_ps/search.html -> pages are one level up  -> BASE = '../'
+     Each folder has its OWN search-index.json (loaded locally).
+  ───────────────────────────────────────────────────────── */
+  var _curFolder = window.location.pathname.replace(/\/[^\/]*$/, '/');
+  var TEST_BASE  = (_curFolder.indexOf('/know_your_ps') !== -1) ? '../' : '';
+  var INDEX_URL  = 'search-index.json';  // always local to this file's folder
+  var siteIndex  = [];
+
+
+  /* ─── Resolve all static nav/header/footer links ─── */
+  document.addEventListener('DOMContentLoaded', function() {
+    /* Fix image paths: img/ folder is always in TEST/ root */
+    var logo    = document.getElementById('logoImg');
+    var favicon = document.getElementById('faviconLink');
+    var imgBase = TEST_BASE + 'img/';   // ''+'img/' or '../'+'img/'
+    if (logo)    logo.src  = imgBase + logo.dataset.imgname;
+    if (favicon) favicon.href = imgBase + favicon.dataset.imgname;
+
+    /* Fix all nav/footer links that point into test/ */
+    document.querySelectorAll('[data-testpage]').forEach(function(el) {
+      el.href = TEST_BASE + el.dataset.testpage;
+    });
+  });
+
+  /* ─── Load index ─── */
+  fetch(INDEX_URL)
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      siteIndex = data;
+      var q = getQueryParam('q');
+      if (q) {
+        document.getElementById('mainSearchInput').value = q;
+        document.getElementById('navSearchInput').value  = q;
+        runSearch(q);
+      }
+    })
+    .catch(function(){
+      document.getElementById('resultsContainer').innerHTML =
+        '<div class="no-results"><i class="fa fa-exclamation-triangle"></i>' +
+        '<h3>Could not load search index</h3><p>Please try refreshing the page.</p></div>';
+    });
+
+  /* ─── Get URL param ─── */
+  function getQueryParam(name) {
+    var url = new URL(window.location.href);
+    return (url.searchParams.get(name) || '').trim();
+  }
+
+  /* ─── Highlight match ─── */
+  function highlight(text, words) {
+    if (!text) return '';
+    var safe = text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    words.forEach(function(w){
+      if (!w) return;
+      var re = new RegExp('(' + w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'gi');
+      safe = safe.replace(re, '<mark>$1</mark>');
+    });
+    return safe;
+  }
+
+  /* ─── Score a page against query words ─── */
+  function score(item, words) {
+    var s = 0;
+    words.forEach(function(w){
+      if (!w) return;
+      var wl = w.toLowerCase();
+      if (item.title.toLowerCase().includes(wl))       s += 10;
+      if (item.keywords.toLowerCase().includes(wl))    s += 5;
+      if (item.description.toLowerCase().includes(wl)) s += 2;
+    });
+    return s;
+  }
+
+  /* ─── Main search ─── */
+  function runSearch(q) {
+    if (!q) { showEmpty(); return; }
+    var words = q.trim().split(/\s+/).filter(Boolean);
+    showSkeleton();
+    setTimeout(function(){
+      var results = siteIndex
+        .map(function(item){ return { item: item, score: score(item, words) }; })
+        .filter(function(r){ return r.score > 0; })
+        .sort(function(a, b){ return b.score - a.score; });
+      renderResults(results, q, words);
+    }, 180);
+  }
+
+  function showSkeleton() {
+    var html = '';
+    for (var i = 0; i < 4; i++) {
+      html += '<div class="skeleton-card">' +
+        '<div class="skeleton sk-icon"></div>' +
+        '<div class="sk-body">' +
+          '<div class="skeleton sk-title"></div>' +
+          '<div class="skeleton sk-line w80"></div>' +
+          '<div class="skeleton sk-line w60"></div>' +
+          '<div class="skeleton sk-url"></div>' +
+        '</div></div>';
+    }
+    document.getElementById('resultsMeta').textContent = '';
+    document.getElementById('resultsContainer').innerHTML = html;
+  }
+
+  function renderResults(results, q, words) {
+    var meta      = document.getElementById('resultsMeta');
+    var container = document.getElementById('resultsContainer');
+
+    if (results.length === 0) {
+      meta.innerHTML = '';
+      container.innerHTML =
+        '<div class="no-results">' +
+          '<i class="fa fa-search"></i>' +
+          '<h3>No results found for "<strong>' + escHtml(q) + '</strong>"</h3>' +
+          '<p>Try different keywords or browse the sections below:</p>' +
+          '<div class="suggestions">' +
+            '<a href="' + TEST_BASE + 'index.html">Home</a>' +
+            '<a href="' + TEST_BASE + 'road_rules.html">Road Rules</a>' +
+            '<a href="' + TEST_BASE + 'wrong_challan.html">Wrong Challan</a>' +
+            '<a href="' + TEST_BASE + 'contact_us.html">Contact</a>' +
+            '<a href="' + TEST_BASE + 'noc_tov.html">NOC</a>' +
+          '</div>' +
+        '</div>';
+      return;
+    }
+
+    meta.innerHTML = 'Showing <strong>' + results.length + ' result' +
+      (results.length > 1 ? 's' : '') + '</strong> for "<strong>' + escHtml(q) + '</strong>"';
+
+    var html = '';
+    results.forEach(function(r){
+      var item      = r.item;
+      var isExt     = item.url.startsWith('http');
+      var icon      = isExt ? 'fa-external-link-alt' : pageIcon(item.title);
+      var iconClass = isExt ? 'ext' : '';
+      var displayUrl = isExt ? item.url.replace(/^https?:\/\//, '') : item.url;
+
+      /* Search result URLs are always relative to THIS file's own folder,
+         because each search.html loads its OWN local search-index.json.
+         root/search.html       + root/search-index.json     -> 'index.html'  (correct as-is)
+         know_your_ps/search.html + know_your_ps/search-index.json -> 'Abids.html' (correct as-is)
+         External http URLs open in a new tab unchanged. */
+      var resolvedUrl = item.url;  // no prefix needed; URLs are already folder-relative
+
+      html += '<a href="' + resolvedUrl + '"' +
+        (isExt ? ' target="_blank" rel="noopener"' : '') +
+        ' class="result-card" aria-label="' + escAttr(item.title) + '">' +
+        '<div class="result-icon ' + iconClass + '"><i class="fa ' + icon + '"></i></div>' +
+        '<div class="result-body">' +
+          '<div class="result-title">' + highlight(item.title, words) + '</div>' +
+          '<div class="result-desc">'  + highlight(item.description, words) + '</div>' +
+          '<div class="result-url"><i class="fa fa-link"></i> ' + escHtml(displayUrl) + '</div>' +
+        '</div>' +
+      '</a>';
+    });
+    container.innerHTML = html;
+  }
+
+  function showEmpty() {
+    document.getElementById('resultsMeta').innerHTML = '';
+    document.getElementById('resultsContainer').innerHTML =
+      '<div class="no-results">' +
+        '<i class="fa fa-search"></i>' +
+        '<h3>Enter a search term above</h3>' +
+        '<p>Try "challan", "NOC", "road rules", "parking", "contact", etc.</p>' +
+      '</div>';
+  }
+
+  function pageIcon(title) {
+    var t = title.toLowerCase();
+    if (t.includes('challan'))   return 'fa-file-invoice';
+    if (t.includes('noc'))       return 'fa-file-alt';
+    if (t.includes('road'))      return 'fa-road';
+    if (t.includes('parking'))   return 'fa-parking';
+    if (t.includes('contact') || t.includes('emergency')) return 'fa-phone-alt';
+    if (t.includes('gallery'))   return 'fa-images';
+    if (t.includes('license') || t.includes('registration')) return 'fa-id-card';
+    if (t.includes('statistic')) return 'fa-chart-bar';
+    if (t.includes('campaign') || t.includes('safety')) return 'fa-shield-alt';
+    if (t.includes('test'))      return 'fa-clipboard-check';
+    if (t.includes('marshal'))   return 'fa-user-shield';
+    if (t.includes('training'))  return 'fa-graduation-cap';
+    if (t.includes('helmet') || t.includes('seat') || t.includes('speed')) return 'fa-exclamation-circle';
+    if (t.includes('water'))     return 'fa-water';
+    if (t.includes('congestion') || t.includes('corridor')) return 'fa-map-marked-alt';
+    if (t.includes('rti'))       return 'fa-balance-scale';
+    if (t.includes('about') || t.includes('introduction') || t.includes('org')) return 'fa-building';
+    return 'fa-file';
+  }
+
+  function escHtml(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function escAttr(s){ return escHtml(s); }
+
+  /* ─── Trigger from top search bar ─── */
+  function doSearch() {
+    var q = document.getElementById('mainSearchInput').value.trim();
+    if (!q) return;
+    history.replaceState(null, '', 'search.html?q=' + encodeURIComponent(q));
+    runSearch(q);
+  }
+
+  document.getElementById('mainSearchInput').addEventListener('keydown', function(e){
+    if (e.key === 'Enter') doSearch();
+  });
+
+  /* ─── Navbar search → redirect to search page ─── */
+  document.getElementById('navSearchInput').addEventListener('keydown', function(e){
+    if (e.key === 'Enter') {
+      var q = this.value.trim();
+      if (q) window.location.href = 'search.html?q=' + encodeURIComponent(q);
+    }
+  });
+</script>
+</body>
+</html>
