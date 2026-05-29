@@ -692,7 +692,7 @@
       <div class="chatbot-header-info"><h6>HTP Assistant</h6><small>Hyderabad Traffic Police · AI Powered</small></div>
       <button class="chatbot-close" onclick="toggleChatbot()"><i class="fa fa-times"></i></button>
     </div>
-    <div class="chatbot-body">
+    <div class="chatbot-body" id="chatbotBody">
       <div class="chat-msg bot"><div class="chat-mini-avatar">🤖</div><div class="chat-bubble">👋 Hello! I'm the <strong>HTP AI Assistant</strong>. I can help you with traffic queries, challans, NOC, and more.</div></div>
       <div class="chatbot-coming-soon"><i class="fa fa-clock"></i><p><strong>Full AI Chat — Coming Soon!</strong><br>We're building an intelligent assistant to answer all your traffic-related queries in real time.</p></div>
       <div class="chatbot-suggestions">
@@ -725,5 +725,6 @@
     var scrollBtn=document.getElementById('scrollTopBtn');window.addEventListener('scroll',function(){scrollBtn.classList.toggle('visible',window.scrollY>300);},{passive:true});
   </script>
   <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script src="../js/chatbot.js"></script>
 </body>
 </html>

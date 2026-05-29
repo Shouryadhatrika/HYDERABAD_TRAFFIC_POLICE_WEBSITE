@@ -701,7 +701,7 @@
       </div>
       <button class="chatbot-close" onclick="toggleChatbot()"><i class="fa fa-times"></i></button>
     </div>
-    <div class="chatbot-body">
+    <div class="chatbot-body" id="chatbotBody">
       <div class="chat-msg bot">
         <div class="chat-mini-avatar">🤖</div>
         <div class="chat-bubble">👋 Hello! I'm the <strong>HTP AI Assistant</strong>. I can help you with traffic queries, challans, NOC, and more.</div>
@@ -766,10 +766,10 @@
     function pageZoom(d){ _zoom=Math.min(1.5,Math.max(0.6,parseFloat((_zoom+d*0.1).toFixed(2)))); applyZoom(); }
     function pageZoomReset(){ _zoom=1.0; applyZoom(); }
     function applyZoom(){ if(!_zoomWrap)return; _zoomWrap.style.transform='scale('+_zoom+')'; _zoomWrap.style.width=(100/_zoom)+'%'; }
-    function toggleChatbot(){ document.getElementById('chatbotWindow').classList.toggle('open'); }
     var scrollBtn=document.getElementById('scrollTopBtn');
     window.addEventListener('scroll',function(){ scrollBtn.classList.toggle('visible',window.scrollY>300); },{passive:true});
   </script>
   <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script src="../js/chatbot.js"></script>
 </body>
 </html>

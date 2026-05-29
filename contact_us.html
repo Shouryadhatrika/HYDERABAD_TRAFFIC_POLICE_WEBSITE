@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contact Us – Hyderabad Traffic Police</title>
+  <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -59,8 +60,6 @@
     .lang-dropdown-wrap { position:relative; display:inline-flex; align-items:center; }
     .lang-dropdown-wrap .lang-globe { position:absolute; left:9px; color:rgba(255,255,255,.6); font-size:.78rem; pointer-events:none; z-index:1; }
     .lang-select { appearance:none; -webkit-appearance:none; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.25); border-radius:20px; color:#fff; font-family:var(--font-body); font-size:.78rem; font-weight:600; padding:5px 28px 5px 26px; cursor:pointer; outline:none; min-width:90px; }
-    .lang-select:hover { background:rgba(255,255,255,.18); border-color:rgba(255,255,255,.45); }
-    .lang-select:focus { border-color:var(--gold); }
     .lang-select option { background:var(--navy-dark); color:#fff; }
     .lang-caret { position:absolute; right:9px; color:rgba(255,255,255,.55); font-size:.65rem; pointer-events:none; }
 
@@ -71,19 +70,14 @@
     .main-nav .dropdown-menu { border: none; border-radius: var(--radius-md); padding: 8px; box-shadow: var(--shadow-md); margin-top: 6px; }
     .main-nav .dropdown-item { border-radius: var(--radius-sm); padding: 8px 12px; font-size: .86rem; }
     .main-nav .dropdown-item:hover { background: var(--navy); color: #fff; }
-
-    /* ── NAVBAR SEARCH ── */
     .nav-search { position:relative; display:flex; align-items:center; }
     .nav-search input { background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2); border-radius:20px; color:#fff; padding:6px 14px 6px 34px; font-size:.8rem; width:180px; outline:none; font-family:var(--font-body); transition:background .2s,border-color .2s,width .2s; }
     .nav-search input::placeholder { color:rgba(255,255,255,.45); }
     .nav-search input:focus { background:rgba(255,255,255,.18); border-color:var(--gold); width:220px; }
     .nav-search-icon { position:absolute; left:11px; color:rgba(255,255,255,.45); font-size:.78rem; pointer-events:none; }
-    .nav-search:focus-within .nav-search-icon { color:var(--gold); }
-    @media (max-width:991px) { .nav-extras { margin:10px 0 6px; width:100%; } .nav-search { width:100%; } .nav-search input { width:100% !important; border-radius:8px; } }
 
-    /* NEED ASSISTANCE BANNER */
+    /* ── NEED ASSISTANCE BANNER ── */
     .need-assistance-banner { background: linear-gradient(135deg, #0B3C5D 0%, #145DA0 100%); border-radius: var(--radius-lg); padding: 20px 28px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; box-shadow: 0 6px 24px rgba(11,60,93,.25); margin-bottom: 2rem; }
-    .need-assistance-banner .na-left { display: flex; align-items: center; gap: 16px; }
     .na-icon { width: 52px; height: 52px; background: rgba(255,193,7,.15); border: 2px solid rgba(255,193,7,.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .na-icon i { font-size: 22px; color: var(--gold); }
     .na-text h4 { margin: 0 0 4px; font-size: 1.05rem; font-weight: 700; color: #fff; }
@@ -94,16 +88,16 @@
     .na-btn-wa { background: #25D366; color: #fff; padding: 10px 20px; border-radius: var(--radius-sm); font-weight: 700; font-size: .88rem; display: inline-flex; align-items: center; gap: 8px; transition: filter .2s, transform .2s; }
     .na-btn-wa:hover { filter: brightness(1.1); transform: translateY(-2px); color: #fff; }
 
-    /* SECTION HEADING */
+    /* ── SECTION HEADING ── */
     .section-heading { display: flex; align-items: center; gap: 10px; font-size: 1.1rem; font-weight: 700; color: var(--white); background: linear-gradient(90deg, var(--navy) 0%, var(--navy-light) 100%); padding: 12px 24px; border-radius: var(--radius-md); letter-spacing: .5px; margin-bottom: 1.5rem; }
 
-    /* DIRECTORY SECTION */
+    /* ── DIRECTORY SECTION ── */
     .dir-section { background: #fff; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); overflow: hidden; margin-bottom: 2rem; }
     .dir-section-header { background: linear-gradient(90deg, var(--navy) 0%, var(--navy-light) 100%); padding: 14px 20px; display: flex; align-items: center; gap: 10px; }
     .dir-section-header h3 { margin: 0; font-size: 1rem; font-weight: 700; color: #fff; }
     .dir-section-header i { color: var(--gold); font-size: 1.1rem; }
 
-    /* TABLE */
+    /* ── TABLE ── */
     .dir-table-wrap { overflow-x: auto; }
     .dir-table { width: 100%; border-collapse: collapse; font-size: .84rem; }
     .dir-table thead tr { background: #f0f4f8; }
@@ -122,7 +116,7 @@
     .hotline-row { background: linear-gradient(90deg, rgba(215,38,56,.06), rgba(215,38,56,.03)); }
     .hotline-row td { font-weight: 700; color: var(--red); }
 
-    /* QUICK CONTACT CARDS */
+    /* ── QUICK CONTACT CARDS ── */
     .quick-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 2rem; }
     .qcard { background: #fff; border-radius: var(--radius-md); padding: 20px; box-shadow: var(--shadow-sm); border-top: 4px solid transparent; display: flex; flex-direction: column; gap: 8px; transition: transform .2s, box-shadow .2s; }
     .qcard:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
@@ -135,8 +129,7 @@
     .qcard .qnum { font-size: 1.1rem; font-weight: 800; color: var(--red); }
     .qcard .qemail { font-size: .75rem; color: var(--gray-600); word-break: break-all; }
 
-    /* ICON BOXES */
-    .icon-box-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
+    /* ── ICON BOXES ── */
     .icon-box { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 20px 12px; border-radius: var(--radius-md); border: 1px solid var(--gray-300); background: var(--white); text-align: center; cursor: pointer; transition: transform .2s, box-shadow .2s, border-color .2s; }
     .icon-box:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--navy-light); }
     .icon-box span { font-size: .82rem; font-weight: 600; line-height: 1.3; }
@@ -145,17 +138,17 @@
     .icon-box.red    { background: #FDE8EA; border-color: #f5c2c7; }
     .icon-box.orange { background: #FFF4E6; border-color: #fecba1; }
 
-    /* ARRIVE ALIVE */
-    .aa-banner { background: linear-gradient(120deg, #16A085 0%, #1ABC9C 100%); padding: 10px 40px; position: relative; overflow: hidden; }
+    /* ── ARRIVE ALIVE ── */
+    .aa-banner { background: linear-gradient(120deg, #16A085 0%, #1ABC9C 100%); padding: 10px 40px; }
     .aa-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; }
     .aa-badge { display: inline-block; background: rgba(255,255,255,.2); color: #fff; font-size: .72rem; font-weight: 600; padding: 4px 14px; border-radius: 20px; margin-bottom: 8px; }
     .aa-title { font-size: 1.5rem; font-weight: 800; color: #fff; margin: 0 0 6px; }
     .aa-desc { font-size: .88rem; color: rgba(255,255,255,.88); margin: 0 0 10px; }
-    .aa-btn { display: inline-block; background: #fff; color: #16A085; font-size: .88rem; font-weight: 700; padding: 10px 28px; border-radius: var(--radius-sm); transition: background .2s, transform .2s; }
-    .aa-btn:hover { background: #e8faf6; transform: translateY(-2px); color: #16A085; }
+    .aa-btn { display: inline-block; background: #fff; color: #16A085; font-size: .88rem; font-weight: 700; padding: 10px 28px; border-radius: var(--radius-sm); }
+    .aa-btn:hover { background: #e8faf6; color: #16A085; }
     @media (max-width: 768px) { .aa-inner { grid-template-columns: 1fr; } .aa-visual { display: none; } .aa-banner { padding: 10px 16px; } }
 
-    /* FOOTER */
+    /* ── FOOTER ── */
     .modern-footer { background: #f4f7fb; border-top: 4px solid #0B3D91; }
     .footer-logo { width: 130px; }
     .footer-heading { color: #0B3D91; font-weight: 700; margin-bottom: 15px; }
@@ -175,27 +168,32 @@
     .footer-bottom a { color: #fff; }
     .footer-bottom a:hover { color: var(--gold); }
 
-    /* CHATBOT */
-    #chatbotToggle { position: fixed; bottom: 24px; right: 80px; z-index: 1001; width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); border: 2.5px solid var(--gold); color: var(--white); cursor: pointer; font-size: 22px; box-shadow: 0 4px 20px rgba(11,60,93,.4); display: flex; align-items: center; justify-content: center; transition: transform .2s; animation: chatPulse 2.5s infinite; }
-    #chatbotToggle:hover { transform: translateY(-3px) scale(1.07); animation: none; }
-    @keyframes chatPulse { 0%,100%{ box-shadow:0 4px 20px rgba(11,60,93,.4),0 0 0 0 rgba(255,193,7,.55); } 50%{ box-shadow:0 4px 20px rgba(11,60,93,.4),0 0 0 10px rgba(255,193,7,0); } }
-    #chatbotToggle .chat-badge { position: absolute; top: -4px; right: -4px; background: var(--gold); color: #000; font-size: .6rem; font-weight: 800; border-radius: 10px; padding: 1px 5px; border: 1.5px solid #fff; }
-    #scrollTopBtn { position: fixed; bottom: 24px; right: 24px; z-index: 999; width: 46px; height: 46px; border-radius: 50%; background: var(--red); color: var(--white); border: none; cursor: pointer; font-size: 18px; box-shadow: var(--shadow-md); opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; display: flex; align-items: center; justify-content: center; }
-    #scrollTopBtn.visible { opacity: 1; pointer-events: auto; }
-    #scrollTopBtn:hover { transform: translateY(-3px); }
-
-    /* SEARCH FILTER */
+    /* ── SEARCH FILTER ── */
     .search-filter { position: relative; margin-bottom: 1.5rem; }
     .search-filter input { width: 100%; padding: 12px 16px 12px 44px; border: 1.5px solid var(--gray-300); border-radius: var(--radius-md); font-size: .9rem; font-family: var(--font-body); outline: none; transition: border-color .2s; background: #fff; }
     .search-filter input:focus { border-color: var(--navy-light); }
     .search-filter i { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--gray-600); }
 
-    /* ZONE TABS */
+    /* ── ZONE TABS ── */
     .zone-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.5rem; }
     .zone-tab { padding: 6px 16px; border-radius: 20px; border: 1.5px solid var(--gray-300); background: #fff; font-size: .82rem; font-weight: 600; cursor: pointer; transition: all .2s; font-family: var(--font-body); color: var(--gray-800); }
     .zone-tab:hover { border-color: var(--navy-light); color: var(--navy-light); }
     .zone-tab.active { background: var(--navy); border-color: var(--navy); color: #fff; }
     .no-results { text-align: center; padding: 40px; color: var(--gray-600); display: none; }
+
+    /* ── CHATBOT ── */
+    #chatbotToggle { position: fixed; bottom: 24px; right: 80px; z-index: 10001; width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); border: 2.5px solid var(--gold); color: var(--white); cursor: pointer; font-size: 22px; box-shadow: 0 4px 20px rgba(11,60,93,.4); display: flex; align-items: center; justify-content: center; transition: transform .22s; animation: chatPulse 2.5s infinite; }
+    #chatbotToggle:hover { transform: translateY(-3px) scale(1.07); animation: none; }
+    @keyframes chatPulse { 0%,100%{ box-shadow:0 4px 20px rgba(11,60,93,.4),0 0 0 0 rgba(255,193,7,.55); } 50%{ box-shadow:0 4px 20px rgba(11,60,93,.4),0 0 0 10px rgba(255,193,7,0); } }
+    .chat-badge { position: absolute; top: -4px; right: -4px; background: var(--gold); color: #000; font-size: .6rem; font-weight: 800; border-radius: 10px; padding: 1px 5px; border: 1.5px solid #fff; }
+    #chatbotWindow { position: fixed; bottom: 94px; right: 80px; z-index: 10000; width: 340px; max-height: 500px; background: var(--white); border-radius: var(--radius-lg); box-shadow: 0 8px 40px rgba(0,0,0,.18); display: flex; flex-direction: column; overflow: hidden; opacity: 0; pointer-events: none; transform: translateY(16px) scale(.97); transition: opacity .25s, transform .25s; }
+    #chatbotWindow.open { opacity: 1; pointer-events: auto; transform: none; }
+    @media (max-width: 480px) { #chatbotWindow { right: 12px; left: 12px; width: auto; bottom: 86px; } #chatbotToggle { right: 76px; bottom: 20px; } }
+
+    /* ── SCROLL TOP ── */
+    #scrollTopBtn { position: fixed; bottom: 24px; right: 24px; z-index: 999; width: 46px; height: 46px; border-radius: 50%; background: var(--red); color: var(--white); border: none; cursor: pointer; font-size: 18px; box-shadow: var(--shadow-md); opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; display: flex; align-items: center; justify-content: center; }
+    #scrollTopBtn.visible { opacity: 1; pointer-events: auto; }
+    #scrollTopBtn:hover { transform: translateY(-3px); }
 
     @media (max-width: 768px) {
       .need-assistance-banner { flex-direction: column; align-items: flex-start; }
@@ -210,8 +208,6 @@
   <header class="top-header">
     <div class="container-htp">
       <div class="row align-items-center gy-2">
-
-        <!-- Logo + Title -->
         <div class="col-lg-4 col-md-12 text-center text-lg-start">
           <a href="index.html" class="d-inline-flex align-items-center gap-2">
             <img src="img/MainLogo1.png" class="top-header__logo" alt="Hyderabad Traffic Police logo">
@@ -221,8 +217,6 @@
             </div>
           </a>
         </div>
-
-        <!-- Action Buttons -->
         <div class="col-lg-4 col-md-12 text-center">
           <div class="d-flex flex-wrap gap-2 justify-content-center">
             <a href="https://echallan.tspolice.gov.in/publicview/" target="_blank" class="btn-htp btn-challan"><i class="fa fa-file-invoice"></i> Pay Challan</a>
@@ -230,24 +224,20 @@
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSdIr2t94wVePyi562lUbeOyavRPi6vNgLadZl-lPrj53PDTYw/viewform" target="_blank" class="btn-htp btn-feedback"><i class="fa fa-comment-dots"></i> Feedback</a>
           </div>
         </div>
-
-        <!-- Helpline + Zoom + Language -->
         <div class="col-lg-4 col-md-12 text-center text-lg-end">
           <div class="top-header__info mb-1">
             <i class="fa fa-phone"></i> Helpline: <a href="tel:9010203626">9010203626</a>&nbsp;&nbsp;
             <i class="fa fa-phone-alt"></i> E-Challan: <a href="tel:04027852721">040-27852721</a>
           </div>
           <div class="d-flex gap-2 justify-content-center justify-content-lg-end flex-wrap align-items-center">
-            <!-- Zoom controls -->
-            <div class="zoom-ctrl" aria-label="Zoom controls">
+            <div class="zoom-ctrl">
               <button onclick="pageZoom(1)" title="Zoom In">A+</button>
               <button onclick="pageZoomReset()" class="reset" title="Reset">&#8635;</button>
               <button onclick="pageZoom(-1)" title="Zoom Out">A&#8722;</button>
             </div>
-            <!-- Language dropdown -->
             <div class="lang-dropdown-wrap">
               <i class="fa fa-globe lang-globe"></i>
-              <select class="lang-select" id="langSelect" onchange="doTranslate(this.value)" aria-label="Select language">
+              <select class="lang-select" id="langSelect" onchange="doTranslate(this.value)">
                 <option value="en">English</option>
                 <option value="te">తెలుగు</option>
                 <option value="hi">हिन्दी</option>
@@ -261,13 +251,12 @@
             <div id="gt_hidden" style="display:none;position:absolute;"></div>
           </div>
         </div>
-
       </div>
     </div>
   </header>
 
   <!-- NAVBAR -->
-  <nav class="main-nav navbar navbar-expand-lg" aria-label="Main navigation">
+  <nav class="main-nav navbar navbar-expand-lg">
     <div class="container-htp">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
         <span class="navbar-toggler-icon"></span>
@@ -309,16 +298,12 @@
           <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
           <li class="nav-item"><a class="nav-link active" href="contact_us.html">Contact</a></li>
         </ul>
-
-        <!-- Navbar Search -->
         <div class="nav-extras d-flex align-items-center gap-2 ms-3">
           <div class="nav-search" role="search">
-            <label for="navSearchInput" class="visually-hidden">Search site</label>
             <input type="search" id="navSearchInput" placeholder="Search…" aria-label="Search site">
             <i class="fa fa-search nav-search-icon"></i>
           </div>
         </div>
-
       </div>
     </div>
   </nav>
@@ -330,11 +315,11 @@
 
         <!-- NEED ASSISTANCE BANNER -->
         <div class="need-assistance-banner">
-          <div class="na-left">
+          <div class="d-flex align-items-center gap-3">
             <div class="na-icon"><i class="fa fa-headset"></i></div>
             <div class="na-text">
               <h4>Need Assistance?</h4>
-              <p>Contact the Traffic Helpline or visit your nearest traffic police station for guidance on your application.</p>
+              <p>Contact the Traffic Helpline or visit your nearest traffic police station for guidance.</p>
             </div>
           </div>
           <div class="na-btns">
@@ -407,6 +392,7 @@
                 </tr>
               </thead>
               <tbody id="dirBody">
+                <!-- SENIOR OFFICERS -->
                 <tr data-zone="senior" data-text="sri d joel davis ips jt commissioner of police traffic 040-23240800 040-27852663 jtcp-trf-hyd@tspolice.gov.in">
                   <td>Sri. D Joel Davis, IPS</td>
                   <td><span class="rank-badge senior">Jt. Commissioner of Police (Traffic)</span></td>
@@ -414,7 +400,7 @@
                   <td>—</td>
                   <td><a href="mailto:jtcp-trf-hyd@tspolice.gov.in" class="email-link">jtcp-trf-hyd@tspolice.gov.in</a></td>
                 </tr>
-                <tr data-zone="senior" data-text="sri vara prasad pa to jt commissioner 040-23240800 8712569401 cc-addlcptrf-hyd@tspolice.gov.in">
+                <tr data-zone="senior" data-text="sri vara prasad pa to jt commissioner 040-23240800 8712569401">
                   <td>Sri. Vara Prasad</td>
                   <td><span class="rank-badge">PA to Jt. Commissioner (Traffic)</span></td>
                   <td><a href="tel:04023240800" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-23240800</a></td>
@@ -484,6 +470,7 @@
                   <td><a href="tel:8712665780" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712665780</a></td>
                   <td><a href="mailto:addldcp-trf3-hyd@tspolice.gov.in" class="email-link">addldcp-trf3-hyd@tspolice.gov.in</a></td>
                 </tr>
+                <!-- ADMIN -->
                 <tr data-zone="admin" data-text="sri g laxman acp admin traffic 040-27852247 8712660620 acp-trfadmin-hyd@tspolice.gov.in">
                   <td>Sri. G. Laxman</td>
                   <td><span class="rank-badge acp">ACP Admin Traffic</span></td>
@@ -512,7 +499,7 @@
                   <td><a href="tel:8712660654" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660654</a></td>
                   <td><a href="mailto:insp-tcctrf-hyd@tspolice.gov.in" class="email-link">insp-tcctrf-hyd@tspolice.gov.in</a></td>
                 </tr>
-                <tr class="hotline-row" data-zone="admin" data-text="traffic help line helpline 040-27852471 9010203626 insp-tcctrf-hyd@tspolice.gov.in">
+                <tr class="hotline-row" data-zone="admin" data-text="traffic help line helpline 040-27852471 9010203626">
                   <td><i class="fa fa-phone-alt me-1"></i>Traffic Help Line</td>
                   <td><span class="rank-badge" style="background:#FDE8EA;color:var(--red);">Emergency Helpline</span></td>
                   <td><a href="tel:04027852471" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27852471 / 040-27852482</a></td>
@@ -533,14 +520,14 @@
                   <td><a href="tel:8712661657" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712661657</a></td>
                   <td><a href="mailto:iriadmn-trf-hyd@tspolice.gov.in" class="email-link">iriadmn-trf-hyd@tspolice.gov.in</a></td>
                 </tr>
-                <tr data-zone="admin" data-text="sri m vamsi krishna ri mto 04027852441 8712661658 insp-mtotrf-hyd@tspolice.gov.in">
+                <tr data-zone="admin" data-text="sri m vamsi krishna ri mto 040-27852441 8712661658 insp-mtotrf-hyd@tspolice.gov.in">
                   <td>Sri. M. Vamsi Krishna</td>
                   <td><span class="rank-badge">RI. MTO</span></td>
                   <td><a href="tel:04027852441" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27852441</a></td>
                   <td><a href="tel:8712661658" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712661658</a></td>
                   <td><a href="mailto:insp-mtotrf-hyd@tspolice.gov.in" class="email-link">insp-mtotrf-hyd@tspolice.gov.in</a></td>
                 </tr>
-                <tr data-zone="admin" data-text="vacant jao tr branch 04027852463 8712660099 jao-trbh-hyd@tspolice.gov.in">
+                <tr data-zone="admin" data-text="vacant jao tr branch 040-27852463 8712660099 jao-trbh-hyd@tspolice.gov.in">
                   <td>Vacant</td>
                   <td><span class="rank-badge">JAO. Tr. Branch</span></td>
                   <td><a href="tel:04027852463" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27852463</a></td>
@@ -575,14 +562,14 @@
                   <td><a href="tel:8712660655" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660655</a></td>
                   <td><a href="mailto:tti-goltrf-hyd@tspolice.gov.in" class="email-link">tti-goltrf-hyd@tspolice.gov.in</a></td>
                 </tr>
-                <tr data-zone="admin" data-text="sri ashok nagula inspector tti begumpet 04027854847 8712661659 tti-bpttrf-hyd@tspolice.gov.in">
+                <tr data-zone="admin" data-text="sri ashok nagula inspector tti begumpet 040-27854847 8712661659 tti-bpttrf-hyd@tspolice.gov.in">
                   <td>Sri. Ashok Nagula</td>
                   <td><span class="rank-badge">Inspector TTI Begumpet</span></td>
                   <td><a href="tel:04027854847" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27854847</a></td>
                   <td><a href="tel:8712661659" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712661659</a></td>
                   <td><a href="mailto:tti-bpttrf-hyd@tspolice.gov.in" class="email-link">tti-bpttrf-hyd@tspolice.gov.in</a></td>
                 </tr>
-                <!-- North Zone -->
+                <!-- NORTH ZONE -->
                 <tr data-zone="north" data-text="sri s mohan kumar acp khairtabad traffic 040-27853563 8712660614 acp-trfnz-hyd@tspolice.gov.in">
                   <td>Sri. S. Mohan Kumar</td>
                   <td><span class="rank-badge acp">ACP Khairtabad Traffic (North)</span></td>
@@ -632,7 +619,7 @@
                   <td><a href="tel:8712660644" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660644</a></td>
                   <td><a href="mailto:sho-sbzrtrf-hyd@tspolice.gov.in" class="email-link">sho-sbzrtrf-hyd@tspolice.gov.in</a></td>
                 </tr>
-                <!-- West Zone -->
+                <!-- WEST ZONE -->
                 <tr data-zone="west" data-text="sri k hari prasad acp jubilee hills traffic 040-27852026 8712660615 acp-trfwz-hyd@tspolice.gov.in">
                   <td>Sri. K Hari Prasad</td>
                   <td><span class="rank-badge acp">ACP Jubilee Hills Traffic (West)</span></td>
@@ -675,7 +662,7 @@
                   <td><a href="tel:8712580223" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712580223</a></td>
                   <td><a href="mailto:sho-bhtrf-hyd@tspolice.gov.in" class="email-link">sho-bhtrf-hyd@tspolice.gov.in</a></td>
                 </tr>
-                <!-- East Zone -->
+                <!-- EAST ZONE -->
                 <tr data-zone="east" data-text="sri d dhana laxmi acp golconda traffic 040-27854915 8712660616 acp-trfez-hyd@tspolice.gov.in">
                   <td>Sri D. Dhana Laxmi</td>
                   <td><span class="rank-badge acp">ACP Golconda Traffic (East)</span></td>
@@ -711,14 +698,14 @@
                   <td><a href="tel:8712660639" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660639</a></td>
                   <td><a href="mailto:sho-gmtrf-hyd@tspolice.gov.in" class="email-link">sho-gmtrf-hyd@tspolice.gov.in</a></td>
                 </tr>
-                <tr data-zone="east" data-text="addl inspector traffic goshamahal 8712660625 sho-gmtrf-hyd@tspolice.gov.in">
+                <tr data-zone="east" data-text="addl inspector traffic goshamahal 8712660625">
                   <td>Addl Inspector – Traffic Goshamahal</td>
                   <td><span class="rank-badge">Addl. Inspector</span></td>
                   <td>—</td>
                   <td><a href="tel:8712660625" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660625</a></td>
                   <td><a href="mailto:sho-gmtrf-hyd@tspolice.gov.in" class="email-link">sho-gmtrf-hyd@tspolice.gov.in</a></td>
                 </tr>
-                <!-- Secunderabad Zone -->
+                <!-- SECUNDERABAD ZONE -->
                 <tr data-zone="sec" data-text="sri a srinivas acp secunderabad traffic 040-27852286 8712660617 acp-trfcz-hyd@tspolice.gov.in">
                   <td>Sri. A. Srinivas</td>
                   <td><span class="rank-badge acp">ACP Secunderabad Traffic (Central)</span></td>
@@ -768,7 +755,7 @@
                   <td><a href="tel:8712660622" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660622</a></td>
                   <td><a href="mailto:sho-mkltrf-hyd@tspolice.gov.in" class="email-link">sho-mkltrf-hyd@tspolice.gov.in</a></td>
                 </tr>
-                <!-- Charminar Zone -->
+                <!-- CHARMINAR ZONE -->
                 <tr data-zone="charminar" data-text="sri k laxman acp charminar traffic 8712660618 acp-trfsz-hyd@tspolice.gov.in">
                   <td>Sri. K. Laxman</td>
                   <td><span class="rank-badge acp">ACP Charminar Traffic</span></td>
@@ -776,7 +763,7 @@
                   <td><a href="tel:8712660618" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660618</a></td>
                   <td><a href="mailto:acp-trfsz-hyd@tspolice.gov.in" class="email-link">acp-trfsz-hyd@tspolice.gov.in</a></td>
                 </tr>
-                <tr data-zone="charminar" data-text="inspector traffic mirchowk 04027854987 8712660648 sho-mcktrf-hyd@tspolice.gov.in">
+                <tr data-zone="charminar" data-text="inspector traffic mirchowk 040-27854987 8712660648 sho-mcktrf-hyd@tspolice.gov.in">
                   <td>Inspector – Traffic Mirchowk</td>
                   <td><span class="rank-badge">Inspector</span></td>
                   <td><a href="tel:04027854987" class="phone-link"><i class="fa fa-phone fa-xs"></i>040-27854987</a></td>
@@ -797,7 +784,7 @@
                   <td><a href="tel:8712660651" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660651</a></td>
                   <td><a href="mailto:sho-cnktrf-hyd@tspolice.gov.in" class="email-link">sho-cnktrf-hyd@tspolice.gov.in</a></td>
                 </tr>
-                <!-- South Zone -->
+                <!-- SOUTH ZONE -->
                 <tr data-zone="south" data-text="sri v chandra kumar acp chandrayangutta traffic 8712661693 acp-trfsez-hyd@tspolice.gov.in">
                   <td>Sri. V. Chandra Kumar</td>
                   <td><span class="rank-badge acp">ACP Chandrayangutta Traffic (South)</span></td>
@@ -833,7 +820,7 @@
                   <td><a href="tel:8712660749" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712660749</a></td>
                   <td><a href="mailto:sho-snttrf-hyd@tspolice.gov.in" class="email-link">sho-snttrf-hyd@tspolice.gov.in</a></td>
                 </tr>
-                <!-- Rajendra Nagar -->
+                <!-- RAJENDRA NAGAR -->
                 <tr data-zone="rjn" data-text="sri d sudheer reddy acp rajendra nagar traffic 8712663055 acp-trfswz-hyd@tspolice.gov.in">
                   <td>Sri D. Sudheer Reddy</td>
                   <td><span class="rank-badge acp">ACP Rajendra Nagar Traffic</span></td>
@@ -862,7 +849,7 @@
                   <td><a href="tel:8712663601" class="phone-link"><i class="fa fa-mobile fa-xs"></i>8712663601</a></td>
                   <td>—</td>
                 </tr>
-                <!-- Airport Zone -->
+                <!-- AIRPORT ZONE -->
                 <tr data-zone="airport" data-text="sri p nagabhushanam acp shamshabad traffic airport 8712680305">
                   <td>Sri P. Nagabhushanam</td>
                   <td><span class="rank-badge acp">ACP Shamshabad Traffic (Airport)</span></td>
@@ -880,7 +867,7 @@
               </tbody>
             </table>
             <div class="no-results" id="noResults">
-              <i class="fa fa-search" style="font-size:2rem; margin-bottom:10px; display:block; color:var(--gray-300);"></i>
+              <i class="fa fa-search" style="font-size:2rem; margin-bottom:10px; display:block; color:#dee2e6;"></i>
               No records found. Try a different search term.
             </div>
           </div>
@@ -966,16 +953,22 @@
     </div>
   </footer>
 
-  <!-- CHATBOT TOGGLE -->
+  <!-- CHATBOT TOGGLE — kept outside zoom wrapper by chatbot.js -->
   <button id="chatbotToggle" aria-label="Open AI Chatbot">
     <i class="fa fa-robot"></i>
     <span class="chat-badge">AI</span>
   </button>
+
+  <!-- CHATBOT WINDOW — kept outside zoom wrapper by chatbot.js -->
+  <div id="chatbotWindow" role="dialog" aria-label="HTP AI Assistant" aria-modal="true"></div>
+
+  <!-- SCROLL TOP -->
   <button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">
     <i class="fa fa-arrow-up"></i>
   </button>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
   <script>
     /* ── Google Translate ── */
@@ -983,8 +976,8 @@
       new google.translate.TranslateElement({ pageLanguage:'en', includedLanguages:'en,te,hi,ta,ur,kn,ml', autoDisplay:false }, 'gt_hidden');
     }
     function doTranslate(lang) {
+      var exp = new Date(Date.now()-1000).toUTCString();
       if (lang === 'en') {
-        var exp = new Date(Date.now()-1000).toUTCString();
         ['',location.hostname,'.'+location.hostname].forEach(function(d){ var b='googtrans=; expires='+exp+'; path=/'; document.cookie=d?b+'; domain='+d:b; });
       } else {
         var val='/en/'+lang;
@@ -994,36 +987,50 @@
       if(gt){ gt.value=lang==='en'?'':lang; gt.dispatchEvent(new Event('change')); } else { location.reload(); }
     }
 
-    /* ── Zoom ── */
-    var _zoom=1.0, _zoomWrap=null;
-    document.addEventListener('DOMContentLoaded', function(){
-      _zoomWrap=document.createElement('div');
-      _zoomWrap.id='zoom-wrap'; _zoomWrap.style.transformOrigin='top left';
-      while(document.body.firstChild) _zoomWrap.appendChild(document.body.firstChild);
-      document.body.appendChild(_zoomWrap);
-      var m=document.cookie.match(/googtrans=\/en\/([a-z]+)/);
-      var sel=document.getElementById('langSelect');
-      if(sel && m) sel.value=m[1];
+    /* ── Zoom — wraps only page content, NOT fixed elements ── */
+    var _zoom = 1.0, _zoomWrap = null;
+    document.addEventListener('DOMContentLoaded', function () {
 
-     /* ── Navbar search → search.html ── */
+      // Build zoom wrapper around page content only
+      _zoomWrap = document.createElement('div');
+      _zoomWrap.id = 'zoom-wrap';
+      _zoomWrap.style.transformOrigin = 'top left';
+
+      // IDs that must stay fixed — do NOT move into zoom wrapper
+      var fixedIds = ['chatbotToggle', 'chatbotWindow', 'scrollTopBtn'];
+
+      // Move everything except fixed UI into the zoom wrapper
+      Array.prototype.slice.call(document.body.childNodes).forEach(function(node) {
+        if (node.nodeType === 1 && fixedIds.indexOf(node.id) !== -1) return;
+        _zoomWrap.appendChild(node);
+      });
+      document.body.insertBefore(_zoomWrap, document.body.firstChild);
+
+      // Restore language selector state
+      var m = document.cookie.match(/googtrans=\/en\/([a-z]+)/);
+      var sel = document.getElementById('langSelect');
+      if (sel && m) sel.value = m[1];
+
+      // Navbar search
       var navInput = document.getElementById('navSearchInput');
       var navIcon  = document.querySelector('.nav-search-icon');
       function doNavSearch() {
-        var q = navInput.value.trim();
+        var q = navInput ? navInput.value.trim() : '';
         if (q) window.location.href = 'search.html?q=' + encodeURIComponent(q);
       }
-      if (navInput) navInput.addEventListener('keydown', function(e){ if (e.key === 'Enter') doNavSearch(); });
-      if (navIcon)  { navIcon.style.pointerEvents = 'auto'; navIcon.style.cursor = 'pointer'; navIcon.addEventListener('click', doNavSearch); }
+      if (navInput) navInput.addEventListener('keydown', function(e){ if (e.key==='Enter') doNavSearch(); });
+      if (navIcon)  { navIcon.style.pointerEvents='auto'; navIcon.style.cursor='pointer'; navIcon.addEventListener('click', doNavSearch); }
     });
-    function pageZoom(d){ _zoom=Math.min(1.5,Math.max(0.6,parseFloat((_zoom+d*0.1).toFixed(2)))); applyZoom(); }
-    function pageZoomReset(){ _zoom=1.0; applyZoom(); }
-    function applyZoom(){ if(!_zoomWrap)return; _zoomWrap.style.transform='scale('+_zoom+')'; _zoomWrap.style.width=(100/_zoom)+'%'; }
+
+    function pageZoom(d)   { _zoom = Math.min(1.5, Math.max(0.6, parseFloat((_zoom + d*0.1).toFixed(2)))); applyZoom(); }
+    function pageZoomReset(){ _zoom = 1.0; applyZoom(); }
+    function applyZoom()   { if(!_zoomWrap) return; _zoomWrap.style.transform='scale('+_zoom+')'; _zoomWrap.style.width=(100/_zoom)+'%'; }
 
     /* ── Scroll top ── */
     var scrollBtn = document.getElementById('scrollTopBtn');
-    window.addEventListener('scroll', function(){ scrollBtn.classList.toggle('visible', window.scrollY > 300); }, { passive: true });
+    window.addEventListener('scroll', function(){ scrollBtn.classList.toggle('visible', window.scrollY > 300); }, { passive:true });
 
-    /* ── Zone filter ── */
+    /* ── Directory zone filter ── */
     var activeZone = 'all';
     function filterZone(btn) {
       document.querySelectorAll('.zone-tab').forEach(function(b){ b.classList.remove('active'); });
@@ -1037,16 +1044,18 @@
       var rows = document.querySelectorAll('#dirBody tr');
       var visible = 0;
       rows.forEach(function(row) {
-        var zone = row.getAttribute('data-zone') || '';
-        var text = (row.getAttribute('data-text') || '') + row.textContent.toLowerCase();
-        var zoneMatch = (activeZone === 'all') || (zone === activeZone);
-        var textMatch = !q || text.includes(q);
-        if (zoneMatch && textMatch) { row.style.display = ''; visible++; }
+        var zone    = row.getAttribute('data-zone') || '';
+        var text    = (row.getAttribute('data-text') || '') + row.textContent.toLowerCase();
+        var zMatch  = (activeZone === 'all') || (zone === activeZone);
+        var tMatch  = !q || text.includes(q);
+        if (zMatch && tMatch) { row.style.display = ''; visible++; }
         else row.style.display = 'none';
       });
       document.getElementById('noResults').style.display = visible === 0 ? 'block' : 'none';
     }
   </script>
-  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <!-- Chatbot must load AFTER the page so it can move fixed elements safely -->
+  <script src="js/chatbot.js"></script>
 </body>
 </html>

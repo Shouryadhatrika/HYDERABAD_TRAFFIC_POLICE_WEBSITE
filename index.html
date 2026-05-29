@@ -1117,19 +1117,10 @@
           <small>Traffic Updates</small>
           <hr class="news-divider">
           <div class="news-scroller" aria-live="off">
-            <ul>
-              <li><a href="assets/news/2025/12Dec/23122025.pdf" target="_blank" rel="noopener">Anti-drunk driving drive from Dec 24–30 across the city</a></li>
-              <li><a href="assets/news/2025/12Dec/23122025.pdf" target="_blank" rel="noopener">Special traffic arrangements for New Year celebrations</a></li>
-              <li><a href="assets/news/2025/12Dec/23122025.pdf" target="_blank" rel="noopener">Heavy traffic expected near IT corridor during peak hours</a></li>
-              <li><a href="assets/news/2025/12Dec/23122025.pdf" target="_blank" rel="noopener">Traffic diversions in Banjara Hills due to road works</a></li>
-              <li><a href="assets/news/2025/12Dec/23122025.pdf" target="_blank" rel="noopener">Citizens advised to use public transport during festive rush</a></li>
-              <li><a href="assets/news/2025/12Dec/23122025.pdf" target="_blank" rel="noopener">Anti-drunk driving drive from Dec 24–30 across the city</a></li>
-              <li><a href="assets/news/2025/12Dec/23122025.pdf" target="_blank" rel="noopener">Special traffic arrangements for New Year celebrations</a></li>
-              <li><a href="assets/news/2025/12Dec/23122025.pdf" target="_blank" rel="noopener">Heavy traffic expected near IT corridor during peak hours</a></li>
-              <li><a href="assets/news/2025/12Dec/23122025.pdf" target="_blank" rel="noopener">Traffic diversions in Banjara Hills due to road works</a></li>
-              <li><a href="assets/news/2025/12Dec/23122025.pdf" target="_blank" rel="noopener">Citizens advised to use public transport during festive rush</a></li>
-            </ul>
-          </div>
+            <ul id="news-list">
+                  <li><a href="#" style="color:rgba(255,255,255,.9)">Loading news...</a></li>
+             </ul>
+           </div>
         </div>
 
         <!-- Emergency Contacts -->
@@ -1466,5 +1457,50 @@
     }
   </script>
   <script src="js/chatbot.js"></script>
+<script>
+  
+  const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQxywyysTMBgBtyYu63AQOxX3JU_lanphL0Ml6fFXLGXJTMYuv03jwT-nwbUEl_WjYm6BIFEWBQn27m/pub?output=csv";
+
+  fetch(SHEET_CSV_URL)
+    .then(r => r.text())
+    .then(csv => {
+      const lines = csv.trim().split("\n").slice(1);
+      const ul = document.getElementById("news-list");
+      if (!ul) return;
+
+      ul.innerHTML = "";
+
+      // Duplicate items for seamless scroll loop
+      const items = [];
+      lines.forEach(line => {
+        // Handle commas inside quoted fields
+        const cols = line.match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g) || [];
+        const headline = (cols[0] || "").replace(/^"|"$/g, "").trim();
+        const date     = (cols[1] || "").replace(/^"|"$/g, "").trim();
+        const pdf      = (cols[2] || "").replace(/^"|"$/g, "").trim();
+        if (headline) items.push({ headline, date, pdf });
+      });
+
+      // Duplicate for infinite scroll
+     [...items, ...items].forEach(item => {
+  const li = document.createElement("li");
+  if (item.pdf && item.pdf !== "") {
+    li.innerHTML = `<a href="${item.pdf}" target="_blank" rel="noopener">
+      ${item.headline} <small style="opacity:.7">(${item.date})</small>
+    </a>`;
+  } else {
+    li.innerHTML = `<span style="color:rgba(255,255,255,.9); font-size:.82rem; line-height:1.5; display:flex; gap:8px; align-items:flex-start;">
+      ${item.headline} <small style="opacity:.7">(${item.date})</small>
+    </span>`;
+  }
+  ul.appendChild(li);
+});
+    })
+    .catch(() => {
+      const ul = document.getElementById("news-list");
+      if (ul) ul.innerHTML = `<li><a href="#" style="color:rgba(255,255,255,.9)">Unable to load news.</a></li>`;
+    });
+</script>
+
 </body>
 </html>

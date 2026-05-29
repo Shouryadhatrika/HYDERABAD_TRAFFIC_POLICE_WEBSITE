@@ -732,7 +732,7 @@
       </div>
       <button class="chatbot-close" onclick="toggleChatbot()"><i class="fa fa-times"></i></button>
     </div>
-    <div class="chatbot-body">
+    <div class="chatbot-body" id="chatbotBody">
       <div class="chat-msg bot">
         <div class="chat-mini-avatar">🤖</div>
         <div class="chat-bubble">👋 Hello! I'm the <strong>HTP AI Assistant</strong>. I can help you with traffic queries, challans, NOC, and more.</div>
@@ -844,5 +844,6 @@
     }
     function rebindAll(){document.querySelectorAll('[data-bs-toggle="dropdown"]').forEach(function(el){new bootstrap.Dropdown(el);});}
   </script>
+  <script src="js/chatbot.js"></script>
 </body>
 </html>
